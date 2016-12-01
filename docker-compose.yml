@@ -1,0 +1,17 @@
+rails:
+  container_name: atlocs
+  build: .
+  environment:
+    - RAILS_ENV=development
+    - GOOGLE_MAPS_API_KEY=AIzaSyDSgm-Oxh7kSQ9UmQcVZvlwnx1zGI_Jv64
+  links: 
+    - postgres
+    - redis
+  ports:
+    - "5000:5000"
+  volumes:
+    - .:/atlocs
+postgres:
+  image: postgres
+redis:
+  image: redis

@@ -1,0 +1,106 @@
+<form method="post" action="/bookings/create">
+	<input type="hidden" name="location_id" id="location-id-input" value="<%=@location.id%>">
+	<div class="form-group">
+		<label>Desde</label>
+		<input type="date" name="start_date" id="start-date-input" class="form-control datepicker" onchange="javascript:validateBooking()">
+	</div>
+	<div class="form-group">
+		<label>Hasta</label>
+		<input type="date" name="end_date" id="end-date-input" class="form-control datepicker"  onchange="javascript:validateBooking()">
+	</div>
+	<p class="bg-warning" style="padding: 10px" id="booking-price-dialog">
+		<i class="mdi mdi-lg mdi-cash"></i>
+		Precio de reserva:
+		<b>
+			<span id="booking-price"></span>
+		</b>
+	</p>
+	<p class="bg-warning" style="padding: 10px" id="booking-price-message">
+		<b>
+			<span id="booking-message"></span>
+		</b>
+	</p>
+	<input type="submit" name="" class="btn btn-success" value="Solicitar Reserva" id="booking-submit-button"/>
+</form>
+<script type="text/javascript">
+	$(function() {
+		validateBooking();
+	});
+	function validateBooking() {
+		$("#booking-submit-button").attr("disabled",true)
+		console.log("validating booking...")
+		var location_id=$("#location-id-input").val()
+		console.log("location id: "+location_id)
+		var start_date=$('#start-date-input').val()
+		console.log("start date: "+start_date)
+		var end_date=$('#end-date-input').val()
+		console.log("end date: "+end_date)
+		$.ajax({
+			url: '/bookings/price',
+			type: 'POST',
+			data: {start_date: start_date, end_date: end_date, location_id: location_id},
+		})
+		.done(function(msg) {
+			console.log(msg)
+			console.log("success");
+			if(msg.success==true) {
+				$("#booking-price-message").hide()
+				$("#booking-price-dialog").show()
+				$("#booking-price").html("$"+msg.price)
+				$("#booking-submit-button").attr("disabled",false)
+			}
+		})
+		.fail(function() {
+			alert("Hubo un error cotizando tu reserva. Por favor intenta mas tarde.")
+			console.log("error");
+		})
+		.always(function() {
+			console.log("complete");
+		});
+		
+
+	}
+</script>
+<!-- 
+%form.padding{:action=>"javascript:createbooking()"}
+	%input{:type=>"hidden",:value=>params[:id],:name=>"location_id", :id=>"booking-location_id-input"}
+	.row
+		.form-group.col-md-6
+			%label
+				Desde
+			.form-group
+				.datepicker.input-group.date
+					%input.form-control{:type => "date", :name=>"start_date", :id=>"booking-start_date-input"}/
+					%span.input-group-addon
+						%i.mdi.mdi-calendar
+		.form-group.col-md-6
+			%label
+				Hasta
+			.form-group
+				.datepicker.input-group.date
+					%input.form-control{:type=>"date", :name=>"end_date", :id=>"booking-end_date-input"}/
+					%span.input-group-addon
+						%i.mdi.mdi-calendar
+		.form-group.col-md-12
+			%p.bg-warning{:style=>"padding:10px;"}
+				%i.mdi.mdi-lg.mdi-cash 
+				Precio de reserva:
+				%b.booking-fee-price
+				%small.help-block Este debe ser cancelado a AtLocs para hacer efectiva la reserva de la locación.
+		.form-group.col-md-12
+			%label{:for => "comment"}
+				Agrega un Comentario
+			%textarea.form-control{:name => "comment", :id=>"booking-comment-input"}
+		.col-md-12.padding
+			%button.btn.btn-block.btn-lg.btn-primary{:type=>"submit"}
+				Enviar Solicitud
+				%i.mdi.mdi-lg.mdi-arrow-right
+		:javascript
+			$(document).ready(function(){
+				$('.datepicker').datepicker({
+					format: 'yyyy-mm-dd',
+					startDate: '-3d',
+					todayHighlight: true
+				});
+			});
+ -->

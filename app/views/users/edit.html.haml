@@ -1,0 +1,56 @@
+%section.main-content
+  .container
+    .row.padding
+      = flash_messages
+      .col-md-12
+        %h1.text-center
+          Edita tu
+          %strong usuario
+        %hr
+        %br
+        = form_for @user, url: '/users/update', html: {:class=> "form form-horizontal"} do |f|
+          %fieldset
+            / Form Name
+            / %legend Form Name
+            / Text input
+            .form-group
+              %label.col-md-4.control-label{:for => "textinput"} Nombre
+              .col-md-4
+                =f.text_field :first_name, {:class=>"textinput form-control input-md", :placeholder => "Nombre"}
+            / Text input
+            .form-group
+              %label.col-md-4.control-label{:for => "textinput"} Apellido
+              .col-md-4
+                =f.text_field :last_name, {:class=>"textinput form-control input-md", :placeholder => "Apellido"}
+            / Text input
+            .form-group
+              %label.col-md-4.control-label{:for => "textinput"} Email
+              .col-md-4
+                =f.text_field :email, {:class=>"textinput form-control input-md", :placeholder => "Email"}
+            / Text input
+            .form-group
+              %label.col-md-4.control-label{:for => "textinput"} Telefono
+              .col-md-4
+                =f.text_field :phone, {:class=>"textinput form-control input-md", :placeholder => "Telefono", :maxlength=> "9" }
+            / Password input
+            .form-group
+              %label.col-md-4.control-label{:for => "passwordinput"} Password
+              .col-md-4
+                =f.password_field :password, {:class=>"textinput form-control input-md", :placeholder => "******"}
+                %span.help-block Ingresa un password solo si necesitas cambiarlo
+            %h4.text-center Datos de deposito
+            .form-group
+              %label.col-md-4.control-label{:for => "selectinput"} Banco
+              .col-md-4
+                =f.select(:deposit_bank, ['Banco Santander', 'Banco Santander Banefe', 'Banco BBVA', 'Banco BICE', 'Banco Internacional', 'Banco Itaú', 'Banco de Chile / Edwards-Citi', 'Corpbanca', 'Banco Crédito e Inversiones', 'Banco del Desarrollo', 'Banco Estado', 'Banco Falabella', 'Banco Security', 'Scotiabank', 'Rabobank', 'HSBC Bank', 'Banco Ripley', 'Banco Paris', 'Banco Consorcio', 'Banco Coopeuch'], {}, { :class => 'form-control' })
+            .form-group
+              %label.col-md-4.control-label{:for => "textinput"} Nº de cuenta
+              .col-md-4
+                =f.text_field :deposit_account, {:class=>"textinput form-control input-md", :placeholder => "Número de cuenta"}
+
+
+            / Button
+            .form-group
+              %label.col-md-4.control-label{:for => "singlebutton"} 
+              .col-md-4
+                %button#singlebutton.btn.btn-primary{:type => "submit"} Guardar usuario

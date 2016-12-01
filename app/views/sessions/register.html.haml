@@ -1,0 +1,37 @@
+.container.padding
+	.row
+		.col-md-8
+			.panel.panel-primary
+				.panel-heading
+					Registrate y reserva en linea
+				.panel-body
+					%form{:method=>"post"}
+						.form-group
+							%label.sr-only{ :for => "first_name" } 
+								Nombre
+							%input.form-control{ :type => "text", :name => "first_name", :placeholder => "Nombre" }
+						.form-group
+							%label.sr-only{ :for => "last_name" } 
+								Apellido
+							%input.form-control{ :type=>"text", :name=> "last_name", :placeholder => "Apellido" }
+						.form-group
+							%label.sr-only{ :for => "email" } 
+								Email
+							%input.form-control{ :type => "email", :name => "email", :placeholder => "E-mail" }
+						.form-group
+							%label.sr-only{ :for => "email" } 
+								Número Celular
+							%input.form-control{ :type => "text", :name => "phone", :placeholder => "Número de celular" }
+						.form-group
+							%label.sr-only{ :for => "password" } 
+								Password
+							%input.form-control{ :type => "password", :name => "password", :placeholder => "Password" }
+						.form-group
+							%label.sr-only{ :for => "password_confirmation" } 
+								Confirmar Password
+							%input.form-control{ :type => "password", :name => "password_confirmation", :placeholder => "Password (confirmación)" }
+						%button.btn.btn-primary{ :type => "submit" }
+							Enviar
+			
+			%p=link_to "¿Ya tienes una cuenta?", "/login"
+			%p=link_to "Olvidaste tu password", "/help/password"

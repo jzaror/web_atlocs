@@ -1,0 +1,8 @@
+- if @location.errors.any?
+	.errors
+		%h3
+			= pluralize(@location.errors.count, 'error')
+			prohibited this location from being saved:
+		%ul
+			- @location.errors.full_messages.each do |message|
+				%li= message

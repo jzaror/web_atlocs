@@ -1,0 +1,32 @@
+%section.main-content
+	.container
+		.row
+			=render 'shared/adminmenu'
+			.col-md-12
+				= flash_messages
+				%ul.breadcrumb
+					%li 
+						%a{:href => "/"} Inicio
+					%li
+						Reservas
+		.table-responsive
+		- if @bookings.count>0
+			%table.table
+				%thead
+					%tr
+						-if current_user && current_user.status=="admin"
+							%th Usuario
+						%th Locación Reservada
+						%th Precio Acordado
+						%th Costo de reserva
+						%th Estado
+						%th Dueño
+						%th.text-right Acciones
+				=render @bookings
+		- else
+			%h2
+				No has hecho una reserva
+			%p
+				Busca en AtLocs y encuentra tu proxima locación para filmar.
+			%a.btn.btn-info{:href=>"/locations"}
+				Revisa locaciones

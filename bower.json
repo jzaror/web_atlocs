@@ -1,0 +1,25 @@
+{
+  "name": "atlocs",
+  "homepage": "http://atlocs.mego.cl",
+  "authors": [
+    "sirlund <nlundin@gmail.com>"
+  ],
+  "description": "find locations",
+  "main": "",
+  "moduleType": [],
+  "keywords": [
+    "atlocs"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "vendor/assets/components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "unslider": "~2.0.2"
+  }
+}

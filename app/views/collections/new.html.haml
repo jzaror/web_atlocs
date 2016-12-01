@@ -1,0 +1,9 @@
+%section.main-content
+	.container
+		.row
+			=render 'shared/adminmenu'
+			.col-md-12
+				%h1 Nueva colección
+				= render 'form'
+				= link_to 'Show', @collection |
+				= link_to 'Back', '/admin/collections'

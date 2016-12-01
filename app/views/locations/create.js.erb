@@ -1,0 +1,27 @@
+//SI SIGUIERON EL LINK DE NUEVA LOCACION
+if (QueryString.newlocation) {
+	if (current_tab_id<3) {
+		console.log("NUEVA LOCACION");
+		changeTab(current_tab_id+1);
+	}else{
+		console.log("GUARDAR LOCACION");
+		window.location.href = "/locations/<%=@location.id.to_s%>";
+	}
+}
+
+//SI ID NO EXISTE EN EL DOM AGREGAMOS UN CAMPO INVISIBLE AL FORM Y EL LINK A VISTA PREVIA
+if ($('input#locationid').length==0) {
+    $('form').append('<input type="hidden" name="id" id="locationid" value="<%=@location.id.to_s%>" />');
+    $('.breadcrumb').append('<div class="pull-right"><a class="" target="_blank" href="/locations/<%=@location.id.to_s%>">Vista Previa</a></div>');
+}
+
+//MENSAJE DE EXITO
+$('#location_alert').html("<%= escape_javascript(@location.title) %> guardado");
+
+//SI SUBIERON UNA IMAGEN Y NO EXISTIA EN EL DOM
+<% if @location.image.present? %>
+  $('.gallery ul').append("<%=j render partial: 'locations/upload', locals: { thumb: @location.image.url(:thumb) } %>");
+<% end %>
+
+
+

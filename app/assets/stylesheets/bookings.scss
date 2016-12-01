@@ -1,0 +1,57 @@
+.booking {
+	.location-info {
+		.booking-details {
+			padding:2rem 1rem;
+			margin:0;
+			list-style:none;
+			li { margin:.5rem 0; }
+		}
+		.location-img img {
+			width:100%;
+		}
+	}
+}
+
+.comment-box {
+	textarea {
+		// border-color:rgba($brand-primary, .5);
+	}
+}
+
+.booking-status {
+	padding-top:2rem;
+	.item-head {
+		margin-top:0;
+	}
+	.booking-log {
+		padding:2rem 0;
+		.timeago {
+			opacity:.6;
+			font-size:13px;
+			font-weight: 400;
+		}
+	}
+	.media {
+		margin-top:.3rem;
+		padding:.9rem;
+		.media-left {}
+		.media-body {
+			.media-heading {
+				font-size:17px;
+			}
+			p {
+				margin-bottom:0;
+			}
+		}
+		&.booking-accepted {
+			background-color:rgba($brand-success, .19);
+		}
+		&.booking-cancelled {
+			background-color:rgba($brand-danger, .19);
+		}
+		&.booking-payment-ok {
+			background-color:rgba($brand-warning, .19);
+		}
+	}
+}
+

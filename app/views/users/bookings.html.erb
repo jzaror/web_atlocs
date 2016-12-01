@@ -1,0 +1,28 @@
+<h3> Bookings for <%= @user.email %></h3>
+<table class="bookings_table">
+  <tr>
+    <th>Locacion</th>
+    <th>Start</th>
+    <th>End</th>
+    <th>Estado</th>
+    <th></th>
+    <th></th>
+  </tr>
+  
+  <% @bookings.each do |booking| %>
+  <tr>
+    <td><%=Location.where(:id=>booking.id).name%></td>
+    <td>
+      <%= booking.start_time.strftime('%e %b %Y') if booking.start_time %>
+    </td>
+    <td>
+      al <%= booking.end_time.strftime('%e %b %Y') if booking.end_time %>
+    </td>
+    <td><%=booking.status%></td>
+    <td><%= link_to "Delete", '#', data: { confirm: 'Are you sure?' }, method: :delete %>
+    </td>
+    <td><%= link_to "Edit", '#' %>
+    </td>
+  </tr>
+  <% end %>
+</table>

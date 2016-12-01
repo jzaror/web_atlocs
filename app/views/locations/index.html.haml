@@ -1,0 +1,47 @@
+- content_for :body_class, "locations"
+
+%section.main-content.location-list
+	.container
+		.row
+			-if params[:s]
+				%ol.breadcrumb.searchform
+					%li
+						%a{:href => "/"} Home
+					%li
+						Resultados de búsqueda para
+						%strong "#{params[:s]}"
+					.pull-right
+						%form.form-inline{:role => "search", :action => '/locations/' }
+							.form-group
+								%input.form-control{:placeholder => "Buscar", :type => "text", :name=>"s"}/
+							%button.btn.btn-primary{:type => "submit"}
+								%i.mdi.mdi-magnify.mdi-lg
+			= link_to request.referer, :class => "btn btn-info btn-fixed btn-fixed-left" do
+				%i.mdi.mdi-arrow-left
+				Volver
+			
+			.col-md-8.col-md-offset-2
+				.page-header.main-title.align-center.big
+					%h1
+						-if params[:s]
+							Buscando
+							%small "#{params[:s]}"
+						-elsif params[:collection]
+							Explorando
+							%small "#{Collection.find(params[:collection]).name}"
+							-#.info
+								.bagde
+									= Location.where(:collection_id => params[:collection]).count locaciones en colección
+						-else params[:collection]
+							Explora
+							%small Locaciones
+	
+	.container
+		- if flash[:notice]
+			#notice.alert.alert-success{:role => "alert"}
+				%button.close{"aria-label" => "Close", "data-dismiss" => "alert", :type => "button"}
+					%span{"aria-hidden" => "true"} ×
+				= flash[:notice]
+		.row
+			-@locations.each do |location|
+				= render 'location', :location=>location, :description=>true

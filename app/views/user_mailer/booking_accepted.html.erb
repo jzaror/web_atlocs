@@ -1,0 +1,76 @@
+<h1>Tu reserva fue aceptada</h1>
+
+<p>Hola <%=@user.first_name%></p>
+<p>Muchas gracias por confiar en AtLocs.com para conseguir la mejor locación para tu proyecto. Te informamos que tu reserva nº: <b><%=@booking.code.upcase%></b> ha sido confirmada por el dueño. </p>
+
+<h2>Datos de reserva</h2>
+
+<table cellspacing="0" cellpadding="10" border="0" width="90%">
+	<tr>
+		<td width="30%">Cod. reserva</td>
+		<td width="70%"><%=@booking.code%></td>
+	</tr>
+	<tr>
+		<td width="30%">Locación</td>
+		<td width="70%"><%=link_to @location.title, location_path(@location)%></td>
+	</tr>
+	<tr>
+		<td width="30%">Fecha de inicio</td>
+		<td width="70%"><%=@booking.start_time.strftime("%d/%m/%Y")%></td>
+	</tr>
+	<tr>
+		<td width="30%">Fecha de termino</td>
+		<td width="70%"><%=@booking.end_time.strftime("%d/%m/%Y")%></td>
+	</tr>
+	<tr>
+		<td width="30%">Precio acordado</td>
+		<td width="70%"><b><%=number_to_currency(@booking.price, :unit => "$", :precision => 0)%></b> x <%=@booking.totaldays%> día(s)</td>
+	</tr>
+</table>
+
+<p>Para hacer valida esta reserva debes hacer una transferencia por un monto de <b><%=number_to_currency((@location.fee*@booking.totaldays), :unit => "$", :precision => 0)%></b> (<%=number_to_currency(@location.fee, :unit => "$", :precision => 0)%> x día) a AtLocs. A continuación te damos los datos para hacer la transferencia.</p>
+
+<h2>Datos de transferencia</h2>
+
+<table cellspacing="0" cellpadding="10" border="0" width="90%">
+	<tr>
+		<td width="30%">Banco</td>
+		<td width="70%">Banco Santander</td>
+	</tr>
+	<tr>
+		<td width="30%">Numero de cuenta</td>
+		<td width="70%">04321898</td>
+	</tr>
+	<tr>
+		<td width="30%">Tipo de cuenta</td>
+		<td width="70%">Cuenta Corriente</td>
+	</tr>
+	<tr>
+		<td width="30%">Nombre del titular</td>
+		<td width="70%">Cristian Díaz Reyes</td>
+	</tr>
+	<tr>
+		<td width="30%">RUT titular</td>
+		<td width="70%">12722861-2</td>
+	</tr>
+	<tr>
+		<td width="30%">Email</td>
+		<td width="70%">cdiazreyes@gmail.com</td>
+	</tr>
+	<tr>
+		<td width="30%">Monto</td>
+		<td width="70%"><%=number_to_currency((@location.fee*@booking.totaldays), :unit => "$", :precision => 0)%></td>
+	</tr>
+	<tr>
+		<td width="30%">Motivo</td>
+		<td width="70%">Pago reserva AtLocs <%=@booking.code.upcase%></td>
+	</tr>
+</table>
+
+<p>Saludos y nos comunicaremos contigo en cuanto se reciba el pago para hacer valida tu reserva.</p>
+
+<br>
+<hr>
+<p><strong>Cristian Díaz Reyes</strong></p>
+<p>Fundador-Director General</p>
+<p>AtLocs.com</p>

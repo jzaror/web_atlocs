@@ -1,0 +1,13 @@
+<h1>¡Tienes una solicitud de reserva!</h1>
+
+<p>Hola <%=@user.first_name%></p>
+<p>Hemos recibido una solicitud de reserva para tu locacion "<%=@location.title%>". </p>
+<p>Revisa la disponibilidad de la locación y acepta o rechaza la reserva en el siguiente link:</p>
+<p><%= link_to "Mis reservas", "http://www.atlocs.com/bookings"%></p>
+<p>Recuerda que si no tomas acción dentro de 48 hrs. esta reserva sera cancelada por el sistema</p>
+<br>
+<p>Saludos.</p>
+<hr>
+<p><strong>Cristian Díaz Reyes</strong></p>
+<p>Fundador-Director General</p>
+<p>AtLocs.com</p>

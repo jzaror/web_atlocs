@@ -1,0 +1,35 @@
+<%= form_for @collection, html: { multipart: true } do |f| %>
+  <% if @collection.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@collection.errors.count, "error") %> prohibited this collection from being saved:</h2>
+
+      <ul>
+      <% @collection.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="form-group">
+    <%= f.label :name %><br>
+    <%= f.text_field :name, :class=>"form-control" %>
+  </div>
+  <div class="form-group">
+    <%= f.label :description %><br>
+    <%= f.text_area :description, :class=>"form-control" %>
+  </div>
+  <div class="form-group">
+    <%= f.label :prefix %><br>
+    <%= f.text_field :prefix, :class=>"form-control" %>
+  </div>
+  <div class="form-group">
+    
+    <%= f.label :image %><br>
+    <%= f.file_field :image%><br>
+    <%=image_tag(@collection.image.url(:thumb)) if @collection.image.present?%><br>
+  </div>
+  <div class="form-group">
+    <%= f.submit "Guardar", :class=>"btn btn-info" %>
+  </div>
+<% end %>

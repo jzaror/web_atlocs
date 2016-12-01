@@ -1,0 +1,18 @@
+.col-sm-6.col-md-4
+  .thumbnail.thumbnail-reset.collection.collection-preview
+    .collection-title.main-title.inverse.align-center.light
+      %h3.title
+        %span.collection-type #{collection.prefix}
+        %small #{collection.name}
+      -#.badge= Location.where(:collection_id => collection.id).count
+    -if collection.image.present?
+      = image_tag(collection.image.url(:medium), :class=>"collection-img", :onError=>"this.onerror=null;this.src='/missing.png';")
+    -else
+      = image_tag(collection.thumbnail(600,600), :class=>"collection-img", :onError=>"this.onerror=null;this.src='/missing.png';")
+    .caption
+      %strong #{collection.prefix} #{collection.name}
+      %p #{collection.description}
+      %p
+        = link_to '/locations?collection='+collection.id.to_s, :class => "btn btn-primary" do
+          Ver Colección
+          %i.mdi.mdi-arrow-right

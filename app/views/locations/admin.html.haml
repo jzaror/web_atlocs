@@ -1,0 +1,83 @@
+%section.main-content
+  .container
+    .row
+      = flash_messages
+      =render 'shared/adminmenu'
+      .col-md-12
+        %h1 #{@totalcount} locaciones aprobadas
+        %ul.nav.nav-pills
+          %li.active
+            %a{"data-toggle" => "pill", :href => "#approved"} Esperando Aprobación
+          %li
+            %a{"data-toggle" => "pill", :href => "#published"} Publicadas
+          %li
+            %a{"data-toggle" => "pill", :href => "#archived"} Archivadas
+        .tab-content
+          #approved.tab-pane.fade.in.active
+            / %h3 Esperando aprobación
+            %table.table.table-striped
+              %thead
+                %tr
+                  %th Nombre
+                  %th Dueño
+                  %th Descripcion
+                  %th{:colspan => "3"}
+              %tbody
+                - @submitted.each do |location|
+                  %tr
+                    %td= link_to location.title, "/locations/#{location.id}"
+                    %td= link_to location.user.full_name, '/users/'+location.user.id.to_s
+                    %td= location.description
+                    %td= location.statusname
+                    %td 
+                      = number_to_currency(location.totalprice, :unit => "$", :precision => 0)
+                    %td= link_to 'Editar', "/locations/#{location.id}/edit", :class=>"btn btn-info"
+                    - if location.status=="submitted" && (can? :approve, Location)
+                      %td= link_to 'Aprobar', "/locations/#{location.id}/approve", :class=>"btn btn-success"
+                    - if location.status=="archived"
+                      %td= link_to 'Borrar', "/locations/#{location.id}/destroy", :class=>"btn btn-danger"
+                    -else
+                      %td= link_to 'Archivar', "/locations/#{location.id}/archive", :class=>"btn btn-danger"
+            %br/
+            = link_to 'Nueva locacion', new_location_path, :class=>"btn btn-info"
+          #published.tab-pane.fade
+            / %h3 Aprobadas
+            %table.table.table-striped
+              %thead
+                %tr
+                  %th Nombre
+                  %th Dueño
+                  %th Descripcion
+                  %th{:colspan => "3"}
+              %tbody
+                - @approved.each do |location|
+                  %tr
+                    %td= link_to location.title, "/locations/#{location.id}"
+                    %td= link_to location.user.full_name, '/users/'+location.user.id.to_s
+                    %td= location.description
+                    %td= location.statusname
+                    %td= number_to_currency(location.totalprice, :unit => "$", :precision => 0)
+                    %td= link_to 'Editar', "/locations/#{location.id}/edit", :class=>"btn btn-info"
+                    - if location.status!="archived"
+                      %td= link_to 'Archivar', "/locations/#{location.id}/archive", :class=>"btn btn-danger"
+          #archived.tab-pane.fade
+            / %h3 Borradores
+            %table.table.table-striped
+              %thead
+                %tr
+                  %th Nombre
+                  %th Dueño
+                  %th Descripcion
+                  %th{:colspan => "3"}
+              %tbody
+                - @archived.each do |location|
+                  %tr
+                    %td= link_to location.title, "/locations/#{location.id}"
+                    %td= link_to location.user.full_name, '/users/'+location.user.id.to_s
+                    %td= location.description
+                    %td= location.statusname
+                    %td= number_to_currency(location.totalprice, :unit => "$", :precision => 0)
+                    %td= link_to 'Editar', "/locations/#{location.id}/edit", :class=>"btn btn-info"
+                    - if location.status!="approved"
+                      %td= link_to 'Aprobar', "/locations/#{location.id}/approve", :class=>"btn btn-success"
+                    %td= link_to 'Destruir', "/locations/#{location.id}/destroy", :class=>"btn btn-danger"

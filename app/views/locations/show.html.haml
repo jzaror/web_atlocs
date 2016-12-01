@@ -1,0 +1,180 @@
+- content_for :body_class, "special-layout location-single"
+
+= link_to request.referer, :class => "btn btn-info btn-fixed btn-fixed-left" do
+	%i.mdi.mdi-arrow-left
+	Volver
+
+%section.main-content.location
+	.img-header{ :style=>"background-image:url(#{@location.thumbnail(1440,570)}) !important" }
+		.container
+			.location-title
+				%h1
+					= @location.title
+					%small= @location.city
+
+
+			%aside.location-booking-info
+				- if @location.price_with_fee > 0
+					.price
+						%small CLP
+						= number_to_currency(@location.price_with_fee, :unit => "$", :precision => 0)
+					%small.availability
+						(Por día. Incluye precio de reserva)
+						/ Días: #{@location.days}
+				-if current_user && @location.bookings.where(:user_id=>current_user.id).any? && @location.price_with_fee > 0
+					.booking.padding-top
+						%a.btn.btn-primary.btn-block.btn-lg{:href => "/bookings/"+@location.bookings.where(:user_id=>current_user.id).last.code}
+							%i.mdi.mdi-lg.mdi-calendar-clock
+							Ver Reserva
+					%a{"data-toggle"=>"modal", "data-target"=>"#bookingModal", :href => "/bookings/new?id="+@location.id.to_s}
+						Reservar esta locación nuevamente
+				-else
+					.booking.padding-top
+						- if (can? :update, @location)
+							%a.btn.btn-primary.btn-block.btn-lg{:type => "button", :href => "/locations/"+@location.id.to_s+"/edit"}
+								%i.mdi.mdi-lg.mdi-pencil
+								Editar Locación
+						- elsif @location.status=="approved"
+							%a.btn.btn-primary.btn-block.btn-lg{:type => "button", :href => "/bookings/new?id="+@location.id.to_s}
+								%i.mdi.mdi-lg.mdi-calendar-clock
+								Reservar Locación
+						
+						%a.btn.btn-default.btn-block.btn-lg{:href => "/contacto?subject=Consulta por Locación "+@location.id.to_s, :role => "button"}
+							%i.mdi.mdi-lg.mdi-information-outline
+							Contáctanos
+				
+	.container				
+		.row.location-content
+			.col-md-7
+				- if flash[:notice]
+					%br
+					#notice.alert.alert-success{:role => "alert"}
+						%button.close{"aria-label" => "Close", "data-dismiss" => "alert", :type => "button"}
+							%span{"aria-hidden" => "true"} ×
+						= flash[:notice]
+				.content-box.description
+					%h3 
+						Descripción 
+						%span de la locación
+					%p= @location.description
+				.content-box.details
+					%h3 
+						Detalles
+						%span y características
+					.table-responsive
+						%table.table.table-hover
+							%tbody
+								-if @location.type_id
+									%tr
+										%th.col-md-5 Tipo de Locación
+										%td.col-md-7 #{@location.type_id}
+								-if @location.services
+									%tr.spacer
+									%tr
+										%th.col-md-5 Espacios Utilizables
+										%td.col-md-7 #{raw(@location.services.join(", ").split(/\s*,\s*/).map{ |service| raw(link_to(service, '/locations?s='+service.html_safe)) }.join(', ') + ".")}
+
+								-if @location.extras
+									%tr.spacer
+									%tr
+										%th.col-md-5 Extras
+										%td.col-md-7 #{raw(@location.extras.join(", ").split(/\s*,\s*/).map{ |extra| raw(link_to(extra, '/locations?s='+extra.html_safe)) }.join(', ') + ".")}
+								-if @location.tag_names
+									%tr.spacer
+									%tr
+										%th.col-md-5 Tags
+										%td.col-md-7 #{raw(@location.tag_names.split(/\s*,\s*/).map{ |tag| raw(link_to(tag, '/locations?s='+tag.html_safe)) }.join(', ') + ".")}
+			.col-md-5.text-right
+				-if @location.lat && @location.lng
+					.content-box.address
+						%h3
+							Ubicación 
+							%span aproximada
+						.map#map
+							:javascript
+								var map;
+								$(document).ready(function(){
+									map = new google.maps.Map(document.getElementById('map'), {
+										center: {lat: #{@location.lat}, lng: #{@location.lng}},
+										zoom: 14,
+										disableDefaultUI: true,
+										scrollwheel: false,
+										draggable: false
+									});
+								});
+					%small Ubicación aproximada, reserva para obtener más información.
+					
+				-#%aside
+					%span Precio y Disponibilidad
+					.price
+						%strong CLP
+						= number_to_currency(@location.price, :unit => "$", :precision => 0)
+					.availability
+						(Reserva por Día)
+						Días: #{@location.days}
+					-if @location.bookings.where(:user_id=>current_user.id).any?
+						.booking.padding-top
+							%button.btn.btn-primary.btn-block.btn-lg
+								%i.mdi.mdi-lg.mdi-calendar-clock
+								VER RESERVA
+					.booking.padding-top
+						%button.btn.btn-primary.btn-block.btn-lg
+							%i.mdi.mdi-lg.mdi-calendar-clock
+							RESERVAR LOCACIÓN
+			-if @location.attachments.count>0
+				.col-md-12
+					.content-box.media
+						%h3
+							Galería
+							%span de imágenes
+						.gallery
+							%ul
+								-@location.attachments.each do |attachment|
+									%li
+										%a{:href => attachment.thumbnail(940,600), "data-gallery" => ""}
+											=image_tag(attachment.thumbnail(500,320))
+								-#%li
+									%a{:href => "/missing.png", "data-gallery" => ""}
+										=image_tag "missing.png"
+
+			
+			-if current_user && (current_user.status=="admin" || current_user.status=="moderator")
+				.col-md-12.padding
+					%ul.list-inline
+						%li
+							= link_to locations_path do
+								%i.mdi.mdi-arrow-left
+								Volver
+						%li
+							= link_to edit_location_path(@location) do
+								%i.mdi.mdi-pencil
+								Editar Locación
+						-if @location.attachments.count>0
+							%li
+								%i.mdi.mdi-home
+								= check_box_tag "locations[front_page]", @location.id, !!(@location.front_page)
+								Destacar en home
+						%li
+							=form_for(@location, :html => {:class=>"form-inline"}) do |f|
+								.form-group
+									=f.label "Coleccion"
+									=f.collection_select(:collection_id, Collection.all, :id, :name, {}, {:class=> "form-control"})
+								=f.submit "Agregar a colección", :class=> "btn btn-primary"
+					-if @location.attachments.count>0
+						:javascript
+							$("#locations_front_page").bind('change', function(){
+								if (this.checked){
+									$.ajax({
+										url: '/locations/'+this.value+'/frontpage',
+										type: 'POST',
+										data: {"front_page": true}
+									});
+								}
+								else {
+									$.ajax({
+										url: '/locations/'+this.value+'/frontpage',
+										type: 'POST',
+										data: {"front_page": false}
+									});
+								}
+							});

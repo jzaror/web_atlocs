@@ -1,0 +1,19 @@
+.container
+	.col-md-2
+
+	.col-md-8
+		.booking-request-form
+			%h1
+				Solicitar Reserva para
+				%strong= @location.title
+			%p Selecciona una fecha de inicio y término para tu solicitud de reserva :)
+			= render 'form'
+
+		#success-msg.alert.alert-success.hide
+			Tu Solicitud ha sido enviada. Te enviaremos un mail cuando el dueño acepte tu reserva con los datos para hacer el deposito.
+			%a{:href => "/bookings"} Ver mis reservas
+		#error-msg.alert.alert-warning.hide
+			Error
+		= render 'errors'
+	.col-md-2
+

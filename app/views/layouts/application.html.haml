@@ -1,0 +1,120 @@
+!!!
+%html{:lang => "en"}
+	%head
+		%meta{:charset => "utf-8"}/
+		%meta{:content => "width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0", :name => "viewport"}/
+		%meta{:content => "Atlocs - Locaciones para tus producciones audiovisuales", :name => "description"}/
+		%meta{:content => "mego.cl", :name => "author"}/
+		= render 'shared/meta'
+		%link{:href => asset_path('apple-touch-icon-precomposed.png'), :rel => "apple-touch-icon-precomposed", :sizes => "144x144"}/
+		/ Icons
+		=favicon_link_tag 'favicon.ico'
+		=stylesheet_link_tag "//cdn.materialdesignicons.com/1.1.70/css/materialdesignicons.min.css"
+		/ Fonts
+		=stylesheet_link_tag "https://fonts.googleapis.com/css?family=Open+Sans:400,300,700,600"
+		/ Custom styles
+		= stylesheet_link_tag "application", media: "all"
+		/ External JS
+		= javascript_include_tag "http://maps.googleapis.com/maps/api/js?v=3.exp&libraries=places&key="+ENV['GOOGLE_MAPS_API_KEY']
+		/ Javascript
+		= javascript_include_tag "application"
+		= csrf_meta_tags
+
+	%body{:class=>"#{yield(:body_class)}", "data-spy"=>"scroll", "data-target"=>".scrollspy", "data-offset" => "100"}
+		/ Modal: Login/Signup
+		#loginModal.modal.fade{"aria-labelledby" => "loginModal", :role => "dialog", :tabindex => "-1"}
+			.modal-dialog{:role => "document"}
+				.modal-content
+					.modal-header
+						%button.close{"aria-label" => "Close", "data-dismiss" => "modal", :type => "button"}
+							%span{"aria-hidden" => "true"}
+								%i.mdi.mdi-close
+						%h4.modal-title Ingresa o Resgístrate para continuar
+					.modal-body
+						.row						
+							.col-md-5
+								%ul.nav.nav-pills.nav-stacked
+									%li.active
+										%a{"data-toggle" => "pill", :href => "#login"}
+											Ingresa
+									%li
+										%a{"data-toggle" => "pill", :href => "#register"}
+											Crea tu Cuenta
+							.col-md-7.tab-content
+								.tab-pane.active#login
+									%form#loginForm{:action => "javascript:loginWithEmailAndPassword()"}
+										.form-group
+											%label{:for => "email"}
+												E-mail
+											%input.form-control{:id=>"login-email-input",:type => "email", :placeholder => "E-mail"}
+										.form-group
+											%label{:for => "password"}
+												Contraseña
+											%input.form-control{:id=>"login-password-input",:type => "password", :placeholder => "Contraseña"}
+											%a.block-helper{:href => "#"}
+												¿olvidaste tu contraseña?
+										%button.btn.btn-primary{:type=>"submit"}
+											Ingresar
+								.tab-pane#register
+									%form#registerForm{:action => "javascript:registerWithEmailAndPassword()"}
+										.form-group.col-md-6
+											.row
+												%label.sr-only{:for => "first_name"}
+													Nombre
+												%input.form-control{:id=>"register-firstname-input",:type => "text", :placeholder => "Nombre"}
+										.form-group.col-md-6
+											.row
+												%label.sr-only{:for => "last_name"}
+													Apellido
+												%input.form-control{:id=>"register-lastname-input",:type => "text", :placeholder => "Apellido"}
+										.form-group
+											%label.sr-only{:for => "email"}
+												Correo
+											%input.form-control{:id=>"register-email-input",:type => "email", :placeholder => "Ingresa tu E-mail"}
+										.form-group
+											%label.sr-only{:for => "phone"}
+												Celular
+											%input.form-control{:id=>"register-phone-input",:type => "tel", :placeholder => "Ingresa nº de telefono"}
+										.form-group
+											%label.sr-only{:for => "password"}
+												Contraseña
+											%input.form-control{:id=>"register-password-input",:type => "password", :placeholder => "Password (6 caracteres minimo)"}
+										%button.btn.btn-primary{:type=>"submit"}
+											Crear Cuenta
+		/ Modal: Booking							
+		#bookingModal.modal.fade{"aria-labelledby" => "bookingModal", :role => "dialog", :tabindex => "-1"}
+			.modal-dialog{:role => "document"}
+				.modal-content
+
+		/ The Bootstrap Image Gallery lightbox, should be a child element of the document body
+		#blueimp-gallery.blueimp-gallery.blueimp-gallery-controls{"data-use-bootstrap-modal"=>"false"}
+			/ The container for the modal slides
+			.slides
+			/ Controls for the borderless lightbox
+			%h3.title
+			%a.prev ‹
+			%a.next ›
+			%a.close ×
+			%a.play-pause
+			%ol.indicator
+			/ The modal dialog, which will be used to wrap the lightbox content
+			.modal.fade
+				.modal-dialog
+					.modal-content
+						.modal-header
+							%button.close{"aria-hidden" => "true", :type => "button"} ×
+							%h4.modal-title
+						.modal-body.next
+						.modal-footer
+							%button.btn.btn-default.pull-left.prev{:type => "button"}
+								%i.glyphicon.glyphicon-chevron-left
+								Previous
+							%button.btn.btn-primary.next{:type => "button"}
+								Next
+								%i.glyphicon.glyphicon-chevron-right
+								
+		= render 'shared/navbar'
+		= flash_messages
+		= yield
+		= render 'shared/footer'
+

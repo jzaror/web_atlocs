@@ -1,0 +1,10 @@
+// @include-media library breakpoints
+$breakpoints: (
+  'phone': 320px,
+  'phone-max': 480px,
+  'tablet': 768px,
+  'tablet-max': 1024px,
+  'desktop': 1025px,
+  'desktop-l': 1280px,
+  'desktop-xl': 1440px
+);

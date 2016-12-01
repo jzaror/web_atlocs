@@ -1,0 +1,10 @@
+.modal-header
+	%button.close{"aria-label" => "Close", "data-dismiss" => "modal", :type => "button"}
+		%span{"aria-hidden" => "true"}
+			%i.mdi.mdi-close
+	%h4.modal-title 
+		%i.mdi.mdi-lg.mdi-calendar-clock
+		Reservar Locación
+.modal-body
+	.padding
+		= yield

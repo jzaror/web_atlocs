@@ -1,0 +1,96 @@
+- content_for :body_class, "home special-layout"
+%section.welcome
+  .welcome-slider
+    %ul
+      %li.slide-1
+        .container
+          .row
+            .col-md-8.col-md-offset-2
+              .main-title.align-center.big.light
+                %h1
+                  Descubre el mundo de AtLocs!
+                  %small Encuentra la locación perfecta para tus filmaciones, fotografías y eventos.
+      %li.slide-2
+        .container
+          .row
+            .col-md-8.col-md-offset-2
+              .main-title.align-center.big.light
+                %h1
+                  Arrienda tu locación
+                  %small Inscribe tu locación  y comienza a ser parte de AtLocs. 
+      %li.slide-3
+        .container
+          .row
+            .col-md-8.col-md-offset-2
+              .main-title.align-center.big.light
+                %h1
+                  Planifica la filmación
+                  %small AtLocs te ayuda a encontrar la locación perfecta. Reserva y asesórate por nuestro equipo de expertos.
+
+  .find
+    %nav
+      .container
+        %p.navbar-text ¿Que estás buscando?
+        %ul.nav.navbar-nav.navbar-left.taglist
+          -@tags.each do |tag|
+            %li
+              %button.btn.btn-primary.navbar-btn{:type => "button", :onclick => "location.href = '/locations/?s=#{tag.name}';"}
+                =tag.name
+                %span.badge 
+                  =tag.taggings_count
+
+          %li
+            %button.btn.btn-inverse.navbar-btn{:type => "button"} + Tags
+        %form.navbar-form.navbar-right{:role => "search", :action => '/locations/' }
+          .form-group
+            %input.form-control{:placeholder => "Buscar", :type => "text", :name=>"s"}/
+          %button.btn.btn-primary{:type => "submit"}
+            %i.mdi.mdi-magnify.mdi-lg
+%section.main-content.location-list
+  .container
+    .row
+      .col-md-8.col-md-offset-2
+        .main-title.align-center.big
+          %h1
+            Encuentra tu locación ideal
+            %small para cualquier tipo de producción           
+    .row
+      -@locations.each do |location|
+        =render 'locations/location', :location=>location, :description=>false
+
+%section.main-content
+  .container
+    .row
+      .col-md-8.col-md-offset-2
+        .main-title.align-center.big
+          %h1
+            Explora por categoría
+            %small Revisa nuestras Colecciones
+    .row
+      -@collections.each do |collection|
+        =render 'collections/collection', :collection=>collection
+
+%section.prefooter
+  .container
+    .row
+      .col-md-12
+        .main-title.align-center.big
+          %h1
+            Encuentra tu locación ideal
+            %small Acá podras ofrecer y/o encontrar el lugar perfecto para tus producciones audiovisuales.
+    .row.padding-top
+      .col-sm-6.col-md-4.text-center
+        %i.mdi.mdi-forum
+        %h4 Nosotros
+        %p 
+          Somos una plataforma virtual, destinada a la difusión de locaciones tanto para producciones audiovisuales, cinematográficas como sesiones fotográficas y cualquier evento que necesite el lugar perfecto.
+      .col-sm-6.col-md-4.text-center
+        %i.mdi.mdi-auto-fix
+        %h4 Asesoría
+        %p
+          Nuestro equipo de expertos  pone a tu disposición asesoría para la publicación de tu locación. Te guiamos para que tu espacio sea del agrado de nuestros clientes, agendar la locación ideal a través de nuestra plataforma, obtener detalles de la locación y mucho más a través de AtLocs.
+      .col-sm-6.col-md-4.text-center
+        %i.mdi.mdi-magnify
+        %h4 Seguimiento
+        %p
+          Una vez que encuentres tu locación ideal, solo tienes que reservar en línea. AtLocs se encarga de los pagos y o transferencias, nos preocupamos de la coordinación necesaria para que, tanto los usuarios como nuestros clientes tengan la mejor experiencia.

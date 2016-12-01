@@ -1,0 +1,21 @@
+- if current_user.status == 'admin'
+  .row.padding
+    .main-navigation.navbar-collapse.collapse
+      / start: MAIN NAVIGATION MENU
+      %ul.nav.nav-tabs
+        %li{:class => (controller.controller_name == 'locations')? 'active open': ''}
+          %a{:href => '/admin/locations'}
+            %i.mdi.mdi-lg.mdi-pin
+            %span.title Locaciones
+        %li{:class => (controller.controller_name == 'collections')? 'active open': ''}
+          %a{:href => '/admin/collections'}
+            %i.mdi.mdi-lg.mdi-folder-image
+            %span.title Colecciones
+        %li{:class => (controller.controller_name == 'users')? 'active open': ''}
+          %a{:href => '/admin/users'}
+            %i.mdi.mdi-lg.mdi-account
+            %span.title Usuarios
+        %li{:class => (controller.controller_name == 'bookings')? 'active open': ''}
+          %a{:href => '/bookings/'}
+            %i.mdi.mdi-lg.mdi-newspaper
+            %span.title Reservas

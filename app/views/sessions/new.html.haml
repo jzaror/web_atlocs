@@ -1,0 +1,19 @@
+.container.padding
+  .row
+    .col-md-8
+      .panel.panel-primary
+        .panel-heading
+          Ingresa para publicar tu locación
+        .panel-body
+          %form.form{:method=>"post"}
+            .form-group
+              %label{:for => "email"} Email
+              %input.form-control{:type=>"email", :name=>"email", :placeholder=>"E-mail"}
+            .form-group
+              %label{:for => "password"} Password
+              %input.form-control{:type=>"password", :name=>"password", :placeholder=>"Contraseña"}
+            %button.btn.btn-primary{:type=>"submit"}
+              Enviar
+
+      %p=link_to "Regístrate aquí", "/signup"
+      %p=link_to "Olvidaste tu password", "/help/password"

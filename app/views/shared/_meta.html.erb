@@ -1,0 +1,38 @@
+<% 
+@ogtitle=@title
+
+#TITULOS POR CATEGORIA
+if @location && @location.title
+	@title=@location.title+" | AtLocs"
+elsif @collection
+	@title=@collection.name+" | AtLocs"
+elsif params[:s]
+	@title="Resultados de locaciones para: "+params[:s]+" | AtLocs"
+elsif controller.controller_name=="sessions"
+	@title="Ingresa a AtLocs"
+else
+	@title="AtLocs - Locaciones para filmaciones, fotografía y eventos"
+end 
+
+@ogtype="website"
+@ogdescription="Locaciones para filmaciones, fotografía y eventos"
+
+if @location
+	@ogdescription=@location.description
+	@ogtitle=@location.title
+	if @location.attachments.count>0
+		@ogimage=@location.attachments.first.thumbnail(500,320)
+	else 
+		@ogimage=request.domain+"/location-missing.jpg"
+	end
+	@ogtype="article"
+end
+
+%>
+
+<title><%=@title%></title>
+<meta property="og:title" content="<%=@ogtitle%>"/>
+<meta property="og:type" content="<%=@ogtype%>"/>
+<meta property="og:image" content="<%=@ogimage%>"/>
+<meta property="og:site_name" content="AtLocs"/>
+<meta property="og:description" content="<%=@ogdescription%>"/>

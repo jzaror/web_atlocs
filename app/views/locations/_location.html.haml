@@ -1,0 +1,22 @@
+.col-sm-6.col-md-4
+	.thumbnail.thumbnail-reset.location-preview
+		.image
+			%span.badge.price
+				%strong CLP
+				= number_to_currency(location.price_with_fee, :unit => "$", :precision => 0)
+			= link_to location_path(location) do
+				%img{:src=>location.thumbnail(350,230), :onError=>"this.onerror=null;this.src='/missing.png';"}
+
+		.caption
+			%h3.title
+				= link_to location.title, location_path(location)
+			-if description && description==true
+				%p.desc
+					= location.description
+			-#%p= link_to "ver locacion", location, :class => "btn btn-primary"
+				= link_to 'editar', edit_location_path(location)
+				= link_to 'eliminar', location, method: :delete, data: { confirm: '¿Seguro que quieres eliminar esta locación?' }
+				= link_to "Show all bookings", location_bookings_path(location)
+				= link_to "Delete", location_path(location), data: { confirm: 'Are you sure?' }, method: :delete
+				= link_to "Edit", edit_location_path(location)
+				= link_to "Add booking", new_location_booking_path(location)

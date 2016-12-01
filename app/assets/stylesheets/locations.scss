@@ -1,0 +1,384 @@
+// Place all the styles related to the Locations controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.map_canvas { 
+  width: 100%; 
+  height: 300px; 
+}
+
+.pac-container {
+    /* put Google geocomplete list on top of Bootstrap modal */
+    z-index: 9999;
+}
+
+.location-preview {
+	//min-height:230px;
+	
+	.image {
+		// overflow:hidden;
+		position: relative;
+		background-color:$brand-primary;
+		width:100%;
+		height:auto;
+		a {
+			display:block;
+			height:100%;
+			width:100%;
+		}
+		img {
+			width:100%;
+			height: auto;
+			z-index:0;
+			@include transition(all 333ms ease);
+		}
+		.price {
+			position: absolute;
+			left:0;
+			bottom:0;
+			border-radius:1px;
+			padding:1rem;
+			font-size:1.6rem;
+			z-index:1;
+			@include transform(translateY(-50%));
+			@include transition(all 300ms ease);
+			strong {
+				font-size:.85em;
+				line-height:1em;
+			}
+		}
+		&:hover {
+			img {
+				opacity:.5;
+			}
+			.price {
+				padding:1.4rem;
+				background-color:saturate($brand-primary, 15%);
+				@include transform(translateY(-66%));
+			}
+		}
+	}
+	.caption {
+		padding:1.4rem 1rem;
+		.title {
+			margin:0;
+			font-size:1.75rem;
+			font-weight:600;
+			@include trunkate(1.3em, 2);
+		}
+		.desc {
+			@include trunkate(1.75rem, 3);
+			font-size:1.4rem;
+			margin:1rem 0 0;
+		}
+	}
+}
+
+.new-location, .edit-location {
+	$scrollspy-w:330px;
+	.scrollspy {
+		width:$scrollspy-w;
+		.nav {
+			width:$scrollspy-w;
+			@include transition(all 222ms ease);
+			&.affix {
+				top:70px;
+			}
+		}
+	}
+	input[type=number] {
+		padding:0;
+		&::-webkit-inner-spin-button, &::-webkit-outer-spin-button {
+			-webkit-appearance: none; 
+	  		margin: 0;
+		}
+	}
+	.form-location {
+		ul.nav {
+			border-radius:2px;
+			background:lighten($gray-lighter, 2%);
+			padding:1.5rem 0 0;
+			li {
+				a {
+					border-radius:0;
+					font-size:1.5rem;
+					color:$gray-light;
+					i {
+						opacity:.75;
+					}
+				}
+				&.small {
+					padding:.4rem 1.7rem;
+					opacity:.6;
+				}
+				&.active {
+					a {
+						color:white;
+					}
+				}
+				&.action {
+					text-align:center;
+					padding:1rem;
+				}
+			}
+		}
+		.step {
+			margin-top:2rem;
+			position: relative;
+			padding:1.5rem 3rem 1.5rem 1rem;
+			.tab-head {
+				margin-bottom:2rem;
+				padding-bottom:1.5rem;
+				border-bottom:1px solid $gray-lighter;
+				h2 {
+					margin-top:0;
+					font-size:2.5rem;
+					font-weight:600;
+				}
+				p {}
+			}
+			.tab-body {
+				.form-group {
+					padding:1rem;
+					margin:0;
+					label {
+						font-size:1.6rem;
+					}
+					.checkbox {
+						label {
+							font-size:1.4rem;
+						}
+					}
+					.form-control {
+						// padding:1.1rem 1.6rem;
+					}
+				}
+				.gallery {
+					background-color:$gray-lighter;
+					padding:2rem;
+					clear: both;
+					$thumbsize:150px;
+					ul {
+						margin: 10px 0 0 0;
+						padding: 0;
+						display: block;
+						li {
+							width:$thumbsize;
+							height: auto;
+							margin-right: 5px;
+							text-align:center;
+							list-style: none;
+							display: inline-block;
+							overflow: hidden;
+							span{
+								border:2px solid $gray-lighter;
+								display: inline-block;
+								width:$thumbsize;
+								height:$thumbsize;
+								img {
+									@extend %center-vertical;
+									width:$thumbsize;
+									max-height:$thumbsize;
+									display: inline !important;
+								}
+							}
+
+							// width:50%;
+						}
+					}
+				}
+				.file-upload-btn {
+					position: relative;
+					.btn {}
+					.transparent-input {
+						position: absolute;
+						opacity:0;
+						width:100%;
+						height:100%;
+						top:0;
+						left:0;
+						right:0;
+					}
+				}
+				.price {
+					.final-price {
+						font-size: 2rem;
+						font-weight: 700;
+					}
+				}
+			} 
+			&.active {}
+			.actions {
+				margin-top:2rem;
+				padding-top:1.5rem;
+				border-top:1px solid $gray-lighter;
+				ul {
+					width:100%;
+					@include flexbox($justify:space-between);
+					li {}
+				} 
+			}
+		}
+	}
+}
+
+.location-single {
+	section.location {
+		.img-header {
+			position: relative;
+			height:520px;
+			background:image-url('locations-placeholder.jpg') no-repeat center;
+			background-size:cover;
+			@include media("<=tablet") {
+				height:auto;
+			}
+			&:before {
+				content:"";
+				display:block;
+				position: absolute;
+				left:0;
+				top:0;
+				width:100%;
+				height:100%;
+				@include background-image(linear-gradient(rgba(0,0,0,0.05) 33%, rgba(0,0,0,0.5) 90%));
+			}
+			.container {
+				position: relative;
+				height:100%;
+				.location-title {
+					height:190px;
+					position: absolute;
+					bottom:0;
+					left:0;
+					width:60%;
+					@include media("<=tablet") {
+						position: static;
+						width:100%;
+						margin:100px auto 15px;
+						height:auto;
+					}
+					h1 {
+						@extend %center-vertical;
+						color:white;
+						font-size:3rem;
+						text-transform:uppercase;
+						font-weight:600;
+						margin:0;
+						@include media("<=tablet") {
+							top:auto;
+							@include transform(translateY(0));
+						}
+						small {
+							margin-top:1rem;
+							text-transform: none;
+							font-family:$font-family-serif;
+							font-size:.75em;
+							display: block;
+							color:lighten($brand-primary, 33%);
+						}
+					}
+				}
+				.location-booking-info {
+					height:190px;
+					position: absolute;
+					bottom:0;
+					right:0;
+					width:39%;
+					background-color:white;
+					padding:2.2rem 4rem;
+					border-radius:2px 2px 0 0;
+					// color:white;
+					text-align:right;
+					@include media("<=tablet") {
+						position: static;
+						width:100%;
+						height:auto;
+						padding:1rem 2rem;
+					}
+					.price {
+						font-size:4rem;
+						font-weight:700;
+					}
+					.availability {
+
+					}
+					.booking {
+
+					}
+				}
+			}
+		}
+		.location-content {
+			.content-box {
+				padding:2rem;
+			}
+			.address {
+				.map {
+					background-color:$gray-lighter;
+					width:100%;
+					height:0;
+					padding-bottom:70%;
+					text-align:center;
+					overflow:hidden;
+					position: relative;
+					z-index: 1000;
+					&:after {
+						$size: 180px;
+						@extend %pseudoblock;
+						position: absolute;
+						width:$size;
+						height:$size;
+						margin:-$size/2;
+						top:50%;
+						left:50%;
+						background:transparentize($brand-primary, .9);
+						border:2px solid transparentize($brand-primary, .8);
+						border-radius:100%;	
+					}
+					img {
+						width:100%;
+						height:auto;
+					}
+				}
+			}
+			.details {
+				.table {
+					margin:1.5rem 0;
+					tr {
+						&.spacer {
+							height:.6rem;
+						}
+						th, td {
+							border:none;
+							padding:1rem 1.5rem;
+						}
+						th {
+							background-color:transparentize($brand-primary, .93);
+						}
+						td {}
+					}
+				}
+			}
+			.gallery {
+				background-color:lighten($gray-lighter, 1%);
+				ul {
+					list-style:none;
+					padding:2rem;
+					@include flexbox($flow:wrap);
+					li {
+						width:100% *.20;
+						padding:.9rem;
+						// width:50%;
+						a {
+							img {
+								width:100%;
+								height:auto;
+							}
+						}
+					}
+				}
+			}
+
+		}
+	}
+}

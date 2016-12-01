@@ -1,0 +1,12 @@
+<h1>Hemos recibido los datos de tu locación</h1>
+
+<p>Hola <%=@user.first_name%></p>
+<p>Recibimos tus datos satisfactoriamente y agradecemos que hayas confiado en nosotros. </p>
+<p>Te confirmaremos próximamente cuando la información de tu locación ya esté disponible en nuestro sitio. </p>
+<p>Puedes revisar y editar tu locación acá: </p>
+<p><%=link_to @location.title, location_path(@location)%></p>
+<br>
+<hr>
+<p><strong>Cristian Díaz Reyes</strong></p>
+<p>Fundador-Director General</p>
+<p>AtLocs.com</p>

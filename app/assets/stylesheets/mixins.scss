@@ -1,0 +1,127 @@
+@mixin flexbox($justify:flex-start, $items:center, $content:flex-start, $flow:row nowrap, $i-grow:0) {
+	display: -webkit-box;
+	display: -moz-box;
+	display: -ms-flexbox;
+	display: -webkit-flex;
+	display: flex;
+	// justify
+	justify-content:$justify;
+	align-items:$items;
+	align-content:$content;
+	flex-flow:$flow;
+	.flex-item, > {
+		flex-grow:$i-grow;
+	}
+}
+@mixin trunkate($line-h:1em, $lines:3) {
+	overflow: hidden;
+	text-overflow: ellipsis;
+	display: -webkit-box;
+	line-height: $line-h;     			/* fallback */
+	max-height: $line-h * $lines;		/* fallback */
+	-webkit-line-clamp: $lines;			/* number of lines to show */
+	-webkit-box-orient: vertical;
+}
+
+%pseudoblock {
+	content:"";
+	display:block;
+	min-width:10px;
+	min-height:10px;
+}
+
+%center-horizontal {
+  left:50%;
+  @include transform(translateX(-50%));
+  position: relative;
+  display: block;
+}
+%center-vertical {
+  top:50%;
+  @include transform(translateY(-50%));
+  position: relative;
+  display: block;
+}
+%center-all {
+  left:50%;
+  top:50%;
+  @include transform(translate(-50%, -50%));
+  position: relative;
+  display: block;
+}
+
+%main-title-base {
+  	h1, .title {
+		text-transform: uppercase;
+		position: relative;
+		small, .small {
+			display:block;
+			clear: both;
+			font-size:.66em;
+			line-height:1.25em;
+			color:$gray;
+			text-transform:none;
+		}
+		&:after, &:before {
+			content:"";
+			position: absolute;
+			top:40%;
+			width:15%;
+			height:1px;
+		}
+		&:after {
+			right:0;
+		}
+		&:before {
+			left:0;
+		}
+	}
+}
+@mixin main-title (
+	$size: null, 
+	$color: null,
+	$align: null,
+	$line-c: null,
+	$line-w: null,
+	$inverse: null) {
+	@extend %main-title-base;
+	text-align:$align;
+	@if $inverse == true {
+		h1, .title {
+			color:$color;
+			font-size:$size*.8;
+			font-weight:300;
+			text-transform: none;
+			font-family:$font-family-serif;
+			small, .small {
+				text-transform: uppercase;
+				font-family:$font-family-sans-serif;
+				font-weight:600;
+				@if $size != null {
+					font-size:$size;
+				}
+				@if $color != null {
+					color:transparentize($color, .3);
+				}
+			}
+		}
+	} @else {
+		h1, .title {
+			color:$color;
+			font:600 #{$size}/#{1em} $font-family-sans-serif;
+			small, .small {
+				font-family:$font-family-serif;
+				@if $size != null {
+					font-size:$size*.66;
+				}
+				@if $color != null {
+					color:transparentize($color, .1);
+				}
+			}
+			&:after, &:before {
+				background-color:$line-c;
+			}
+		}
+	}
+	
+}
