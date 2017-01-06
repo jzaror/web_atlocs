@@ -1,0 +1,17 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: app
+spec:
+  replicas: 2
+  template:
+    metadata:
+      labels:
+        app: app
+    spec:
+      containers:
+      - name: rails
+        image: gcr.io/master-tuner-150318/atlocs_web:prod-8
+        ports:
+          - name: http
+            containerPort: 5000
