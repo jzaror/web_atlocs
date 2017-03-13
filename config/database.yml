@@ -13,11 +13,11 @@ development:
   adapter: postgresql
   encoding: unicode
   database: atlocs-development
-  username: postgres
-  password: 123456789ABCd3f
+  username: sirlund
+  password: 
   pool: 5
-  port: 5432 
-  host: postgres.default.svc.cluster.local 
+  port: 5432
+  host: localhost
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
@@ -27,7 +27,7 @@ test:
   encoding: unicode
   database: atlocs-test
   username: postgres
-  password: 
+  password:
   pool: 5
   port: <%= ENV['POSTGRES_1_PORT_5432_TCP_PORT']||="5432" %>
   host: <%= ENV['POSTGRES_1_PORT_5432_TCP_ADDR']||="localhost" %>
@@ -37,7 +37,7 @@ production:
   encoding: unicode
   database: atlocs
   username: postgres
-  password: 
+  password:
   pool: 5
   port: 5432
-  host: 10.128.0.4 
+  host: 10.128.0.4

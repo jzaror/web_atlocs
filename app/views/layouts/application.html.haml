@@ -22,7 +22,7 @@
 
 	%body{:class=>"#{yield(:body_class)}", "data-spy"=>"scroll", "data-target"=>".scrollspy", "data-offset" => "100"}
 		/ Modal: Login/Signup
-		#loginModal.modal.fade{"aria-labelledby" => "loginModal", :role => "dialog", :tabindex => "-1"}
+		-# #loginModal.modal.fade{"aria-labelledby" => "loginModal", :role => "dialog", :tabindex => "-1"}
 			.modal-dialog{:role => "document"}
 				.modal-content
 					.modal-header
@@ -31,7 +31,7 @@
 								%i.mdi.mdi-close
 						%h4.modal-title Ingresa o Resgístrate para continuar
 					.modal-body
-						.row						
+						.row
 							.col-md-5
 								%ul.nav.nav-pills.nav-stacked
 									%li.active
@@ -81,7 +81,7 @@
 											%input.form-control{:id=>"register-password-input",:type => "password", :placeholder => "Password (6 caracteres minimo)"}
 										%button.btn.btn-primary{:type=>"submit"}
 											Crear Cuenta
-		/ Modal: Booking							
+		/ Modal: Booking
 		#bookingModal.modal.fade{"aria-labelledby" => "bookingModal", :role => "dialog", :tabindex => "-1"}
 			.modal-dialog{:role => "document"}
 				.modal-content
@@ -112,9 +112,9 @@
 							%button.btn.btn-primary.next{:type => "button"}
 								Next
 								%i.glyphicon.glyphicon-chevron-right
-								
-		= render 'shared/navbar'
-		= flash_messages
-		= yield
-		= render 'shared/footer'
 
+		= render 'shared/navbar'
+		.site-content
+			= flash_messages
+			= yield
+		= render 'shared/footer'

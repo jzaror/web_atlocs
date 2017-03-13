@@ -1,5 +1,5 @@
-@import "twbs-variables";
-@import "twbs/bootstrap/mixins";
+// @import "twbs-variables";
+// @import "twbs/bootstrap/mixins";
 
 html.turbolinks-progress-bar::before {
   background-color: $progress-bar-bg !important;

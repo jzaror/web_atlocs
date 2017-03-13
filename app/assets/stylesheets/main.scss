@@ -21,6 +21,9 @@ html, body {
 }
 
 body {
+	display: flex;
+	flex-direction: column;
+	min-height: 100vh;
 	padding-top: 50px;
 	&.special-layout {
 		padding-top: 0;
@@ -47,7 +50,9 @@ body {
 		}
 	}
 }
-
+.site-content {
+	flex: 1 1 auto;
+}
 // body {
 // 	display: flex;
 // 	min-height: 100vh;
@@ -64,7 +69,7 @@ h1, h2, h3, h4, h5, h6 {
 .navbar-float {
 	top:auto;
 	left:auto;
-	border-radius:$border-radius-base;
+	border-radius: $border-radius;
 	position: static;
 	z-index:1;
 }
@@ -75,11 +80,11 @@ h1, h2, h3, h4, h5, h6 {
 	}
 	ul.current-user {
 		li {
-			a { 
+			a {
 				padding:5px;
 				.badge {
 					background-color:$brand-danger !important;
-				} 
+				}
 			}
 		}
 	}
@@ -94,7 +99,7 @@ h1, h2, h3, h4, h5, h6 {
 				margin:.5rem;
 				padding:.7rem;
 			}
-		}	
+		}
 	}
 }
 
@@ -157,12 +162,6 @@ $main-pad-size:1.5rem;
 	}
 }
 
-.form-control {
-	box-shadow:none;
-	border:1px solid lighten($gray-lighter, 1%);
-	border-radius:2px;
-	// padding:1.1rem 1.6rem;
-}
 .user-avatar {
 	$size:40px;
 	width:$size;
@@ -297,7 +296,7 @@ section.welcome {
 	@include media("<=tablet") {
 		position: static;
 		padding:2rem 3vw;
-		.navbar-text { 
+		.navbar-text {
 			display:none;
 		}
 	}
@@ -333,9 +332,9 @@ input:-webkit-autofill {
     -webkit-box-shadow: 0 0 0px 1000px white inset;
 }
 a,
-button, 
+button,
 .btn {
-	@include transition(background-color 222ms ease);
+	@include transition(all 222ms ease);
 }
 button, input, .form-control, a {
 	&:focus {
@@ -344,19 +343,10 @@ button, input, .form-control, a {
 	}
 }
 
-.btn, .navbar {
-	border:none;
-	background-image: none;
-}
+
 .btn {
-	text-shadow:none !important;
-	box-shadow:none !important;
-	border-radius:2px;
 	&.btn-lg {
 		text-transform:uppercase;
-		border-radius:3px;
-		font-size:1.5rem;
-		padding:1.4rem 1.8rem;
 		i.mdi-lg {
 			font-size:30px !important;
 			margin:0 .5rem;

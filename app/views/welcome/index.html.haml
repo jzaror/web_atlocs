@@ -5,7 +5,7 @@
       %li.slide-1
         .container
           .row
-            .col-md-8.col-md-offset-2
+            .col-md-8.offset-md-2
               .main-title.align-center.big.light
                 %h1
                   Descubre el mundo de AtLocs!
@@ -13,35 +13,34 @@
       %li.slide-2
         .container
           .row
-            .col-md-8.col-md-offset-2
+            .col-md-8.offset-md-2
               .main-title.align-center.big.light
                 %h1
                   Arrienda tu locación
-                  %small Inscribe tu locación  y comienza a ser parte de AtLocs. 
+                  %small Inscribe tu locación  y comienza a ser parte de AtLocs.
       %li.slide-3
         .container
           .row
-            .col-md-8.col-md-offset-2
+            .col-md-8.offset-md-2
               .main-title.align-center.big.light
                 %h1
                   Planifica la filmación
                   %small AtLocs te ayuda a encontrar la locación perfecta. Reserva y asesórate por nuestro equipo de expertos.
 
   .find
-    %nav
-      .container
-        %p.navbar-text ¿Que estás buscando?
-        %ul.nav.navbar-nav.navbar-left.taglist
-          -@tags.each do |tag|
-            %li
-              %button.btn.btn-primary.navbar-btn{:type => "button", :onclick => "location.href = '/locations/?s=#{tag.name}';"}
+    %nav.navbar.navbar-light
+      .container.d-flex.justify-content-between
+        .col-md-8.d-flex.align-items-center
+          %span.navbar-text.mr-2 ¿Que estás buscando?
+          .taglist
+            -@tags.each do |tag|
+              %button.btn.btn-primary{:type => "button", :onclick => "location.href = '/locations/?s=#{tag.name}';"}
                 =tag.name
-                %span.badge 
+                %span.badge
                   =tag.taggings_count
+            %button.btn{:type => "button"} + Tags
 
-          %li
-            %button.btn.btn-inverse.navbar-btn{:type => "button"} + Tags
-        %form.navbar-form.navbar-right{:role => "search", :action => '/locations/' }
+        %form.form-inline{:role => "search", :action => '/locations/' }
           .form-group
             %input.form-control{:placeholder => "Buscar", :type => "text", :name=>"s"}/
           %button.btn.btn-primary{:type => "submit"}
@@ -49,11 +48,11 @@
 %section.main-content.location-list
   .container
     .row
-      .col-md-8.col-md-offset-2
+      .col-md-8.offset-md-2
         .main-title.align-center.big
           %h1
             Encuentra tu locación ideal
-            %small para cualquier tipo de producción           
+            %small para cualquier tipo de producción
     .row
       -@locations.each do |location|
         =render 'locations/location', :location=>location, :description=>false
@@ -61,7 +60,7 @@
 %section.main-content
   .container
     .row
-      .col-md-8.col-md-offset-2
+      .col-md-8.offset-md-2
         .main-title.align-center.big
           %h1
             Explora por categoría
@@ -82,7 +81,7 @@
       .col-sm-6.col-md-4.text-center
         %i.mdi.mdi-forum
         %h4 Nosotros
-        %p 
+        %p
           Somos una plataforma virtual, destinada a la difusión de locaciones tanto para producciones audiovisuales, cinematográficas como sesiones fotográficas y cualquier evento que necesite el lugar perfecto.
       .col-sm-6.col-md-4.text-center
         %i.mdi.mdi-auto-fix
