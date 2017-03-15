@@ -68,7 +68,7 @@ $(document).ready(function() {
 });
 
 function appendfile(file) {
-	$("#file-list").append("<tr id='file"+file.deleteUrl+"' class='file'><td><img src='"+file.thumb+"' style='width:80px;height:auto'><td><a href='"+file.url+"'>"+file.name+"</a></td><td class='text-right'><a href='javascript:deletefile(\""+file.deleteUrl+"\")' id='delete-file-button-"+file.deleteUrl+"' class='btn btn-danger btn-sm'><i class='mdi mdi-close'></i> eliminar</a></td></tr>")
+	$("#file-list").append("<tr id='file"+file.deleteUrl+"' class='file'><td><img src='"+file.url+"' style='width:80px;height:auto'><td><a href='"+file.url+"'>"+file.name+"</a></td><td class='text-right'><a href='javascript:deletefile(\""+file.deleteUrl+"\")' id='delete-file-button-"+file.deleteUrl+"' class='btn btn-danger btn-sm'><i class='mdi mdi-close'></i> eliminar</a></td></tr>")
 };
 function deletefile(id) {
 	$("#delete-file-button-"+id).attr("disabled","disabled");

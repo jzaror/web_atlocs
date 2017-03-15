@@ -20,6 +20,14 @@ html, body {
 	padding:0;
 }
 
+.alert-notification {
+    z-index: 999999;
+    position: fixed;
+    bottom: 1%;
+    right: 1%;
+    width: 400px;
+}
+
 body {
 	display: flex;
 	flex-direction: column;
@@ -182,6 +190,7 @@ $main-pad-size:1.5rem;
 		}
 	}
 	.badge {
+		display: none;
 		position: absolute;
 		bottom:0;
 		right:0;

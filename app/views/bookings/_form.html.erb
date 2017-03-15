@@ -46,7 +46,7 @@
 			if(msg.success==true) {
 				$("#booking-price-message").hide()
 				$("#booking-price-dialog").show()
-				$("#booking-price").html("$"+msg.price)
+				$("#booking-price").html("$"+msg.price * 0.15);
 				$("#booking-submit-button").attr("disabled",false)
 			}
 		})

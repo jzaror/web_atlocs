@@ -1,5 +1,8 @@
 TARGET=atlocs_web
-VERSION=prod-8
+VERSION=prod-33
+
+prodaccess:
+	gcloud docker -a -s gcr.io
 
 docker:
 	docker build -t $(TARGET):$(VERSION) .

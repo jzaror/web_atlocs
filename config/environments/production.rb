@@ -1,24 +1,26 @@
 Rails.application.configure do
   ActionMailer::Base.smtp_settings = {
-    :address        => 'smtp.sendgrid.net',
+    :address        => 'smtp.mailgun.org',
     :port           => '2525',
     :authentication => :plain,
-    :user_name      => ENV['SENDGRID_USERNAME'],
-    :password       => ENV['SENDGRID_PASSWORD'],
-    :domain         => 'heroku.com',
+    :user_name      => 'postmaster@atlocs.com',
+    :password       => '91c1e607ff10e9786253d780db7b9a0c',
+    :domain         => 'atlocs.com',
     :enable_starttls_auto => true
   }
 
   config.paperclip_defaults = {
-    :storage => :s3,
-    :s3_credentials => {
-      :bucket => 'atlocs-production',
-      :access_key_id => 'abc',
-      :secret_access_key => 'def' 
+    :storage => :fog,
+    :fog_public => true,
+    :fog_directory => 'atlocs',
+    :fog_credentials => {
+      :provider => 'Google',
+      :google_storage_access_key_id => 'GOOGW3BTIL5M6RHWZD33',
+      :google_storage_secret_access_key => 'Ei2mpa+Y5sVYvEhcgsvLfMzWBwCeSxN95fQfGflY'
     }
   }
 
-  config.action_mailer.default_url_options = { :host => 'atlocs.herokuapp.com' }
+  config.action_mailer.default_url_options = { :host => 'www.atlocs.com' }
 
   # Settings specified here will take precedence over those in config/application.rb.
 

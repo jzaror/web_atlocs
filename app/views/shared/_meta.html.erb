@@ -4,7 +4,7 @@
 #TITULOS POR CATEGORIA
 if @location && @location.title
 	@title=@location.title+" | AtLocs"
-elsif @collection
+elsif @collection && @collection.name
 	@title=@collection.name+" | AtLocs"
 elsif params[:s]
 	@title="Resultados de locaciones para: "+params[:s]+" | AtLocs"

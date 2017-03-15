@@ -8,20 +8,28 @@ class AttachmentsController < ApplicationController
 		render :json=>"OK"
 	end
 	def create
-		@location=Location.find(params[:location])
-		s3 = Aws::S3::Resource.new(
-		  region: ENV['AWS_REGION']
-		)
-		# Make an object in your bucket for your upload
-	    obj = s3.bucket(ENV['AWS_S3_BUCKET']).object(@location.id.to_s+"/"+SecureRandom.hex+File.extname(params[:file].original_filename))
+                storage = Google::Cloud::Storage.new :project => 'master-tuner-150318', :keyfile => 'google.json'
+                @location=Location.find(params[:location])
+                name = @location.id.to_s+"/"+SecureRandom.hex+File.extname(params[:file].original_filename)
 
-	    # Upload the file
-	    obj.upload_file params[:file].path, {acl: 'public-read'}
+                bucket = storage.bucket("atlocs")
 
-	    puts "Created an object in S3 at:"
-		puts obj.public_url
-		puts "\nUse this URL to download the file:"
-		puts obj.presigned_url(:get)
+                policy = {
+                    :conditions => [
+                       {acl: "public-read"}
+                    ]
+                }
+
+                puts bucket.inspect
+
+                obj = bucket.create_file params[:file].path, name
+
+
+		obj.acl.publicRead!
+		obj.refresh!
+
+                puts obj.inspect
+
 		attachment=Attachment.new
 		attachment.url=obj.public_url
 		attachment.location_id=@location.id
