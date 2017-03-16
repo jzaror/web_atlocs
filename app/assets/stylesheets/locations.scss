@@ -226,7 +226,7 @@
 
 .location-single {
 	section.location {
-		.img-header {
+		.location-header {
 			position: relative;
 			height:520px;
 			background:image-url('locations-placeholder.jpg') no-repeat center;
@@ -244,25 +244,25 @@
 				height:100%;
 				@include background-image(linear-gradient(rgba(0,0,0,0.05) 33%, rgba(0,0,0,0.5) 90%));
 			}
-			.container {
+			[class*="container"] {
 				position: relative;
 				height:100%;
 				.location-title {
 					height:190px;
 					position: absolute;
 					bottom:0;
-					left:0;
+					left:3vw;
 					width:60%;
 					@include media("<=tablet") {
 						position: static;
 						width:100%;
-						margin:100px auto 15px;
+						padding:30vw 16px 16px;
 						height:auto;
 					}
 					h1 {
 						@extend %center-vertical;
 						color:white;
-						font-size:3rem;
+						font-size:2rem;
 						text-transform:uppercase;
 						font-weight:600;
 						margin:0;
@@ -284,13 +284,13 @@
 					height:190px;
 					position: absolute;
 					bottom:0;
-					right:0;
+					right:3vw;
 					width:39%;
 					background-color:white;
-					padding:2.2rem 4rem;
+					padding:2vw 3vw;
 					border-radius:2px 2px 0 0;
 					// color:white;
-					text-align:right;
+					text-align: center;
 					@include media("<=tablet") {
 						position: static;
 						width:100%;
@@ -298,11 +298,11 @@
 						padding:1rem 2rem;
 					}
 					.price {
-						font-size:4rem;
+						font-size:2rem;
 						font-weight:700;
 					}
 					.availability {
-
+            display: block;
 					}
 					.booking {
 
@@ -312,9 +312,14 @@
 		}
 		.location-content {
 			.content-box {
-				padding:2rem;
+				padding:4vw 2vw;
 			}
 			.address {
+        text-align: right;
+        .address-title {
+          font-size:1.6rem;
+          margin: 2vw;
+        }
 				.map {
 					background-color:$gray-lighter;
 					width:100%;
@@ -342,6 +347,10 @@
 						height:auto;
 					}
 				}
+        @include media("<=tablet") {
+          padding: 3vw;
+          text-align: left;
+        }
 			}
 			.details {
 				.table {
@@ -360,27 +369,42 @@
 						td {}
 					}
 				}
+        .table-hover tbody tr:hover {
+          background-color: $gray-lightest;
+        }
 			}
-			.gallery {
-				background-color:lighten($gray-lighter, 1%);
-				ul {
-					list-style:none;
-					padding:2rem;
-					@include flexbox($flow:wrap);
-					li {
-						width:100% *.20;
-						padding:.9rem;
-						// width:50%;
-						a {
-							img {
-								width:100%;
-								height:auto;
-							}
-						}
-					}
-				}
-			}
-
 		}
 	}
+}
+.gallery {
+  .gallery-title {
+    @extend .mb-4;
+  }
+  .gallery-list {
+    background-color:lighten($gray-lighter, 1%);
+    list-style:none;
+    padding:2rem;
+    @include flexbox($flow:wrap);
+    .gallery-slot {
+      width: 20%;
+      padding: .9rem;
+      @include media("<=tablet-max") {
+        width: 25%;
+      }
+      @include media("<=tablet") {
+        width: 33%;
+      }
+      @include media("<=600px") {
+        width: 50%;
+      }
+      // @include media("<=phone-max") {
+      // }
+      .gallery-link {
+        .gallery-img {
+          width:100%;
+          height:auto;
+        }
+      }
+    }
+  }
 }

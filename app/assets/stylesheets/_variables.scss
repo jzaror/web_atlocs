@@ -1,4 +1,18 @@
 
+// @include-media library breakpoints
+
+$breakpoints: (
+  'phone': 320px,
+  'phone-max': 480px,
+  'tablet': 768px,
+  'tablet-max': 1024px,
+  'desktop': 1025px,
+  'desktop-l': 1280px,
+  'desktop-xl': 1440px
+);
+
+// BS4 vars overrides
+
 // $gray-base:              #111 !default;
 // $gray-darker:            lighten($gray-base, 13.5%) !default; // #222
 // $gray-dark:              lighten($gray-base, 20%) !default;   // #333
@@ -84,14 +98,3 @@ $font-family-base:        $font-family-sans-serif !default;
 // $btn-border-radius-sm:           $border-radius-sm;
 
 // $btn-transition:                 all .2s ease-in-out;
-
-@include-media library breakpoints
-$breakpoints: (
-  'phone': 320px,
-  'phone-max': 480px,
-  'tablet': 768px,
-  'tablet-max': 1024px,
-  'desktop': 1025px,
-  'desktop-l': 1280px,
-  'desktop-xl': 1440px
-);
