@@ -1,20 +1,16 @@
-// @include-media library breakpoints
-$breakpoints: (
-  'phone': 320px,
-  'phone-max': 480px,
-  'tablet': 768px,
-  'tablet-max': 1024px,
-  'desktop': 1025px,
-  'desktop-l': 1280px,
-  'desktop-xl': 1440px
-);
 
-$gray-base:              #111 !default;
-$gray-darker:            lighten($gray-base, 13.5%) !default; // #222
-$gray-dark:              lighten($gray-base, 20%) !default;   // #333
-$gray:                   lighten($gray-base, 33.5%) !default; // #555
-$gray-light:             lighten($gray-base, 46.7%) !default; // #777
-$gray-lighter:           lighten($gray-base, 93.5%) !default; // #eee
+// $gray-base:              #111 !default;
+// $gray-darker:            lighten($gray-base, 13.5%) !default; // #222
+// $gray-dark:              lighten($gray-base, 20%) !default;   // #333
+// $gray:                   lighten($gray-base, 33.5%) !default; // #555
+// $gray-light:             lighten($gray-base, 46.7%) !default; // #777
+// $gray-lighter:           lighten($gray-base, 93.5%) !default; // #eee
+
+$gray-dark:                 #292b2c;
+$gray:                      #464a4c;
+$gray-light:                #636c72;
+$gray-lighter:              #eceeef;
+$gray-lightest:             #f7f7f9;
 
 $brand-primary:         #5B46CD !default;
 $brand-success:         #93CD53 !default;
@@ -30,6 +26,11 @@ $font-family-sans-serif:  "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-
 $font-family-serif:       "Klinik Medium Italic", Georgia, "Times New Roman", Times, serif !default;
 $font-family-monospace:   Menlo, Monaco, Consolas, "Courier New", monospace !default;
 $font-family-base:        $font-family-sans-serif !default;
+
+// $font-size-base: .875rem;
+// $font-size-lg:   1rem;
+// $font-size-sm:   .750rem;
+// $font-size-xs:   .625rem;
 
 // Buttons
 // For each of Bootstrap's buttons, define text, background and border color.
@@ -83,3 +84,14 @@ $font-family-base:        $font-family-sans-serif !default;
 // $btn-border-radius-sm:           $border-radius-sm;
 
 // $btn-transition:                 all .2s ease-in-out;
+
+@include-media library breakpoints
+$breakpoints: (
+  'phone': 320px,
+  'phone-max': 480px,
+  'tablet': 768px,
+  'tablet-max': 1024px,
+  'desktop': 1025px,
+  'desktop-l': 1280px,
+  'desktop-xl': 1440px
+);

@@ -7,7 +7,7 @@ function validateLocationForm() {
 	return false;
 }
 $(document).ready(function() {
-	
+
 	function createbooking() {
 		locationid=$("#booking-location_id-input").val();
 		start_date=$("#booking-start_date-input").val();
@@ -44,7 +44,7 @@ $(document).ready(function() {
 			console.log(msg)
 		});
 	}
-	
+
 	$('#fileupload').fileupload({
         dataType: 'json',
         progressall: function (e, data) {
@@ -57,14 +57,14 @@ $(document).ready(function() {
         done: function (e, data) {
             console.log(data.result)
             appendfile(data.result.files)
-        	$("#file-progress").addClass("hide")
+        	$("#file-progress").addClass("invisible")
         },
         start: function(e) {
         	console.log(e)
-        	$("#file-progress").removeClass("hide")
+        	$("#file-progress").removeClass("invisible")
         }
     });
-    
+
 });
 
 function appendfile(file) {

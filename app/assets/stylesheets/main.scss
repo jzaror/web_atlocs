@@ -58,6 +58,12 @@ body {
 		}
 	}
 }
+.navbar {
+	.container {
+		position: static;
+	}
+}
+
 .site-content {
 	flex: 1 1 auto;
 }
@@ -287,13 +293,13 @@ section.welcome {
 		text-align: center;
 	}
 	&.big {
-		@include main-title($size:3.3rem);
+		@include main-title($size:2.0625rem);
 	}
 	&.light {
 		@include main-title($color:white, $line-c:white);
 	}
 	&.inverse {
-		@include main-title($size:2.3rem, $inverse:true);
+		@include main-title($size:1.75rem, $inverse:true);
 	}
 }
 
@@ -475,6 +481,30 @@ button, input, .form-control, a {
 		border-radius:100%;
 		&:before {
 			font-size:50px;
+		}
+	}
+}
+
+.footer-social-link {
+	@include size(48px);
+	@extend .mx-2;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	background-color: lighten($brand-primary, 10%);
+	border-radius: 24px;
+	@include transition(all 333ms ease);
+	.footer-social-icon {
+		font-size: 24px;
+		color: white;
+		opacity: 0.75;
+		@include transition(all 333ms ease);
+	}
+	&:hover {
+		background-color: $brand-primary;
+		@include transform(scale(1.1));
+		.footer-social-icon {
+			opacity: 1;
 		}
 	}
 }

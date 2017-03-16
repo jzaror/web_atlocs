@@ -1,3 +1,3 @@
-ENV["REDIS_URL"] ||= "redis://10.128.0.4:6379"
+ENV["REDIS_URL"] ||= "redis://localhost:6379"
 
 REDIS = Redis.new(url: ENV["REDIS_URL"])
