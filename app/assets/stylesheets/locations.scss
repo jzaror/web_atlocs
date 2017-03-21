@@ -59,11 +59,11 @@
 		}
 	}
 	.caption {
-		padding:1.4rem 1rem;
+		padding: 1.4rem 1rem;
 		.title {
-			margin:0;
-			font-size:1.75rem;
-			font-weight:600;
+			margin: 0;
+			font-size: 1.575rem;
+			font-weight: 700;
 			@include trunkate(1.3em, 2);
 		}
 		.desc {

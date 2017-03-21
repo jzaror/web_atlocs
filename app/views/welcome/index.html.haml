@@ -34,11 +34,11 @@
           %span.navbar-text.mr-2 ¿Que estás buscando?
           .taglist
             -@tags.each do |tag|
-              %button.btn.btn-primary{:type => "button", :onclick => "location.href = '/locations/?s=#{tag.name}';"}
+              %button.btn.btn-primary.btn-sm{:type => "button", :onclick => "location.href = '/locations/?s=#{tag.name}';"}
                 =tag.name
                 %span.badge
                   =tag.taggings_count
-            %button.btn{:type => "button"} + Tags
+            %button.btn.btn-secondaty.btn-sm{:type => "button"} + Tags
 
         %form.form-inline{:role => "search", :action => '/locations/' }
           .form-group
