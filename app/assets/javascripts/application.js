@@ -12,6 +12,7 @@
 // #
 //= require auth
 //= require jquery
+//= require tether
 //= require jquery_ujs
 //= require jquery.datatables
 //= require jquery.ui.widget
