@@ -1,37 +1,42 @@
-.container.padding
+.container.py-4
 	.row
-		.col-md-8
-			.panel.panel-primary
-				.panel-heading
-					Regístrate para publicar tu espacio o para hacer reservas en línea
-				.panel-body
-					%form{:method=>"post"}
+		.col-md-6.offset-md-3.mt-3
+			.card.card-outline-primary
+				.card-header.bg-primary.text-white.d-flex.align-items-center
+					%i.mdi.mdi-account-circle.mdi-36px.mr-2
+					Regístrate para publicar tu espacio (o reservar uno)
+				.card-block.p-4
+					%form.form{:method=>"post"}
 						.form-group
-							%label.sr-only{ :for => "first_name" } 
+							%label.sr-only{ :for => "first_name" }
 								Nombre
 							%input.form-control{ :type => "text", :name => "first_name", :placeholder => "Nombre" }
 						.form-group
-							%label.sr-only{ :for => "last_name" } 
+							%label.sr-only{ :for => "last_name" }
 								Apellido
 							%input.form-control{ :type=>"text", :name=> "last_name", :placeholder => "Apellido" }
 						.form-group
-							%label.sr-only{ :for => "email" } 
+							%label.sr-only{ :for => "email" }
 								Email
 							%input.form-control{ :type => "email", :name => "email", :placeholder => "E-mail" }
 						.form-group
-							%label.sr-only{ :for => "email" } 
+							%label.sr-only{ :for => "email" }
 								Número Celular
 							%input.form-control{ :type => "text", :name => "phone", :placeholder => "Número de celular" }
 						.form-group
-							%label.sr-only{ :for => "password" } 
+							%label.sr-only{ :for => "password" }
 								Password
 							%input.form-control{ :type => "password", :name => "password", :placeholder => "Password" }
 						.form-group
-							%label.sr-only{ :for => "password_confirmation" } 
+							%label.sr-only{ :for => "password_confirmation" }
 								Confirmar Password
 							%input.form-control{ :type => "password", :name => "password_confirmation", :placeholder => "Password (confirmación)" }
 						%button.btn.btn-primary{ :type => "submit" }
-							Enviar
-			
-			%p=link_to "¿Ya tienes una cuenta?", "/login"
-			%p=link_to "Olvidaste tu password", "/help/password"
+							Crear Cuenta
+							%i.mdi.mdi-arrow-right.mdi-lg.ml-2
+
+
+	.row.d-flex.justify-content-center
+		.col-md-4.text-center.p-2
+			%div.my-2=link_to "Ya tengo una cuenta", "/login"
+			%div.my-2=link_to "Olvidé mi password", "/help/password"
