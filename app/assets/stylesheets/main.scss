@@ -448,7 +448,9 @@ button, input, .form-control, a {
 		height:100%;
 		background-color:transparentize(darken($brand-primary, 20%), .75);
 	}
-	.collection-image {
+	.collection-img {
+		width: 100%;
+		height: auto;
 	}
 	.caption {
 		position: absolute;
