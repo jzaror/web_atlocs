@@ -1,10 +1,11 @@
 .container.padding
   .row
-    .col-md-8
+    .col-md-8.offset-md-2.mt-5
       .card.card-outline-primary
-        .card-header.bg-primary.text-white
-          Ingresa y estarás en el mundo de atlocs
-        .card-block
+        .card-header.bg-primary.text-white.d-flex.align-items-center
+          %i.mdi.mdi-account-circle.mdi-36px.mr-2
+          Ingresa con tu cuenta de AtLocs
+        .card-block.p-4
           %form.form{:method=>"post"}
             .form-group
               %label{:for => "email"} Email
@@ -13,7 +14,9 @@
               %label{:for => "password"} Password
               %input.form-control{:type=>"password", :name=>"password", :placeholder=>"Contraseña"}
             %button.btn.btn-primary{:type=>"submit"}
-              Enviar
-
-      %p=link_to "Regístrate aquí", "/signup"
-      %p=link_to "Olvidaste tu password", "/help/password"
+              Ingresar
+              %i.mdi.mdi-arrow-right.mdi-lg.ml-2
+  .row.d-flex.justify-content-center
+    .col-md-4.text-center.p-2
+      %div.my-2=link_to "Regístrate aquí", "/signup"
+      %div.my-2=link_to "Olvidaste tu password", "/help/password"
