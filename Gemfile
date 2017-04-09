@@ -44,6 +44,8 @@ gem 'geocomplete_rails'
 gem 'faker'
 gem 'bootstrap-datepicker-rails'
 gem 'ruby-thumbor'
+gem 'papercrop'
 gem 'image_suckr'
 gem 'rails-jquery-autocomplete'
 gem "bootstrap_flash_messages", "~> 1.0.2"
+gem "pry"

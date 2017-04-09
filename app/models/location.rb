@@ -1,7 +1,7 @@
 class Location < ActiveRecord::Base
 	belongs_to :user
 	belongs_to :collection
-	
+
 	has_many :bookings, dependent: :destroy
 	has_many :taggings, dependent: :destroy
 	has_many :tags, through: :taggings
@@ -15,15 +15,15 @@ class Location < ActiveRecord::Base
 	include PgSearch
   	multisearchable :against => [:title, :description, :city, :county, :services, :extras]
   	pg_search_scope :custom_search, :against => [:title, :description, :city, :county, :services, :extras], :associated_against => {:tags => [:name]}, :using => { :tsearch => {:prefix => true} }
-	
-	#IMAGES 
+
+	#IMAGES
 	has_attached_file :image, styles: {
 		thumb: '100x100>',
+		welcome_thumb: '350x230#',
 		square: '200x200#',
 		medium: '300x300>',
 		large: '1280x400#'
 	}
-
 
   	#AFTER
 	before_create :set_draft_status
@@ -88,12 +88,24 @@ class Location < ActiveRecord::Base
 		end
 	end
 	def thumbnail(w,h)
-		if self.attachments.count>0 && self.attachments[0].url
-			self.attachments[0].thumbnail(w,h)
+		attachment = self.main_attachment
+		if attachment != nil
+			attachment.thumbnail(w,h)
 		else
 			"/location-missing.jpg"
 		end
 	end
+
+	def main_attachment
+		if self.main_attachment_id && Attachment.find_by_id(self.main_attachment_id) != nil
+			Attachment.find_by_id(self.main_attachment_id)
+		elsif self.attachments.count>0
+			self.attachments[0]
+		else
+			nil
+		end
+	end
+
 	def totalprice
 		if !self.fee.nil?
 			self.price+self.fee

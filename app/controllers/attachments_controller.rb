@@ -1,35 +1,30 @@
 class AttachmentsController < ApplicationController
 	load_and_authorize_resource
 	skip_before_action :verify_authenticity_token
+
 	def destroy
 		attachment=Attachment.find(params[:id])
-		
 		attachment.destroy
 		render :json=>"OK"
 	end
+
 	def create
-                storage = Google::Cloud::Storage.new :project => 'master-tuner-150318', :keyfile => 'google.json'
-                @location=Location.find(params[:location])
-                name = @location.id.to_s+"/"+SecureRandom.hex+File.extname(params[:file].original_filename)
+	  storage = Google::Cloud::Storage.new :project => 'master-tuner-150318', :keyfile => 'google.json'
+	  @location=Location.find(params[:location])
+	  name = @location.id.to_s+"/"+SecureRandom.hex+File.extname(params[:file].original_filename)
 
-                bucket = storage.bucket("atlocs")
+	  bucket = storage.bucket("atlocs")
 
-                policy = {
-                    :conditions => [
-                       {acl: "public-read"}
-                    ]
-                }
-
-                puts bucket.inspect
-
-                obj = bucket.create_file params[:file].path, name
-
-
+	  policy = {
+	      :conditions => [
+	         {acl: "public-read"}
+	      ]
+	  }
+	  puts bucket.inspect
+	  obj = bucket.create_file params[:file].path, name
 		obj.acl.publicRead!
 		obj.refresh!
-
-                puts obj.inspect
-
+    puts obj.inspect
 		attachment=Attachment.new
 		attachment.url=obj.public_url
 		attachment.location_id=@location.id
@@ -38,6 +33,5 @@ class AttachmentsController < ApplicationController
 		puts attachment.inspect
 		puts @location.inspect
 		render :json=>{:files=>{:name=>params[:file].original_filename,:url=>obj.public_url,:deleteUrl=>attachment.id.to_s}}
-		
 	end
 end

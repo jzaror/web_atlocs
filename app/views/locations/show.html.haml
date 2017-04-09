@@ -11,8 +11,6 @@
 				%h1
 					= @location.title
 					%small= @location.city
-
-
 			%aside.location-booking-info
 				- if @location.price_with_fee > 0
 					.price
@@ -52,6 +50,12 @@
 						%button.close{"aria-label" => "Close", "data-dismiss" => "alert", :type => "button"}
 							%span{"aria-hidden" => "true"} ×
 						= flash[:notice]
+				- if flash[:error]
+					%br
+					#notice.alert.alert-danger{:role => "alert"}
+						= flash[:error]
+						= @location.reject_reason if @location.reject_reason
+						= link_to 'Corregir locación',edit_location_path(@location.id)
 				.content-box.description
 					%h3
 						Descripción

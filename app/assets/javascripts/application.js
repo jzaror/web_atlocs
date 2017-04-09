@@ -24,6 +24,8 @@
 //= require bookings
 //= require jquery.blueimp-gallery
 //= require bootstrap-image-gallery
+//= require jquery.jcrop
+//= require papercrop
 
 // # BOOTSTRAP
 //= require bootstrap-sprockets

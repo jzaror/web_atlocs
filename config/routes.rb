@@ -49,6 +49,7 @@ Rails.application.routes.draw do
 	get 'locations/:id/archive' => 'locations#archive'
 	get 'locations/:id/destroy' => 'locations#destroy'
 	post 'locations/:id/frontpage' => 'locations#frontpage'
+	get 'locations/:id/show_archive_modal' => 'locations#show_archive_modal'
 
 	# attachments
 	match "upload/:location" => "attachments#create", via: [:post,:patch]
@@ -60,7 +61,6 @@ Rails.application.routes.draw do
 	get '/admin/locations' => 'locations#admin'
 	get '/admin/users' => 'users#admin'
 
-	
 	resources :collections
 	resources :locations
 

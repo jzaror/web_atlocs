@@ -33,7 +33,12 @@ class LocationsController < ApplicationController
   # GET /locations/1
   def show
     if (current_user&&current_user.status=="admin") || @location.user == current_user
-      flash.now[:notice] = "Esta locación está esperando aprobación y en algunas horas mas será publicada." if @location.status=="submitted"
+      case @location.status
+      when "submitted"
+        flash.now[:notice] = "Esta locación está esperando aprobación y en algunas horas mas será publicada."
+      when "archived"
+        flash.now[:error] = "Esta locación ha sido rechazada"
+      end
       user=current_user
       respond_to :html
     else
@@ -63,6 +68,9 @@ class LocationsController < ApplicationController
 
   # GET /locations/1/edit
   def edit
+  end
+
+  def show_archive_modal
   end
 
   def create
@@ -121,6 +129,7 @@ class LocationsController < ApplicationController
 
   def archive
     @location.archive
+    @location.update_attribute(:reject_reason, params[:reject_reason])
     if @location.user
       UserMailer.location_problem(@location).deliver
     end

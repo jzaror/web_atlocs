@@ -13,8 +13,8 @@ development:
   adapter: postgresql
   encoding: unicode
   database: atlocs-development
-  username: sirlund
-  password: 
+  username: pguser
+  password: 123
   pool: 5
   port: 5432
   host: localhost

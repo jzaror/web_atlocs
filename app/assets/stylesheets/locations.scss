@@ -27,8 +27,12 @@
 			width:100%;
 		}
 		img {
-			width:100%;
-			height: auto;
+			width: 350px;
+		    height: 230px;
+		    /* overflow: hidden; */
+		    object-fit: cover;
+			/*width:100%;*/
+			/*height: auto;*/
 			z-index:0;
 			@include transition(all 333ms ease);
 		}

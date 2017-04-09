@@ -37,7 +37,7 @@
                     - if location.status=="archived"
                       %td= link_to 'Borrar', "/locations/#{location.id}/destroy", :class=>"btn btn-danger"
                     -else
-                      %td= link_to 'Archivar', "/locations/#{location.id}/archive", :class=>"btn btn-danger"
+                      %td= link_to 'Archivar', "/locations/#{location.id}/show_archive_modal", :class=>"btn btn-danger", :remote => true
             %br/
             = link_to 'Nueva locacion', new_location_path, :class=>"btn btn-info"
           #published.tab-pane.fade
@@ -81,3 +81,4 @@
                     - if location.status!="approved"
                       %td= link_to 'Aprobar', "/locations/#{location.id}/approve", :class=>"btn btn-success"
                     %td= link_to 'Destruir', "/locations/#{location.id}/destroy", :class=>"btn btn-danger"
+#archiveModalHolder
