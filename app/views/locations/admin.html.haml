@@ -5,14 +5,14 @@
       =render 'shared/adminmenu'
       .col-md-12
         %h1 #{@totalcount} locaciones aprobadas
-        %ul.nav.nav-pills
-          %li.active
-            %a{"data-toggle" => "pill", :href => "#approved"} Esperando Aprobación
-          %li
-            %a{"data-toggle" => "pill", :href => "#published"} Publicadas
-          %li
-            %a{"data-toggle" => "pill", :href => "#archived"} Archivadas
-        .tab-content
+        %ul.nav.nav-tabs
+          %li.nav-item
+            %a.nav-link.active{"data-toggle" => "pill", :href => "#approved"} Esperando Aprobación
+          %li.nav-item
+            %a.nav-link{"data-toggle" => "pill", :href => "#published"} Publicadas
+          %li.nav-item
+            %a.nav-link{"data-toggle" => "pill", :href => "#archived"} Archivadas
+        .tab-content.mt-4
           #approved.tab-pane.fade.in.active
             / %h3 Esperando aprobación
             %table.table.table-striped
@@ -29,7 +29,7 @@
                     %td= link_to location.user.full_name, '/users/'+location.user.id.to_s
                     %td= location.description
                     %td= location.statusname
-                    %td 
+                    %td
                       = number_to_currency(location.totalprice, :unit => "$", :precision => 0)
                     %td= link_to 'Editar', "/locations/#{location.id}/edit", :class=>"btn btn-info"
                     - if location.status=="submitted" && (can? :approve, Location)

@@ -5,9 +5,9 @@
 			.col-md-12
 				= flash_messages
 				%ul.breadcrumb
-					%li 
+					%li.breadcrumb-item
 						%a{:href => "/"} Inicio
-					%li
+					%li.breadcrumb-item
 						Reservas
 		.table-responsive
 		- if @bookings.count>0
