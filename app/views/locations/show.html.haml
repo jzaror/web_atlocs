@@ -45,8 +45,7 @@
 		.row.location-content
 			.col-md-7
 				- if flash[:notice]
-					%br
-					#notice.alert.alert-success{:role => "alert"}
+					#notice.mt-3.alert.alert-success{:role => "alert"}
 						%button.close{"aria-label" => "Close", "data-dismiss" => "alert", :type => "button"}
 							%span{"aria-hidden" => "true"} ×
 						= flash[:notice]
@@ -56,6 +55,11 @@
 						= flash[:error]
 						= @location.reject_reason if @location.reject_reason
 						= link_to 'Corregir locación',edit_location_path(@location.id)
+				- if flash[:warning]
+					#warning.mt-3.alert.alert-warning{:role => "alert"}
+						%button.close{"aria-label" => "Close", "data-dismiss" => "alert", :type => "button"}
+							%span{"aria-hidden" => "true"} ×
+						= flash[:warning]
 				.content-box.description
 					%h3
 						Descripción
