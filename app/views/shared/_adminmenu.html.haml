@@ -1,21 +1,21 @@
 - if current_user.status == 'admin'
   .row.padding
-    .main-navigation.navbar-collapse.collapse
+    .main-navigation.navbar-collapse
       / start: MAIN NAVIGATION MENU
-      %ul.nav.nav-tabs
-        %li{:class => (controller.controller_name == 'locations')? 'active open': ''}
-          %a{:href => '/admin/locations'}
+      %ul.nav.nav-pills
+        %li.nav-item{}
+          %a.nav-link{:href => '/admin/locations', :class => (controller.controller_name == 'locations')? 'active': ''}
             %i.mdi.mdi-lg.mdi-pin
             %span.title Locaciones
-        %li{:class => (controller.controller_name == 'collections')? 'active open': ''}
-          %a{:href => '/admin/collections'}
+        %li.nav-item{}
+          %a.nav-link{:href => '/admin/collections', :class => (controller.controller_name == 'collections')? 'active': ''}
             %i.mdi.mdi-lg.mdi-folder-image
             %span.title Colecciones
-        %li{:class => (controller.controller_name == 'users')? 'active open': ''}
-          %a{:href => '/admin/users'}
+        %li.nav-item{}
+          %a.nav-link{:href => '/admin/users', :class => (controller.controller_name == 'users')? 'active': ''}
             %i.mdi.mdi-lg.mdi-account
             %span.title Usuarios
-        %li{:class => (controller.controller_name == 'bookings')? 'active open': ''}
-          %a{:href => '/bookings/'}
+        %li.nav-item{}
+          %a.nav-link{:href => '/bookings/', :class => (controller.controller_name == 'bookings')? 'active': ''}
             %i.mdi.mdi-lg.mdi-newspaper
             %span.title Reservas
