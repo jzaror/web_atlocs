@@ -12,7 +12,6 @@
 					= @location.title
 					%small= @location.city
 
-
 			%aside.location-booking-info
 				- if @location.price_with_fee > 0
 					.price
@@ -47,11 +46,17 @@
 		.row.location-content
 			.col-md-7
 				- if flash[:notice]
-					%br
-					#notice.alert.alert-success{:role => "alert"}
+					#notice.mt-3.alert.alert-success{:role => "alert"}
 						%button.close{"aria-label" => "Close", "data-dismiss" => "alert", :type => "button"}
 							%span{"aria-hidden" => "true"} ×
 						= flash[:notice]
+
+				- if flash[:warning]
+					#warning.mt-3.alert.alert-warning{:role => "alert"}
+						%button.close{"aria-label" => "Close", "data-dismiss" => "alert", :type => "button"}
+							%span{"aria-hidden" => "true"} ×
+						= flash[:warning]
+
 				.content-box.description
 					%h3
 						Descripción
