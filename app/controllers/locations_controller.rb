@@ -1,9 +1,8 @@
 class LocationsController < ApplicationController
-  skip_before_action :verify_authenticity_token, only: [:frontpage]
+  skip_before_action :verify_authenticity_token, only: [:frontpage, :feature_image]
   autocomplete :tag, :name
   before_action :set_location, only: [:show, :edit, :update, :destroy, :archive, :approve, :front_page]
   load_and_authorize_resource
-
 
   # GET /locations
   def index
@@ -139,6 +138,13 @@ class LocationsController < ApplicationController
   def destroy
     if @location.destroy
       redirect_to '/admin/locations', notice: "La locación #{@location.title} fue destruida con exito."
+    end
+  end
+
+  def feature_image
+    @location.update_attribute(:main_attachment_id,params[:attachment_id])
+    respond_to do |format|
+      format.json { render json: @location, status: :ok }
     end
   end
 

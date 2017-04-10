@@ -24,7 +24,7 @@
 						Mis 
 					%strong Locaciones
 				.row.user-location-list
-					- @user.locations.where(:status=>3).each do |location|
+					- @user.locations.where(:status=>[0,3]).each do |location|
 						.col-sm-6.col-md-4
 							.thumbnail.thumbnail-reset.location-preview
 								.image	

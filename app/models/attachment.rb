@@ -7,7 +7,7 @@ class Attachment < ActiveRecord::Base
 	end
 
 	def is_main_attachment
-		location != nil && (self.id == location.main_attachment_id || self == location.attachments[0])
+		location != nil && ( (self.id == location.main_attachment_id) || (location.main_attachment_id == nil && self == location.attachments[0]))
 	end
 
 	def thumbnail(w,h)

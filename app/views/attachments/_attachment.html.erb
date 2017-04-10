@@ -1,5 +1,5 @@
 <script type="text/javascript">
 $(document).ready(function() {
-	appendfile({name:"<%=attachment.filename%>",deleteUrl:"<%=attachment.id%>",url:"<%=attachment.url%>",thumb:"<%=attachment.url%>", is_main: "<%= attachment.is_main_attachment %>"});
+	appendfile({name:"<%=attachment.filename%>",deleteUrl:"<%=attachment.id%>",url:"<%=attachment.url%>",thumb:"<%=attachment.url%>", is_main: "<%= attachment.is_main_attachment %>", id: "<%=attachment.id%>", location_id: "<%= attachment.location_id %>"});
 });
 </script>
