@@ -3,7 +3,7 @@ class LocationsController < ApplicationController
   autocomplete :tag, :name
   before_action :set_location, only: [:show, :edit, :update, :destroy, :archive, :approve, :front_page]
   load_and_authorize_resource
-  
+
 
   # GET /locations
   def index
@@ -37,7 +37,7 @@ class LocationsController < ApplicationController
       when "submitted"
         flash.now[:notice] = "Esta locación está esperando aprobación y en algunas horas mas será publicada."
       when "archived"
-        flash.now[:error] = "Esta locación ha sido rechazada"
+        flash.now[:error] = "Tu locación no ha sido aprobada debido a los siguientes problemas: "
       end
       user=current_user
       respond_to :html
@@ -155,4 +155,3 @@ class LocationsController < ApplicationController
       params.require(:location).permit(:title, :days, :city, :type_id, :price, :fee, :description, :address, :lat, :lng, :county, :collection_id, :front_page, :upload, :tag_names, { :uploads_attributes=>[ :_destroy, :id, :image ] }, { :services=>[] }, { :extras=>[] })
     end
 end
-
