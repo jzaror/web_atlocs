@@ -32,7 +32,7 @@ class LocationsController < ApplicationController
 
   # GET /locations/1
   def show
-    if (current_user&&current_user.status=="admin") || @location.user == current_user
+    if (current_user&&current_user.status=="admin") || @location.user == current_user || @location.status == "approved"
       case @location.status
       when "submitted"
         flash.now[:notice] = "Esta locación está esperando aprobación y en algunas horas mas será publicada."
