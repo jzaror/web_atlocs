@@ -425,6 +425,9 @@ button, input, .form-control, a {
 	padding:0;
 	position: relative;
 	overflow:hidden;
+	&-preview {
+		margin: 12px 0;
+	}
 	.collection-title {
 		@extend %center-all;
 		position:absolute;
