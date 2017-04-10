@@ -50,10 +50,12 @@ Rails.application.routes.draw do
 	get 'locations/:id/destroy' => 'locations#destroy'
 	post 'locations/:id/frontpage' => 'locations#frontpage'
 	get 'locations/:id/show_archive_modal' => 'locations#show_archive_modal'
+	put "locations/:id/feature_image" => "locations#feature_image"
 
 	# attachments
 	match "upload/:location" => "attachments#create", via: [:post,:patch]
 	get "attachments/:id/destroy" => "attachments#destroy"
+
 
 	#ADMIN
 	get '/admin/' => redirect('/admin/locations')
