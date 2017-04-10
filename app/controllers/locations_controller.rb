@@ -41,7 +41,11 @@ class LocationsController < ApplicationController
       user=current_user
       respond_to :html
     else
-      raise ActiveRecord::RecordNotFound
+      unless current_user
+        raise ActiveRecord::RecordNotFound
+      else
+        redirect_to "/login", flash: {notice: "Para entrar a esta sección debes iniciar sesión"}
+      end
     end
   end
 
