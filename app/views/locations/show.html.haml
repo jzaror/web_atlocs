@@ -53,7 +53,8 @@
 					%br
 					#notice.alert.alert-danger{:role => "alert"}
 						= flash[:error]
-						= @location.reject_reason if @location.reject_reason
+						%strong
+							= @location.reject_reason if @location.reject_reason
 						= link_to 'Corregir locación',edit_location_path(@location.id)
 				- if flash[:warning]
 					#warning.mt-3.alert.alert-warning{:role => "alert"}
