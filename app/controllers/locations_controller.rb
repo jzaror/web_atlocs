@@ -41,10 +41,8 @@ class LocationsController < ApplicationController
       user=current_user
       respond_to :html
     else
-      unless current_user
-        puts "No se encontro usuario"
-        puts current_user.inspect
-        raise ActiveRecord::RecordNotFound
+      if current_user != nil
+        redirect_to root_path, flash: {notice: "Esta locación aún no ha sido aprobada"}
       else
         redirect_to "/login", flash: {notice: "Para entrar a esta sección debes iniciar sesión"}
       end
