@@ -107,7 +107,7 @@ class Location < ActiveRecord::Base
 	end
 
 	def totalprice
-		if !self.fee.nil?
+		if !self.fee.nil? && !self.price.nil?
 			self.price+self.fee
 		else
 			self.price
