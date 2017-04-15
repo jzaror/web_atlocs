@@ -6,9 +6,14 @@ class Ability
     #
     user ||= User.new # guest user (not logged in)
     can :index, Location
-    
     can :create, User
-    can :show, Location, :status=="approved"
+    can :show, Location do |location|
+        if location.status == "approved"
+            true
+        else
+            false
+        end
+    end
     can :show, Collection
     can :index, Collection
     if user.status=="admin"
@@ -18,7 +23,7 @@ class Ability
         can :manage, Booking
         can :confirmpayment, Booking
     end
-    if user.id!=nil
+    if user.id != nil
         # regular user
         can :show, User
         can :manage, User do |u|
@@ -57,7 +62,7 @@ class Ability
             end
         end
         can :show, Location do |location|
-            if location.user_id==user.id
+            if location.status == "approved" || location.user_id==user.id
                 true
             else
                 false

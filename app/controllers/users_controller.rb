@@ -5,6 +5,7 @@ class UsersController < ApplicationController
 	def admin
 		@users=User.all.order(id: :DESC)
 	end
+
 	def create
 		user=User.new
 		user.password=params[:password]
@@ -30,6 +31,7 @@ class UsersController < ApplicationController
 			render :json=>{:success=>false,:message=>user.errors.full_messages.to_sentence}
 		end
 	end
+
 	def show
 		if params[:id]
 			@user=User.find(params[:id])
@@ -41,6 +43,7 @@ class UsersController < ApplicationController
 	def edit
 		@user=current_user
 	end
+
 	def update
 		@user = current_user
 		if @user.update_attributes(user_params)
@@ -49,9 +52,16 @@ class UsersController < ApplicationController
 			redirect_to "/users/#{@user.id}/edit", :flash => :error
 		end
 	end
+
 	def bookings
 		@user=current_user
 		@bookings=@user.bookings.all
+	end
+
+	def destroy
+		@user.destroy
+		redirect_to "/admin/users/"
+		flash[:notice]="Usuario eliminado"
 	end
 
 	private

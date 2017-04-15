@@ -31,7 +31,7 @@ class LocationsController < ApplicationController
 
   # GET /locations/1
   def show
-    if (current_user&&current_user.status=="admin") || @location.user == current_user || @location.status == "approved"
+    #if @location.status == "approved" || (current_user&&current_user.status=="admin") || @location.user == current_user
       case @location.status
       when "submitted"
         flash.now[:notice] = "Esta locación está esperando aprobación y en algunas horas mas será publicada."
@@ -40,13 +40,13 @@ class LocationsController < ApplicationController
       end
       user=current_user
       respond_to :html
-    else
-      if current_user != nil
-        redirect_to root_path, flash: {notice: "Esta locación aún no ha sido aprobada"}
-      else
-        redirect_to "/login", flash: {notice: "Para entrar a esta sección debes iniciar sesión"}
-      end
-    end
+    #else
+    #  if current_user != nil
+    #    redirect_to root_path, flash: {notice: "Esta locación aún no ha sido aprobada"}
+    #  else
+    #    redirect_to "/login", flash: {notice: "Para entrar a esta sección debes iniciar sesión"}
+    #  end
+    #end
   end
 
   def frontpage
@@ -113,10 +113,10 @@ class LocationsController < ApplicationController
 
         end
       end
-      if @location.status=="approved"
-        redirect_to @location
-      else
+      if params[:newlocation]
         redirect_to "/nueva_locacion"
+      else
+        redirect_to @location
       end
     else
       render :edit

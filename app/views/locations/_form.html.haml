@@ -141,6 +141,7 @@
 		%hr
 		.px-5.py-3
 			-if params[:newlocation]
+				= hidden_field_tag 'newlocation', true
 				%button.btn.btn-info.btn-block.btn-lg#form-submit{ :type=>"submit", :disabled => "disabled"}
 					%i.mdi.mdi-lg.mdi-cloud-upload
 					Publicar Locación
