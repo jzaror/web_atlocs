@@ -21,6 +21,7 @@ class Ability
         can :manage, Collection
         can :manage, User
         can :manage, Booking
+        can :manage, Attachment
         can :confirmpayment, Booking
     end
     if user.id != nil
