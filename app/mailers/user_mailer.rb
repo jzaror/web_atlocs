@@ -1,63 +1,81 @@
 class UserMailer < ApplicationMailer
 	default from: "AtLocs <contacto@atlocs.com>"
 	layout 'mailer'
+
 	def welcome(user)
 		@user = user
 		mail(to: @user.email, subject: 'Bienvenido a Atlocs')
 	end
+
 	def location_submitted(location)
 		@user = location.user
 		@location = location
 		mail(to: @user.email, subject: 'Tu locación ha sido enviada')
 	end
+
 	def location_approved(location)
 		@user = location.user
 		@location = location
 		mail(to: @user.email, subject: 'Tu locación ha sido agregada a Atlocs!')
 	end
+
 	def location_problem(location)
 		@user = location.user
 		@location = location
 		mail(to: @user.email, subject: 'Hubo un problema con tu locación')
 	end
+
+	def request_removal(location,user)
+		@location = location
+		@user = user
+		mail(to: "cdiaz@chilelocaciones.cl",subject: "Solicitud eliminación #{@location.title}")
+	end
+
 	def booking_requested(booking)
 		@user = booking.location.user
 		@location = booking.location
 		@booking=booking
 		mail(to: @user.email, subject: 'Tienes una reserva para tu locación')
 	end
+
 	def booking_sent(booking)
 		@user = booking.user
 		@location = booking.location
 		@booking=booking
 		mail(to: @user.email, subject: 'Has creado una reserva')
 	end
+
 	def booking_accepted(booking)
 		@user = booking.user
 		@location = booking.location
 		@booking=booking
 		mail(to: @user.email, subject: 'Tu reserva ha sido aceptada')
 	end
+
 	def booking_cancelled(booking)
 		@user = booking.user
 		@location = booking.location
 		@booking=booking
 		mail(to: @user.email, subject: 'Tu reserva ha sido cancelada')
 	end
+
 	def booking_commented(booking,sender)
 		@user=sender
 		@booking=booking
 		mail(to: @user.email, subject: 'Tienes un mensaje en tu reserva')
 	end
+
 	def payment_confirmed(booking)
 		@booking=booking
 		@user=@booking.user
 		mail(to: @user.email, subject: 'Tu pago ha sido confirmado')
 	end
+
 	def contact_form(email,body,subject)
 		@body=body
 		mail(to: "cdiaz@chilelocaciones.cl",subject: subject, from:email)
 	end
+
 	def request_password_token(code,email)
 		@code=code
 		mail(to: email, subject: 'Tu link para reestablecer tu cuenta')

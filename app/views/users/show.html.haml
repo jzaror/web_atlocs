@@ -1,7 +1,7 @@
 %section.main-content
 	.container
+		= flash_messages
 		.row.padding
-			= flash_messages
 			.col-md-8
 				%h1
 					-if current_user && @user==current_user
@@ -33,12 +33,16 @@
 										= number_to_currency(location.totalprice, :unit => "$", :precision => 0)
 									=link_to image_tag(location.thumbnail(350,230), :class=>"collection-img"), location_path(location)
 								.caption
-									%div.label.label-danger= location.status
+									%span.badge.badge-danger
+										= t("locations.status.#{location.status}")
 									%h3.title
 										= link_to location.title, location_path(location)
 									%p.desc
 										= location.description
-									= link_to 'editar', edit_location_path(location)
+									%p
+										= link_to 'Editar', edit_location_path(location)
+									%p
+										= link_to 'Solicitar Eliminación', request_removal_location_path(location)
 			-if current_user && @user==current_user
 				.col-md-4
 					%h4 Mis Reservas

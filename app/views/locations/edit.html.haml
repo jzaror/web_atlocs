@@ -1,7 +1,8 @@
 - content_for :body_class, "edit-location"
 %section.main-content
 	.container
-
 		= render 'shared/breadcrumb'
 		.row
 			= render 'form'
+		- if current_user.status == "admin"
+			= link_to 'Destruir', "/locations/#{@location.id}/destroy", :class=>"btn btn-danger btn-block", data: { confirm: 'Are you sure?' }

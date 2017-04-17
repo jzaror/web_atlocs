@@ -152,6 +152,14 @@ class LocationsController < ApplicationController
     end
   end
 
+  def request_removal
+    user = @location.user
+    if user
+      UserMailer.request_removal(@location,user).deliver
+      redirect_to "/users/#{user.id}", flash: {notice: "Se ha notificado al administrador para eliminar la locación #{@location.title}"}
+    end
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_location

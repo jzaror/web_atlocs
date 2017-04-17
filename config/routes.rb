@@ -2,6 +2,9 @@ Rails.application.routes.draw do
 
 	resources :locations do
 	  get :autocomplete_tag_name, :on => :collection
+	  member do
+ 	 		get 'request_removal'
+  	end
 	end
 	# pages
 	get '/about' => 'pages#about'

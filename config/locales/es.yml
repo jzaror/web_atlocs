@@ -9,6 +9,12 @@ es:
   flash_messages:
     defaults:
       success: "Acción Exitosa"
+  locations:
+    status:
+      approved: Aprobada
+      archived: Archivada
+      draft: Esperando Aprobación
+      submitted: Enviada
   date:
     abbr_day_names:
     - dom

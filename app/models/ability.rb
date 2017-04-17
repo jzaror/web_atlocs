@@ -61,6 +61,13 @@ class Ability
                 false
             end
         end
+        can :request_removal, Location do |location|
+            if location.user_id==user.id
+                true
+            else
+                false
+            end
+        end
         can :show, Location do |location|
             if location.status == "approved" || location.user_id==user.id
                 true
