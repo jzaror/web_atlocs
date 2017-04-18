@@ -26,7 +26,7 @@
                 - @submitted.each do |location|
                   %tr
                     %td= link_to location.title, "/locations/#{location.id}"
-                    %td= link_to location.user.full_name, '/users/'+location.user.id.to_s
+                    %td= link_to location.user_full_name, '/users/'+location.user.id.to_s
                     %td= location.description
                     %td= location.statusname
                     %td
@@ -53,7 +53,7 @@
                 - @approved.each do |location|
                   %tr
                     %td= link_to location.title, "/locations/#{location.id}"
-                    %td= link_to location.user.full_name, '/users/'+location.user.id.to_s
+                    %td= link_to location.user_full_name, '/users/'+location.user.id.to_s
                     %td= location.description
                     %td= location.statusname
                     %td= number_to_currency(location.totalprice, :unit => "$", :precision => 0)
@@ -73,7 +73,7 @@
                 - @archived.each do |location|
                   %tr
                     %td= link_to location.title, "/locations/#{location.id}"
-                    %td= link_to location.user.full_name, '/users/'+location.user.id.to_s
+                    %td= link_to location.user_full_name, '/users/'+location.user.id.to_s
                     %td= location.description
                     %td= location.statusname
                     %td= number_to_currency(location.totalprice, :unit => "$", :precision => 0)

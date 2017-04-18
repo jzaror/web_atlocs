@@ -106,6 +106,14 @@ class Location < ActiveRecord::Base
 		end
 	end
 
+	def user_full_name
+		if self.user
+			user.try(:full_name)
+		else
+			nil
+		end
+	end
+
 	def totalprice
 		if !self.fee.nil? && !self.price.nil?
 			self.price+self.fee
