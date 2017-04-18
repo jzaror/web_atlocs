@@ -50,3 +50,4 @@ gem 'image_suckr'
 gem 'rails-jquery-autocomplete'
 gem "bootstrap_flash_messages", "~> 1.0.2"
 gem "pry"
+gem 'acts_as_paranoid', '~> 0.5.0'

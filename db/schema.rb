@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170409054151) do
+ActiveRecord::Schema.define(version: 20170418032900) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -21,7 +21,10 @@ ActiveRecord::Schema.define(version: 20170409054151) do
     t.string   "url"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
+    t.datetime "deleted_at"
   end
+
+  add_index "attachments", ["deleted_at"], name: "index_attachments_on_deleted_at", using: :btree
 
   create_table "bookings", force: :cascade do |t|
     t.datetime "start_time"
@@ -34,8 +37,10 @@ ActiveRecord::Schema.define(version: 20170409054151) do
     t.string   "code"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.datetime "deleted_at"
   end
 
+  add_index "bookings", ["deleted_at"], name: "index_bookings_on_deleted_at", using: :btree
   add_index "bookings", ["location_id"], name: "index_bookings_on_location_id", using: :btree
 
   create_table "collection_memberships", force: :cascade do |t|
@@ -55,7 +60,10 @@ ActiveRecord::Schema.define(version: 20170409054151) do
     t.string   "image_content_type"
     t.integer  "image_file_size"
     t.datetime "image_updated_at"
+    t.datetime "deleted_at"
   end
+
+  add_index "collections", ["deleted_at"], name: "index_collections_on_deleted_at", using: :btree
 
   create_table "comments", force: :cascade do |t|
     t.text     "body"
@@ -101,8 +109,10 @@ ActiveRecord::Schema.define(version: 20170409054151) do
     t.boolean  "front_page"
     t.string   "reject_reason"
     t.integer  "main_attachment_id"
+    t.datetime "deleted_at"
   end
 
+  add_index "locations", ["deleted_at"], name: "index_locations_on_deleted_at", using: :btree
   add_index "locations", ["user_id"], name: "index_locations_on_user_id", using: :btree
 
   create_table "pg_search_documents", force: :cascade do |t|
@@ -160,9 +170,11 @@ ActiveRecord::Schema.define(version: 20170409054151) do
     t.datetime "updated_at"
     t.string   "deposit_bank"
     t.string   "deposit_account"
+    t.datetime "deleted_at"
   end
 
   add_index "users", ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true, using: :btree
+  add_index "users", ["deleted_at"], name: "index_users_on_deleted_at", using: :btree
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 

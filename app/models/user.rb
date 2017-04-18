@@ -9,6 +9,7 @@ class User < ActiveRecord::Base
 
   has_secure_password
   before_create :add_unverified_status
+  acts_as_paranoid
   def full_name
     if self.first_name && self.last_name
       self.first_name+" "+self.last_name

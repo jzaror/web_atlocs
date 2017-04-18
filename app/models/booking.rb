@@ -3,6 +3,7 @@ class Booking < ActiveRecord::Base
 	belongs_to :location
 	belongs_to :user
 	before_create :generatecode
+	acts_as_paranoid
 
 	def generatecode
 		self.code=SecureRandom.hex[0..8] if self.code==nil

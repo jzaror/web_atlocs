@@ -1,5 +1,6 @@
 class Attachment < ActiveRecord::Base
 	belongs_to :location
+	acts_as_paranoid
 	def filename
 		require 'uri'
 		uri = URI.parse(self.url)

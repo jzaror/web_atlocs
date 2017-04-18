@@ -24,7 +24,7 @@ class Location < ActiveRecord::Base
 		medium: '300x300>',
 		large: '1280x400#'
 	}
-
+	acts_as_paranoid
   	#AFTER
 	before_create :set_draft_status
 	attr_accessor :tag_names
