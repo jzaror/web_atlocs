@@ -1,6 +1,10 @@
 <h1>Tuvimos problemas con las fotos de tu locación.</h1>
 
 <p>Hemos revisado tu información y lamentablemente las fotos que nos entregaste no cumplen con los estándares establecidos por AtLocs.com para su publicación en el sitio.</p>
+<% if @location.reject_reason.present? %>
+	<p>Adicionalmente, el administrador ha dado la siguiente razón para haber por las que tu publicación no fue aprobada</p>
+	<p><strong> <%= @location.reject_reason %> </strong></p>
+<% end %>
 <p>Te invitamos a revisar la información que entregaste sobre tu locación y verificar que todo este en norma</p>
 <p><%=link_to @location.title, "http://atlocs.com/locations/#{@location.id}"%></p>
 <p>Al respecto, nuestro equipo se pondrá en contacto contigo para solucionar este asunto.</p>

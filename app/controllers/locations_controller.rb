@@ -76,6 +76,12 @@ class LocationsController < ApplicationController
   def show_archive_modal
   end
 
+  def re_send_reject_email
+    if @location.user
+      UserMailer.location_problem(@location).deliver
+    end
+  end
+
   def create
     @location = current_user.locations.new(location_params)
 

@@ -68,7 +68,7 @@
                   %th Nombre
                   %th Dueño
                   %th Descripcion
-                  %th{:colspan => "3"}
+                  %th{:colspan => "4"}
               %tbody
                 - @archived.each do |location|
                   %tr
@@ -81,4 +81,5 @@
                     - if location.status!="approved"
                       %td= link_to 'Aprobar', "/locations/#{location.id}/approve", :class=>"btn btn-success"
                     %td= link_to 'Destruir', "/locations/#{location.id}/destroy", :class=>"btn btn-danger"
+                    %td= link_to 'Notificar Rechazo', "/locations/#{location.id}/show_archive_modal", :class=>"btn btn-danger", :remote => true
 #archiveModalHolder
