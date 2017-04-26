@@ -144,6 +144,11 @@
 
 			-if current_user && (current_user.status=="admin" || current_user.status=="moderator")
 				.col-md-12.padding
+					- if @location.status != "approved"
+						= link_to 'Aprobar', "/locations/#{@location.id}/approve", :class=>"btn btn-success"
+					- if @location.status != "archived"
+						= link_to 'Archivar', "/locations/#{@location.id}/show_archive_modal", :class=>"btn btn-danger", :remote => true
+				.col-md-12.padding
 					%ul.list-inline
 						%li.list-inline-item
 							= link_to locations_path do
@@ -182,3 +187,4 @@
 									});
 								}
 							});
+#archiveModalHolder

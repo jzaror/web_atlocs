@@ -5,3 +5,4 @@
 
 *.pid
 
+/tmp/letter_opener/*

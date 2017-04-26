@@ -24,7 +24,8 @@
 						Mis 
 					%strong Locaciones
 				.row.user-location-list
-					- @user.locations.where(:status=>[0,3]).each do |location|
+					- locations = current_user.status == "admin" ? @user.locations : @user.locations.where(:status=>[0,3])
+					- locations.each do |location|
 						.col-sm-6.col-md-4
 							.thumbnail.thumbnail-reset.location-preview
 								.image	
@@ -42,7 +43,10 @@
 									%p
 										= link_to 'Editar', edit_location_path(location)
 									%p
-										= link_to 'Solicitar Eliminación', request_removal_location_path(location)
+										- if current_user.status == "admin"
+											= link_to 'Borrar', "/locations/#{location.id}/destroy"
+										- else
+											= link_to 'Solicitar Eliminación', request_removal_location_path(location)
 			-if current_user && @user==current_user
 				.col-md-4
 					%h4 Mis Reservas

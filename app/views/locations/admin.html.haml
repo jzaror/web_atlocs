@@ -59,7 +59,7 @@
                     %td= number_to_currency(location.totalprice, :unit => "$", :precision => 0)
                     %td= link_to 'Editar', "/locations/#{location.id}/edit", :class=>"btn btn-info"
                     - if location.status!="archived"
-                      %td= link_to 'Archivar', "/locations/#{location.id}/archive", :class=>"btn btn-danger"
+                      %td= link_to 'Archivar', "/locations/#{location.id}/show_archive_modal", :class=>"btn btn-danger", :remote => true
           #archived.tab-pane.fade
             / %h3 Borradores
             %table.table.table-striped
