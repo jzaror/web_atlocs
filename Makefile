@@ -1,5 +1,5 @@
 TARGET=atlocs_web
-VERSION=prod-59
+VERSION=prod-60
 
 prodaccess:
 	gcloud docker -a -s gcr.io
