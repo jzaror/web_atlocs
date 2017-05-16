@@ -47,6 +47,7 @@ GEM
     arel (6.0.3)
     autoprefixer-rails (6.7.7)
       execjs
+    awesome_print (1.7.0)
     aws-sdk (2.3.21)
       aws-sdk-resources (= 2.3.21)
     aws-sdk-core (2.3.21)
@@ -316,47 +317,51 @@ PLATFORMS
 
 DEPENDENCIES
   acts_as_paranoid (~> 0.5.0)
-  airbrake
-  aws-sdk
-  aws-sdk-v1
-  bcrypt
+  airbrake (= 5.4.1)
+  awesome_print (= 1.7.0)
+  aws-sdk (= 2.3.21)
+  aws-sdk-v1 (= 1.66.0)
+  bcrypt (= 3.1.11)
   bootstrap (~> 4.0.0.alpha6)
-  bootstrap-datepicker-rails
+  bootstrap-datepicker-rails (= 1.6.1.1)
   bootstrap_flash_messages (~> 1.0.2)
-  bourbon
-  cancancan
+  bourbon (= 4.2.7)
+  cancancan (= 1.15.0)
   coffee-rails (~> 4.1.0)
-  faker
-  figaro
-  fog-google
-  geocomplete_rails
-  google-api-client
-  google-cloud-storage
-  haml
-  image_suckr
-  jquery-rails
-  jquery-ui-rails
+  faker (= 1.6.5)
+  figaro (= 1.1.1)
+  fog-google (= 0.5.2)
+  geocomplete_rails (= 1.7.0)
+  google-api-client (= 0.10.1)
+  google-cloud-storage (= 0.24.0)
+  haml (= 4.0.7)
+  image_suckr (= 0.2.0)
+  jquery-rails (= 4.1.1)
+  jquery-ui-rails (= 5.0.5)
   letter_opener
   newrelic_rpm
-  paperclip
-  papercrop
-  pg
-  pg_search
-  pry
-  puma
+  paperclip (= 5.0.0)
+  papercrop (= 0.3.0)
+  pg (= 0.18.4)
+  pg_search (= 1.0.6)
+  pry (= 0.10.4)
+  puma (= 3.4.0)
   rails (= 4.2.6)
-  rails-jquery-autocomplete
-  rails_12factor
-  redis
-  redis-rails
-  responders
-  rspec-rails
-  ruby-thumbor
+  rails-jquery-autocomplete (= 1.0.3)
+  rails_12factor (= 0.0.3)
+  redis (= 3.3.0)
+  redis-rails (= 5.0.1)
+  responders (= 2.2.0)
+  rspec-rails (= 3.5.1)
+  ruby-thumbor (= 2.0.1)
   sass-rails (~> 5.0)
   sqlite3
-  tether-rails
-  uglifier
-  urss
+  tether-rails (= 1.4.0)
+  uglifier (= 3.0.0)
+  urss (= 0.3.0)
+
+RUBY VERSION
+   ruby 2.2.1p85
 
 BUNDLED WITH
    1.14.6
