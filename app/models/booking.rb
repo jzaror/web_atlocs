@@ -18,20 +18,12 @@ class Booking < ActiveRecord::Base
 		return statusnames[self.read_attribute('status')]
 	end
 	def updateprice
-		puts "updating price..."
-		puts self.start_time
-		puts self.end_time
 		days=(self.end_time.to_date-self.start_time.to_date).to_i
-		puts "days: "+days.to_s
-		puts self.location.price.to_s
-		puts self.location.price*days
 		price=self.location.price*days
-		puts "price: "+price.to_s
 		self.price=price
 	end
 	def accept
 		if(self.status=="waiting")
-			puts self.location.user.full_name+" accepts booking request #"+self.id.to_s+" ($"+self.price.to_s+")"
 			self.update_attribute(:status,"accepted")
 			true
 		else
@@ -55,7 +47,6 @@ class Booking < ActiveRecord::Base
 		end
 	end
 	def confirm_payment
-		puts "confirming payment for #"+self.id.to_s
 		if(self.status=="accepted")
 			self.update_attribute(:status,3)
 			true

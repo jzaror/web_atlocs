@@ -17,8 +17,6 @@ class ApplicationController < ActionController::Base
   rescue_from CanCan::AccessDenied do |exception|
     url=request.fullpath
     session[:url_after_session]=url
-    puts url
-    # url=url_for(:controller => exception.subject.class.name.pluralize.downcase, :action => exception.action)
     redirect_to "/login", flash: {notice: "Para entrar a esta sección debes iniciar sesión"}
   end
 

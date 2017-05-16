@@ -59,7 +59,6 @@ class SessionsController < ApplicationController
 					render :text=>"Error"
 				end
 				UserMailer.request_password_token(@user.reset_password_token,params[:email]).deliver
-				puts @user.inspect
 			end
 		end
 	end

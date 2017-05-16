@@ -44,7 +44,6 @@ class BookingsController < ApplicationController
       @booking= Booking.new(:start_time=>start_date.to_time.beginning_of_day,:end_time=>end_date.to_time.end_of_day,:location=>Location.find(params[:location_id]))
       @booking.updateprice
       price=@booking.price
-      puts @booking.inspect
     end
     render :json=>{:success=>success,:price=>price,:message=>message}
   end
