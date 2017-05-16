@@ -6,5 +6,5 @@
 *.pid
 
 /tmp/letter_opener/*
-config/database.yml
 
+config/database.yml
