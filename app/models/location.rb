@@ -45,11 +45,9 @@ class Location < ActiveRecord::Base
 
 	def savephoto(upload_id)
 		upload=Upload.find(upload_id)
-		puts upload
 		if upload
 		  upload.update_columns(location_id: self.id)
 		  upload.save
-		  puts "foto asociada a: "+upload.location_id.to_s
 		  true
 		else
 		  false
@@ -67,7 +65,6 @@ class Location < ActiveRecord::Base
 	def approve
 		if (self.status=="submitted"||self.status=="archived")
 			self.update_attribute(:status,"approved")
-			puts "location #"+self.id.to_s+" approved"
 			true
 		else
 			false
@@ -75,13 +72,11 @@ class Location < ActiveRecord::Base
 	end
 	def archive
 		self.update_attribute(:status,"archived")
-		puts "location #"+self.id.to_s+" archived"
 		true
 	end
 	def submit
 		if self.user && self.status=="draft"
 			self.update_attribute(:status,"submitted")
-			puts self.user.full_name+" submitted location #"+self.id.to_s
 			true
 		else
 			false
@@ -139,7 +134,6 @@ class Location < ActiveRecord::Base
 			if @tag_names
 				self.tags=[]
 				@tag_names.split(/, ?/).each do |name|
-					puts "Adding tag: #{name}"
 					self.addtag(name)
 					#Tag.find_or_create_by(name: name) if name.present?
 				end

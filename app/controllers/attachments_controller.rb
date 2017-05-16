@@ -20,18 +20,13 @@ class AttachmentsController < ApplicationController
 	         {acl: "public-read"}
 	      ]
 	  }
-	  puts bucket.inspect
 	  obj = bucket.create_file params[:file].path, name
 		obj.acl.publicRead!
 		obj.refresh!
-    puts obj.inspect
 		attachment=Attachment.new
 		attachment.url=obj.public_url
 		attachment.location_id=@location.id
-		puts attachment.inspect
 		attachment.save
-		puts attachment.inspect
-		puts @location.inspect
 		render :json=>{:files=>{:name=>params[:file].original_filename,:url=>obj.public_url,:deleteUrl=>attachment.id.to_s}}
 	end
 end

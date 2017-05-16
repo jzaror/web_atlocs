@@ -22,7 +22,6 @@ class User < ActiveRecord::Base
   def claim(location)
     if(location.user_id==nil && self.id!=nil)
       location.update_attribute(:user_id,self.id)
-      puts self.full_name+" claimed location #"+location.id.to_s
       true
     else
       false
@@ -45,12 +44,10 @@ class User < ActiveRecord::Base
     end
   end
   def book(location,start_time,end_time)
-    puts "creating booking..."
     if(location.status=="approved" && start_time<end_time)
       booking=location.bookings.where("status>2").where("start_time<?",end_time).where("end_time<?",start_time).first
       if(booking)
         nil
-        puts "conflicts with previous booking"
       else
         booking=Booking.new
         booking.start_time=start_time
@@ -63,17 +60,13 @@ class User < ActiveRecord::Base
           REDIS.lpush("booking#{booking.code}",{:datetime=>Time.now.to_i,:text=>"Reserva creada",:action=>"created"}.to_json)
           booking.updateprice
           booking.save
-          puts booking.inspect
 
-          puts booking.user.full_name+" created booking #"+booking.code
           booking
         else
-          puts "error saving booking"
           nil
         end
       end
     else
-      puts "location not approved or invalid"
       nil
     end
   end

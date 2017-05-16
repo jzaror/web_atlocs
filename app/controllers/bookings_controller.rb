@@ -44,7 +44,6 @@ class BookingsController < ApplicationController
       @booking= Booking.new(:start_time=>start_date.to_time.beginning_of_day,:end_time=>end_date.to_time.end_of_day,:location=>Location.find(params[:location_id]))
       @booking.updateprice
       price=@booking.price
-      puts @booking.inspect
     end
     render :json=>{:success=>success,:price=>price,:message=>message}
   end
@@ -76,16 +75,12 @@ class BookingsController < ApplicationController
       @start_time=DateTime.parse(params[:start_date].to_s).beginning_of_day
       @end_time=DateTime.parse(params[:end_date].to_s).end_of_day
       @location=Location.find(params[:location_id])
-      puts @start_time
-      puts @end_time
       # checks start date < end date
       if(@start_time<@end_time)
         @booking=current_user.book(@location,@start_time,@end_time)
         @success=true if @booking
-        puts @success
       else
         @message="La fecha de inicio debe ser antes de la fecha de término"
-        puts @message
       end
     if @success==true
       UserMailer.booking_requested(@booking).deliver
