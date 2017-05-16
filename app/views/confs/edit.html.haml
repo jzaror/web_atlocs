@@ -1,0 +1,22 @@
+%section.main-content
+  .container
+    .row
+      = flash_messages
+      =render 'shared/adminmenu'
+      .col-md-10.col-md-offset-1
+        = form_tag(confs_path, method: "post", html: { class: "form-horizontal conf-form"}) do
+          .row
+            .col-md-9
+              %h2 Configuraciones generales
+            .col-md-3
+              = link_to "Volver", 'javascript:history.go(-1);', class: "btn btn-default btn-block btn-sm m-t-20 text-uppercase"
+          %table#configurations-table.table.admin-datatable.display.m-b-20
+            %tbody#configurations-fields
+              %tr.fields
+                %td
+                  Correo administrador
+                %td{:colspan => "2"}
+                  = email_field_tag 'admin_email', @conf['admin_email'], placeholder: "Ej: admin@atlocs.com", class: "form-control input-sm", required: true
+          .form-actions.row
+            .col-md-3.pull-right
+              = submit_tag "Guardar", class: "btn btn-success btn-block"

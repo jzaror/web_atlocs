@@ -71,4 +71,11 @@ Rails.application.routes.draw do
 	resources :collections
 	resources :locations
 
+	resources :confs, only: [:index] do
+    collection do
+      get :edit
+      post :update
+    end
+  end
+
 end
