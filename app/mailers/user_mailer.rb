@@ -28,7 +28,7 @@ class UserMailer < ApplicationMailer
 	def request_removal(location,user)
 		@location = location
 		@user = user
-		mail(to: "cdiaz@chilelocaciones.cl",subject: "Solicitud eliminación #{@location.title}")
+		mail(to: Conf.value('admin_email'),subject: "Solicitud eliminación #{@location.title}")
 	end
 
 	def booking_requested(booking)
@@ -82,7 +82,7 @@ class UserMailer < ApplicationMailer
 
 	def contact_form(email,body,subject)
 		@body=body
-		mail(to: "cdiaz@chilelocaciones.cl",subject: subject, from:email)
+		mail(to: Conf.value('admin_email'),subject: subject, from:email)
 	end
 
 	def request_password_token(code,email)

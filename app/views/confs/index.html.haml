@@ -1,0 +1,18 @@
+%section.main-content
+  .container
+    .row
+      = flash_messages
+      =render 'shared/adminmenu'
+    .col-md-10.col-md-offset-1
+      .row
+        .col-md-9
+          %h2 Configuraciones generales
+        .col-md-3
+          = link_to "Editar", edit_confs_path, class: "btn btn-warning btn-block btn-sm m-t-20 text-uppercase"
+      %table#configurations-table.table.table-condensed.admin-datatable.display.m-b-20
+        %tbody#configurations-fields
+          %tr.fields
+            %td
+              Correo administrador
+            %td{:colspan => "2"}
+              = @conf['admin_email']  
