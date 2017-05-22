@@ -19,7 +19,7 @@
                 %td= user.email
                 %td= user.phone
                 %td= link_to 'Show', '/users/'+user.id.to_s
-                %td= link_to 'Edit', '/users/'+user.id.to_s+'/edit'
+                %td= link_to 'Edit', '/users/edit'
                 %td= link_to 'Destroy', '/users/'+user.id.to_s, method: :delete, data: { confirm: 'Are you sure?' }
         %br/
         = link_to 'New user', '/signup'
