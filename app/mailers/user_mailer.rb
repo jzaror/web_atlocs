@@ -1,5 +1,5 @@
 class UserMailer < ApplicationMailer
-	default from: "AtLocs <atlocs.com@gmail.com>"
+	default from: "AtLocs <cdiaz@chilelocaciones.cl>"
 	layout 'mailer'
 
 	def welcome(user)
