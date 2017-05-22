@@ -65,8 +65,6 @@ class LocationsController < ApplicationController
   def new
       @location = Location.new
       @location.user_id=current_user.id
-      @location.save
-      redirect_to edit_location_path(@location, :newlocation=>true)
   end
 
   # GET /locations/1/edit
