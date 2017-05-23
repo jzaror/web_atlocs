@@ -40,6 +40,7 @@ gem 'airbrake', '5.4.1'
 group :development do
 	gem 'sqlite3'
 	gem 'letter_opener'
+	gem 'dotenv-rails'
 end
 #LOCATION META
 gem 'geocomplete_rails', '1.7.0'
