@@ -12,9 +12,7 @@ class AttachmentsController < ApplicationController
 	  storage = Google::Cloud::Storage.new :project => 'master-tuner-150318', :keyfile => 'google.json'
 	  @location=Location.find(params[:location])
 	  name = @location.id.to_s+"/"+SecureRandom.hex+File.extname(params[:file].original_filename)
-
 	  bucket = storage.bucket("atlocs")
-
 	  policy = {
 	      :conditions => [
 	         {acl: "public-read"}

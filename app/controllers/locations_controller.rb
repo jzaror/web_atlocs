@@ -65,6 +65,9 @@ class LocationsController < ApplicationController
   def new
       @location = Location.new
       @location.user_id=current_user.id
+      #TO DO (Sebastian) Cambiar forma de recibir attachments para poder quitar esto
+      @location.save
+      redirect_to edit_location_path(@location,newlocation: true)
   end
 
   # GET /locations/1/edit
@@ -145,7 +148,13 @@ class LocationsController < ApplicationController
 
   def destroy
     if @location.destroy
-      redirect_to '/admin/locations', notice: "La locación #{@location.title} fue destruida con exito."
+      if params[:from_user]
+        user_id = params[:from_user]
+        redirect_path = "/users/#{user_id}"
+      else
+        redirect_path = "/admin/locations"
+      end
+      redirect_to redirect_path, notice: "La locación #{@location.title} fue destruida con exito."
     end
   end
 
