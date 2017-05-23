@@ -3,7 +3,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <meta name="viewport" content="width=device-width">
-    <title>Registro-Bienvenido</title>
+    <title>Atlocs</title>
     <link href="https://fonts.googleapis.com/css?family=Chivo:700" rel="stylesheet">
   </head>
   <body style="-moz-box-sizing:border-box;-ms-text-size-adjust:100%;-webkit-box-sizing:border-box;-webkit-text-size-adjust:100%;Margin:0;background:#f3f3f3!important;box-sizing:border-box;color:grey;font-family:Helvetica,Arial,sans-serif;font-size:15px;font-weight:300;line-height:1.3;margin:0;min-width:100%;padding:0;text-align:left;width:100%!important">
@@ -93,7 +93,7 @@
                                           <tr style="padding:0;text-align:left;vertical-align:top">
                                             <th style="Margin:0;color:grey;font-family:Helvetica,Arial,sans-serif;font-size:15px;font-weight:300;line-height:1.3;margin:0;padding:0;text-align:left">
                                               <!-- LOGOOO -->
-                                              <img src="atlocs-logo.svg" style="-ms-interpolation-mode:bicubic;clear:both;display:block;height:40px;margin:0 auto;max-width:100%;outline:0;text-decoration:none;width:auto">
+                                              <img src="<%= ActionMailer::Base.asset_host + '/assets/atlocs-logo.svg' %>" style="-ms-interpolation-mode:bicubic;clear:both;display:block;height:40px;margin:0 auto;max-width:100%;outline:0;text-decoration:none;width:auto">
                                             </th>
                                           </tr>
                                         </tbody>
@@ -118,7 +118,6 @@
                         <tbody>
                           <tr style="padding:0;text-align:left;vertical-align:top">
                             <td height="16px" style="-moz-hyphens:auto;-webkit-hyphens:auto;Margin:0;border-collapse:collapse!important;color:grey;font-family:Helvetica,Arial,sans-serif;font-size:16px;font-weight:300;hyphens:auto;line-height:16px;margin:0;mso-line-height-rule:exactly;padding:0;text-align:left;vertical-align:top;word-wrap:break-word">
-                              &amp;nbsp;
                             </td>
                           </tr>
                         </tbody>
@@ -133,6 +132,12 @@
                                     <th style="Margin:0;color:grey;font-family:Helvetica,Arial,sans-serif;font-size:15px;font-weight:300;line-height:1.3;margin:0;padding:0;text-align:left">
                                       <!-- INFORMACIÓN -->
                                       <%= yield %>
+                                      <br />
+                                      <p>Atentamente,</p>
+                                      <br />
+                                      <br />
+                                      <h3>AtLocs</h3>
+                                      <h6>+569 9 673 9358</h6>
                                     </th>
                                     <th class="expander" style="Margin:0;color:grey;font-family:Helvetica,Arial,sans-serif;font-size:15px;font-weight:300;line-height:1.3;margin:0;padding:0!important;text-align:left;visibility:hidden;width:0"></th>
                                   </tr>
