@@ -1,10 +1,30 @@
+public/paperclip_files
+public/paperclip_files/*
+db/development.sqlite3
 
-*.cache
+.env
+Procfile
 
-*.log
+# Ignore bundler config
+/.bundle
 
-*.pid
+# Ignore the default SQLite database.
+/db/*.sqlite3
 
-/tmp/letter_opener/*
+# Ignore all logfiles and tempfiles.
+/log/*.log
+/tmp
 
+#rails specific
+*.sqlite3
 config/database.yml
+log/*
+tmp/*
+
+## generic files to ignore
+*~
+*.lock
+*.DS_Store
+*.swp
+*.out
+dump.rdb
