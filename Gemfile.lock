@@ -110,6 +110,10 @@ GEM
       fog-core
       nokogiri (~> 1.5, >= 1.5.11)
     formatador (0.2.5)
+    fullcalendar-rails (3.2.0.0)
+      jquery-rails (>= 4.0.5, < 5.0.0)
+      jquery-ui-rails (>= 5.0.2)
+      momentjs-rails (>= 2.9.0)
     geocomplete_rails (1.7.0)
       railties (>= 3.1)
     globalid (0.3.6)
@@ -172,6 +176,8 @@ GEM
     mimemagic (0.3.1)
     mini_portile2 (2.1.0)
     minitest (5.9.0)
+    momentjs-rails (2.17.1)
+      railties (>= 3.1)
     multi_json (1.12.1)
     multipart-post (2.0.0)
     newrelic_rpm (3.16.0.318)
@@ -331,6 +337,7 @@ DEPENDENCIES
   faker (= 1.6.5)
   figaro (= 1.1.1)
   fog-google (= 0.5.2)
+  fullcalendar-rails
   geocomplete_rails (= 1.7.0)
   google-api-client (= 0.10.1)
   google-cloud-storage (= 0.24.0)
@@ -339,6 +346,7 @@ DEPENDENCIES
   jquery-rails (= 4.1.1)
   jquery-ui-rails (= 5.0.5)
   letter_opener
+  momentjs-rails
   newrelic_rpm
   paperclip (= 5.0.0)
   papercrop (= 0.3.0)
@@ -364,4 +372,4 @@ RUBY VERSION
    ruby 2.2.1p85
 
 BUNDLED WITH
-   1.14.6
+   1.15.0
