@@ -9,6 +9,7 @@
 						%a{:href => "/"} Inicio
 					%li.breadcrumb-item
 						Reservas
+		=render 'calendar'
 		.table-responsive
 		- if @bookings.count>0
 			%table.table

@@ -149,7 +149,7 @@ class BookingsController < ApplicationController
 
   end
   def confirmpayment
-    
+
     @booking=Booking.find_by_code(params[:code])
     if @booking.confirm_payment
       UserMailer.payment_confirmed(@booking).deliver
