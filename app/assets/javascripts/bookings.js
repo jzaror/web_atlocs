@@ -54,5 +54,57 @@ function submitcomment(booking) {
 	.always(function() {
 		console.log("complete");
 	});
-	
+
 }
+
+
+$(document).on("page:load", function() {
+
+  function calendarFilter(){
+    var current_date = $('#calendar').fullCalendar('getView');
+    var start_date = current_date.start._d
+    var end_date = current_date.end._d
+    var new_data = {
+      start: moment(start_date).format("YYYY-MM-DD"),
+      end: moment(end_date).format("YYYY-MM-DD")
+    }
+    new_data['state'] = [];
+    new_data['category'] = [];
+
+    $('.category-btn').each(function(){
+      if(!$(this).hasClass('active')){
+        var paramValue = $(this).data('value');
+        var paramName = $(this).data('param-name');
+        new_data[paramName].push(paramValue);
+      }
+    });
+    $('#calendar').fullCalendar('removeEventSources')
+    $('#calendar').fullCalendar('refetchEvents')
+    $('#calendar').fullCalendar('addEventSource', '/bookings.json?' + decodeURIComponent($.param(new_data)))
+    $('#calendar').fullCalendar('refetchEvents');
+  };
+
+  $('.category-btn').on('click', function(){
+    category = $(this).data('param-name');
+    if ($(this).hasClass('active')){
+      $(this).removeClass('active')
+    }else{
+      $(this).addClass('active')
+    }
+    calendarFilter();
+  });
+
+  $('.all-btn').on('click', function(){
+    if ($(this).hasClass('active')){
+      $('.category-btn').each(function(){
+        $(this).addClass('active')
+      })
+    }else{
+      $('.category-btn').each(function(){
+        $(this).removeClass('active')
+      })
+    }
+    calendarFilter();
+  });
+
+});

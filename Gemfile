@@ -37,6 +37,11 @@ gem 'uglifier', '3.0.0'
 gem 'responders', '2.2.0'
 gem 'urss', '0.3.0'
 gem 'airbrake', '5.4.1'
+
+### ADDED ###
+gem 'fullcalendar-rails'
+gem 'momentjs-rails'
+
 group :development do
 	gem 'sqlite3'
 	gem 'letter_opener'

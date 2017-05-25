@@ -19,9 +19,14 @@
 //= require jquery-ui.min
 //= require jquery.fileupload.js
 //= require unslider/dist/js/unslider-min
+
+//= require moment
+//= require fullcalendar
+
 //= require interactions
 //= require locations
 //= require bookings
+//= require calendar
 //= require jquery.blueimp-gallery
 //= require bootstrap-image-gallery
 //= require jquery.jcrop
@@ -37,6 +42,7 @@
 //= require bootstrap-datepicker/locales/bootstrap-datepicker.es.js
 //= require jquery-ui/autocomplete
 //= require autocomplete-rails
+
 
 var QueryString = function () {
   // This function is anonymous, is executed immediately and
@@ -60,6 +66,8 @@ var QueryString = function () {
   }
     return query_string;
 }();
+
+$('#calendar').fullCalendar({});
 
 // //OPEN MODAL AFTER CREATING A LOCATION
 // if (QueryString.open=="newuser") {
