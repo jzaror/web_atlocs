@@ -49,7 +49,6 @@ gem 'devise'
 gem 'simple_form'
 gem 'omniauth-facebook'
 
-
 group :development do
 	gem 'sqlite3'
 	gem 'letter_opener'
