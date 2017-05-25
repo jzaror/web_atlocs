@@ -44,6 +44,8 @@ gem 'fullcalendar-rails'
 gem 'momentjs-rails'
 gem 'simple_form'
 
+gem 'fullcalendar-rails'
+gem 'momentjs-rails'
 
 group :development do
 	gem 'sqlite3'
