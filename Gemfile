@@ -39,6 +39,7 @@ gem 'urss', '0.3.0'
 gem 'airbrake', '5.4.1'
 
 ### ADDED ###
+gem 'jbuilder', '~> 2.5'
 gem 'fullcalendar-rails'
 gem 'momentjs-rails'
 
