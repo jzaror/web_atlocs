@@ -15,7 +15,11 @@ class BookingsController < ApplicationController
         @bookings=@bookings+location.bookings
       end
     end
-    respond_with @bookings
+    respond_to do |format|
+      format.html #@bookings
+      format.json {@bookings.to_json}
+    end
+    #respond_with @bookings
   end
 
   def new
