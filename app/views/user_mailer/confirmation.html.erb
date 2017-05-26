@@ -11,10 +11,10 @@
     viverra in ornare sed, auctor in purus. Proin vel semper sem, quis tristique dolor.
   </p>
 <% if @user.owner && @user.tenant %>
-  <%= button_to '#', 'Publicar' %>
-  <%= button_to '#', 'Explorar' %>
+  <%= link_to '#', 'Publicar' %>
+  <%= link_to '#', 'Explorar' %>
 <% elsif @user.tenant %>
-  <%= button_to '#', 'Publicar' %>
+  <%= link_to '#', 'Publicar' %>
 <% else %>
-  <%= button_to '#', 'Buscar' %>
+  <%= link_to '#', 'Buscar' %>
 <% end %>
