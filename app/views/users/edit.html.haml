@@ -32,12 +32,26 @@
               %label.col-md-4.control-label{:for => "textinput"} Telefono
               .col-md-4
                 =f.text_field :phone, {:class=>"textinput form-control input-md", :placeholder => "Telefono", :maxlength=> "9" }
+            / owner input
+            .form-group
+              %label.col-md-4.control-label{:for => "ownerinput"} ¿Eres propietario de un inmueble?
+              .col-md-4
+                =f.check_box :owner, {:class=>"textinput form-control input-md"}
+            / tenant input
+            .form-group
+              %label.col-md-4.control-label{:for => "tenantinput"} ¿Estás buscando locaciones para tu proyecto?
+              .col-md-4
+                =f.check_box :tenant, {:class=>"textinput form-control input-md"}
+
+
             / Password input
             .form-group
               %label.col-md-4.control-label{:for => "passwordinput"} Password
               .col-md-4
                 =f.password_field :password, {:class=>"textinput form-control input-md", :placeholder => "******"}
                 %span.help-block Ingresa un password solo si necesitas cambiarlo
+
+
             %h4.text-center Datos de deposito
             .form-group
               %label.col-md-4.control-label{:for => "selectinput"} Banco
@@ -51,6 +65,6 @@
 
             / Button
             .form-group
-              %label.col-md-4.control-label{:for => "singlebutton"} 
+              %label.col-md-4.control-label{:for => "singlebutton"}
               .col-md-4
                 %button#singlebutton.btn.btn-primary{:type => "submit"} Guardar usuario
