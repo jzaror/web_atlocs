@@ -1,0 +1,20 @@
+  <h1> ¡GRACIAS! </h1>
+  <h4><strong> Usted se ha registrado correctamente en Atlocs </strong></h4>
+  <p>
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus commodo rutrum sollicitudin.
+    In orci ante, vulputate non eros non, sagittis egestas lorem. Quisque a lorem aliquet, pretium mauris vitae,
+    sollicitudin nunc. Curabitur tincidunt nisi ut eros semper, quis pulvinar augue viverra.
+    Phasellus rhoncus eros lorem, sodales auctor nisi gravida id. Sed euismod velit et leo tempus,
+    id eleifend lectus lacinia. Mauris consequat sit amet mi nec efficitur. Nam sed lorem gravida dolor
+    ultricies sagittis quis luctus dolor. Etiam tristique, mauris sed rhoncus bibendum, justo quam efficitur
+    urna, in eleifend leo sem vitae urna. Fusce condimentum pulvinar volutpat. Donec dui augue,
+    viverra in ornare sed, auctor in purus. Proin vel semper sem, quis tristique dolor.
+  </p>
+<% if @user.owner && @user.tenant %>
+  <%= button_to '#', 'Publicar' %>
+  <%= button_to '#', 'Explorar' %>
+<% elsif @user.tenant %>
+  <%= button_to '#', 'Publicar' %>
+<% else %>
+  <%= button_to '#', 'Buscar' %>
+<% end %>
