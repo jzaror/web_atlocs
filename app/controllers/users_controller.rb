@@ -7,19 +7,15 @@ class UsersController < ApplicationController
 	end
 
 	def create
-		user=User.new
-		user.password=params[:password]
-		user.password_confirmation=params[:password_confirmation]
-		user.first_name=params[:first_name]
-		user.last_name=params[:last_name]
-		user.email=params[:email]
-		user.phone=params[:phone]
+		user=User.new(user_params)
+
 		if params[:phone].to_i>999999999
 			render :json=>{:success=>false,:message=>"Teléfono inválido"}
 		elsif user.save
 			flash[:notice]="Te has registrado en Atlocs! Ya puedes publicar o reservar locaciones!"
 			session[:user_id] = user.id
-			UserMailer.welcome(user).deliver
+			UserMailer.confirmation(user).deliver
+			#UserMailer.welcome(user).deliver
 			if session[:url_after_session]
 				url=session[:url_after_session]
 				session[:url_after_session]=nil
@@ -28,7 +24,7 @@ class UsersController < ApplicationController
 				redirect_to "/"
 			end
 		else
-			render :json=>{:success=>false,:message=>user.errors.full_messages.to_sentence}
+			render :edit, :json=>{:success=>false,:message=>user.errors.full_messages.to_sentence}
 		end
 	end
 
@@ -72,6 +68,8 @@ class UsersController < ApplicationController
 
 	# Only allow a trusted parameter "white list" through.
 	def user_params
-	  params.require(:user).permit(:first_name, :last_name, :email, :phone, :password, :deposit_bank, :deposit_account)
+	  params.require(:user).permit(:first_name, :last_name, :email, :phone,
+																 :password, :deposit_bank, :deposit_account,
+																 :password_confirmation, :owner, :tenant)
 	end
 end

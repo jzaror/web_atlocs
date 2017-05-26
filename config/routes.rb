@@ -16,6 +16,7 @@ Rails.application.routes.draw do
 	get '/nueva_locacion' => 'pages#new_location'
 	# Sessions
 	get '/signup' => 'sessions#register'
+	get '/signup2' => 'users#new'
 	post '/signup' => 'sessions#register'
 
 	get '/login' => 'sessions#new'
