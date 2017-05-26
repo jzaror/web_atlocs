@@ -22,11 +22,8 @@ Rails.application.routes.draw do
 	# Sessions
 	# get '/signup' => 'sessions#register'
 	# post '/signup' => 'sessions#register'
-	get '/signup' => 'users#new', as: 'new_session'
+	get '/signup' => 'users#new'
 	post '/users/new' => 'users#create'
-	get '/signup' => 'sessions#register'
-	get '/signup2' => 'users#new'
-	post '/signup' => 'sessions#register'
 
 	get '/login' => 'sessions#new'
 	post '/login' => 'sessions#create'

@@ -32,11 +32,11 @@
               %label.col-md-4.control-label{:for => "textinput"} Telefono
               .col-md-4
                 =f.text_field :phone, {:class=>"textinput form-control input-md", :placeholder => "Telefono", :maxlength=> "9" }
-            / owning input
+            / owner input
             .form-group
-              %label.col-md-4.control-label{:for => "owninginput"} ¿Eres propietario de un inmueble?
+              %label.col-md-4.control-label{:for => "ownerinput"} ¿Eres propietario de un inmueble?
               .col-md-4
-                =f.check_box :owning, {:class=>"textinput form-control input-md"}
+                =f.check_box :owner, {:class=>"textinput form-control input-md"}
             / tenant input
             .form-group
               %label.col-md-4.control-label{:for => "tenantinput"} ¿Estás buscando locaciones para tu proyecto?
