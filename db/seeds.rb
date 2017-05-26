@@ -43,6 +43,7 @@ end
 	location.price=rand(10000..250000)
 	location.collection_id=Collection.all.sample.id
 	location.user_id=User.order("RANDOM()").first.id
+	location.fee = 100
 	puts location.user_id
 	puts User.order("RANDOM()").first.id
 	location.save

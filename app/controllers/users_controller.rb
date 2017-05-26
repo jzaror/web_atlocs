@@ -45,7 +45,7 @@ class UsersController < ApplicationController
 		if @user.update_attributes(user_params)
 			redirect_to "/users/#{@user.id}", :flash => :success
 		else
-			redirect_to "/users/#{@user.id}/edit", :flash => :error
+			redirect_to "/users/edit", :flash => :error
 		end
 	end
 

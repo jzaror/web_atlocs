@@ -30,11 +30,12 @@ Rails.application.routes.draw do
 	# The priority is based upon order of creation: first created -> highest priority.
 	# See how all your routes lay out with "rake routes".
 	# Users
-	post 'users' => 'users#create'
-	get '/users/:id' => 'users#show'
-	get '/users/:id/edit' => 'users#edit'
+	resources :users, except: [:index, :edit, :update] do
+		collection do
+			get :edit
+		end
+	end
 	patch '/users/update' => 'users#update'
-	delete '/users/:id' => 'users#destroy'
 	root 'welcome#index'
 
 

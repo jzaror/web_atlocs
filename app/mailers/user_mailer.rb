@@ -1,4 +1,4 @@
-class UserMailer < ApplicationMailer
+class UserMailer < ActionMailer::Base
 	default from: "AtLocs <contacto@atlocs.com>"
 	layout 'mailer'
 
