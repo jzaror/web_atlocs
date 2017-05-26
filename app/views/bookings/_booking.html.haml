@@ -49,7 +49,6 @@
 					Ver Reserva
 				%button.btn.btn-info.dropdown-toggle.dropdown-toggle-split{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :type => "button"}
 					%span.sr-only Toggle Dropdown
-
 				%ul.dropdown-menu.dropdown-menu-right
 					- if current_user.status=="admin" && booking.status=="accepted"
 						%li.dropdown-item
@@ -61,12 +60,20 @@
 							= link_to "/bookings/#{booking.code}/accept" do
 								%i.mdi.mdi-lg.mdi-calendar-check
 								Aceptar Reserva
-					%li.dropdown-item
+					%li
+						= link_to booking.location do
+							%i.mdi.mdi-lg.mdi-calendar-remove
+							=booking.location.title
+					%li
+						= link_to edit_booking_path(booking) do
+							%i.mdi.mdi-lg.mdi-calendar-remove
+							Editar Reserva
+					%li
 						= link_to "/bookings/#{booking.code}/cancel" do
 							%i.mdi.mdi-lg.mdi-calendar-remove
 							Cancelar Reserva
-					- if can? :destroy, booking
-						%li.dropdown-item
-							= link_to "/bookings/#{booking.code}/delete" do
+					- if can? :destroy, booking.location
+						%li
+							= link_to location_path(booking.location), method: :delete do
 								%i.mdi.mdi-lg.mdi-delete
-								Eliminar Reserva
+								Eliminar propiedad

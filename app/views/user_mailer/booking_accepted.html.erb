@@ -59,7 +59,7 @@
 	</tr>
 	<tr>
 		<td width="30%">Locación</td>
-		<td width="70%"><%=link_to @location.title, "http://www.atlocs.com/locations/#{@location.id}"%></td>
+		<td width="70%"><%=link_to @location.title, location_url(@location)%></td>
 	</tr>
 	<tr>
 		<td width="30%">Fecha de inicio</td>
