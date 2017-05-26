@@ -13,9 +13,8 @@ class UsersController < ApplicationController
 			render :json=>{:success=>false,:message=>"Teléfono inválido"}
 		elsif @user.save
 			flash[:notice]="Te has registrado en Atlocs! Ya puedes publicar o reservar locaciones!"
-			session[:user_id] = @user.id
-			#SessionMailer.confirmation_instructions(@user, @user.confirmation_token).deliver_now
-			#UserMailer.confirmation(@user).deliver_now
+			session[:user_id] = user.id
+			UserMailer.confirmation(user).deliver
 			#UserMailer.welcome(user).deliver
 			if session[:url_after_session]
 				url=session[:url_after_session]
@@ -25,10 +24,7 @@ class UsersController < ApplicationController
 				redirect_to root_path
 			end
 		else
-			respond_to do |format|
-				format.html {render :edit}
-				format.json {render json: @user.errors, success: false, message: @user.errors.full_messages.to_sentence}
-			end
+			render :edit, :json=>{:success=>false,:message=>user.errors.full_messages.to_sentence}
 		end
 	end
 

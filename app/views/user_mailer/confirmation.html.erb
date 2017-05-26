@@ -10,11 +10,11 @@
     urna, in eleifend leo sem vitae urna. Fusce condimentum pulvinar volutpat. Donec dui augue,
     viverra in ornare sed, auctor in purus. Proin vel semper sem, quis tristique dolor.
   </p>
-<% if @user.owning && @user.tenant %>
-  <%= link_to 'Publicar', new_location_url %>
-  <%= link_to 'Explorar', locations_url %>
+<% if @user.owner && @user.tenant %>
+  <%= button_to '#', 'Publicar' %>
+  <%= button_to '#', 'Explorar' %>
 <% elsif @user.tenant %>
-  <%= link_to 'Publicar', new_location_url %>
+  <%= button_to '#', 'Publicar' %>
 <% else %>
-  <%= link_to 'Explorar', locations_url %>
+  <%= button_to '#', 'Buscar' %>
 <% end %>
