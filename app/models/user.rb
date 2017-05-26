@@ -4,12 +4,15 @@ class User < ActiveRecord::Base
   validates_format_of :email, with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i
   validates :email, uniqueness: true
   validates :password, :presence => true, :length => {:within => 6..40}, :if => :password
+  validate :atleast_one_is_checked
+
   #validate_uniqueness_of :email
   enum status: [ :banned, :shadowbanned, :unverified, :verified, :moderator, :admin ]
 
   has_secure_password
   before_create :add_unverified_status
   acts_as_paranoid
+
   def full_name
     if self.first_name && self.last_name
       self.first_name+" "+self.last_name
@@ -37,7 +40,7 @@ class User < ActiveRecord::Base
   end
   def notify(tag)
     if REDIS.get(tag+"_notifications_"+self.id.to_s)
-      
+
       REDIS.set(tag+"_notifications_"+self.id.to_s,(REDIS.get(tag+"_notifications_"+self.id.to_s).to_i+1).to_s)
     else
       REDIS.set(tag+"_notifications_"+self.id.to_s,"1")
@@ -54,7 +57,7 @@ class User < ActiveRecord::Base
         booking.end_time=end_time
         booking.location_id=location.id
         booking.user_id=self.id
-        
+
         booking.status="waiting"
         if booking.save
           REDIS.lpush("booking#{booking.code}",{:datetime=>Time.now.to_i,:text=>"Reserva creada",:action=>"created"}.to_json)
@@ -70,6 +73,11 @@ class User < ActiveRecord::Base
       nil
     end
   end
+
+  def atleast_one_is_checked
+    errors.add(:base, "Seleeciona al menos uno") unless owner || tenant
+  end
+
   private
     def add_unverified_status
       self.status="unverified"

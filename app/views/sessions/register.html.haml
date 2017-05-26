@@ -31,6 +31,13 @@
 							%label.sr-only{ :for => "password_confirmation" }
 								Confirmar Password
 							%input.form-control{ :type => "password", :name => "password_confirmation", :placeholder => "Password (confirmación)" }
+						.form-group
+							¿Eres propietario de un inmueble?
+							%input.form-control{ :type => "checkbox", :name => "owner" }
+						.form-group
+							¿Estás buscando locaciones para tu proyecto?
+							%input.form-control{ :type => "checkbox", :name => "tenant" }
+
 						%button.btn.btn-primary{ :type => "submit" }
 							Crear Cuenta
 							%i.mdi.mdi-arrow-right.mdi-lg.ml-2

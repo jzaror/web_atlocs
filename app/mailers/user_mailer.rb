@@ -7,6 +7,11 @@ class UserMailer < ApplicationMailer
 		mail(to: @user.email, subject: 'Bienvenido a Atlocs')
 	end
 
+	def confirmation(user)
+		@user = user
+		mail(to: @user.email, subject: 'Registrado correctamente')
+	end
+
 	def location_submitted(location)
 		@user = location.user
 		@location = location
