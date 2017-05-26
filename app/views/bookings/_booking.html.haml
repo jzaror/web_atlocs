@@ -6,18 +6,18 @@
 	/ Location Title
 	%td
 		= link_to booking.location.title, location_path(booking.location)
-		%small.help-block 
-			Desde el 
+		%small.help-block
+			Desde el
 			%b=booking.start_time.strftime("%d/%m/%Y")
-			hasta el 
+			hasta el
 			%b=booking.end_time.strftime("%d/%m/%Y")
 	/ Location Owner
 	%td
 		%b= number_to_currency(booking.price, :unit => "$", :precision => 0)
 		%small.help-block
 			= number_to_currency(booking.location.price, :unit => "$", :precision => 0)
-			x 
-			= booking.totaldays 
+			x
+			= booking.totaldays
 			día(s)
 	%td
 		%b= number_to_currency(booking.location.fee, :unit => "$", :precision => 0)
@@ -51,7 +51,7 @@
 					%span.caret
 					%span.sr-only Toggle Dropdown
 				%ul.dropdown-menu
-					
+
 					- if current_user.status=="admin" && booking.status=="accepted"
 						%li
 							= link_to "/bookings/#{booking.code}/payment/confirm" do
@@ -63,15 +63,19 @@
 								%i.mdi.mdi-lg.mdi-calendar-check
 								Aceptar Reserva
 					%li
+						= link_to booking.location do
+							%i.mdi.mdi-lg.mdi-calendar-remove
+							=booking.location.title
+					%li
+						= link_to edit_booking_path(booking) do
+							%i.mdi.mdi-lg.mdi-calendar-remove
+							Editar Reserva
+					%li
 						= link_to "/bookings/#{booking.code}/cancel" do
 							%i.mdi.mdi-lg.mdi-calendar-remove
 							Cancelar Reserva
-					- if can? :destroy, booking
+					- if can? :destroy, booking.location
 						%li
-							= link_to "/bookings/#{booking.code}/delete" do
+							= link_to location_path(booking.location), method: :delete do
 								%i.mdi.mdi-lg.mdi-delete
-								Eliminar Reserva
-		
-
-
-
+								Eliminar propiedad
