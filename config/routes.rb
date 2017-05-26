@@ -15,9 +15,10 @@ Rails.application.routes.draw do
 	get '/gracias' => 'pages#thanks'
 	get '/nueva_locacion' => 'pages#new_location'
 	# Sessions
-	get '/signup' => 'sessions#register'
-	get '/signup2' => 'users#new'
-	post '/signup' => 'sessions#register'
+	# get '/signup' => 'sessions#register'
+	# post '/signup' => 'sessions#register'
+	get '/signup' => 'users#new'
+	post '/users/new' => 'users#create'
 
 	get '/login' => 'sessions#new'
 	post '/login' => 'sessions#create'
