@@ -43,8 +43,12 @@ gem 'jbuilder', '~> 2.5'
 gem 'fullcalendar-rails'
 gem 'momentjs-rails'
 gem 'simple_form'
+<<<<<<< 59c7e2e40a7327b34741cacd11421f78556a8548
 gem 'fullcalendar-rails'
 gem 'momentjs-rails'
+=======
+
+>>>>>>> users new
 
 group :development do
 	gem 'sqlite3'
