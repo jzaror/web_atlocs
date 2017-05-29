@@ -10,6 +10,7 @@ class BookingsController < ApplicationController
     REDIS.set("booking_notifications_"+current_user.id.to_s,"0")
     @bookings=nil
     @bookings=Booking.where("status>0").order("id DESC")
+    @user = current_user
     unless current_user.status=="admin"
       @bookings=@bookings.where(:user_id=>current_user.id)
       current_user.locations.each do |location|
