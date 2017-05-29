@@ -3,7 +3,7 @@
 <p>Hola <%=@user.first_name%></p>
 <p>Te confirmamos que el pago por la reserva nº: <b><i>'<%=@booking.code%>'</i></b> que realizaste ha sido recibido con éxito. </p>
 <p>Desde ya puedes contactarte con el dueño de la locación en el siguiente link:</p>
-<p><%=link_to 'Tu reserva', 'http://www.atlocs.com/bookings/'+@booking.code%></p>
+<p><%=link_to 'Tu reserva', booking_url(@booking.code) %></p>
 
 <p>Quedamos atentos a cualquier duda o consulta que tengas con respecto a este proceso. Nuevamente te damos las gracias por confiar en AtLocs.com.</p>
 

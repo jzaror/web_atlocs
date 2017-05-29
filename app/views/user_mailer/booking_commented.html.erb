@@ -3,7 +3,7 @@
   <%= " ' #{@comment} ' " %>
 </em>
 <p>Te invitamos a revisarlos en el siguiente link</p>
-<p><%=link_to 'Tu reserva', 'http://www.atlocs.com/bookings/'+@booking.code%></p>
+<p><%=link_to 'Tu reserva', booking_url(@booking.code) %></p>
 <br>
 <hr>
 <p><strong>Cristian Díaz Reyes</strong></p>

@@ -113,14 +113,14 @@ class LocationsController < ApplicationController
   def update
     if @location.update(location_params)
       @location.submit
-      if params[:newlocation]
+      if @location.status == "submitted"
+        LocationMailer.new_location(@location).deliver
         UserMailer.location_submitted(@location).deliver
       end
       if params[:images]
         #===== The magic is here ;)
         params[:images].each do |image|
           @location.uploads.create(image: image)
-
         end
       end
       if params[:newlocation]
