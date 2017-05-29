@@ -22,6 +22,7 @@ class User < ActiveRecord::Base
       self.email
     end
   end
+
   def claim(location)
     if(location.user_id==nil && self.id!=nil)
       location.update_attribute(:user_id,self.id)
@@ -30,6 +31,7 @@ class User < ActiveRecord::Base
       false
     end
   end
+
   def notifications(tag)
     if REDIS.get(tag+"_notifications_"+self.id.to_s)
       REDIS.get(tag+"_notifications_"+self.id.to_s).to_i
@@ -38,6 +40,7 @@ class User < ActiveRecord::Base
       0
     end
   end
+
   def notify(tag)
     if REDIS.get(tag+"_notifications_"+self.id.to_s)
 
@@ -46,6 +49,7 @@ class User < ActiveRecord::Base
       REDIS.set(tag+"_notifications_"+self.id.to_s,"1")
     end
   end
+
   def book(location,start_time,end_time)
     if(location.status=="approved" && start_time<end_time)
       booking=location.bookings.where("status>2").where("start_time<?",end_time).where("end_time<?",start_time).first
@@ -77,6 +81,13 @@ class User < ActiveRecord::Base
   def atleast_one_is_checked
     errors.add(:base, "Seleeciona al menos uno") unless owner || tenant
   end
+
+  def self.confirm_token
+		loop do
+	  	token = SecureRandom.urlsafe_base64
+	     break token unless User.exists?(confirmation_token: token)
+		end
+	end
 
   private
     def add_unverified_status
