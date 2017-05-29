@@ -116,6 +116,13 @@ class User < ActiveRecord::Base
     self.tenant = true
   end
 
+  def self.confirm_token
+		loop do
+	  	token = SecureRandom.urlsafe_base64
+	     break token unless User.exists?(confirmation_token: token)
+		end
+	end
+
   private
     def add_unverified_status
       self.status="unverified"
