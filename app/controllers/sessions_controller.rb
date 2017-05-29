@@ -28,7 +28,7 @@ class SessionsController < ApplicationController
 						session[:url_after_session]=nil
 						redirect_to url
 					else
-						redirect_to "/"
+						redirect_to root_path
 					end
 				end
 			  }

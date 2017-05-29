@@ -1,7 +1,8 @@
 class BookingsController < ApplicationController
   respond_to :html, :xml, :json
-  load_and_authorize_resource
-  before_action :find_location
+  #load_and_authorize_resource
+  before_action :find_booking, only: [:edit]
+  before_action :find_location, except: [:edit]
   skip_before_action :verify_authenticity_token
 
 
@@ -9,6 +10,7 @@ class BookingsController < ApplicationController
     REDIS.set("booking_notifications_"+current_user.id.to_s,"0")
     @bookings=nil
     @bookings=Booking.where("status>0").order("id DESC")
+    @user = current_user
     unless current_user.status=="admin"
       @bookings=@bookings.where(:user_id=>current_user.id)
       current_user.locations.each do |location|
@@ -115,7 +117,7 @@ class BookingsController < ApplicationController
 
 
   def edit
-    @booking = Booking.find_by_code(params[:id])
+    #@booking = Booking.find_by_code(params[:id])
   end
 
   def update
@@ -178,11 +180,15 @@ class BookingsController < ApplicationController
       end
   end
 
+  def find_booking
+    @booking = Booking.find_by_id(params[:id].to_i)
+    @location = @booking.location
+  end
+
   def find_location
     if params[:location_id]
       @location = Location.find_by_id(params[:location_id])
     end
   end
-
 
 end

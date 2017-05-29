@@ -30,6 +30,8 @@ end
 	user.avatar_url=Faker::Avatar.image
 	user.password_confirmation=password
 	user.email=Faker::Internet.email
+	user.owner=true
+	user.tenant=true
 	user.save
 end
 10.times do
@@ -51,7 +53,7 @@ end
 	rand(0..10).times do
 		location.addtag(tagnames.sample)
 	end
-	
+
 	rand(8..16).times do
 		# adds random images from the interwebs
 
@@ -74,6 +76,8 @@ admin.email="hello@mego.cl"
 admin.first_name=Faker::Name.first_name
 admin.last_name=Faker::Name.last_name
 admin.avatar_url=Faker::Avatar.image
+admin.owner=true
+admin.tenant=true
 admin.save
 admin.update_attribute(:status,"admin")
 # approves 16 locations
@@ -113,4 +117,3 @@ Booking.order("RANDOM ()").each do |booking|
 	end
 	i=i+1
 end
-

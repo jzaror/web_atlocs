@@ -2,7 +2,7 @@
 
 <p>Gracias por hacer tu reserva a través de AtLocs.com. Estamos a la espera de la aprobación por parte del propietario para indicarte los próximos pasos a seguir.</p>
 <p>El codigo de tu reserva es el: <%=@booking.code.upcase%></p>
-<p><%=link_to 'Ir a mis reservas', 'http://www.atlocs.com/bookings/'+@booking.code%></p>
+<p><%=link_to 'Ir a mis reservas', bookings_url %></p>
 <p>Saludos y nos comunicamos contigo a la brevedad.</p>
 
 <br>

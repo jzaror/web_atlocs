@@ -41,6 +41,7 @@ Rails.application.routes.draw do
 
 	# bookings
 	get 'bookings/new' => 'bookings#new'
+	get 'bookings/:id/edit', to: 'bookings#edit', as: 'edit_booking'
 	post 'bookings/price' => 'bookings#price'
 	get 'bookings/:code' => 'bookings#show'
 	get 'bookings/:code/payment/confirm' => "bookings#confirmpayment"
@@ -54,7 +55,7 @@ Rails.application.routes.draw do
 	# locations
 	get 'locations/:id/approve' => 'locations#approve'
 	get 'locations/:id/archive' => 'locations#archive'
-	get 'locations/:id/destroy' => 'locations#destroy'
+	delete 'locations/:id/destroy' => 'locations#destroy'
 	get 'locations/:id/re_send_reject_email' => 'locations#re_send_reject_email'
 	post 'locations/:id/frontpage' => 'locations#frontpage'
 	get 'locations/:id/show_archive_modal' => 'locations#show_archive_modal'

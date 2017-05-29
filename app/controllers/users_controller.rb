@@ -21,7 +21,7 @@ class UsersController < ApplicationController
 				session[:url_after_session]=nil
 				redirect_to url
 			else
-				redirect_to "/"
+				redirect_to root_path
 			end
 		else
 			render :edit, :json=>{:success=>false,:message=>user.errors.full_messages.to_sentence}
