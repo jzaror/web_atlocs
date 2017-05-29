@@ -17,12 +17,11 @@
 					%tr
 						-if current_user && current_user.status=="admin"
 							%th Usuario
-						%th Locación Reservada
-						%th Precio Acordado
-						%th Costo de reserva
-						%th Estado
-						%th Dueño
-						%th.text-right Acciones
+						%th N° de Reserva
+						%th Fecha
+						%th Titulo
+						%th Detalles
+						%th
 				=render @bookings
 		- else
 			%h2
