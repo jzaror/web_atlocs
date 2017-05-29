@@ -1,6 +1,6 @@
 class User < ActiveRecord::Base
   has_many :locations, dependent: :destroy
-  has_many :bookings
+  has_many :bookings, dependent: :destroy
   validates_format_of :email, with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i
   validates :email, uniqueness: true
   validates :password, :presence => true, :length => {:within => 6..40}, :if => :password
