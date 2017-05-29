@@ -26,6 +26,8 @@
 							Ver Reserva
 					%a{"data-toggle"=>"modal", "data-target"=>"#bookingModal", :href => "/bookings/new?id="+@location.id.to_s}
 						Reservar esta locación nuevamente
+					.user-info
+						= link_to "Ver perfil #{@location.user.full_name}", user_path(@location.user), method: :get
 				-else
 					.booking.pt-3
 						- if (can? :update, @location)
@@ -36,6 +38,8 @@
 							%a.btn.btn-primary.btn-block.btn-lg{:href => "/bookings/new?id="+@location.id.to_s}
 								%i.mdi.mdi-lg.mdi-calendar-clock
 								Reservar Locación
+							.user-info
+								= @location.user.full_name
 
 						%a.btn.btn-secondary.btn-block{:href => "/contacto?subject=Consulta por Locación "+@location.id.to_s, :role => "button"}
 							%i.mdi.mdi-lg.mdi-information-outline
