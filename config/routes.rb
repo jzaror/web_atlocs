@@ -71,6 +71,7 @@ Rails.application.routes.draw do
 	get '/admin/collections' => 'collections#admin'
 	get '/admin/locations' => 'locations#admin'
 	get '/admin/users' => 'users#admin'
+	get '/admin/bookings' => 'bookings#admin'
 
 	resources :collections
 	resources :locations

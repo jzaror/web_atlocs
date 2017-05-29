@@ -5,6 +5,9 @@ class BookingsController < ApplicationController
   before_action :find_location, except: [:edit]
   skip_before_action :verify_authenticity_token
 
+  def admin
+    @bookings = Booking.all
+  end
 
   def index
     REDIS.set("booking_notifications_"+current_user.id.to_s,"0")
@@ -58,7 +61,6 @@ class BookingsController < ApplicationController
     @booking.accept
     UserMailer.booking_accepted(@booking).deliver
     REDIS.lpush("booking#{@booking.code}",{:datetime=>Time.now.to_i,:text=>"Reserva aceptada por "+@booking.location.user.full_name,:action=>"accepted"}.to_json)
-
     redirect_to "/bookings", :notice=>"Reserva aceptada"
   end
   def cancel
