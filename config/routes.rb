@@ -11,7 +11,7 @@ Rails.application.routes.draw do
 	get '/contacto' => 'pages#contact'
 	post '/contacto' => 'pages#contact'
 	get '/faq' => 'pages#faq'
-	get '/terminos-y-condiciones' => 'pages#terms-and-conditions'
+	get '/terminos-y-condiciones' => 'pages#terms-and-conditions', as: 'terms_conditions'
 	get '/gracias' => 'pages#thanks'
 	get '/nueva_locacion' => 'pages#new_location'
 	# Sessions
@@ -25,7 +25,7 @@ Rails.application.routes.draw do
 	get '/logout' => 'sessions#destroy'
 	get '/help/password' => 'sessions#requestpasswordupdate'
 	post '/help/password' => 'sessions#requestpasswordupdate'
-	get '/help/updatepassword/:code' => 'sessions#updatepassword'
+	get '/help/updatepassword/:code' => 'sessions#updatepassword', as: 'update_password'
 	post '/help/updatepassword/:code' => 'sessions#updatepassword'
 	# The priority is based upon order of creation: first created -> highest priority.
 	# See how all your routes lay out with "rake routes".
@@ -43,7 +43,7 @@ Rails.application.routes.draw do
 	get 'bookings/new' => 'bookings#new'
 	get 'bookings/:id/edit', to: 'bookings#edit', as: 'edit_booking'
 	post 'bookings/price' => 'bookings#price'
-	get 'bookings/:code' => 'bookings#show'
+	get 'bookings/:code' => 'bookings#show', as: 'booking'
 	get 'bookings/:code/payment/confirm' => "bookings#confirmpayment"
 	get 'bookings/:code/accept' => 'bookings#accept'
 	get 'bookings/:code/cancel' => 'bookings#cancel'
@@ -53,7 +53,7 @@ Rails.application.routes.draw do
 	get "bookings" => "bookings#index"
 
 	# locations
-	get 'locations/:id/approve' => 'locations#approve'
+	get 'locations/:id/approve' => 'locations#approve', as: 'approve_location'
 	get 'locations/:id/archive' => 'locations#archive'
 	delete 'locations/:id/destroy' => 'locations#destroy'
 	get 'locations/:id/re_send_reject_email' => 'locations#re_send_reject_email'
