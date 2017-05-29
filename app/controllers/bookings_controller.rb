@@ -5,6 +5,9 @@ class BookingsController < ApplicationController
   before_action :find_location, except: [:edit]
   skip_before_action :verify_authenticity_token
 
+  def admin
+    @bookings = Booking.all
+  end
 
   def index
     REDIS.set("booking_notifications_"+current_user.id.to_s,"0")
