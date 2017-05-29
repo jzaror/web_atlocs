@@ -57,11 +57,17 @@ class UsersController < ApplicationController
 		@bookings=@user.bookings.all
 	end
 
-	def destroy
+	def request_destroy
 		UserMailer.delete_user(@user).deliver
+		UserMailer.request_destroy(@user).deliver
+		flash[:notice] = "Solicitud enviada"
+		redirect_to @user
+	end
+
+	def destroy
 		@user.destroy
-		redirect_to "/admin/users/"
 		flash[:notice]="Usuario eliminado"
+		redirect_to "/admin/users/"
 	end
 
 	private

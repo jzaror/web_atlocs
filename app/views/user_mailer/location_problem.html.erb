@@ -6,7 +6,7 @@
 	<p><strong> <%= @location.reject_reason %> </strong></p>
 <% end %>
 <p>Te invitamos a revisar la información que entregaste sobre tu locación y verificar que todo este en norma</p>
-<p><%=link_to @location.title, "http://atlocs.com/locations/#{@location.id}"%></p>
+<p><%=link_to @location.title, location_url(@location) %></p>
 <p>Al respecto, nuestro equipo se pondrá en contacto contigo para solucionar este asunto.</p>
 
 <br>

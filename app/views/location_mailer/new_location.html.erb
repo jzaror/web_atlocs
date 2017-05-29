@@ -1,0 +1,3 @@
+<p><%= @location.user.full_name %> ha solicitado agregar una nueva locación. </p>
+<p>Los detalles de la locación se encuentran disponibles <%= link_to 'aquí', location_url(@location) %> </p>
+<p><%= link_to 'Aprobar locación', approve_location_url(@location) %> </p>
