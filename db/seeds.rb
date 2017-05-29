@@ -77,9 +77,8 @@ admin.email="hello@mego.cl"
 admin.first_name=Faker::Name.first_name
 admin.last_name=Faker::Name.last_name
 admin.avatar_url=Faker::Avatar.image
-#admin.owning=true
-#admin.tenant=true
-admin.status = 'admin'
+admin.owner=true
+admin.tenant=true
 admin.save
 admin.update_attribute(:status,"admin")
 # approves 16 locations
