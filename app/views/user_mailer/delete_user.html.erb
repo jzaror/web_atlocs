@@ -6,10 +6,8 @@
 <% end %>
 <% if @user.locations %>
   <% @user.locations.each do |location| %>
-    <h3><%= location.title %>:</h3>
-    <ul>
-      <li> ID Locación: <%= location.id %> </li>
-      <li> Dirección: <%= "#{location.address}, #{location.city}" %> </li>
-    </ul>
+    <p> ID Locación: <%= location.id %> </p>
+    <p> Título: <%= location.title %> </p>
+    <p> Dirección: <%= "#{location.address}, #{location.city}" %> </p>
   <% end %>
 <% end %>
