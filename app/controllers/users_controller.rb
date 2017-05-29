@@ -65,7 +65,6 @@ class UsersController < ApplicationController
 	end
 
 	def destroy
-		UserMailer.delete_user(@user).deliver
 		@user.destroy
 		flash[:notice]="Usuario eliminado"
 		redirect_to "/admin/users/"
