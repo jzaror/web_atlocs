@@ -85,4 +85,9 @@ class UserMailer < ActionMailer::Base
 		@code=code
 		mail(to: email, subject: 'Tu link para reestablecer tu cuenta')
 	end
+
+	def delete_user(user)
+    @user = user
+		mail(to: Conf.value('admin_email'), subject: 'Usuario quiere borrar su cuenta')
+  end
 end

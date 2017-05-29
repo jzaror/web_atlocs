@@ -24,7 +24,10 @@ class UsersController < ApplicationController
 				redirect_to root_path
 			end
 		else
-			render :edit, :json=>{:success=>false,:message=>user.errors.full_messages.to_sentence}
+			respond_to do |format|
+				format.html {render :edit}
+				format.json {render json: @user.errors, success: false, message: @user.errors.full_messages.to_sentence}
+			end
 		end
 	end
 
@@ -55,6 +58,7 @@ class UsersController < ApplicationController
 	end
 
 	def destroy
+		UserMailer.delete_user(@user).deliver
 		@user.destroy
 		redirect_to "/admin/users/"
 		flash[:notice]="Usuario eliminado"

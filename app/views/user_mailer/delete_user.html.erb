@@ -1,0 +1,13 @@
+<p> El usuario <%= @user.full_name %> quiere borrar su cuenta </p>
+<p> ID: <%= @user.id %> </p>
+<p> Email: <%= @user.email %> </p>
+<% if @user.phone %>
+  <p> Teléfono: <%= @user.phone %></p>
+<% end %>
+<% if @user.locations %>
+  <% @user.locations.each do |location| %>
+    <p> ID Locación: <%= location.id %> </p>
+    <p> Título: <%= location.title %> </p>
+    <p> Dirección: <%= "#{location.address}, #{location.city}" %> </p>
+  <% end %>
+<% end %>
