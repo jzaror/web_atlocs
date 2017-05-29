@@ -1,0 +1,28 @@
+#contactmodal.modal.fade{"aria-hidden" => "true", "aria-labelledby" => "exampleModalLabel", :role => "dialog", :tabindex => "-1"}
+  .modal-dialog{:role => "document"}
+    .modal-content
+      .modal-header
+        %h5#exampleModalLabel.modal-title Contáctanos
+        %button.close{"aria-label" => "Close", "data-dismiss" => "modal", :type => "button"}
+          %span{"aria-hidden" => "true"} ×
+      .modal-body
+        .row
+          =form_tag('/contacto', method: :post, class: "form-horizontal col-sm-12") do
+            %input{:type=>"hidden",:value=>form_authenticity_token,:name=>"authenticity_token"}
+            .form-group
+              %label E-mail
+              %input.form-control{:name => "email", :type => "email",:value=>params[:email]}
+            .form-group
+              %label Número de celular
+              %input.form-control{:name => "cellphone", :type => "text", :value=>params[:cellphone]}
+            .form-group
+              %input.form-control{:name => "subject", :type => "text",:value => "Consulta locacion id: #{@location.id}", :type => "hidden"}
+              %input.form-control{:name => "location_id", :type => "text", :value=>@location.id, :type => "hidden"}
+            .form-group
+              %label Mensaje
+              %textarea.form-control{:name => "body"}
+                =params[:body]
+            .form-action
+              %button.btn.btn-primary{:type => "submit"}
+                Enviar
+                %i.mdi.mdi-send.mdi-lg

@@ -55,7 +55,10 @@
 						= flash[:error]
 						%strong
 							= @location.reject_reason if @location.reject_reason
+						="Puedes"
 						= link_to 'Corregir locación',edit_location_path(@location.id)
+						= "o"
+						= link_to 'Contactarnos',"/locations/#{@location.id}/show_contact_modal", remote: true
 				- if flash[:warning]
 					#warning.mt-3.alert.alert-warning{:role => "alert"}
 						%button.close{"aria-label" => "Close", "data-dismiss" => "alert", :type => "button"}
@@ -188,3 +191,4 @@
 								}
 							});
 #archiveModalHolder
+#contactModalHolder

@@ -55,6 +55,7 @@ Rails.application.routes.draw do
 	get 'locations/:id/re_send_reject_email' => 'locations#re_send_reject_email'
 	post 'locations/:id/frontpage' => 'locations#frontpage'
 	get 'locations/:id/show_archive_modal' => 'locations#show_archive_modal'
+	get 'locations/:id/show_contact_modal' => 'locations#show_contact_modal'
 	put "locations/:id/feature_image" => "locations#feature_image"
 
 	# attachments

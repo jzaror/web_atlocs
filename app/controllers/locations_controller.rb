@@ -77,6 +77,9 @@ class LocationsController < ApplicationController
   def show_archive_modal
   end
 
+  def show_contact_modal
+  end
+
   def re_send_reject_email
     if @location.user
       UserMailer.location_problem(@location).deliver
