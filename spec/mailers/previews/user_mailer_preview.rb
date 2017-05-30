@@ -1,5 +1,5 @@
 class UserMailerPreview < ActionMailer::Preview
-	
+
 	def welcome
 		UserMailer.welcome(User.first)
 	end
@@ -13,7 +13,7 @@ class UserMailerPreview < ActionMailer::Preview
 	end
 
 	def location_problem
-		UserMailer.location_approved(Location.first)
+		UserMailer.location_problem(Location.first)
 	end
 
 	def request_removal
