@@ -42,8 +42,8 @@ gem 'airbrake', '5.4.1'
 gem 'jbuilder', '~> 2.5'
 gem 'fullcalendar-rails'
 gem 'momentjs-rails'
-gem 'simple_form'
 gem 'devise'
+gem 'simple_form'
 
 
 group :development do

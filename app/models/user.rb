@@ -80,9 +80,8 @@ class User < ActiveRecord::Base
     end
   end
 
+  errors.add(:base, "Selecciona al menos uno") unless owner || tenant
   def atleast_one_is_checked
-    puts owner, tenant, '#########################################'
-    errors.add(:base, "Seleeciona al menos uno") unless owner || tenant
   end
 
   def self.confirm_token

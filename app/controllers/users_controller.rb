@@ -7,14 +7,15 @@ class UsersController < ApplicationController
 	end
 
 	def create
-		user=User.new(user_params)
+		@user=User.new(user_params)
 
 		if params[:phone].to_i>999999999
 			render :json=>{:success=>false,:message=>"Teléfono inválido"}
-		elsif user.save
+		elsif @user.save
 			flash[:notice]="Te has registrado en Atlocs! Ya puedes publicar o reservar locaciones!"
-			session[:user_id] = user.id
-			UserMailer.confirmation(user).deliver
+			session[:user_id] = @user.id
+			#SessionMailer.confirmation_instructions(@user, @user.confirmation_token).deliver_now
+			#UserMailer.confirmation(@user).deliver_now
 			#UserMailer.welcome(user).deliver
 			if session[:url_after_session]
 				url=session[:url_after_session]
