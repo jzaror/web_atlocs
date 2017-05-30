@@ -4,7 +4,9 @@ class User < ActiveRecord::Base
   validates_format_of :email, with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i
   validates :email, uniqueness: true
   validates :password, :presence => true, :length => {:within => 6..40}, :if => :password
-  validate :atleast_one_is_checked
+  devise :confirmable
+
+  #validate :atleast_one_is_checked
 
   #validate_uniqueness_of :email
   enum status: [ :banned, :shadowbanned, :unverified, :verified, :moderator, :admin ]
@@ -79,6 +81,7 @@ class User < ActiveRecord::Base
   end
 
   def atleast_one_is_checked
+    puts owner, tenant, '#########################################'
     errors.add(:base, "Seleeciona al menos uno") unless owner || tenant
   end
 
