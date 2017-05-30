@@ -89,6 +89,64 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .navbar {
+	.nav-item {
+		.nav-link {
+			color: lighten($brand-primary, 40%);
+			font-size: 13px;
+	    border-right: 1px solid rgba(148, 146, 169, .49);
+	    margin-top: 4px;
+			position: relative;
+		}
+		&:last-of-type {
+			.nav-link {
+		    border-right: 1px solid transparent;
+			}
+		}
+		.user-btn {
+			height: 33px;
+    	width: 50px;
+		}
+		.dropdown-menu {
+			top: 114%;
+			padding: 0;
+			li {
+				a {
+					color: lighten($brand-primary, 40%);
+					padding: 5px;
+					display: block;
+					font-size: 13px;
+					// box-shadow: 0px 0px 5px 0px rgba(124,123,123, .75);
+					span {
+						padding: 5px;
+						margin-bottom: -5px;
+						margin-top: -5px;
+						margin-left: -5px;
+						margin-right: 5px;
+						height: 40px;
+						width: 40px;
+						display: inline-block;
+						background:transparentize(black, .9);
+						i {
+							color: lighten($brand-primary, 40%);
+							margin-left: 4px;
+							font-size: 20px;
+						}
+					}
+					&:hover {
+						text-decoration: none;
+						background-color: transparentize(black, .9);
+					}
+				}
+			}
+		}
+	}
+	.navbar-btn {
+		font-size: 13px;
+		i {
+			font-size: 20px;
+		}
+	}
+
 	.btn-default {
 		color:$brand-primary;
 	}
@@ -177,12 +235,13 @@ $main-pad-size:1.5rem;
 }
 
 .user-avatar {
-	$size:40px;
+  position: absolute;
+  top: 1px;
+	$size:30px;
 	width:$size;
 	height:$size;
 	border-radius:$size;
 	background:transparentize(black, .9);
-	position: relative;
 	.mdi {
 		position: absolute;
 		width:100%;
