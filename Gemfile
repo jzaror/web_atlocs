@@ -43,6 +43,7 @@ gem 'jbuilder', '~> 2.5'
 gem 'fullcalendar-rails'
 gem 'momentjs-rails'
 gem 'simple_form'
+gem 'devise'
 
 
 group :development do

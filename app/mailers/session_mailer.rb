@@ -1,0 +1,2 @@
+class SessionMailer < ApplicationMailer
+end
