@@ -17,61 +17,107 @@
 						%li.nav-item#loginlink
 							%a.nav-link{:href => "/signup"}
 								Regístrate
+
 					-if current_user
 						%li.nav-item
 							= link_to("Barrios y Colecciones", collections_path, :class=>"nav-link")
 						%li.nav-item
 							= link_to("Locaciones", locations_path, :class=>"nav-link")
 
-					%li.nav-item.dropdown
-						%a#navbarDropdownMenuLink.nav-link.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :href => "http://example.com"}
-							Ayuda
-						.dropdown-menu.dropdown-menu-right{"aria-labelledby" => "navbarDropdownMenuLink"}
-							%a.dropdown-item{:href => "/faq"} FAQ
-							%a.dropdown-item{:href => "/terminos-y-condiciones"} Términos y Condiciones
-							%a.dropdown-item{:href => "/contacto"} Contacto
+					%form.form-inline.my-2.my-lg-0{ :method=>"get", :action=>"/locations/new/" }
+						%input{:type=>"hidden", :name=>"newlocation", :value=>"true"}
+						%button.btn.btn-secondary.text-primary.navbar-btn{ :type=>"submit"}
+							%i.mdi.mdi-lg.mdi-cloud-upload
+							Publica tu Locación
 
+					%li.nav-item#loginlink
+						%a.nav-link{:href => "/"}
+							Contacto
 
-				%form.form-inline.my-2.my-lg-0{ :method=>"get", :action=>"/locations/new/" }
-					%input{:type=>"hidden", :name=>"newlocation", :value=>"true"}
-					%button.btn.btn-secondary.text-primary.navbar-btn{ :type=>"submit"}
-						%i.mdi.mdi-lg.mdi-cloud-upload
-						Publica tu Locación
-
-				-if current_user
-					%ul.nav.navbar-nav.current-user
-						%li.dropdown
-							%a.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :href => "#", :role => "button"}
+					-if current_user
+						%li.nav-item.dropdown
+							%a.nav-link.user-btn{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :href => "#", :role => "button"}
 								.user-avatar.inline
 									%i.mdi.mdi-account.mdi-lg
 									- if(current_user.notifications("location")+current_user.notifications("booking"))>0
 										.badge
 											= current_user.notifications("location")+current_user.notifications("booking")
-								%span.caret
-							%ul.dropdown-menu.dropdown-menu-right.text-sm-right
-								%li.dropdown-header
-									Hola
-									%strong #{current_user.first_name}
+							%ul.dropdown-menu.dropdown-menu-right.bg-primary
 								%li
 									%a{:href => "/users/"+current_user.id.to_s}
-										%i.mdi.mdi-lg.mdi-account
+										%span
+											%i.mdi.mdi-account
 										Mi Perfil
 										- if current_user.notifications("location")>0
 											.badge
 												=current_user.notifications("location")
 								%li
 									%a{:href => "/bookings"}
-										%i.mdi.mdi-lg.mdi-calendar-multiple
+										%span
+											%i.mdi.mdi-calendar-multiple
 										Mis Reservas
 										- if current_user.notifications("booking")>0
 											.badge
 												=current_user.notifications("booking")
-
-								%li.divider
 								%li
 									%a{:href => "/logout"}
-										%i.mdi.mdi-lg.mdi-close
+										%span
+											%i.mdi.mdi-close
 										Salir
+
+
+
+					%li.nav-item.dropdown{"style" => "width: 48px;"}
+						%a#navbarDropdownMenuLink.nav-link{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :href => "http://example.com"}
+							.user-avatar.inline
+								%i.mdi.mdi-lg.mdi-help
+						%ul.dropdown-menu.dropdown-menu-right.bg-primary{"aria-labelledby" => "navbarDropdownMenuLink"}
+							%li
+								%a{:href => "/faq"}
+									FAQ
+							%li
+								%a{:href => "/terminos-y-condiciones"}
+									Términos y Condiciones
+							%li
+								%a{:href => "/contacto"}
+									Contacto
+
+
+
+				-# -if current_user
+				-# 	%ul.nav.navbar-nav.current-user
+				-# 		%li.dropdown
+				-# 			%a.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :href => "#", :role => "button"}
+				-# 				.user-avatar.inline
+				-# 					%i.mdi.mdi-account.mdi-lg
+				-# 					- if(current_user.notifications("location")+current_user.notifications("booking"))>0
+				-# 						.badge
+				-# 							= current_user.notifications("location")+current_user.notifications("booking")
+				-# 				%span.caret
+				-# 			%ul.dropdown-menu.dropdown-menu-right.text-sm-right
+				-# 				%li.dropdown-header
+				-# 					Hola
+				-# 					%strong #{current_user.first_name}
+				-# 				%li
+				-# 					%a{:href => "/users/"+current_user.id.to_s}
+				-# 						%i.mdi.mdi-lg.mdi-account
+				-# 						Mi Perfil
+				-# 						- if current_user.notifications("location")>0
+				-# 							.badge
+				-# 								=current_user.notifications("location")
+				-# 				%li
+				-# 					%a{:href => "/bookings"}
+				-# 						%i.mdi.mdi-lg.mdi-calendar-multiple
+				-# 						Mis Reservas
+				-# 						- if current_user.notifications("booking")>0
+				-# 							.badge
+				-# 								=current_user.notifications("booking")
+				-#
+				-# 				%li.divider
+				-# 				%li
+				-# 					%a{:href => "/logout"}
+				-# 						%i.mdi.mdi-lg.mdi-close
+				-# 						Salir
 
 
 				-# %form.form-inline.my-2.my-lg-0
