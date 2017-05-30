@@ -4,7 +4,7 @@ class UserMailer < ApplicationMailer
 
 	def welcome(user)
 		@user = user
-		mail(to: @user.email, subject: 'Bienvenido a Atlocs')
+		mail(to: @user.email, subject: '¡Bienvenid@ a AtLocs!')
 	end
 
 	def confirmation(user)
@@ -15,19 +15,19 @@ class UserMailer < ApplicationMailer
 	def location_submitted(location)
 		@user = location.user
 		@location = location
-		mail(to: @user.email, subject: 'Tu locación ha sido enviada')
+		mail(to: @user.email, subject: 'Tu locación ha sido recibida')
 	end
 
 	def location_approved(location)
 		@user = location.user
 		@location = location
-		mail(to: @user.email, subject: 'Tu locación ha sido agregada a Atlocs!')
+		mail(to: @user.email, subject: '¡Tu locación ha sido aprobada!')
 	end
 
 	def location_problem(location)
 		@user = location.user
 		@location = location
-		mail(to: @user.email, subject: 'Hubo un problema con tu locación')
+		mail(to: @user.email, subject: 'Tu locación necesita algunos cambios para nuestra aprobación')
 	end
 
 	def request_removal(location,user)
