@@ -15,6 +15,7 @@ class Users::ConfirmationsController < Devise::ConfirmationsController
   def failure
     redirect_to root_path
   end
+
   # GET /resource/confirmation/new
   def new
     super

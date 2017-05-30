@@ -11,6 +11,7 @@ Rails.application.routes.draw do
  	 		get 'request_removal'
   	end
 	end
+
 	# pages
 	get '/about' => 'pages#about'
 	get '/contacto' => 'pages#contact'
@@ -22,7 +23,7 @@ Rails.application.routes.draw do
 	# Sessions
 	# get '/signup' => 'sessions#register'
 	# post '/signup' => 'sessions#register'
-	get '/signup' => 'users#new'
+	get '/signup' => 'users#new', as: 'new_session'
 	post '/users/new' => 'users#create'
 
 	get '/login' => 'sessions#new'

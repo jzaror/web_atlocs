@@ -48,6 +48,7 @@ gem 'momentjs-rails'
 gem 'devise'
 gem 'simple_form'
 gem 'omniauth-facebook'
+gem 'devise'
 
 group :development do
 	gem 'sqlite3'
