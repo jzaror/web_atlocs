@@ -1,0 +1,28 @@
+%section.main-content
+  .container
+    .row
+      =render 'shared/adminmenu'
+      .col-md-12
+        = flash_messages
+        %h1
+          =@bookings.count
+          Reservas
+        %table.table.table-striped
+          %thead
+            %tr
+              %th Codigo
+              %th Dueño
+              %th Arrendatario
+              %th Estado
+              %th{:colspan => "3"}
+          %tbody
+            - @bookings.each do |booking|
+              %tr
+                %td= booking.code
+                %td= booking.location.user.full_name
+                %td= booking.user.full_name if booking.user.present?
+                %td= booking.status
+                %td= link_to 'Ver', '/locations?booking='+booking.id.to_s
+                %td= link_to 'Editar', edit_booking_path(booking)
+                %td= link_to 'Destruir', booking, method: :delete, data: { confirm: 'Are you sure?' }
+        %br/

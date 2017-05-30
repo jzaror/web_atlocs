@@ -24,7 +24,10 @@ class UsersController < ApplicationController
 				redirect_to root_path
 			end
 		else
-			render :edit, :json=>{:success=>false,:message=>user.errors.full_messages.to_sentence}
+			respond_to do |format|
+				format.html {render :edit}
+				format.json {render json: @user.errors, success: false, message: @user.errors.full_messages.to_sentence}
+			end
 		end
 	end
 
@@ -54,10 +57,17 @@ class UsersController < ApplicationController
 		@bookings=@user.bookings.all
 	end
 
+	def request_destroy
+		UserMailer.delete_user(@user).deliver
+		UserMailer.request_destroy(@user).deliver
+		flash[:notice] = "Solicitud enviada"
+		redirect_to @user
+	end
+
 	def destroy
 		@user.destroy
-		redirect_to "/admin/users/"
 		flash[:notice]="Usuario eliminado"
+		redirect_to "/admin/users/"
 	end
 
 	private
@@ -68,7 +78,7 @@ class UsersController < ApplicationController
 
 	# Only allow a trusted parameter "white list" through.
 	def user_params
-	  params.require(:user).permit(:first_name, :last_name, :email, :phone,
+		params.require(:user).permit(:first_name, :last_name, :email, :phone,
 																 :password, :deposit_bank, :deposit_account,
 																 :password_confirmation, :owner, :tenant)
 	end
