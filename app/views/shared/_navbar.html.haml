@@ -28,7 +28,11 @@
 						%button.btn.btn-secondary.text-primary.navbar-btn{ :type=>"submit"}
 							%i.mdi.mdi-lg.mdi-cloud-upload
 							Publica tu Locación
-
+					%form.form-inline.my-2.my-lg-0{ :method=>"get", :action=>"/locations/new/" }
+						%input{:type=>"hidden", :name=>"newlocation", :value=>"true"}
+						%button.btn.btn-secondary.text-primary.navbar-btn{ :type=>"submit"}
+							%i.mdi.mdi-lg.mdi-cloud-upload
+							Publica tu Locación
 					%li.nav-item#loginlink
 						%a.nav-link{:href => "/"}
 							Contacto
@@ -207,3 +211,4 @@
 										%a{:href => "/logout"}
 											%i.mdi.mdi-lg.mdi-close
 											Salir
+
