@@ -44,6 +44,8 @@ gem 'fullcalendar-rails'
 gem 'momentjs-rails'
 gem 'devise'
 gem 'simple_form'
+gem 'omniauth-facebook'
+
 
 
 group :development do
