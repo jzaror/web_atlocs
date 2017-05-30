@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170525204842) do
+ActiveRecord::Schema.define(version: 20170530214116) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -179,7 +179,7 @@ ActiveRecord::Schema.define(version: 20170525204842) do
     t.string   "deposit_bank"
     t.string   "deposit_account"
     t.datetime "deleted_at"
-    t.boolean  "owner"
+    t.boolean  "owning"
     t.boolean  "tenant"
   end
 
