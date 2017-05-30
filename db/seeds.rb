@@ -21,19 +21,19 @@ end
 	collection.name=Faker::Lorem.sentence
 	collection.save
 end
+puts '#####################################################'
 32.times do
-	user=User.new
 	password=Faker::Internet.password
-	user.first_name=Faker::Name.first_name
-	user.last_name=Faker::Name.last_name
-	user.password=password
-	user.avatar_url=Faker::Avatar.image
-	user.password_confirmation=password
-	user.email=Faker::Internet.email
-	user.owner=true
-	user.tenant=true
-	user.save
+	User.create(
+		first_name: Faker::Name.first_name,
+		last_name: Faker::Name.last_name,
+		password: password,
+		avatar_url: Faker::Avatar.image,
+		password_confirmation: password,
+		email: Faker::Internet.email
+	)
 end
+puts 'PASOOOOOOOOOOOOOOOOOOOOOOO'
 10.times do
 	location=Location.new
 	location.lat=Faker::Address.latitude
@@ -76,8 +76,8 @@ admin.email="hello@mego.cl"
 admin.first_name=Faker::Name.first_name
 admin.last_name=Faker::Name.last_name
 admin.avatar_url=Faker::Avatar.image
-admin.owner=true
-admin.tenant=true
+#admin.owning=true
+#admin.tenant=true
 admin.status = 'admin'
 admin.save
 admin.update_attribute(:status,"admin")
