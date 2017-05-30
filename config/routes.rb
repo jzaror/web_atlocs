@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-#  devise_for :users
+  devise_for :users
 	resources :locations do
 	  get :autocomplete_tag_name, :on => :collection
 	  member do

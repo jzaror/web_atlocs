@@ -6,6 +6,7 @@ class ApplicationController < ActionController::Base
 
   private
 
+
   def store_location
     session[:requestUri] = params[:requestUri] if params[:requestUri].present?
   end
