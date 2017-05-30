@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  devise_for :users
 	resources :locations do
 	  get :autocomplete_tag_name, :on => :collection
 	  member do
@@ -17,7 +18,7 @@ Rails.application.routes.draw do
 	# Sessions
 	# get '/signup' => 'sessions#register'
 	# post '/signup' => 'sessions#register'
-	get '/signup' => 'users#new'
+	get '/signup' => 'users#new', as: 'new_session'
 	post '/users/new' => 'users#create'
 	get '/signup' => 'sessions#register'
 	get '/signup2' => 'users#new'

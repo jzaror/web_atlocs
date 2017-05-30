@@ -40,7 +40,7 @@ class SessionsController < ApplicationController
 			message="E-mail o contraseña incorrectos"
 			respond_to do |format|
 				format.html {
-					flash[:notice] = message
+					flash[:error] = message
 					redirect_to "/login"
 				}
 				format.json { render json: {:success=>false,:message=>message} }
