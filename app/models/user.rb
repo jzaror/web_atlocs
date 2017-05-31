@@ -13,6 +13,7 @@ class User < ActiveRecord::Base
 
   has_secure_password
   before_create :add_unverified_status
+  before_save :set_tenant, unless: :owning || :tenant
   acts_as_paranoid
 
   def full_name
@@ -109,6 +110,10 @@ class User < ActiveRecord::Base
       # uncomment the line below to skip the confirmation emails.
       user.skip_confirmation!
     end
+  end
+
+  def set_tenant
+    self.tenant = true
   end
 
   private
