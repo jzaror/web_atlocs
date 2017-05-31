@@ -35,10 +35,10 @@ class UserMailer < ApplicationMailer
 		mail(to: @user.email, subject: 'Tu locación necesita algunos cambios para nuestra aprobación')
 	end
 
-	def request_removal(location,user)
+	def request_location_removal(location,user)
 		@location = location
 		@user = user
-		mail(to: Conf.value('admin_email'),subject: "Solicitud eliminación #{@location.title}")
+		mail(to: Conf.value('admin_email'),subject: "Solicitud eliminación de locación #{@location.title}")
 	end
 
 	def booking_requested(booking)
@@ -85,8 +85,8 @@ class UserMailer < ApplicationMailer
 	end
 
 	def payment_confirmed(booking)
-		@booking=booking
-		@user=@booking.user
+		@booking = booking
+		@user = @booking.user
 		mail(to: @user.email, subject: '¡Ya tienes una reserva lista en AtLocs!')
 	end
 
@@ -97,16 +97,18 @@ class UserMailer < ApplicationMailer
 
 	def request_password_token(code,email)
 		@code=code
-		mail(to: email, subject: 'Tu link para reestablecer tu cuenta')
+		mail(to: email, subject: '¿Olvidaste tu contraseña?')
 	end
 
 	def request_destroy(user)
 		@user = user
-		mail(to: @user.email, subject: 'Solicitud: Eliminar cuenta')
+		mail(to: @user.email, subject: 'Solicitud para eliminar mi cuenta')
 	end
 
-	def delete_user(user)
+	def request_destroy_admin(user)
     @user = user
+		@bookings = @user.bookings
+		@locations = @user.locations
 		mail(to: Conf.value('admin_email'), subject: 'Usuario quiere borrar su cuenta')
   end
 end
