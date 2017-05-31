@@ -2,9 +2,11 @@ json.array!(@bookings) do |booking|
   json.extract! booking, :id
   new_color = '#fff'
   if booking.user == @user
-    new_color = '#42FF00'  # Green
+    new_color = '#3f9f3f'  # Green
+    new_color = '#6bacc1' if booking.status != "waiting"  # Blue
   else
-    new_color = '#FF0500'  # Red
+    new_color = '#ffbb3f'  # Yellow
+    new_color = '#ff3f3f' if booking.status != "waiting"  # Red
   end
   json.title booking.location.title
   json.start booking.start_time
