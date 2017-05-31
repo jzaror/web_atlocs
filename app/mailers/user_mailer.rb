@@ -9,7 +9,7 @@ class UserMailer < ActionMailer::Base
 
 	def confirmation(user)
 		@user = user
-		mail(to: @user.email, subject: 'Registrado correctamente')
+		mail(to: @user.email, subject: '¡Bienvenid@ a AtLocs!')
 	end
 
 	def location_submitted(location)
@@ -40,7 +40,7 @@ class UserMailer < ActionMailer::Base
 		@user = booking.location.user
 		@location = booking.location
 		@booking=booking
-		mail(to: @user.email, subject: 'Tienes una reserva para tu locación')
+		mail(to: @user.email, subject: '¡Tienes una solicitud de reserva para tu locación!')
 	end
 
 	def booking_sent(booking)
@@ -54,7 +54,7 @@ class UserMailer < ActionMailer::Base
 		@user = booking.user
 		@location = booking.location
 		@booking=booking
-		mail(to: @user.email, subject: 'Tu reserva ha sido aceptada')
+		mail(to: @user.email, subject: '¡Han aprobado tu Reserva!')
 	end
 
 	def booking_cancelled(booking)

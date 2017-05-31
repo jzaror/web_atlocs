@@ -179,7 +179,7 @@ ActiveRecord::Schema.define(version: 20170530215804) do
     t.string   "deposit_bank"
     t.string   "deposit_account"
     t.datetime "deleted_at"
-    t.boolean  "owning"
+    t.boolean  "owner"
     t.boolean  "tenant"
     t.string   "provider"
     t.string   "uid"
