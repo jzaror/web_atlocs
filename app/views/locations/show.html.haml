@@ -39,7 +39,7 @@
 								%i.mdi.mdi-lg.mdi-calendar-clock
 								Reservar Locación
 							.user-info
-								= @location.user.full_name
+								= link_to @location.user.full_name, @location.user
 
 						%a.btn.btn-secondary.btn-block{:href => "/contacto?subject=Consulta por Locación "+@location.id.to_s, :role => "button"}
 							%i.mdi.mdi-lg.mdi-information-outline
