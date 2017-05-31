@@ -87,7 +87,7 @@ class UserMailer < ActionMailer::Base
 	end
 
 	def request_destroy(user)
-		@user = code
+		@user = user
 		mail(to: @user.email, subject: 'Solicitud: Eliminar cuenta')
 	end
 
