@@ -18,7 +18,7 @@ class UserMailerPreview < ActionMailer::Preview
 
 	def request_removal
 		location = Location.first
-		UserMailer.location_approved(location, location.user)
+		UserMailer.location_approved(location)
 	end
 
 	def booking_requested
@@ -50,7 +50,7 @@ class UserMailerPreview < ActionMailer::Preview
 		UserMailer.contact_form('hola@nnodes.com', 'body content', 'subject')
 	end
 
-	def request_password_token(code,email)
+	def request_password_token
 		UserMailer.request_password_token('abcdef', 'hola@nnodes.com')
 	end
 
