@@ -112,6 +112,10 @@ class User < ActiveRecord::Base
     end
   end
 
+  def set_tenant
+    self.tenant = true
+  end
+
   private
     def add_unverified_status
       self.status="unverified"
