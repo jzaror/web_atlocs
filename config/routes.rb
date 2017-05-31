@@ -24,7 +24,7 @@ Rails.application.routes.draw do
 	# post '/signup' => 'sessions#register'
 	get '/signup' => 'users#new', as: 'new_session'
 	post '/users/new' => 'users#create'
-
+  get 'request_annulation/:id' => 'users#request_annulation', as: 'user_annulation'
 	get '/login' => 'sessions#new'
 	post '/login' => 'sessions#create'
 	get '/logout' => 'sessions#destroy'

@@ -101,7 +101,7 @@ class UserMailer < ApplicationMailer
 	end
 
 	def request_destroy(user)
-		@user = code
+		@user = user
 		mail(to: @user.email, subject: 'Solicitud: Eliminar cuenta')
 	end
 
