@@ -11,6 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+<<<<<<< 8bebd5ffb0f6c3f1703353d75765ee179b9dd9eb
 <<<<<<< dba39cc1b4bba08e4221c9caeb781b2d08e1766c
 <<<<<<< aa53afb8d0f5b3571eecf475e1a4cd6c28701289
 ActiveRecord::Schema.define(version: 20170530215804) do
@@ -20,6 +21,9 @@ ActiveRecord::Schema.define(version: 20170531175955) do
 =======
 ActiveRecord::Schema.define(version: 20170530215804) do
 >>>>>>> mail text booking and payment
+=======
+ActiveRecord::Schema.define(version: 20170531175955) do
+>>>>>>> welcome mail diferent users
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -187,6 +191,7 @@ ActiveRecord::Schema.define(version: 20170530215804) do
     t.string   "deposit_bank"
     t.string   "deposit_account"
     t.datetime "deleted_at"
+<<<<<<< 8bebd5ffb0f6c3f1703353d75765ee179b9dd9eb
 <<<<<<< dba39cc1b4bba08e4221c9caeb781b2d08e1766c
 <<<<<<< aa53afb8d0f5b3571eecf475e1a4cd6c28701289
     t.boolean  "owner"
@@ -196,6 +201,9 @@ ActiveRecord::Schema.define(version: 20170530215804) do
 =======
     t.boolean  "owner"
 >>>>>>> mail text booking and payment
+=======
+    t.boolean  "owning"
+>>>>>>> welcome mail diferent users
     t.boolean  "tenant"
     t.string   "provider"
     t.string   "uid"
