@@ -20,7 +20,7 @@ Rails.application.configure do
     }
   }
 
-  config.action_mailer.default_url_options = { :host => 'www.atlocs.com' }
+  config.action_mailer.default_url_options = { :host => 'http://atlocs.nnodes.com' }
   config.action_mailer.asset_host = 'http://atlocs.nnodes.com'
 
   # Settings specified here will take precedence over those in config/application.rb.
