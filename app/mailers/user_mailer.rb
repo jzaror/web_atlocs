@@ -52,7 +52,7 @@ class UserMailer < ApplicationMailer
 		@user = booking.user
 		@location = booking.location
 		@booking=booking
-		mail(to: @user.email, subject: 'Has creado una reserva')
+		mail(to: @user.email, subject: 'Has solicitado una reserva en AtLocs.')
 	end
 
 	def booking_accepted(booking)
@@ -87,7 +87,7 @@ class UserMailer < ApplicationMailer
 	def payment_confirmed(booking)
 		@booking=booking
 		@user=@booking.user
-		mail(to: @user.email, subject: 'Tu pago ha sido confirmado')
+		mail(to: @user.email, subject: '¡Ya tienes una reserva lista en AtLocs!')
 	end
 
 	def contact_form(email,body,subject)
