@@ -16,6 +16,10 @@ class User < ActiveRecord::Base
   before_save :set_tenant, unless: :owning || :tenant
   acts_as_paranoid
 
+  def active_for_authentication?
+    (verified? || moderator? || admin?)
+  end
+
   def full_name
     if self.first_name && self.last_name
       self.first_name+" "+self.last_name
@@ -103,11 +107,13 @@ class User < ActiveRecord::Base
   def self.from_omniauth(auth)
     user = User.where(provider: auth.provider, uid: auth.uid).first
     if user.present?
+      user.update_attributes(status: 'verified') if !user.active_for_authentication?
       return user
     else
       registered_user = User.where(email: auth.info.email)
       deleted_user = User.with_deleted.find_by(email: auth.info.email) unless registered_user.present?
       if registered_user.present?
+        registered_user.status = 'verified' if !registered_user.active_for_authentication?
         registered_user.provider = auth.provider
         registered_user.uid = auth.uid
         registered_user.first_name = auth.info.first_name
@@ -120,11 +126,13 @@ class User < ActiveRecord::Base
         deleted_user.last_name = auth.info.last_name
         deleted_user.provider = auth.provider
         deleted_user.uid = auth.uid
+        deleted_user.status = 'verified' if !deleted_user.active_for_authentication?
         deleted_user.save!
         UserMailer.welcome(deleted_user).deliver_now
         return deleted_user
       else
         User.create do |user|
+          user.status = 'verified'
           user.email = auth.info.email
           user.password = Devise.friendly_token[0,20]
           user.first_name = auth.info.first_name
@@ -145,6 +153,8 @@ class User < ActiveRecord::Base
 
   private
     def add_unverified_status
-      self.status="unverified"
+      if self.provider.blank?
+        self.status="unverified"
+      end
     end
 end

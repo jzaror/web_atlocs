@@ -9,7 +9,20 @@ html, body {
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
 }
+.alert {
+	z-index: 99999999999;
+  top: 70px;
+  right: 10px;
+  min-width: 240px;
+  position: fixed;
+}
+#notice:empty {
+  display: none;
+}
 
+p:empty {
+  display: none;
+}
 .well {
 	box-shadow:none;
 	border:none;
