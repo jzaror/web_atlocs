@@ -105,7 +105,7 @@ class User < ActiveRecord::Base
     if user.present?
       return user
     else
-      registered_user = User.where(email: auth.info.email)
+      registered_user = User.where(email: auth.info.email).first
       deleted_user = User.with_deleted.find_by(email: auth.info.email) unless registered_user.present?
       if registered_user.present?
         registered_user.provider = auth.provider
