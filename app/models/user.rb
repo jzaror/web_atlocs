@@ -7,8 +7,8 @@ class User < ActiveRecord::Base
   devise :confirmable, :omniauthable
 
   #validate :atleast_one_is_checked
+  #validate_uniqueness_of: email 
 
-  #validate_uniqueness_of :email
   enum status: [ :banned, :shadowbanned, :unverified, :verified, :moderator, :admin ]
 
   has_secure_password
