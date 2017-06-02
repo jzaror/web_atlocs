@@ -667,3 +667,74 @@ button, input, .form-control, a {
 		}
 	}
 }
+.card-register {
+	border-radius: 20px;
+	overflow: hidden;
+	border: 3px solid #B3B3B3;
+	.card-header {
+		background: white;
+		padding-top: 40px;
+		h1 {
+			font-size: 28px;
+			color: #4D4D4D;
+		}
+		p {
+			font-size: 21px;
+			color: #666666;
+		}
+		i {
+			font-size: 45px;
+			color: #666666;
+		}
+	}
+	.card-block {
+		background: #EEEEEE;
+		p {
+			font-size: 13px;
+			color: #666;
+		}
+	}
+	label {
+		&.checkbox {
+			margin-bottom: 0;
+		}
+	}
+	hr {
+		border-top: 1px solid #CCCCCC;
+		text-align: center;
+    margin: 30px -1.5rem;
+		&:after {
+			content: 'o';
+			display: inline-block;
+			position: relative;
+			top: -14px;
+			padding: 0 10px;
+			background: #eee;
+			color: #CCCCCC;
+			font-size: 18px;
+		}
+	}
+	.facebook {
+		span {
+			color: #2C467A;
+			position: absolute;
+			width: 51px;
+			left: 0;
+			top: 0;
+			bottom: 0px;
+			padding: 6px;
+			border-right: 1px solid #2C467A;
+			font-size: 30px;
+		}
+		border-radius: 0;
+		padding: 15px 15px 15px 77px;
+		background: #3B5999;
+		font-size: 17px;
+		font-weight: 600;
+		color: white;
+		margin: 0 auto;
+		display: block;
+		width: 61%;
+		position: relative;
+	}
+}
