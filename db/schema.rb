@@ -11,6 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+<<<<<<< 8d0a528701c151a015109b9ad84edb4ae96a3230
 <<<<<<< 8bebd5ffb0f6c3f1703353d75765ee179b9dd9eb
 <<<<<<< dba39cc1b4bba08e4221c9caeb781b2d08e1766c
 <<<<<<< aa53afb8d0f5b3571eecf475e1a4cd6c28701289
@@ -24,6 +25,9 @@ ActiveRecord::Schema.define(version: 20170530215804) do
 =======
 ActiveRecord::Schema.define(version: 20170531175955) do
 >>>>>>> welcome mail diferent users
+=======
+ActiveRecord::Schema.define(version: 20170602230416) do
+>>>>>>> verify email accounts done
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
