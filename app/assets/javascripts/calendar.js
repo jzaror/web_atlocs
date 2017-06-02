@@ -23,9 +23,9 @@ $(document).on('ready page:load', function() {
             agendaWeek: 'Semanal'
         },
         header: {
-            left: 'prev,next month,agendaWeek',
+            left: 'prev,next',
             center: 'title',
-            right: ''
+            right: 'month,agendaWeek'
         },
         dayClick: function(date, jsEvent, view) {
             if (view.name != 'month')
