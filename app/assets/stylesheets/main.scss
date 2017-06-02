@@ -90,31 +90,47 @@ h1, h2, h3, h4, h5, h6 {
 
 .navbar {
 	.nav-item {
+		margin: 4px 0;
 		.nav-link {
 			color: lighten($brand-primary, 40%);
 			font-size: 13px;
-	    border-right: 1px solid rgba(148, 146, 169, .49);
-	    margin-top: 4px;
+			border-right: 1px solid rgba(148, 146, 169, 0.49);
+			margin-top: 6px;
 			position: relative;
-		}
-		&:last-of-type {
-			.nav-link {
-		    border-right: 1px solid transparent;
+			padding: 0 10px;
+			font-family: 'Chivo', sans-serif;
+			.help {
+				border-radius: 50%;
+				background: #333399;
+				border: 2px solid #D5D3E2;
+				width: 21px;
+				height: 21px;
+				text-align: center;
+				font-size: 13px !important;
+				display: block;
+				padding: 2px;
+				/* margin-top: 2px; */
+				line-height: 13px !important;
+				font-weight: 900;
 			}
 		}
-		.user-btn {
-			height: 33px;
-    	width: 50px;
-		}
 		.dropdown-menu {
-			top: 114%;
+			top: 184%;
 			padding: 0;
+			.arrow {
+				position: absolute;
+				right: 0;
+		    top: -25px;
+				font-size: 30px;
+				color: #000066;
+			}
 			li {
 				a {
 					color: lighten($brand-primary, 40%);
 					padding: 5px;
 					display: block;
 					font-size: 13px;
+					font-family: 'Chivo', sans-serif;
 					// box-shadow: 0px 0px 5px 0px rgba(124,123,123, .75);
 					span {
 						padding: 5px;
@@ -125,7 +141,7 @@ h1, h2, h3, h4, h5, h6 {
 						height: 40px;
 						width: 40px;
 						display: inline-block;
-						background:transparentize(black, .9);
+				    background: #333399;
 						i {
 							color: lighten($brand-primary, 40%);
 							margin-left: 4px;
@@ -134,7 +150,43 @@ h1, h2, h3, h4, h5, h6 {
 					}
 					&:hover {
 						text-decoration: none;
-						background-color: transparentize(black, .9);
+						background-color: #333399;
+					}
+				}
+			}
+		}
+		&.dropdown {
+			.nav-link {
+				margin-top: 4px;
+				border-right: 1px solid transparent;
+			}
+			&.user {
+				.nav-link {
+					border-right: 1px solid rgba(148, 146, 169, 0.49);
+					position: relative;
+					display: block;
+    			height: 23px;
+			    width: 82px;
+					.arrow {
+						position: absolute;
+						right: 0;
+						bottom: -21px;
+						font-size: 30px;
+						color: #000066;
+					}
+					.user-circle {
+						border-radius: 50%;
+						background: white;
+						width: 42px;
+						height: 42px;
+						display: block;
+						position: absolute;
+				    top: -11px;
+						color: #333399;
+				    padding: 9px 6px;
+						i {
+							font-size: 30px !important;
+						}
 					}
 				}
 			}
@@ -142,8 +194,13 @@ h1, h2, h3, h4, h5, h6 {
 	}
 	.navbar-btn {
 		font-size: 13px;
+    padding: 3px 5px;
+    line-height: 13px;
+    border: none;
+    height: 25px;
+		font-family: 'Chivo', sans-serif;
 		i {
-			font-size: 20px;
+			font-size: 25px !important;
 		}
 	}
 

@@ -30,7 +30,7 @@ class UserMailer < ActionMailer::Base
 		mail(to: @user.email, subject: 'Tu locación necesita algunos cambios para nuestra aprobación')
 	end
 
-	def request_location_removal(location,user)
+	def request_location_removal_admin(location,user)
 		@location = location
 		@user = user
 		mail(to: Conf.value('admin_email'),subject: "Solicitud eliminación de locación #{@location.title}")
