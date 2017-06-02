@@ -125,10 +125,11 @@ class UserMailer < ActionMailer::Base
 		mail(to: @user.email, subject: 'Solicitud para eliminar mi cuenta')
 	end
 
-	def request_destroy_admin(user)
+	def request_destroy_admin(user, reason)
     @user = user
 		@bookings = @user.bookings
 		@locations = @user.locations
+		@reason = reason
 		mail(to: Conf.value('admin_email'), subject: 'Usuario quiere borrar su cuenta')
   end
 
@@ -145,4 +146,14 @@ class UserMailer < ActionMailer::Base
 		mail(to: @user.email, subject: 'Cuéntanos tu experiencia')
 	end
 
+	def booking_edit(booking)
+		@user = booking.user
+		@booking = booking
+		mail(to: @user.email, subject: 'Cambio de fecha de reserva')
+	end
+
+	def booking_edit_request(booking)
+		@user = booking.location.user
+		mail(to: @user.email, subject: 'Solicitud de cambio de reserva')
+	end
 end

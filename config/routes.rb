@@ -47,6 +47,7 @@ Rails.application.routes.draw do
 	# bookings
 	get 'bookings/new' => 'bookings#new'
 	get 'bookings/:id/edit', to: 'bookings#edit', as: 'edit_booking'
+  post 'bookings/:id/edit', to: 'bookings#update'
 	post 'bookings/price' => 'bookings#price'
 	get 'bookings/:code' => 'bookings#show', as: 'booking'
 	get 'bookings/:code/payment/confirm' => "bookings#confirmpayment"
@@ -69,6 +70,7 @@ Rails.application.routes.draw do
 	# attachments
 	match "upload/:location" => "attachments#create", via: [:post,:patch]
 	get "attachments/:id/destroy" => "attachments#destroy"
+  get 'users/:id/delete_modal' => 'users#request_delete', as: 'delete_modal'
 
 
 	#ADMIN

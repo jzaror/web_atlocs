@@ -103,7 +103,7 @@ class BookingsController < ApplicationController
       @booking.user.notify("booking")
 
       flash[:notice] = "Tu solicitud de reserva fue enviada. Por favor espera durante las próximas horas hasta que sea revisada por el administrador de la locación."
-      redirect_to "/"
+      redirect_to bookings_path
 
     else
       render :json=>{:success=>false,:message=>@message}
@@ -123,25 +123,32 @@ class BookingsController < ApplicationController
 
 
   def edit
-    #@booking = Booking.find_by_code(params[:id])
+    @booking = Booking.find_by(id: params[:id])
   end
 
   def update
-    @booking = Booking.find_by_code(params[:id])
-    # @booking.locations = @locations
-
-    if @booking.update(params[:booking].permit(:location_id, :start_time, :end_time))
+    @booking = Booking.find_by(id: params[:id])
+    start_time = params[:start_date].to_datetime
+    end_time = params[:end_date].to_datetime
+    if @booking.update(start_time: start_time, end_time: end_time)
+      @booking.updateprice
+      if @booking.status == 2
+        @booking.update(status: 1)
+      end
+      UserMailer.booking_edit(@booking).deliver_now
+      UserMailer.booking_edit_request(@booking).deliver_now
+      @booking.save
       flash[:notice] = 'Your booking was updated succesfully'
-
       if request.xhr?
         render json: {status: :success}.to_json
       else
-        redirect_to location_bookings_path(@location)
+        redirect_to bookings_path
       end
     else
-      render 'edit'
+      render bookings_path
     end
   end
+
   def comment
     @booking=Booking.find_by_code(params[:code])
     if params[:body] && params[:body].length>0

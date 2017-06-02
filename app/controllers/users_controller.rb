@@ -79,9 +79,14 @@ class UsersController < ApplicationController
 		@bookings=@user.bookings.all
 	end
 
+	def request_delete
+		@user = User.find_by(id: params[:id])
+	end
+
 	def request_annulation
 		@user = User.find(params[:id])
-		UserMailer.request_destroy_admin(@user).deliver
+		params.each { |variable| puts variable }
+		UserMailer.request_destroy_admin(@user, params[:reject_reason]).deliver
 		UserMailer.request_destroy(@user).deliver
 		flash[:notice] = "Solicitud enviada"
 		redirect_to @user
