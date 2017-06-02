@@ -18,9 +18,8 @@
 					%a.btn.btn-xs.btn-info{:href => "/users/edit"}
 						%i.mdi.mdi-pencil
 						Editar perfil
-					%a.btn.btn-xs{:href => user_annulation_path(current_user)}
-						%i.mdi.mdi-pencil
-						Solicitar anulación de cuenta
+					= link_to 'Solicitar anulación de cuenta', delete_modal_path, :class=>"btn btn-danger", :remote => true
+
 				%hr
 				%h2
 					-if current_user && @user==current_user
@@ -64,3 +63,5 @@
 										=booking.statusname
 							%li.list-group-item
 								=link_to "Ver mis reservas", "/bookings"
+
+#deleteModalHolder
