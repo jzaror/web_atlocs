@@ -112,7 +112,12 @@ class UserMailer < ApplicationMailer
 		mail(to: Conf.value('admin_email'), subject: 'Usuario quiere borrar su cuenta')
   end
 
-	def location_review(user)
+	def owner_location_review(user)
+		@user = user
+		mail(to: user.email, subject: 'Cuentanos tu experiencia')
+	end
+
+	def tenant_location_review(user)
 		@user = user
 		mail(to: user.email, subject: 'Cuentanos tu experiencia')
 	end
