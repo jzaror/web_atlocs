@@ -7,27 +7,48 @@ class UsersController < ApplicationController
 	end
 
 	def create
-		@user=User.new(user_params)
-
-		if params[:phone].to_i>999999999
-			render :json=>{:success=>false,:message=>"Teléfono inválido"}
-		elsif @user.save
-			flash[:notice]="Te has registrado en Atlocs! Ya puedes publicar o reservar locaciones!"
-			session[:user_id] = @user.id
-			#SessionMailer.confirmation_instructions(@user, @user.confirmation_token).deliver_now
-			#UserMailer.confirmation(@user).deliver_now
-			#UserMailer.welcome(user).deliver
-			if session[:url_after_session]
-				url=session[:url_after_session]
-				session[:url_after_session]=nil
-				redirect_to url
+		@user = User.with_deleted.find_by(email: params[:user][:email])
+		if @user
+			@user.recover
+			if @user.update(user_params)
+				flash[:notice]="Gracias por reactivar tu cuenta en Atlocs! Ya puedes publicar o reservar locaciones!"
+				session[:user_id] = @user.id
+				#SessionMailer.confirmation_instructions(@user, @user.confirmation_token).deliver_now
+				#UserMailer.confirmation(@user).deliver_now
+				#UserMailer.welcome(user).deliver
+				if session[:url_after_session]
+					url=session[:url_after_session]
+					session[:url_after_session]=nil
+					redirect_to url
+				else
+					redirect_to root_path
+				end
 			else
-				redirect_to root_path
+				respond_to do |format|
+					format.html {render :new}
+					format.json {render json: @user.errors, success: false, message: @user.errors.full_messages.to_sentence}
+				end
 			end
 		else
-			respond_to do |format|
-				format.html {render :edit}
-				format.json {render json: @user.errors, success: false, message: @user.errors.full_messages.to_sentence}
+			@user=User.new(user_params)
+			if @user.save
+				flash[:notice]="Te has registrado en Atlocs! Ya puedes publicar o reservar locaciones!"
+				session[:user_id] = @user.id
+				#SessionMailer.confirmation_instructions(@user, @user.confirmation_token).deliver_now
+				#UserMailer.confirmation(@user).deliver_now
+				#UserMailer.welcome(user).deliver
+				if session[:url_after_session]
+					url=session[:url_after_session]
+					session[:url_after_session]=nil
+					redirect_to url
+				else
+					redirect_to root_path
+				end
+			else
+				respond_to do |format|
+					format.html {render :new}
+					format.json {render json: @user.errors, success: false, message: @user.errors.full_messages.to_sentence}
+				end
 			end
 		end
 	end
@@ -58,7 +79,9 @@ class UsersController < ApplicationController
 		@bookings=@user.bookings.all
 	end
 
-	def request_destroy
+	def request_annulation
+		@user = User.find(params[:id])
+		puts @user.full_name, '############################'
 		UserMailer.delete_user(@user).deliver
 		UserMailer.request_destroy(@user).deliver
 		flash[:notice] = "Solicitud enviada"
