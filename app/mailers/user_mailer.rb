@@ -41,6 +41,14 @@ class UserMailer < ApplicationMailer
 		mail(to: Conf.value('admin_email'),subject: "Solicitud eliminación de locación #{@location.title}")
 	end
 
+	def booking_requested_admin(booking)
+		@user = booking.user
+		@location = booking.location
+		@location_user = booking.location.user
+		@booking=booking
+		mail(to: Conf.value('admin_email'), subject: '¡Han solicitado una reserva!')
+	end
+
 	def booking_requested(booking)
 		@user = booking.location.user
 		@location = booking.location
@@ -69,7 +77,6 @@ class UserMailer < ApplicationMailer
 		mail(to: "cdiaz@chilelocaciones.cl", subject: "Reserva aceptada en el sistema")
 	end
 
-
 	def booking_cancelled(booking)
 		@user = booking.user
 		@location = booking.location
@@ -95,9 +102,15 @@ class UserMailer < ApplicationMailer
 		mail(to: Conf.value('admin_email'),subject: subject, from:email)
 	end
 
-	def request_password_token(code,email)
-		@code=code
+	def request_password_token(user, code,email)
+		@code = code
+		@user = user
 		mail(to: email, subject: '¿Olvidaste tu contraseña?')
+	end
+
+	def password_changed(user)
+		@user = user
+		mail(to: @user.email, subject: 'Tu contraseña ha sido cambiada')
 	end
 
 	def request_destroy(user)
