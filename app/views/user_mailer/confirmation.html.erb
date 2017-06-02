@@ -5,41 +5,45 @@
 <h2 style="Margin:0;Margin-bottom:10px;color:inherit;font-family:Helvetica,Arial,sans-serif;font-size:17px;font-weight:700;line-height:1.3;margin:0;margin-bottom:10px;padding:0;text-align:left;word-wrap:normal">
   ¡Bienvenid@ a AtLocs!
 </h2>
-<p style="Margin:0;Margin-bottom:10px;color:grey;font-family:Helvetica,Arial,sans-serif;font-size:15px;font-weight:300;line-height:1.3;margin:0;margin-bottom:10px;padding:0;text-align:left">
-	Estás a un paso de ser parte de esta aplicación que te posibilitará seleccionar y comparar entre cientos de locaciones.
-</p>
-<p style="Margin:0;Margin-bottom:10px;color:grey;font-family:Helvetica,Arial,sans-serif;font-size:15px;font-weight:300;line-height:1.3;margin:0;margin-bottom:10px;padding:0;text-align:left">
-  Sólo falta verificar tu dirección de correo.  Una vez hecho esto, podrás comenzar a buscar, elegir y arrendar locaciones para tus producciones.
-</p>
-<br />
-<% if @user.owning && @user.tenant %>
-  <%= link_to 'Publicar', new_location_url %>
-  <%= link_to 'Explorar', locations_url %>
-<% elsif @user.tenant %>
-  <%= link_to 'Publicar', new_location_url %>
-<% else %>
-<center data-parsed="" style="min-width:532px;width:100%">
-  <table class="button radius large float-center" style="Margin:0 0 16px 0;border-collapse:collapse;border-spacing:0;float:none;margin:0 0 16px 0;padding:0;text-align:center;vertical-align:top;width:auto">
-    <tbody>
-      <tr style="padding:0;text-align:left;vertical-align:top">
-        <td style="-moz-hyphens:auto;-webkit-hyphens:auto;Margin:0;border-collapse:collapse!important;color:grey;font-family:Helvetica,Arial,sans-serif;font-size:15px;font-weight:300;hyphens:auto;line-height:1.3;margin:0;padding:0;text-align:left;vertical-align:top;word-wrap:break-word">
-          <table style="border-collapse:collapse;border-spacing:0;padding:0;text-align:left;vertical-align:top;width:100%">
-            <tbody>
-              <tr style="padding:0;text-align:left;vertical-align:top">
-                <td style="-moz-box-shadow:inset 0 0 10px #fefefe;-moz-hyphens:auto;-webkit-box-shadow:inset 0 0 10px #fefefe;-webkit-hyphens:auto;Margin:0;background:#5B46CD;border:none;border-collapse:collapse!important;border-radius:30px;box-shadow:inset 0 0 10px #fefefe;color:#fefefe;font-family:Helvetica,Arial,sans-serif;font-size:15px;font-weight:300;hyphens:auto;line-height:1.3;margin:0;padding:0;text-align:left;vertical-align:top;word-wrap:break-word">
 
-                  <%= link_to 'Explorar', locations_url, style: "Margin:0;border:0 solid #5B46CD;border-radius:3px;color:#fefefe;display:inline-block;font-family:Helvetica,Arial,sans-serif;font-size:17px;font-weight:700;line-height:1.3;margin:0;padding:15px 20px;text-align:left;text-decoration:none;text-transform:uppercase" %>
-                </td>
-              </tr>
-            </tbody>
-          </table>
-        </td>
-      </tr>
-    </tbody>
-  </table>
-</center>
+<% if (@user.owning && @user.tenant) or (!@user.owning && !@user.tenant) %>
+  <p style="Margin:0;Margin-bottom:10px;color:grey;font-family:Helvetica,Arial,sans-serif;font-size:15px;font-weight:300;line-height:1.3;margin:0;margin-bottom:10px;padding:0;text-align:left">
+    Estás a un paso de ser parte de este espacio web donde los productores audiovisuales podrán arrendar tu propiedad. Además, te posibilitará seleccionar y comparar entre cientos de locaciones para tus posibles producciones. 
+  </p>
+  <p style="Margin:0;Margin-bottom:10px;color:grey;font-family:Helvetica,Arial,sans-serif;font-size:15px;font-weight:300;line-height:1.3;margin:0;margin-bottom:10px;padding:0;text-align:left">
+    Sólo falta verificar tu dirección de correo. Una vez hecho esto podrás publicar tus locaciones, así como también seleccionar entre cientos de éstas para tus producciones. 
+  </p>
+  <p style="Margin:0;Margin-bottom:10px;color:grey;font-family:Helvetica,Arial,sans-serif;font-size:15px;font-weight:300;line-height:1.3;margin:0;margin-bottom:10px;padding:0;text-align:left">
+    ¡Muchas gracias por hacerte parte de esta comunidad!
+  </p>
+<% elsif @user.tenant %>
+  <p style="Margin:0;Margin-bottom:10px;color:grey;font-family:Helvetica,Arial,sans-serif;font-size:15px;font-weight:300;line-height:1.3;margin:0;margin-bottom:10px;padding:0;text-align:left">
+    Estás a un paso de ser parte de esta aplicación que te posibilitará seleccionar y comparar entre cientos de locaciones. 
+  </p>
+  <p style="Margin:0;Margin-bottom:10px;color:grey;font-family:Helvetica,Arial,sans-serif;font-size:15px;font-weight:300;line-height:1.3;margin:0;margin-bottom:10px;padding:0;text-align:left">
+   Sólo falta verificar tu dirección de correo.  Una vez hecho esto, podrás comenzar a buscar, elegir y arrendar locaciones para tus producciones. 
+  </p>
+  <p style="Margin:0;Margin-bottom:10px;color:grey;font-family:Helvetica,Arial,sans-serif;font-size:15px;font-weight:300;line-height:1.3;margin:0;margin-bottom:10px;padding:0;text-align:left">
+    ¡Muchas gracias por hacerte parte de esta comunidad! Pondremos todos nuestros esfuerzos para tener siempre una gran variedad de locaciones para ti. 
+  </p>
+<% else %>
+  <p style="Margin:0;Margin-bottom:10px;color:grey;font-family:Helvetica,Arial,sans-serif;font-size:15px;font-weight:300;line-height:1.3;margin:0;margin-bottom:10px;padding:0;text-align:left">
+    Estás a un paso de ser parte de este espacio web donde productores audiovisuales arrendarán tu propiedad. 
+  </p>
+  <p style="Margin:0;Margin-bottom:10px;color:grey;font-family:Helvetica,Arial,sans-serif;font-size:15px;font-weight:300;line-height:1.3;margin:0;margin-bottom:10px;padding:0;text-align:left">
+    Sólo falta verificar tu dirección de correo. Una vez hecho esto, podrás comenzar a publicar tus locaciones. 
+  </p>
+  <p style="Margin:0;Margin-bottom:10px;color:grey;font-family:Helvetica,Arial,sans-serif;font-size:15px;font-weight:300;line-height:1.3;margin:0;margin-bottom:10px;padding:0;text-align:left">
+    ¡Muchas gracias por hacerte parte de esta comunidad! Pondremos todos nuestros esfuerzos para que tu locación sea parte del set de filmación y fotografía de muchas producciones. 
+  </p>
 <% end %>
 <br />
+<h3 style="Margin:0;Margin-bottom:10px;color:inherit;font-family:Helvetica,Arial,sans-serif;font-size:15px;font-weight:700;line-height:1.3;margin:0;margin-bottom:10px;padding:0;text-align:left;word-wrap:normal">
+  Cristián Díaz Reyes
+</h3>
 <p style="Margin:0;Margin-bottom:10px;color:grey;font-family:Helvetica,Arial,sans-serif;font-size:15px;font-weight:300;line-height:1.3;margin:0;margin-bottom:10px;padding:0;text-align:left">
-  ¡Muchas gracias por hacerte parte de esta comunidad! Pondremos todos nuestros esfuerzos para tener siempre una gran variedad de locaciones para ti.
+  Socio-Fundador.
 </p>
+<h6 style="Margin:0;Margin-bottom:10px;color:inherit;font-family:Helvetica,Arial,sans-serif;font-size:13px;font-weight:700;line-height:1.3;margin:0;margin-bottom:10px;padding:0;text-align:left;word-wrap:normal">
+  +569 9 673 9358
+</h6>
