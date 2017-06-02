@@ -60,7 +60,16 @@
 										- if current_user.notifications("location")>0
 											.badge
 												=current_user.notifications("location")
-								%li.dropdown-item
+								- if current_user.owning
+									%li
+										%a{:href => "/users/"+current_user.id.to_s}
+											%span
+												%i.mdi.mdi-map-marker
+											Mis Locaciones
+											- if current_user.notifications("location")>0
+												.badge
+													=current_user.notifications("location")
+								%li
 									%a{:href => "/bookings"}
 										%span
 											%i.mdi.mdi-calendar-multiple
