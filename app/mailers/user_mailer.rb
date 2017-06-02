@@ -36,6 +36,14 @@ class UserMailer < ActionMailer::Base
 		mail(to: Conf.value('admin_email'),subject: "Solicitud eliminación de locación #{@location.title}")
 	end
 
+	def booking_requested_admin(booking)
+		@user = booking.user
+		@location = booking.location
+		@location_user = booking.location.user
+		@booking=booking
+		mail(to: Conf.value('admin_email'), subject: '¡Han solicitado una reserva!')
+	end
+
 	def booking_requested(booking)
 		@user = booking.location.user
 		@location = booking.location
@@ -56,6 +64,13 @@ class UserMailer < ActionMailer::Base
 		@booking=booking
 		mail(to: @user.email, subject: '¡Han aprobado tu Reserva!')
 	end
+
+	def booking_accepted_admin(booking)
+		@user = booking.user
+		@location = booking.location
+		@booking=booking
+		mail(to: @user.email, subject: 'Han aprobado una Reserva')
+	end	
 
 	def booking_cancelled(booking)
 		@user = booking.user
@@ -81,9 +96,15 @@ class UserMailer < ActionMailer::Base
 		mail(to: Conf.value('admin_email'),subject: subject, from:email)
 	end
 
-	def request_password_token(code,email)
-		@code=code
+	def request_password_token(user, code,email)
+		@code = code
+		@user = user
 		mail(to: email, subject: '¿Olvidaste tu contraseña?')
+	end
+
+	def password_changed(user)
+		@user = user
+		mail(to: @user.email, subject: 'Tu contraseña ha sido cambiada')
 	end
 
 	def request_destroy(user)
@@ -97,4 +118,18 @@ class UserMailer < ActionMailer::Base
 		@locations = @user.locations
 		mail(to: Conf.value('admin_email'), subject: 'Usuario quiere borrar su cuenta')
   end
+
+	def owner_location_review(booking)
+		@user = booking.location.user
+		@location = booking.location
+		@booking = booking
+		mail(to: @user.email, subject: 'Arriendo finalizado')
+	end
+
+	def tenant_location_review(booking)
+		@user = booking.user
+		@booking = booking
+		mail(to: @user.email, subject: 'Cuéntanos tu experiencia')
+	end
+
 end
