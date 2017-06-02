@@ -21,9 +21,9 @@ class UserMailerPreview < ActionMailer::Preview
 		UserMailer.location_problem(Location.first)
 	end
 
-	def request_location_removal
+	def request_location_removal_admin
 		location = Location.first
-		UserMailer.request_location_removal(location, location.user)
+		UserMailer.request_location_removal_admin(location, location.user)
 	end
 
 	def booking_requested
