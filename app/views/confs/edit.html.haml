@@ -17,6 +17,17 @@
                   Correo administrador
                 %td{:colspan => "2"}
                   = email_field_tag 'admin_email', @conf['admin_email'], placeholder: "Ej: admin@atlocs.com", class: "form-control input-sm", required: true
+              %tr.fields
+                %td
+                  Encuesta al cliente
+                %td{:colspan => "2"}
+                  = text_field_tag 'client_review', @conf['client_review'], class: "form-control input-sm", required: true
+              %tr.fields
+                %td
+                  Encuesta al propietario
+                %td{:colspan => "2"}
+                  = text_field_tag 'owner_review', @conf['owner_review'], class: "form-control input-sm", required: true
+
           .form-actions.row
             .col-md-3.pull-right
               = submit_tag "Guardar", class: "btn btn-success btn-block"
