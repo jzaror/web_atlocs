@@ -18,6 +18,11 @@ class UserMailer < ActionMailer::Base
 		mail(to: @user.email, subject: 'Tu locación ha sido recibida')
 	end
 
+	def location_submitted_admin(location)
+		@location = location
+		mail(to: Conf.value('admin_email'), subject: 'Han publicado una nueva locación')
+	end
+
 	def location_approved(location)
 		@user = location.user
 		@location = location

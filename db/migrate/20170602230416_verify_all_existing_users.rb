@@ -1,5 +1,5 @@
 class VerifyAllExistingUsers < ActiveRecord::Migration
   def change
-  	User.update_all(status: "verified")
+  	User.where("status NOT IN (?)", [3,4,5]).update_all(status: 3)
   end
 end

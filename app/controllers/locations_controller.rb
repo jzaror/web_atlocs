@@ -95,6 +95,7 @@ class LocationsController < ApplicationController
           end
         end
         UserMailer.location_submitted(@location).deliver
+        UserMailer.location_submitted_admin(@location).deliver
         @location.update_attribute("status",2)
         format.html { redirect_to(location_path(@location, :open=>@modal), :notice => 'La locación fue creada con exito.') }
         format.js
@@ -112,6 +113,7 @@ class LocationsController < ApplicationController
       if @location.status == "submitted"
         LocationMailer.new_location(@location).deliver
         UserMailer.location_submitted(@location).deliver
+        #UserMailer.location_submitted_admin(@location).deliver
       end
       if params[:images]
         #===== The magic is here ;)
