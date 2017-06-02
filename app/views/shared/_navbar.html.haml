@@ -20,29 +20,32 @@
 
 					-if current_user
 						%li.nav-item
-							= link_to("Barrios y Colecciones", collections_path, :class=>"nav-link")
+							= link_to("Barrios & Colecciones", collections_path, :class=>"nav-link")
 						%li.nav-item
 							= link_to("Locaciones", locations_path, :class=>"nav-link")
 
-					%form.form-inline.my-2.my-lg-0{ :method=>"get", :action=>"/locations/new/" }
-						%input{:type=>"hidden", :name=>"newlocation", :value=>"true"}
-						%button.btn.btn-secondary.text-primary.navbar-btn{ :type=>"submit"}
-							%i.mdi.mdi-lg.mdi-cloud-upload
-							Publica tu Locación
-
-					%li.nav-item#loginlink
+					%li.nav-item
 						%a.nav-link{:href => "/"}
 							Contacto
 
+					%li.nav-item{:style => "margin: 6px 5px;"}
+						%form{ :method=>"get", :action=>"/locations/new/" }
+							%input{:type=>"hidden", :name=>"newlocation", :value=>"true"}
+							%button.btn.btn-secondary.text-primary.navbar-btn{ :type=>"submit"}
+								Publica tu Locación
+
+
 					-if current_user
-						%li.nav-item.dropdown
-							%a.nav-link.user-btn{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :href => "#", :role => "button"}
-								.user-avatar.inline
+						%li.nav-item.dropdown.user
+							%a.nav-link{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :href => "#", :role => "button"}
+								.user-circle
 									%i.mdi.mdi-account.mdi-lg
 									- if(current_user.notifications("location")+current_user.notifications("booking"))>0
 										.badge
 											= current_user.notifications("location")+current_user.notifications("booking")
+								%i.mdi.mdi-menu-down.arrow
 							%ul.dropdown-menu.dropdown-menu-right.bg-primary
+								%i.mdi.mdi-menu-up.arrow
 								%li
 									%a{:href => "/users/"+current_user.id.to_s}
 										%span
@@ -67,11 +70,12 @@
 
 
 
-					%li.nav-item.dropdown{"style" => "width: 48px;"}
+					%li.nav-item.dropdown
 						%a#navbarDropdownMenuLink.nav-link{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :href => "http://example.com"}
-							.user-avatar.inline
-								%i.mdi.mdi-lg.mdi-help
+							.help
+								?
 						%ul.dropdown-menu.dropdown-menu-right.bg-primary{"aria-labelledby" => "navbarDropdownMenuLink"}
+							%i.mdi.mdi-menu-up.arrow
 							%li
 								%a{:href => "/faq"}
 									FAQ

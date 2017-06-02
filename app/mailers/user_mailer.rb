@@ -30,10 +30,10 @@ class UserMailer < ActionMailer::Base
 		mail(to: @user.email, subject: 'Tu locación necesita algunos cambios para nuestra aprobación')
 	end
 
-	def request_removal(location,user)
+	def request_location_removal_admin(location,user)
 		@location = location
 		@user = user
-		mail(to: Conf.value('admin_email'),subject: "Solicitud eliminación #{@location.title}")
+		mail(to: Conf.value('admin_email'),subject: "Solicitud eliminación de locación #{@location.title}")
 	end
 
 	def booking_requested(booking)
@@ -47,7 +47,7 @@ class UserMailer < ActionMailer::Base
 		@user = booking.user
 		@location = booking.location
 		@booking=booking
-		mail(to: @user.email, subject: 'Has creado una reserva')
+		mail(to: @user.email, subject: 'Has solicitado una reserva en AtLocs.')
 	end
 
 	def booking_accepted(booking)
@@ -71,9 +71,9 @@ class UserMailer < ActionMailer::Base
 	end
 
 	def payment_confirmed(booking)
-		@booking=booking
-		@user=@booking.user
-		mail(to: @user.email, subject: 'Tu pago ha sido confirmado')
+		@booking = booking
+		@user = @booking.user
+		mail(to: @user.email, subject: '¡Ya tienes una reserva lista en AtLocs!')
 	end
 
 	def contact_form(email,body,subject)
@@ -83,16 +83,29 @@ class UserMailer < ActionMailer::Base
 
 	def request_password_token(code,email)
 		@code=code
-		mail(to: email, subject: 'Tu link para reestablecer tu cuenta')
+		mail(to: email, subject: '¿Olvidaste tu contraseña?')
 	end
 
 	def request_destroy(user)
 		@user = user
-		mail(to: @user.email, subject: 'Solicitud: Eliminar cuenta')
+		mail(to: @user.email, subject: 'Solicitud para eliminar mi cuenta')
 	end
 
-	def delete_user(user)
+	def request_destroy_admin(user)
     @user = user
+		@bookings = @user.bookings
+		@locations = @user.locations
 		mail(to: Conf.value('admin_email'), subject: 'Usuario quiere borrar su cuenta')
   end
+
+	def owner_location_review(user)
+		@user = user
+		mail(to: user.email, subject: 'Cuentanos tu experiencia')
+	end
+
+	def tenant_location_review(user)
+		@user = user
+		mail(to: user.email, subject: 'Cuentanos tu experiencia')
+	end
+
 end

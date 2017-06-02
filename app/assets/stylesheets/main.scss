@@ -90,31 +90,47 @@ h1, h2, h3, h4, h5, h6 {
 
 .navbar {
 	.nav-item {
+		margin: 4px 0;
 		.nav-link {
 			color: lighten($brand-primary, 40%);
 			font-size: 13px;
-	    border-right: 1px solid rgba(148, 146, 169, .49);
-	    margin-top: 4px;
+			border-right: 1px solid rgba(148, 146, 169, 0.49);
+			margin-top: 6px;
 			position: relative;
-		}
-		&:last-of-type {
-			.nav-link {
-		    border-right: 1px solid transparent;
+			padding: 0 10px;
+			font-family: 'Chivo', sans-serif;
+			.help {
+				border-radius: 50%;
+				background: #333399;
+				border: 2px solid #D5D3E2;
+				width: 21px;
+				height: 21px;
+				text-align: center;
+				font-size: 13px !important;
+				display: block;
+				padding: 2px;
+				/* margin-top: 2px; */
+				line-height: 13px !important;
+				font-weight: 900;
 			}
 		}
-		.user-btn {
-			height: 33px;
-    	width: 50px;
-		}
 		.dropdown-menu {
-			top: 114%;
+			top: 184%;
 			padding: 0;
+			.arrow {
+				position: absolute;
+				right: 0;
+		    top: -25px;
+				font-size: 30px;
+				color: #000066;
+			}
 			li {
 				a {
 					color: lighten($brand-primary, 40%);
 					padding: 5px;
 					display: block;
 					font-size: 13px;
+					font-family: 'Chivo', sans-serif;
 					// box-shadow: 0px 0px 5px 0px rgba(124,123,123, .75);
 					span {
 						padding: 5px;
@@ -125,7 +141,7 @@ h1, h2, h3, h4, h5, h6 {
 						height: 40px;
 						width: 40px;
 						display: inline-block;
-						background:transparentize(black, .9);
+				    background: #333399;
 						i {
 							color: lighten($brand-primary, 40%);
 							margin-left: 4px;
@@ -134,7 +150,43 @@ h1, h2, h3, h4, h5, h6 {
 					}
 					&:hover {
 						text-decoration: none;
-						background-color: transparentize(black, .9);
+						background-color: #333399;
+					}
+				}
+			}
+		}
+		&.dropdown {
+			.nav-link {
+				margin-top: 4px;
+				border-right: 1px solid transparent;
+			}
+			&.user {
+				.nav-link {
+					border-right: 1px solid rgba(148, 146, 169, 0.49);
+					position: relative;
+					display: block;
+    			height: 23px;
+			    width: 82px;
+					.arrow {
+						position: absolute;
+						right: 0;
+						bottom: -21px;
+						font-size: 30px;
+						color: #000066;
+					}
+					.user-circle {
+						border-radius: 50%;
+						background: white;
+						width: 42px;
+						height: 42px;
+						display: block;
+						position: absolute;
+				    top: -11px;
+						color: #333399;
+				    padding: 9px 6px;
+						i {
+							font-size: 30px !important;
+						}
 					}
 				}
 			}
@@ -142,8 +194,13 @@ h1, h2, h3, h4, h5, h6 {
 	}
 	.navbar-btn {
 		font-size: 13px;
+    padding: 3px 5px;
+    line-height: 13px;
+    border: none;
+    height: 25px;
+		font-family: 'Chivo', sans-serif;
 		i {
-			font-size: 20px;
+			font-size: 25px !important;
 		}
 	}
 
@@ -608,5 +665,76 @@ button, input, .form-control, a {
 			border-left:2px solid $gray-lighter;
 			margin-left:1rem;
 		}
+	}
+}
+.card-register {
+	border-radius: 20px;
+	overflow: hidden;
+	border: 3px solid #B3B3B3;
+	.card-header {
+		background: white;
+		padding-top: 40px;
+		h1 {
+			font-size: 28px;
+			color: #4D4D4D;
+		}
+		p {
+			font-size: 21px;
+			color: #666666;
+		}
+		i {
+			font-size: 45px;
+			color: #666666;
+		}
+	}
+	.card-block {
+		background: #EEEEEE;
+		p {
+			font-size: 13px;
+			color: #666;
+		}
+	}
+	label {
+		&.checkbox {
+			margin-bottom: 0;
+		}
+	}
+	hr {
+		border-top: 1px solid #CCCCCC;
+		text-align: center;
+    margin: 30px -1.5rem;
+		&:after {
+			content: 'o';
+			display: inline-block;
+			position: relative;
+			top: -14px;
+			padding: 0 10px;
+			background: #eee;
+			color: #CCCCCC;
+			font-size: 18px;
+		}
+	}
+	.facebook {
+		span {
+			color: #2C467A;
+			position: absolute;
+			width: 51px;
+			left: 0;
+			top: 0;
+			bottom: 0px;
+			padding: 6px;
+			border-right: 1px solid #2C467A;
+			font-size: 30px;
+		}
+		border-radius: 0;
+		padding: 15px 15px 15px 77px;
+		background: #3B5999;
+		font-size: 17px;
+		font-weight: 600;
+		color: white;
+		margin: 0 auto;
+		display: block;
+		width: 61%;
+		position: relative;
 	}
 }

@@ -4,6 +4,11 @@ class UserMailerPreview < ActionMailer::Preview
 		UserMailer.welcome(User.first)
 	end
 
+	def confirmation
+		@user = User.first
+		UserMailer.confirmation(@user)
+	end
+
 	def location_submitted
 		UserMailer.location_submitted(Location.first)
 	end
@@ -16,9 +21,9 @@ class UserMailerPreview < ActionMailer::Preview
 		UserMailer.location_problem(Location.first)
 	end
 
-	def request_removal
+	def request_location_removal_admin
 		location = Location.first
-		UserMailer.location_approved(location)
+		UserMailer.request_location_removal_admin(location, location.user)
 	end
 
 	def booking_requested
@@ -52,6 +57,16 @@ class UserMailerPreview < ActionMailer::Preview
 
 	def request_password_token
 		UserMailer.request_password_token('abcdef', 'hola@nnodes.com')
+	end
+
+	def request_destroy
+		@user = User.first
+		UserMailer.request_destroy(@user)
+	end
+
+	def request_destroy_admin
+		@user = User.first
+		UserMailer.request_destroy_admin(@user)
 	end
 
 end

@@ -1,12 +1,38 @@
-<h1>Tu reserva fue realizada con éxito</h1>
+<h4 style="Margin:0;Margin-bottom:10px;color:inherit;font-family:Helvetica,Arial,sans-serif;font-size:17px;font-weight:400;line-height:1.3;margin:0;margin-bottom:10px;padding:0;text-align:left;word-wrap:normal">
+  Hola <em><%=@user.first_name%>!</em>
+</h4>
+<br />
 
-<p>Gracias por hacer tu reserva a través de AtLocs.com. Estamos a la espera de la aprobación por parte del propietario para indicarte los próximos pasos a seguir.</p>
-<p>El codigo de tu reserva es el: <%=@booking.code.upcase%></p>
-<p><%=link_to 'Ir a mis reservas', bookings_url %></p>
-<p>Saludos y nos comunicamos contigo a la brevedad.</p>
-
-<br>
-<hr>
-<p><strong>Cristian Díaz Reyes</strong></p>
-<p>Fundador-Director General</p>
-<p>AtLocs.com</p>
+<p style="Margin:0;Margin-bottom:10px;color:grey;font-family:Helvetica,Arial,sans-serif;font-size:15px;font-weight:300;line-height:1.3;margin:0;margin-bottom:10px;padding:0;text-align:left">
+  Tu solicitud de reserva ya fue enviada al propietario de la locación que has escogido para tu producción.
+</p>
+<p style="Margin:0;Margin-bottom:10px;color:grey;font-family:Helvetica,Arial,sans-serif;font-size:15px;font-weight:300;line-height:1.3;margin:0;margin-bottom:10px;padding:0;text-align:left">
+  Una vez aprobada, te haremos  saber para que puedas llevar a cabo los pagos correspondientes y así, ponerte en contacto con el dueño de la locación.
+	Recuerda que siempre puedes modificar tus reservas en MI PERFIL-MIS RESERVAS.
+</p>
+<p style="Margin:0;Margin-bottom:10px;color:grey;font-family:Helvetica,Arial,sans-serif;font-size:15px;font-weight:300;line-height:1.3;margin:0;margin-bottom:10px;padding:0;text-align:left">
+  ¡Muchas gracias por confiar tu producción a AtLocs!
+</p>
+<br />
+<center data-parsed="" style="min-width:532px;width:100%">
+  <table class="button radius float-center" style="Margin:0 0 16px 0;border-collapse:collapse;border-spacing:0;float:none;margin:0 0 16px 0;padding:0;text-align:center;vertical-align:top;width:auto">
+    <tbody>
+      <tr style="padding:0;text-align:left;vertical-align:top">
+        <td style="-moz-hyphens:auto;-webkit-hyphens:auto;Margin:0;border-collapse:collapse!important;color:grey;font-family:Helvetica,Arial,sans-serif;font-size:15px;font-weight:300;hyphens:auto;line-height:1.3;margin:0;padding:0;text-align:left;vertical-align:top;word-wrap:break-word">
+          <table style="border-collapse:collapse;border-spacing:0;padding:0;text-align:left;vertical-align:top;width:100%">
+            <tbody>
+              <tr style="padding:0;text-align:left;vertical-align:top">
+                <td style="-moz-box-shadow:inset 0 0 10px #fefefe;-moz-hyphens:auto;-webkit-box-shadow:inset 0 0 10px #fefefe;-webkit-hyphens:auto;Margin:0;background:#5B46CD;border:none;border-collapse:collapse!important;border-radius:12px;box-shadow:inset 0 0 10px #fefefe;color:#fefefe;font-family:Helvetica,Arial,sans-serif;font-size:15px;font-weight:300;hyphens:auto;line-height:1.3;margin:0;padding:0;text-align:left;vertical-align:top;word-wrap:break-word">
+                  <%= link_to "Mis reservas", bookings_url,
+                      style: "Margin:0;border:0 solid #5B46CD;border-radius:3px;color:#fefefe;display:inline-block;font-family:Helvetica,Arial,sans-serif;font-size:16px;font-weight:700;line-height:1.3;margin:0;padding:10px 16px;text-align:left;text-decoration:none;text-transform:uppercase" %>                </td>
+              </tr>
+            </tbody>
+          </table>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</center>
+<h3 style="Margin:0;Margin-bottom:10px;color:inherit;font-family:Helvetica,Arial,sans-serif;font-size:15px;font-weight:700;line-height:1.3;margin:0;margin-bottom:10px;padding:0;text-align:left;word-wrap:normal">
+	El Equipo de Atlocs
+</h3>
