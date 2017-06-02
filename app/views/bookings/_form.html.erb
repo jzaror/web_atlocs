@@ -15,7 +15,7 @@
 			<span id="booking-price"></span>
 		</b>
 	</p>
-	<p class="bg-warning" style="padding: 10px" id="booking-price-message">
+	<p class="bg-warning" style="padding: 10px;display:none;" id="booking-price-message">
 		<b>
 			<span id="booking-message"></span>
 		</b>
@@ -61,46 +61,3 @@
 
 	}
 </script>
-<!--
-%form.padding{:action=>"javascript:createbooking()"}
-	%input{:type=>"hidden",:value=>params[:id],:name=>"location_id", :id=>"booking-location_id-input"}
-	.row
-		.form-group.col-md-6
-			%label
-				Desde
-			.form-group
-				.datepicker.input-group.date
-					%input.form-control{:type => "date", :name=>"start_date", :id=>"booking-start_date-input"}/
-					%span.input-group-addon
-						%i.mdi.mdi-calendar
-		.form-group.col-md-6
-			%label
-				Hasta
-			.form-group
-				.datepicker.input-group.date
-					%input.form-control{:type=>"date", :name=>"end_date", :id=>"booking-end_date-input"}/
-					%span.input-group-addon
-						%i.mdi.mdi-calendar
-		.form-group.col-md-12
-			%p.bg-warning{:style=>"padding:10px;"}
-				%i.mdi.mdi-lg.mdi-cash
-				Precio de reserva:
-				%b.booking-fee-price
-				%small.help-block Este debe ser cancelado a AtLocs para hacer efectiva la reserva de la locación.
-		.form-group.col-md-12
-			%label{:for => "comment"}
-				Agrega un Comentario
-			%textarea.form-control{:name => "comment", :id=>"booking-comment-input"}
-		.col-md-12.padding
-			%button.btn.btn-block.btn-lg.btn-primary{:type=>"submit"}
-				Enviar Solicitud
-				%i.mdi.mdi-lg.mdi-arrow-right
-		:javascript
-			$(document).ready(function(){
-				$('.datepicker').datepicker({
-					format: 'yyyy-mm-dd',
-					startDate: '-3d',
-					todayHighlight: true
-				});
-			});
- -->

@@ -4,44 +4,54 @@
 			= flash_messages
 			.col-md-8
 				.booking-status
-					.page-header 
+					.page-header
 						%h1 Historial de la Reserva
-					.comment-box#comments.row
-						%form.form{:action=>"javascript:submitcomment('#{(@booking.code||=@booking.generatecode)}')"}
-							.form-group.col-md-10
-								%textarea.form-control{:name=>"body", :id=>"comment-body-input", :placeholder=>"Agrega tu comentario"}
-							.form-group.col-md-2
-								%button.btn.btn-primary.btn-lg.btn-block.pull-right{:type=>:submit}
-									%i.mdi.mdi-send
+					.comment-box#comments
+						- if @booking.status=="paid"
+							%form.form{:action=>"javascript:submitcomment('#{(@booking.code||=@booking.generatecode)}')", :style => "margin-top:20px;"}
+								.row
+									.col-md-10
+										.form-group
+											%textarea.form-control{:name=>"body", :id=>"comment-body-input", :placeholder=>"Agrega tu comentario"}
+									.col-md-2
+										.form-group
+											%button.btn.btn-primary.btn-lg.btn-block{:type=>:submit}
+												%i.mdi.mdi-send
+						- elsif @booking.user==current_user
+							%p.text-center{:style => "margin-top:20px;"}
+								Solamente podrás comunicarte con el dueño de la propiedad una vez que hayas pagado tu Reserva.
+						- else
+							%p.text-center{:style => "margin-top:20px;"}
+								Solamente podrás comunicarte con quien arrienda tu propiedad, una vez que éste haya pagado la Reserva.
 					.booking-log#history
 						- @history.each do |event|
 							-if event["action"]=="comment"
 								.media
 									.media-left
 										.avatar-container
-											.user-avatar.inline
+											.user-avatar.inline{:style => "position: relative;top: -7px;left: -13px;"}
 												%i.mdi.mdi-account
 												-#= image_tag "no-avatar.png"
-									
+
 									.media-body
 										%h4.media-heading
 											=event["user"]["full_name"]
-											%span.timeago 
+											%span.timeago
 												%i.mdi.mdi-clock
 												hace #{distance_of_time_in_words_to_now(Time.at(event["datetime"]))}
 										%p= event["text"]
-						
-										
+
+
 							- elsif event["action"]=="accepted"
 								.media.booking-accepted
 									.media-left
 										.avatar-container
-											.user-avatar.inline
+											.user-avatar.inline{:style => "position: relative;top: -7px;left: -13px;"}
 												%i.mdi.mdi-calendar-check
 									.media-body
 										%h4.media-heading
 											Reserva Aceptada
-											%span.timeago 
+											%span.timeago
 												%i.mdi.mdi-clock
 												hace #{distance_of_time_in_words_to_now(Time.at(event["datetime"]))}
 										%p=event["text"]
@@ -49,12 +59,12 @@
 								.media.booking-cancelled
 									.media-left
 										.avatar-container
-											.user-avatar.inline
+											.user-avatar.inline{:style => "position: relative;top: -7px;left: -13px;"}
 												%i.mdi.mdi-calendar-remove
 									.media-body
 										%h4.media-heading
 											Reserva Cancelada
-											%span.timeago 
+											%span.timeago
 												%i.mdi.mdi-clock
 												hace #{distance_of_time_in_words_to_now(Time.at(event["datetime"]))}
 										%p=event["text"]
@@ -62,23 +72,23 @@
 								.media.booking-payment-ok
 									.media-left
 										.avatar-container
-											.user-avatar.inline
+											.user-avatar.inline{:style => "position: relative;top: -7px;left: -13px;"}
 												%i.mdi.mdi-cash
 									.media-body
 										%h4.media-heading
 											Pago Realizado
-											%span.timeago 
+											%span.timeago
 												%i.mdi.mdi-clock
 												hace #{distance_of_time_in_words_to_now(Time.at(event["datetime"]))}
 										%p=event["text"]
 						.media
 							.media-left
 								.avatar-container
-									.user-avatar.inline
+									.user-avatar.inline{:style => "position: relative;top: -7px;left: -13px;"}
 										%i.mdi.mdi-calendar
 							.media-body
 								%h4.media-heading
-									Solicitud de reserva creada  
+									Solicitud de reserva creada
 								%p
 									%a{:href => "#"}
 										#{@booking.user.full_name}
@@ -86,26 +96,26 @@
 											%span.timeago
 												%i.mdi.mdi-clock
 												hace #{distance_of_time_in_words_to_now(@booking.created_at)}
-							
-					
-		
 
-					
+
+
+
+
 			.col-md-4
 				- if @booking.status!="archived"
-					.booking-actions.padding.text-right
+					.booking-actions{:style => "margin-top: 20px;margin-bottom:20px;"}
 						/ Split button
-						.btn-group
+						.btn-group{:style => "width: 100%;"}
 							- if @booking.status=="accepted" && current_user.id==@booking.user.id
-								%a.btn.btn-lg.btn-primary{:type => "button", :href=>"javascript:alert('¡Revisa tu Correo! Hemos enviado un E-mail con la información de pago de la Reserva')"}
+								%a.btn.btn-lg.btn-primary.btn-block{:type => "button", :href=>"javascript:alert('¡Revisa tu Correo! Hemos enviado un E-mail con la información de pago de la Reserva')"}
 									%i.mdi.mdi-check
 									Pagar Reserva
 							- elsif @booking.status=="waiting" && current_user.id==@booking.location.user.id
-								%a.btn.btn-lg.btn-success{:type => "button", :href=>"/bookings/#{@booking.code}/accept"}
+								%a.btn.btn-lg.btn-success.btn-block{:type => "button", :href=>"/bookings/#{@booking.code}/accept"}
 									%i.mdi.mdi-check
 									Aceptar Reserva
 							- elsif @booking.status=="waiting"||@booking.status=="accepted"
-								%a.btn.btn-lg.btn-danger{:type => "button", :href=>"/bookings/#{@booking.code}/cancel"}
+								%a.btn.btn-lg.btn-primary.btn-block{:type => "button", :href=>"/bookings/#{@booking.code}/cancel", :style => "-webkit-appearance: none;"}
 									%i.mdi.mdi-block-helper
 									Cancelar Reserva
 
@@ -114,20 +124,20 @@
 					%h2.location-title #{@booking.location.title}
 					.location-img
 						= image_tag @booking.location.thumbnail(500,230)
-					%ul.booking-details			
+					%ul.booking-details
 						%li
 							%i.mdi.mdi-lg.mdi-calendar-today
-							Desde el: 
+							Desde el:
 							%b=@booking.start_time.strftime("%d/%m/%Y")
-							
+
 						%li
 							%i.mdi.mdi-lg.mdi-calendar
-							Hasta el: 
+							Hasta el:
 							%b=@booking.end_time.strftime("%d/%m/%Y")
-						
+
 						%li
 							%i.mdi.mdi-lg.mdi-cash
-							Precio locación: 
+							Precio locación:
 							%b=number_to_currency(@booking.price, :unit => "$", :precision => 0)
 							x #{@booking.totaldays} día(s)
 						%li
@@ -135,4 +145,3 @@
 							Precio de reserva:
 							%b=number_to_currency(@booking.location.fee*@booking.totaldays, :unit => "$", :precision => 0)
 							x #{@booking.totaldays} día(s)
-					
