@@ -11,7 +11,7 @@ class Conf < ActiveRecord::Base
     []
   end
   def self.text_accepted_values
-    ['admin_email']
+    ['admin_email', 'client_review', 'owner_review']
   end
 
   def self.value(code)
