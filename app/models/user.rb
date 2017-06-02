@@ -7,14 +7,18 @@ class User < ActiveRecord::Base
   devise :confirmable, :omniauthable
 
   #validate :atleast_one_is_checked
+  #validate_uniqueness_of: email 
 
-  #validate_uniqueness_of :email
   enum status: [ :banned, :shadowbanned, :unverified, :verified, :moderator, :admin ]
 
   has_secure_password
   before_create :add_unverified_status
   before_save :set_tenant, unless: :owning || :tenant
   acts_as_paranoid
+
+  def active_for_authentication?
+    (verified? || moderator? || admin?)
+  end
 
   def full_name
     if self.first_name && self.last_name
@@ -103,11 +107,13 @@ class User < ActiveRecord::Base
   def self.from_omniauth(auth)
     user = User.where(provider: auth.provider, uid: auth.uid).first
     if user.present?
+      user.update_attributes(status: 3) if !user.active_for_authentication?
       return user
     else
       registered_user = User.where(email: auth.info.email).first
       deleted_user = User.with_deleted.find_by(email: auth.info.email) unless registered_user.present?
       if registered_user.present?
+        registered_user.status = 3 if !registered_user.active_for_authentication?
         registered_user.provider = auth.provider
         registered_user.uid = auth.uid
         registered_user.first_name = auth.info.first_name
@@ -120,18 +126,19 @@ class User < ActiveRecord::Base
         deleted_user.last_name = auth.info.last_name
         deleted_user.provider = auth.provider
         deleted_user.uid = auth.uid
+        deleted_user.status = 3 if !deleted_user.active_for_authentication?
         deleted_user.save!
         UserMailer.welcome(deleted_user).deliver_now
         return deleted_user
       else
         User.create do |user|
+          user.status = 3
           user.email = auth.info.email
           user.password = Devise.friendly_token[0,20]
           user.first_name = auth.info.first_name
           user.last_name = auth.info.last_name
           user.provider = auth.provider
           user.uid = auth.uid
-          user.status = 'verified'
           user.skip_confirmation!
           UserMailer.welcome(user).deliver_now
         end
@@ -145,6 +152,8 @@ class User < ActiveRecord::Base
 
   private
     def add_unverified_status
-      self.status="unverified"
+      if self.provider.blank?
+        self.status="unverified"
+      end
     end
 end

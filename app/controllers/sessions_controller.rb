@@ -8,7 +8,7 @@ class SessionsController < ApplicationController
 		user = User.find_by_email(params[:email])
 		# If the user exists AND the password entered is correct.
 
-		if user && user.authenticate(params[:password])
+		if user && user.authenticate(params[:password]) && user.active_for_authentication?
 			# Save the user id inside the browser cookie. This is how we keep the user
 			# logged in when they navigate around our website.
 			session[:user_id] = user.id
@@ -37,16 +37,19 @@ class SessionsController < ApplicationController
 			  }
 			end
 		else
-			message="E-mail o contraseña incorrectos"
+			if user && !user.active_for_authentication?
+				message="Cuenta no confirmada aún"	
+			else
+				message="E-mail o contraseña incorrectos"
+			end
 			respond_to do |format|
 				format.html {
-					flash[:error] = message
+					flash[:notice] = message
 					redirect_to "/login"
 				}
 				format.json { render json: {:success=>false,:message=>message} }
 			end
 		end
-
 	end
 	def destroy
 		session[:user_id] = nil

@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-  devise_for :users, controllers: { omniauth_callbacks: "users/omniauth_callbacks" }
+  devise_for :users, controllers: { omniauth_callbacks: "users/omniauth_callbacks", confirmations: 'users/confirmations'}
   devise_scope :user do
     delete 'sign_out', :to => 'devise/sessions#destroy', :as => :destroy_user_session
   end
@@ -32,6 +32,8 @@ Rails.application.routes.draw do
 	post '/help/password' => 'sessions#requestpasswordupdate'
 	get '/help/updatepassword/:code' => 'sessions#updatepassword', as: 'update_password'
 	post '/help/updatepassword/:code' => 'sessions#updatepassword'
+  get 'location/:id/show_modal' => 'locations#request_removal', as: 'delete_location_modal'
+  get 'location/:id/request_del' => 'locations#delete_request', as: 'location_delete'
 	# The priority is based upon order of creation: first created -> highest priority.
 	# See how all your routes lay out with "rake routes".
 	# Users
@@ -52,12 +54,13 @@ Rails.application.routes.draw do
 	get 'bookings/:code' => 'bookings#show', as: 'booking'
 	get 'bookings/:code/payment/confirm' => "bookings#confirmpayment"
 	get 'bookings/:code/accept' => 'bookings#accept'
-	get 'bookings/:code/cancel' => 'bookings#cancel'
+	get 'bookings/:code/cancel' => 'bookings#cancel', as: 'booking_cancel'
 	get 'bookings/:code/delete' => 'bookings#delete'
 	post 'bookings/:code/comment' => 'bookings#comment'
 	post 'bookings/create'=> 'bookings#create'
 	get "bookings" => "bookings#index"
-
+  get 'booking/:id/cancel_modal' => "bookings#cancel_modal", as: 'cancel_booking'
+  get 'booking/:id/cancel' => 'bookings#cancel_booking', as: 'booking_cancelled'
 	# locations
 	get 'locations/:id/approve' => 'locations#approve', as: 'approve_location'
 	get 'locations/:id/archive' => 'locations#archive'
@@ -66,8 +69,7 @@ Rails.application.routes.draw do
 	post 'locations/:id/frontpage' => 'locations#frontpage'
 	get 'locations/:id/show_archive_modal' => 'locations#show_archive_modal'
 	put "locations/:id/feature_image" => "locations#feature_image"
-
-	# attachments
+  # attachments
 	match "upload/:location" => "attachments#create", via: [:post,:patch]
 	get "attachments/:id/destroy" => "attachments#destroy"
   get 'users/:id/delete_modal' => 'users#request_delete', as: 'delete_modal'

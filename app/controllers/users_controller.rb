@@ -32,18 +32,8 @@ class UsersController < ApplicationController
 		else
 			@user=User.new(user_params)
 			if @user.save
-				flash[:notice]="Te has registrado en Atlocs! Ya puedes publicar o reservar locaciones!"
-				session[:user_id] = @user.id
-				#SessionMailer.confirmation_instructions(@user, @user.confirmation_token).deliver_now
-				#UserMailer.confirmation(@user).deliver_now
-				#UserMailer.welcome(user).deliver
-				if session[:url_after_session]
-					url=session[:url_after_session]
-					session[:url_after_session]=nil
-					redirect_to url
-				else
-					redirect_to root_path
-				end
+				flash[:notice]="Te has registrado en Atlocs! Te hemos enviado un email para confirmar tu registro"
+				redirect_to root_path
 			else
 				respond_to do |format|
 					format.html {render :new}
