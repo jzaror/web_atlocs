@@ -30,10 +30,18 @@ class UserMailer < ActionMailer::Base
 		mail(to: @user.email, subject: 'Tu locación necesita algunos cambios para nuestra aprobación')
 	end
 
-	def request_location_removal_admin(location,user)
+	def request_location_removal_admin(location, reason)
 		@location = location
-		@user = user
-		mail(to: Conf.value('admin_email'),subject: "Solicitud eliminación de locación #{@location.title}")
+		@user = location.user
+		@reason = reason
+		mail(to: Conf.value('admin_email'),subject: "Eliminación de Locación ")
+	end
+
+	def request_location_removal_owner(location, reason)
+		@location = location
+		@user = location.user
+		@reason = reason
+		mail(to: Conf.value('admin_email'),subject: "Eliminación de Locación ")
 	end
 
 	def booking_requested_admin(booking)
@@ -96,13 +104,13 @@ class UserMailer < ActionMailer::Base
 		@user = booking.user
 		@owner = @booking.location.user
 		mail(to: @user.email, subject: '¡Tu locación ha sido arrendada con éxito!')
-	end	
+	end
 
 	def payment_confirmed_admin(booking)
 		@booking = booking
 		@location = booking.location
 		mail(to: Conf.value('admin_email'), subject: 'Se ha completado una Reserva. ')
-	end	
+	end
 
 	def contact_form(email,body,subject)
 		@body=body

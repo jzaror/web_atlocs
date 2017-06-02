@@ -7,6 +7,7 @@ class Ability
     user ||= User.new # guest user (not logged in)
     can :index, Location
     can :create, User
+    can :delete_request, Location, user_id: user.id 
     can :show, Location do |location|
         if location.status == "approved"
             true
