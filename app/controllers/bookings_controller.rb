@@ -103,7 +103,7 @@ class BookingsController < ApplicationController
       @booking.user.notify("booking")
 
       flash[:notice] = "Tu solicitud de reserva fue enviada. Por favor espera durante las próximas horas hasta que sea revisada por el administrador de la locación."
-      redirect_to "/"
+      redirect_to bookings_path
     else
       redirect_to "/", flash: {error: "Hubo un error confirmando el pago."}
     end
