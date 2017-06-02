@@ -190,6 +190,8 @@ class BookingsController < ApplicationController
     @booking=Booking.find_by_code(params[:code])
     if @booking.confirm_payment
       UserMailer.payment_confirmed(@booking).deliver
+      UserMailer.payment_confirmed_owner(@booking).deliver
+      UserMailer.payment_confirmed_admin(@booking).deliver
       REDIS.lpush("booking#{@booking.code}",{:datetime=>Time.now.to_i,:text=>"Pago confirmado",:action=>"payment"}.to_json)
       @booking.user.notify("booking")
       @booking.location.user.notify("booking")
