@@ -20,7 +20,7 @@
 								.media
 									.d-flex.mr-2
 										.avatar-container
-											.user-avatar.inline
+											.user-avatar.inline{:style => "position: relative;top: -7px;left: -13px;"}
 												%i.mdi.mdi-account
 												-#= image_tag "no-avatar.png"
 
@@ -37,7 +37,7 @@
 								.media.booking-accepted
 									.d-flex.mr-2
 										.avatar-container
-											.user-avatar.inline
+											.user-avatar.inline{:style => "position: relative;top: -7px;left: -13px;"}
 												%i.mdi.mdi-calendar-check
 									.media-body
 										%h4.media-heading.mt-0.mb-1
@@ -50,7 +50,7 @@
 								.media.booking-cancelled
 									.d-flex.mr-2
 										.avatar-container
-											.user-avatar.inline
+											.user-avatar.inline{:style => "position: relative;top: -7px;left: -13px;"}
 												%i.mdi.mdi-calendar-remove
 									.media-body
 										%h4.media-heading.mt-0.mb-1
@@ -63,7 +63,7 @@
 								.media.booking-payment-ok
 									.d-flex.mr-2
 										.avatar-container
-											.user-avatar.inline
+											.user-avatar.inline{:style => "position: relative;top: -7px;left: -13px;"}
 												%i.mdi.mdi-cash
 									.media-body
 										%h4.media-heading.mt-0.mb-1
@@ -75,7 +75,7 @@
 						.media
 							.d-flex.mr-2
 								.avatar-container
-									.user-avatar.inline
+									.user-avatar.inline{:style => "position: relative;top: -7px;left: -13px;"}
 										%i.mdi.mdi-calendar
 							.media-body
 								%h4.media-heading.mt-0.mb-1
@@ -87,26 +87,21 @@
 											%span.timeago
 												%i.mdi.mdi-clock
 												hace #{distance_of_time_in_words_to_now(@booking.created_at)}
-
-
-
-
-
 			.col-md-4
 				- if @booking.status!="archived"
-					.booking-actions.padding.text-right
+					.booking-actions{:style => "margin-top: 20px;margin-bottom:20px;"}
 						/ Split button
-						.btn-group
+						.btn-group{:style => "width: 100%;"}
 							- if @booking.status=="accepted" && current_user.id==@booking.user.id
-								%a.btn.btn-lg.btn-primary{:type => "button", :href=>"javascript:alert('¡Revisa tu Correo! Hemos enviado un E-mail con la información de pago de la Reserva')"}
+								%a.btn.btn-lg.btn-primary.btn-block{:type => "button", :href=>"javascript:alert('¡Revisa tu Correo! Hemos enviado un E-mail con la información de pago de la Reserva')"}
 									%i.mdi.mdi-check
 									Pagar Reserva
 							- elsif @booking.status=="waiting" && current_user.id==@booking.location.user.id
-								%a.btn.btn-lg.btn-success{:type => "button", :href=>"/bookings/#{@booking.code}/accept"}
+								%a.btn.btn-lg.btn-success.btn-block{:type => "button", :href=>"/bookings/#{@booking.code}/accept"}
 									%i.mdi.mdi-check
 									Aceptar Reserva
 							- elsif @booking.status=="waiting"||@booking.status=="accepted"
-								%a.btn.btn-lg.btn-danger{:type => "button", :href=>"/bookings/#{@booking.code}/cancel"}
+								%a.btn.btn-lg.btn-primary.btn-block{:type => "button", :href=>"/bookings/#{@booking.code}/cancel", :style => "-webkit-appearance: none;"}
 									%i.mdi.mdi-block-helper
 									Cancelar Reserva
 
