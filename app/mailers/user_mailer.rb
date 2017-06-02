@@ -138,4 +138,14 @@ class UserMailer < ApplicationMailer
 		mail(to: @user.email, subject: 'Cuéntanos tu experiencia')
 	end
 
+	def booking_edit(booking)
+		@user = booking.user
+		@booking = booking
+		mail(to: @user.email, subject: 'Cambio de fecha de reserva')
+	end
+
+	def booking_edit_request(booking)
+		@user = booking.location.user
+		mail(to: @user.email, subject: 'Solicitud de cambio de reserva')
+	end
 end
