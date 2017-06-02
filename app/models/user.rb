@@ -101,14 +101,34 @@ class User < ActiveRecord::Base
   end
 
   def self.from_omniauth(auth)
-    where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
-      user.email = auth.info.email
-      user.password = Devise.friendly_token[0,20]
-      user.name = auth.info.name   # assuming the user model has a name
-      #user.image = auth.info.image # assuming the user model has an image
-      # If you are using confirmable and the provider(s) you use validate emails,
-      # uncomment the line below to skip the confirmation emails.
-      user.skip_confirmation!
+    user = User.where(provider: auth.provider, uid: auth.uid).first
+    if user.present?
+      return user
+    else
+      registered_user = User.where(email: auth.info.email)
+      deleted_user = User.with_deleted.find_by(email: auth.info.email) unless registered_user.present?
+      if registered_user.present?
+        registered_user.provider = auth.provider
+        registered_user.uid = auth.uid
+        registered_user.save!
+        return registered_user
+      elsif deleted_user.present?
+        deleted_user.recover
+        deleted_user.provider = auth.provider
+        deleted_user.uid = auth.uid
+        deleted_user.save!
+        return deleted_user
+      else
+        User.create do |user|
+          user.email = auth.info.email
+          user.password = Devise.friendly_token[0,20]
+          user.name = auth.info.name
+          user.provider = auth.provider
+          user.uid = auth.uid
+          user.status = 'verified'
+          user.skip_confirmation!
+        end
+      end
     end
   end
 
