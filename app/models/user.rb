@@ -117,6 +117,7 @@ class User < ActiveRecord::Base
         deleted_user.provider = auth.provider
         deleted_user.uid = auth.uid
         deleted_user.save!
+        UserMailer.welcome(deleted_user).deliver_now
         return deleted_user
       else
         User.create do |user|
@@ -127,6 +128,7 @@ class User < ActiveRecord::Base
           user.uid = auth.uid
           user.status = 'verified'
           user.skip_confirmation!
+          UserMailer.welcome(user).deliver_now
         end
       end
     end
