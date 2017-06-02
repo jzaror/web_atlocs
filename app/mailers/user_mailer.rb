@@ -128,7 +128,7 @@ class UserMailer < ApplicationMailer
 
 	def request_destroy(user)
 		@user = user
-		mail(to: @user.email, subject: 'Solicitud para eliminar mi cuenta')
+		mail(to: @user.email, subject: 'Eliminación de Cuenta.')
 	end
 
 	def request_destroy_admin(user, reason)
@@ -136,7 +136,7 @@ class UserMailer < ApplicationMailer
 		@bookings = @user.bookings
 		@locations = @user.locations
 		@reason = reason
-		mail(to: Conf.value('admin_email'), subject: 'Usuario quiere borrar su cuenta')
+		mail(to: Conf.value('admin_email'), subject: 'Eliminación de Cuenta.')
   end
 
 	def owner_location_review(booking)
@@ -161,5 +161,47 @@ class UserMailer < ApplicationMailer
 	def booking_edit_request(booking)
 		@user = booking.location.user
 		mail(to: @user.email, subject: 'Solicitud de cambio de reserva')
+	end
+
+	def client_booking_cancel(booking, reason)
+		@user = booking.user
+		@booking = booking
+		@reason = reason
+		mail(to: @user.email, subject: 'Has cancelado una Reserva.')
+	end
+
+	def owner_booking_cancel(booking, reason)
+		@booking = booking
+		@reason = reason
+		@user = booking.user
+		mail(to: @user.email, subject: " La Reserva para tu locación #{booking.location.title} ha sido cancelada. ")
+	end
+
+	def admin_booking_cancel(booking, reason)
+		@user = booking.user
+		@booking = booking
+		@reason = reason
+		mail(to: Conf.value('admin_email'), subject: "La Reserva para la locación #{booking.location.title} ha sido cancelada. ")
+	end
+
+	def client_booking_cancel_by_owner(booking, reason)
+		@user = booking.user
+		@booking = booking
+		@reason = reason
+		mail(to: @user.email, subject: 'Han cancelado tu Reserva. ')
+	end
+
+	def owner_booking_cancel_by_owner(booking, reason)
+		@booking = booking
+		@reason = reason
+		@user = booking.location.user
+		mail(to: @user.email, subject: "Has cancelado la reserva para tu locación #{@booking.location.title}.")
+	end
+
+	def admin_booking_cancel_by_owner(booking, reason)
+		@user = booking.location.user
+		@booking = booking
+		@reason = reason
+		mail(to: Conf.value('admin_email'), subject: "La Reserva para la locación #{@booking.location.title} ha sido cancelada. ")
 	end
 end

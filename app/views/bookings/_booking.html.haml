@@ -51,7 +51,7 @@
 	%td
 		.btn-group
 			= link_to "/bookings/"+(booking.code||=booking.generatecode), :class=> "table-btn" do
-				=image_tag "#{asset_path('view.svg')}", :style => "width: 60px;" 
+				=image_tag "#{asset_path('view.svg')}", :style => "width: 60px;"
 				-# %i.mdi.mdi-eye
 				%p Ir a la Reserva
 	%td
@@ -61,14 +61,13 @@
 				%p Aprobar
 		- else
 			= link_to edit_booking_path(booking), :class=> "table-btn" do
-				=image_tag "#{asset_path('edit.svg')}", :style => "width: 60px;" 
+				=image_tag "#{asset_path('edit.svg')}", :style => "width: 60px;"
 				-# %i.mdi.mdi-pencil
 				%p Editar
 	- if !(booking.status=="waiting" && (can? :accept, booking))
 		%td
-			= link_to "/bookings/#{booking.code}/cancel", :class=> "table-btn" do
-				=image_tag "#{asset_path('delete.svg')}", :style => "width: 60px;" 
+			= link_to cancel_booking_path(booking), remote: true, :class=> "table-btn" do
+				=image_tag "#{asset_path('delete.svg')}", :style => "width: 60px;"
 				-# %i.mdi.mdi-delete
 				%p Cancelar
-	- else
 		%td
