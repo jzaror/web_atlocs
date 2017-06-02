@@ -128,18 +128,17 @@ class BookingsController < ApplicationController
 
   def update
     @booking = Booking.find_by(id: params[:id])
-    # @booking.locations = @locations
-    params.each {|ppp| puts ppp}
-    puts params[:start_date]
     start_time = params[:start_date].to_datetime
     end_time = params[:end_date].to_datetime
-    price = params[:price].to_f
-    puts end_time, start_time, price, '#####################################'
     if @booking.update(start_time: start_time, end_time: end_time)
       @booking.updateprice
+      if @booking.status == 2
+        @booking.update(status: 1)
+      end
+      UserMailer.booking_edit(@booking).deliver_now
+      UserMailer.booking_edit_request(@booking).deliver_now
       @booking.save
       flash[:notice] = 'Your booking was updated succesfully'
-
       if request.xhr?
         render json: {status: :success}.to_json
       else
