@@ -1,0 +1,14 @@
+#locationModal.modal.fade{"aria-hidden" => "true", "aria-labelledby" => "exampleModalLabel", :role => "dialog", :tabindex => "-1"}
+  .modal-dialog{:role => "document"}
+    .modal-content
+      .modal-header
+        %h5#exampleModalLabel.modal-title Eliminar locación
+        %button.close{"aria-label" => "Close", "data-dismiss" => "modal", :type => "button"}
+          %span{"aria-hidden" => "true"} ×
+      .modal-body
+        = form_tag(location_delete_path(@location), method: "get") do
+          .form-group
+            = label_tag(:reject_reason, "Motivo de rechazo:")
+            = text_area_tag 'reject_reason', nil, class: 'form-control'
+          .modal-footer
+            = submit_tag 'Solicitar eliminación', :class=>"btn btn-danger"

@@ -6,7 +6,7 @@
   Lamentamos informarte que el Usuario <%=@user.first_name%>  quiere eliminar la locación <%= @location.title %> por los siguientes motivos:
 </p>
 <p style="Margin:0;Margin-bottom:10px;color:grey;font-family:Helvetica,Arial,sans-serif;font-size:15px;font-weight:300;line-height:1.3;margin:0;margin-bottom:10px;padding:0;text-align:left">
-  (texto con motivos dados por el Usuario)
+  <%= @reason %>
 </p>
 <br />
 <center data-parsed="" style="min-width:532px;width:100%">
@@ -18,7 +18,7 @@
             <tbody>
               <tr style="padding:0;text-align:left;vertical-align:top">
                 <td style="-moz-box-shadow:inset 0 0 10px #fefefe;-moz-hyphens:auto;-webkit-box-shadow:inset 0 0 10px #fefefe;-webkit-hyphens:auto;Margin:0;background:#5B46CD;border:none;border-collapse:collapse!important;border-radius:30px;box-shadow:inset 0 0 10px #fefefe;color:#fefefe;font-family:Helvetica,Arial,sans-serif;font-size:15px;font-weight:300;hyphens:auto;line-height:1.3;margin:0;padding:0;text-align:left;vertical-align:top;word-wrap:break-word">
-                  <a href="#" style="Margin:0;border:0 solid #5B46CD;border-radius:3px;color:#fefefe;display:inline-block;font-family:Helvetica,Arial,sans-serif;font-size:16px;font-weight:700;line-height:1.3;margin:0;padding:10px 16px;text-align:left;text-decoration:none;text-transform:uppercase">
+                  <a href="mailto:<%= @user.email%>" target="_top" style="Margin:0;border:0 solid #5B46CD;border-radius:3px;color:#fefefe;display:inline-block;font-family:Helvetica,Arial,sans-serif;font-size:16px;font-weight:700;line-height:1.3;margin:0;padding:10px 16px;text-align:left;text-decoration:none;text-transform:uppercase">
                     Contactar a Usuario
                   </a>
                 </td>
@@ -26,7 +26,7 @@
 
                 </td>
                 <td style="-moz-box-shadow:inset 0 0 10px #fefefe;-moz-hyphens:auto;-webkit-box-shadow:inset 0 0 10px #fefefe;-webkit-hyphens:auto;Margin:0;background:#5B46CD;border:none;border-collapse:collapse!important;border-radius:30px;box-shadow:inset 0 0 10px #fefefe;color:#fefefe;font-family:Helvetica,Arial,sans-serif;font-size:15px;font-weight:300;hyphens:auto;line-height:1.3;margin:0;padding:0;text-align:left;vertical-align:top;word-wrap:break-word">
-                  <a href="#" style="Margin:0;border:0 solid #5B46CD;border-radius:3px;color:#fefefe;display:inline-block;font-family:Helvetica,Arial,sans-serif;font-size:16px;font-weight:700;line-height:1.3;margin:0;padding:10px 16px;text-align:left;text-decoration:none;text-transform:uppercase">
+                  <a href="<%= admin_bookings_path%>" style="Margin:0;border:0 solid #5B46CD;border-radius:3px;color:#fefefe;display:inline-block;font-family:Helvetica,Arial,sans-serif;font-size:16px;font-weight:700;line-height:1.3;margin:0;padding:10px 16px;text-align:left;text-decoration:none;text-transform:uppercase">
                     Aceptar eliminación
                   </a>
                 </td>

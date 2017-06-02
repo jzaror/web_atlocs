@@ -35,10 +35,18 @@ class UserMailer < ActionMailer::Base
 		mail(to: @user.email, subject: 'Tu locación necesita algunos cambios para nuestra aprobación')
 	end
 
-	def request_location_removal_admin(location,user)
+	def request_location_removal_admin(location, reason)
 		@location = location
-		@user = user
-		mail(to: Conf.value('admin_email'),subject: "Solicitud eliminación de locación #{@location.title}")
+		@user = location.user
+		@reason = reason
+		mail(to: Conf.value('admin_email'),subject: "Eliminación de Locación ")
+	end
+
+	def request_location_removal_owner(location, reason)
+		@location = location
+		@user = location.user
+		@reason = reason
+		mail(to: Conf.value('admin_email'),subject: "Eliminación de Locación ")
 	end
 
 	def booking_requested_admin(booking)
@@ -75,7 +83,7 @@ class UserMailer < ActionMailer::Base
 		@location = booking.location
 		@booking=booking
 		mail(to: @user.email, subject: 'Han aprobado una Reserva')
-	end	
+	end
 
 	def booking_cancelled(booking)
 		@user = booking.user
@@ -101,13 +109,13 @@ class UserMailer < ActionMailer::Base
 		@user = booking.user
 		@owner = @booking.location.user
 		mail(to: @user.email, subject: '¡Tu locación ha sido arrendada con éxito!')
-	end	
+	end
 
 	def payment_confirmed_admin(booking)
 		@booking = booking
 		@location = booking.location
 		mail(to: Conf.value('admin_email'), subject: 'Se ha completado una Reserva. ')
-	end	
+	end
 
 	def contact_form(email,body,subject)
 		@body=body
@@ -127,7 +135,7 @@ class UserMailer < ActionMailer::Base
 
 	def request_destroy(user)
 		@user = user
-		mail(to: @user.email, subject: 'Solicitud para eliminar mi cuenta')
+		mail(to: @user.email, subject: 'Eliminación de Cuenta.')
 	end
 
 	def request_destroy_admin(user, reason)
@@ -135,7 +143,7 @@ class UserMailer < ActionMailer::Base
 		@bookings = @user.bookings
 		@locations = @user.locations
 		@reason = reason
-		mail(to: Conf.value('admin_email'), subject: 'Usuario quiere borrar su cuenta')
+		mail(to: Conf.value('admin_email'), subject: 'Eliminación de Cuenta.')
   end
 
 	def owner_location_review(booking)
@@ -160,5 +168,47 @@ class UserMailer < ActionMailer::Base
 	def booking_edit_request(booking)
 		@user = booking.location.user
 		mail(to: @user.email, subject: 'Solicitud de cambio de reserva')
+	end
+
+	def client_booking_cancel(booking, reason)
+		@user = booking.user
+		@booking = booking
+		@reason = reason
+		mail(to: @user.email, subject: 'Has cancelado una Reserva.')
+	end
+
+	def owner_booking_cancel(booking, reason)
+		@booking = booking
+		@reason = reason
+		@user = booking.user
+		mail(to: @user.email, subject: " La Reserva para tu locación #{booking.location.title} ha sido cancelada. ")
+	end
+
+	def admin_booking_cancel(booking, reason)
+		@user = booking.user
+		@booking = booking
+		@reason = reason
+		mail(to: Conf.value('admin_email'), subject: "La Reserva para la locación #{booking.location.title} ha sido cancelada. ")
+	end
+
+	def client_booking_cancel_by_owner(booking, reason)
+		@user = booking.user
+		@booking = booking
+		@reason = reason
+		mail(to: @user.email, subject: 'Han cancelado tu Reserva. ')
+	end
+
+	def owner_booking_cancel_by_owner(booking, reason)
+		@booking = booking
+		@reason = reason
+		@user = booking.location.user
+		mail(to: @user.email, subject: "Has cancelado la reserva para tu locación #{@booking.location.title}.")
+	end
+
+	def admin_booking_cancel_by_owner(booking, reason)
+		@user = booking.location.user
+		@booking = booking
+		@reason = reason
+		mail(to: Conf.value('admin_email'), subject: "La Reserva para la locación #{@booking.location.title} ha sido cancelada. ")
 	end
 end
