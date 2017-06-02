@@ -122,25 +122,33 @@ class BookingsController < ApplicationController
 
 
   def edit
-    #@booking = Booking.find_by_code(params[:id])
+    @booking = Booking.find_by(id: params[:id])
   end
 
   def update
-    @booking = Booking.find_by_code(params[:id])
+    @booking = Booking.find_by(id: params[:id])
     # @booking.locations = @locations
-
-    if @booking.update(params[:booking].permit(:location_id, :start_time, :end_time))
+    params.each {|ppp| puts ppp}
+    puts params[:start_date]
+    start_time = params[:start_date].to_datetime
+    end_time = params[:end_date].to_datetime
+    price = params[:price].to_f
+    puts end_time, start_time, price, '#####################################'
+    if @booking.update(start_time: start_time, end_time: end_time)
+      @booking.updateprice
+      @booking.save
       flash[:notice] = 'Your booking was updated succesfully'
 
       if request.xhr?
         render json: {status: :success}.to_json
       else
-        redirect_to location_bookings_path(@location)
+        redirect_to bookings_path
       end
     else
-      render 'edit'
+      render bookings_path
     end
   end
+
   def comment
     @booking=Booking.find_by_code(params[:code])
     if params[:body] && params[:body].length>0
