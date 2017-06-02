@@ -81,8 +81,7 @@ class UsersController < ApplicationController
 
 	def request_annulation
 		@user = User.find(params[:id])
-		puts @user.full_name, '############################'
-		UserMailer.delete_user(@user).deliver
+		UserMailer.request_destroy_admin(@user).deliver
 		UserMailer.request_destroy(@user).deliver
 		flash[:notice] = "Solicitud enviada"
 		redirect_to @user
