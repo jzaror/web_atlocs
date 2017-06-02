@@ -97,6 +97,19 @@ class UserMailer < ApplicationMailer
 		mail(to: @user.email, subject: '¡Ya tienes una reserva lista en AtLocs!')
 	end
 
+	def payment_confirmed_owner(booking)
+		@booking = booking
+		@user = booking.user
+		@owner = @booking.location.user
+		mail(to: @user.email, subject: '¡Tu locación ha sido arrendada con éxito!')
+	end	
+
+	def payment_confirmed_admin(booking)
+		@booking = booking
+		@location = booking.location
+		mail(to: Conf.value('admin_email'), subject: 'Se ha completado una Reserva. ')
+	end	
+
 	def contact_form(email,body,subject)
 		@body=body
 		mail(to: Conf.value('admin_email'),subject: subject, from:email)
