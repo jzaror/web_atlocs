@@ -112,10 +112,11 @@ class UserMailer < ActionMailer::Base
 		mail(to: @user.email, subject: 'Solicitud para eliminar mi cuenta')
 	end
 
-	def request_destroy_admin(user)
+	def request_destroy_admin(user, reason)
     @user = user
 		@bookings = @user.bookings
 		@locations = @user.locations
+		@reason = reason
 		mail(to: Conf.value('admin_email'), subject: 'Usuario quiere borrar su cuenta')
   end
 
