@@ -835,6 +835,29 @@ button, input, .form-control, a {
 		position: relative;
 	}
 }
+.facebook-inicio {
+	span {
+		color: #2C467A;
+		position: absolute;
+		width: 51px;
+		left: 0;
+		top: 0;
+		bottom: 0px;
+		padding: 6px;
+		border-right: 1px solid #2C467A;
+		font-size: 30px;
+	}
+	border-radius: 0;
+	padding: 15px 15px 15px 77px;
+	background: #3B5999;
+	font-size: 17px;
+	font-weight: 600;
+	color: white;
+	margin: 0 auto;
+	display: block;
+	width: 67%;
+	position: relative;
+}
 .bookings {
 	margin-top: 40px;
 	th {
