@@ -97,4 +97,10 @@ class UserMailer < ActionMailer::Base
 		@locations = @user.locations
 		mail(to: Conf.value('admin_email'), subject: 'Usuario quiere borrar su cuenta')
   end
+
+	def location_review(user)
+		@user = user
+		mail(to: user.email, subject: 'Cuentanos tu experiencia')
+	end
+
 end
