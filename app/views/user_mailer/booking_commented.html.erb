@@ -1,5 +1,7 @@
 <h1>¡Hay nuevos comentarios en tu reserva!</h1>
-
+<em style= "background: #eee; padding: 5px 10px; color: #666;">
+  <%= " ' #{@comment} ' " %>
+</em>
 <p>Te invitamos a revisarlos en el siguiente link</p>
 <p><%=link_to 'Tu reserva', 'http://www.atlocs.com/bookings/'+@booking.code%></p>
 <br>

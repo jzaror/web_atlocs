@@ -52,13 +52,13 @@ class BookingsController < ApplicationController
     @booking=Booking.find_by_code(params[:code])
     @booking.accept
     UserMailer.booking_accepted(@booking).deliver
+    UserMailer.admin_booking_accepted(@booking).deliver
     REDIS.lpush("booking#{@booking.code}",{:datetime=>Time.now.to_i,:text=>"Reserva aceptada por "+@booking.location.user.full_name,:action=>"accepted"}.to_json)
-
     redirect_to "/bookings", :notice=>"Reserva aceptada"
   end
   def cancel
     @booking=Booking.find_by_code(params[:code])
-    @booking.archive
+    @booking.destroy
     REDIS.lpush("booking#{@booking.code}",{:datetime=>Time.now.to_i,:text=>"Reserva cancelada por #{current_user.full_name}",:action=>"cancelled"}.to_json)
     UserMailer.booking_cancelled(@booking).deliver
     redirect_to "/bookings", :notice=>"Reserva cancelada"
@@ -76,16 +76,12 @@ class BookingsController < ApplicationController
       @start_time=DateTime.parse(params[:start_date].to_s).beginning_of_day
       @end_time=DateTime.parse(params[:end_date].to_s).end_of_day
       @location=Location.find(params[:location_id])
-      puts @start_time
-      puts @end_time
       # checks start date < end date
       if(@start_time<@end_time)
         @booking=current_user.book(@location,@start_time,@end_time)
         @success=true if @booking
-        puts @success
       else
         @message="La fecha de inicio debe ser antes de la fecha de término"
-        puts @message
       end
     if @success==true
       UserMailer.booking_requested(@booking).deliver
@@ -97,9 +93,8 @@ class BookingsController < ApplicationController
 
       flash[:notice] = "Tu solicitud de reserva fue enviada. Por favor espera durante las próximas horas hasta que sea revisada por el administrador de la locación."
       redirect_to "/"
-
     else
-      render :json=>{:success=>false,:message=>@message}
+      redirect_to "/", flash: {error: "Hubo un error confirmando el pago."}
     end
   end
 
@@ -142,10 +137,10 @@ class BookingsController < ApplicationController
       REDIS.lpush("booking#{@booking.code}",comment.to_json)
       #if owner of the booking is current_user send email to location owner
       if @booking.user==current_user
-        UserMailer.booking_commented(@booking,@booking.location.user).deliver
+        UserMailer.booking_commented(@booking,@booking.location.user,comment[:text]).deliver
       end
       if @booking.location.user==current_user
-        UserMailer.booking_commented(@booking,@booking.user).deliver
+        UserMailer.booking_commented(@booking,@booking.user,comment[:text]).deliver
       end
       render :json=>{:success=>true,:comment=>comment}
     else
@@ -154,7 +149,7 @@ class BookingsController < ApplicationController
 
   end
   def confirmpayment
-    
+
     @booking=Booking.find_by_code(params[:code])
     if @booking.confirm_payment
       UserMailer.payment_confirmed(@booking).deliver

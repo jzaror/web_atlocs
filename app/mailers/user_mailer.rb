@@ -52,6 +52,14 @@ class UserMailer < ApplicationMailer
 		mail(to: @user.email, subject: 'Tu reserva ha sido aceptada')
 	end
 
+	def admin_booking_accepted(booking)
+		@user = booking.user
+		@location = booking.location
+		@booking=booking
+		mail(to: "cdiaz@chilelocaciones.cl", subject: "Reserva aceptada en el sistema")
+	end
+
+
 	def booking_cancelled(booking)
 		@user = booking.user
 		@location = booking.location
@@ -59,9 +67,10 @@ class UserMailer < ApplicationMailer
 		mail(to: @user.email, subject: 'Tu reserva ha sido cancelada')
 	end
 
-	def booking_commented(booking,sender)
-		@user=sender
-		@booking=booking
+	def booking_commented(booking, sender, comment)
+		@user = sender
+		@booking = booking
+		@comment = comment
 		mail(to: @user.email, subject: 'Tienes un mensaje en tu reserva')
 	end
 

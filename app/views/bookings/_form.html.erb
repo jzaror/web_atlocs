@@ -1,4 +1,4 @@
-<form method="post" action="/bookings/create">
+<form method="post" action="/bookings/create", remote="true">
 	<input type="hidden" name="location_id" id="location-id-input" value="<%=@location.id%>">
 	<div class="form-group">
 		<label>Desde</label>
@@ -13,11 +13,6 @@
 		Precio de reserva:
 		<b>
 			<span id="booking-price"></span>
-		</b>
-	</p>
-	<p class="bg-warning" style="padding: 10px" id="booking-price-message">
-		<b>
-			<span id="booking-message"></span>
 		</b>
 	</p>
 	<input type="submit" name="" class="btn btn-success" value="Solicitar Reserva" id="booking-submit-button"/>
@@ -57,11 +52,11 @@
 		.always(function() {
 			console.log("complete");
 		});
-		
+
 
 	}
 </script>
-<!-- 
+<!--
 %form.padding{:action=>"javascript:createbooking()"}
 	%input{:type=>"hidden",:value=>params[:id],:name=>"location_id", :id=>"booking-location_id-input"}
 	.row
@@ -83,7 +78,7 @@
 						%i.mdi.mdi-calendar
 		.form-group.col-md-12
 			%p.bg-warning{:style=>"padding:10px;"}
-				%i.mdi.mdi-lg.mdi-cash 
+				%i.mdi.mdi-lg.mdi-cash
 				Precio de reserva:
 				%b.booking-fee-price
 				%small.help-block Este debe ser cancelado a AtLocs para hacer efectiva la reserva de la locación.
