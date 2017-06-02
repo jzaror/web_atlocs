@@ -6,8 +6,8 @@ namespace :location_used do
                   start: yesterday.to_time.beginning_of_day,
                   end: yesterday.to_time.end_of_day,
                   status: [2, 3]).each do |booking|
-      UserMailer.tenant_location_review(booking.user).deliver_now
-      UserMailer.owning_location_review(booking.location.user).deliver_now
+      UserMailer.tenant_location_review(booking).deliver_now
+      UserMailer.owner_location_review(booking).deliver_now
     end
   end
 end
