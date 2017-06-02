@@ -110,10 +110,14 @@ class User < ActiveRecord::Base
       if registered_user.present?
         registered_user.provider = auth.provider
         registered_user.uid = auth.uid
+        registered_user.first_name = auth.info.first_name
+        registered_user.last_name = auth.info.last_name
         registered_user.save!
         return registered_user
       elsif deleted_user.present?
         deleted_user.recover
+        deleted_user.first_name = auth.info.first_name
+        deleted_user.last_name = auth.info.last_name
         deleted_user.provider = auth.provider
         deleted_user.uid = auth.uid
         deleted_user.save!
@@ -123,7 +127,8 @@ class User < ActiveRecord::Base
         User.create do |user|
           user.email = auth.info.email
           user.password = Devise.friendly_token[0,20]
-          user.name = auth.info.name
+          user.first_name = auth.info.first_name
+          user.last_name = auth.info.last_name
           user.provider = auth.provider
           user.uid = auth.uid
           user.status = 'verified'
