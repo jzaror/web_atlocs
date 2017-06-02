@@ -1,7 +1,7 @@
 class LocationsController < ApplicationController
   skip_before_action :verify_authenticity_token, only: [:frontpage, :feature_image]
   autocomplete :tag, :name
-  before_action :set_location, only: [:show, :edit, :update, :destroy, :archive, :approve, :front_page]
+  before_action :set_location, only: [:show, :edit, :update, :destroy, :archive, :approve, :front_page, :delete_request]
   load_and_authorize_resource
 
   # GET /locations
@@ -166,6 +166,16 @@ class LocationsController < ApplicationController
     respond_to do |format|
       format.json { render json: @location, status: :ok }
     end
+  end
+
+  def request_removal
+    @location = Location.find_by(id: params[:id])
+  end
+
+  def delete_request
+    UserMailer.request_location_removal_admin(@location, params[:reject_reason]).deliver_now
+    UserMailer.request_location_removal_owner(@location, params[:reject_reason]).deliver_now
+    redirect_to "/users/#{@location.user.id}", flash: {notice: "Se ha notificado al administrador para eliminar la locación #{@location.title}"}
   end
 
   private

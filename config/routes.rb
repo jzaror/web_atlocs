@@ -32,8 +32,8 @@ Rails.application.routes.draw do
 	post '/help/password' => 'sessions#requestpasswordupdate'
 	get '/help/updatepassword/:code' => 'sessions#updatepassword', as: 'update_password'
 	post '/help/updatepassword/:code' => 'sessions#updatepassword'
-  get 'users/location/:id/show_modal' => 'users#request_removal', as: 'delete_location_modal'
-  get 'users/location/:id/request_del' => 'users#delete_request', as: 'location_delete'
+  get 'location/:id/show_modal' => 'locations#request_removal', as: 'delete_location_modal'
+  get 'location/:id/request_del' => 'locations#delete_request', as: 'location_delete'
 	# The priority is based upon order of creation: first created -> highest priority.
 	# See how all your routes lay out with "rake routes".
 	# Users
