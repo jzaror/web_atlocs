@@ -74,6 +74,25 @@ class BookingsController < ApplicationController
     UserMailer.booking_cancelled(@booking).deliver
     redirect_to "/bookings", :notice=>"Reserva cancelada"
   end
+
+  def cancel_booking
+    @booking= Booking.find_by(id: params[:id])
+    @user = User.find_by(id: params[:user_id])
+    if @booking.user.id == @user.id
+      UserMailer.client_booking_cancel(@booking, params[:reject_reason]).deliver_now
+      UserMailer.owner_booking_cancel(@booking, params[:reject_reason]).deliver_now
+      UserMailer.admin_booking_cancel(@booking, params[:reject_reason]).deliver_now
+    else
+      UserMailer.client_booking_cancel_by_owner(@booking, params[:reject_reason]).deliver_now
+      UserMailer.owner_booking_cancel_by_owner(@booking, params[:reject_reason]).deliver_now
+      UserMailer.admin_booking_cancel_by_owner(@booking, params[:reject_reason]).deliver_now
+    end
+    @booking.archive
+    REDIS.lpush("booking#{@booking.code}",{:datetime=>Time.now.to_i,:text=>"Reserva cancelada por #{current_user.full_name}",:action=>"cancelled"}.to_json)
+
+    redirect_to bookings_path
+  end
+
   def delete
     @booking=Booking.find_by_code(params[:code])
     @booking.destroy
@@ -165,10 +184,9 @@ class BookingsController < ApplicationController
     else
       render :json=>{:success=>false}
     end
-
   end
-  def confirmpayment
 
+  def confirmpayment
     @booking=Booking.find_by_code(params[:code])
     if @booking.confirm_payment
       UserMailer.payment_confirmed(@booking).deliver
@@ -180,6 +198,10 @@ class BookingsController < ApplicationController
     else
       redirect_to "/bookings", flash: {notice: "Hubo un error confirmando el pago."}
     end
+  end
+
+  def cancel_modal
+    @booking = Booking.find_by(id: params[:id])
   end
 
   private

@@ -1,0 +1,15 @@
+#cancelModal.modal.fade{"aria-hidden" => "true", "aria-labelledby" => "exampleModalLabel", :role => "dialog", :tabindex => "-1"}
+  .modal-dialog{:role => "document"}
+    .modal-content
+      .modal-header
+        %h5#exampleModalLabel.modal-title Cancelar reserva
+        %button.close{"aria-label" => "Close", "data-dismiss" => "modal", :type => "button"}
+          %span{"aria-hidden" => "true"} ×
+      .modal-body
+        = form_tag(booking_cancelled_path(@booking), method: "get") do
+          .form-group
+            = label_tag(:reject_reason, "Motivo de Rechazo:")
+            = hidden_field_tag 'user_id', @booking.user == current_user ? current_user.id : @booking.location.user.id
+            = text_area_tag 'reject_reason', nil, class: 'form-control'
+          .modal-footer
+            = submit_tag 'Cancelar reserva', :class=>"btn btn-danger"
