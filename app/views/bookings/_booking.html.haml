@@ -4,35 +4,55 @@
 		%td
 			= link_to booking.location.user.full_name, '/users/'+booking.location.user.id.to_s
 	/ Location code
-	%td
-		= booking.code
-		%small.help-block
+	%td.text-center
+		.bb
+			%b{:style => 'font-size:12px;'}
+				Reserva Nº
+				%span{:style => 'display:block; font-size:15px;'}
+					= booking.code
 	/ Location dates
 	%td
-		.start-date
-		= l(booking.start_time, format: '%d /%m /%Y')
-		.start-date
-		= l(booking.end_time, format: '%d /%m /%Y')
+		.bb{:style => 'padding-right: 15px;'}
+			.start-date.bbb{:style => 'font-size:16px;font-weight:600;'}
+				%span{:style => 'font-size:12px;font-weight:300;'}
+					Desde
+				= l(booking.start_time, format: '%d /%m /%Y')
+			.start-date{:style => 'font-size:16px;font-weight:600;'}
+				%span{:style => 'font-size:12px;font-weight:300;'}
+					Hasta
+				= l(booking.end_time, format: '%d /%m /%Y')
 
 	/ Location Title
-	%td
-		= link_to booking.location.title, location_path(booking.location)
-		%small.help-block
+	%td{:style => 'vertical-align:middle;'}
+		= link_to booking.location.title, location_path(booking.location), class: 'title', style: 'font-weight:600;'
 	/ Actions
+	- if current_user.status=="admin" && (booking.status=="paid" or booking.status=="accepted")
+		%td{:style => 'vertical-align:middle;'}
+		- if booking.status=="accepted"
+			= link_to "/bookings/#{booking.code}/payment/confirm", class: "table-pay" do
+				Confirmar Pago
+		- else
+			.table-pay
+				Pagado
 	%td
 		.btn-group
-			= link_to "/bookings/"+(booking.code||=booking.generatecode), :class=> "btn btn-primary" do
-				Ver Detalle
-
-	%td.text-right{:style=>"width:15%"}
-		- if current_user.status=="admin" && booking.status=="accepted"
-			= link_to "/bookings/#{booking.code}/payment/confirm" do
-				Confirmar Pago
-		- elsif booking.status=="waiting" && (can? :accept, booking)
-			= link_to "/bookings/#{booking.code}/accept" do
-				Aceptar Reserva
+			= link_to "/bookings/"+(booking.code||=booking.generatecode), :class=> "table-btn" do
+				=image_tag "#{asset_path('view.svg')}", :style => "width: 60px;" 
+				-# %i.mdi.mdi-eye
+				%p Ir a la Reserva
+	%td
+		- if booking.status=="waiting" && (can? :accept, booking)
+			= link_to "/bookings/#{booking.code}/accept", :class=> "table-btn" do
+				%i.mdi.mdi-check
+				%p Aprobar
 		- else
-			= link_to edit_booking_path(booking) do
-				Editar Reserva
-			= link_to "/bookings/#{booking.code}/cancel" do
-				Cancelar Reserva
+			= link_to edit_booking_path(booking), :class=> "table-btn" do
+				=image_tag "#{asset_path('edit.svg')}"
+				-# %i.mdi.mdi-pencil
+				%p Editar
+	- if !(booking.status=="waiting" && (can? :accept, booking))
+		%td
+			= link_to "/bookings/#{booking.code}/cancel", :class=> "table-btn" do
+				=image_tag "#{asset_path('delete.svg')}"
+				-# %i.mdi.mdi-delete
+				%p Cancelar

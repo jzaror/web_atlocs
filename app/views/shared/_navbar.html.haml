@@ -40,9 +40,6 @@
 							%a.nav-link{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :href => "#", :role => "button"}
 								.user-circle
 									%i.mdi.mdi-account.mdi-lg
-									- if(current_user.notifications("location")+current_user.notifications("booking"))>0
-										.badge
-											= current_user.notifications("location")+current_user.notifications("booking")
 								%i.mdi.mdi-menu-down.arrow
 							%ul.dropdown-menu.dropdown-menu-right.bg-primary
 								%i.mdi.mdi-menu-up.arrow

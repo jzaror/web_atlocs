@@ -13,6 +13,9 @@ class BookingsController < ApplicationController
     REDIS.set("booking_notifications_"+current_user.id.to_s,"0")
     @bookings=nil
     @bookings=Booking.where("status>0").order("id DESC")
+    @any_accepted = @bookings.select{|b| b.status == "accepted"}.length > 0
+    @any_not_waiting = @bookings.select{|b| b.status != "waiting"}.length > 0
+
     @user = current_user
     unless current_user.status=="admin"
       @bookings=@bookings.where(:user_id=>current_user.id)

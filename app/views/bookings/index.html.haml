@@ -12,16 +12,20 @@
 		=render 'calendar'
 		.table-responsive
 		- if @bookings.count>0
-			%table.table
+			%table.table.bookings
 				%thead
 					%tr
 						-if current_user && current_user.status=="admin"
 							%th Usuario
-						%th N° de Reserva
-						%th Fecha
+						%th{:style => 'width: 110px;'} N° de Reserva
+						%th{:style => 'width: 180px;'} Fecha
 						%th Titulo
-						%th Detalles
-						%th
+						- if current_user.status=="admin" && @any_accepted
+							%th
+						%th{:style => 'width: 100px;'}
+						%th{:style => 'width: 70px;'}
+						- if !(@any_not_waiting && (can? :accept, @bookings))
+							%th{:style => 'width: 70px;'}
 				=render @bookings
 		- else
 			%h2
