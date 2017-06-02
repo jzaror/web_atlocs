@@ -30,6 +30,10 @@ class UserMailerPreview < ActionMailer::Preview
 		UserMailer.booking_requested(Booking.first)
 	end
 
+	def booking_requested_admin
+		UserMailer.booking_requested_admin(Booking.first)
+	end
+
 	def booking_sent
 		UserMailer.booking_sent(Booking.first)
 	end
@@ -56,7 +60,7 @@ class UserMailerPreview < ActionMailer::Preview
 	end
 
 	def request_password_token
-		UserMailer.request_password_token('abcdef', 'hola@nnodes.com')
+		UserMailer.request_password_token(User.first, 'abcdef', 'hola@nnodes.com')
 	end
 
 	def request_destroy

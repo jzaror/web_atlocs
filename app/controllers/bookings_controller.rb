@@ -60,6 +60,7 @@ class BookingsController < ApplicationController
     @booking=Booking.find_by_code(params[:code])
     @booking.accept
     UserMailer.booking_accepted(@booking).deliver
+    UserMailer.booking_accepted_admin(@booking).deliver
     REDIS.lpush("booking#{@booking.code}",{:datetime=>Time.now.to_i,:text=>"Reserva aceptada por "+@booking.location.user.full_name,:action=>"accepted"}.to_json)
     redirect_to "/bookings", :notice=>"Reserva aceptada"
   end

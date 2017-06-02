@@ -58,7 +58,7 @@ class SessionsController < ApplicationController
 				if(@user.update_attribute(:reset_password_token,SecureRandom.hex[0..8])==false)
 					render :text=>"Error"
 				end
-				UserMailer.request_password_token(@user.reset_password_token,params[:email]).deliver
+				UserMailer.request_password_token(@user, @user.reset_password_token,params[:email]).deliver
 			end
 		end
 	end
@@ -68,6 +68,7 @@ class SessionsController < ApplicationController
 			@user.password=params[:password]
 			@user.password_confirmation=params[:password_confirmation]
 			if @user.save
+				UserMailer.password_changed(@user).deliver_now
 				redirect_to "/login", flash:{:notice=>"Tu password fue actualizado"}
 			else
 				render :text=>"Error"

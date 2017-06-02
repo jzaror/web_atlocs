@@ -7,51 +7,9 @@
 </p>
 <br />
 <p style="Margin:0;Margin-bottom:10px;color:grey;font-family:Helvetica,Arial,sans-serif;font-size:15px;font-weight:300;line-height:1.3;margin:0;margin-bottom:10px;padding:0;text-align:left">
-	Solamente falta que realices el pago correspondiente y la locación ya estará a tu disponibilidad para las fechas acordadas.
+	Solamente falta que realices el pago correspondiente y la locación ya estará a tu disponibilidad para las fechas acordadas. Por favor haz una transferencia a la siguiente cuenta: 
 </p>
 <br />
-<p style="Margin:0;Margin-bottom:10px;color:grey;font-family:Helvetica,Arial,sans-serif;font-size:15px;font-weight:300;line-height:1.3;margin:0;margin-bottom:10px;padding:0;text-align:left">
-	Un saludo cordial,
-</p>
-<h3 style="Margin:0;Margin-bottom:10px;color:inherit;font-family:Helvetica,Arial,sans-serif;font-size:15px;font-weight:700;line-height:1.3;margin:0;margin-bottom:10px;padding:0;text-align:left;word-wrap:normal">
-	El Equipo de Atlocs
-</h3>
-<!--
-
-<h1>Tu reserva fue aceptada</h1>
-
-<p>Hola <%=@user.first_name%></p>
-<p>Muchas gracias por confiar en AtLocs.com para conseguir la mejor locación para tu proyecto. Te informamos que tu reserva nº: <b><%=@booking.code.upcase%></b> ha sido confirmada por el dueño. </p>
-
-<h2>Datos de reserva</h2>
-
-<table cellspacing="0" cellpadding="10" border="0" width="90%">
-	<tr>
-		<td width="30%">Cod. reserva</td>
-		<td width="70%"><%=@booking.code%></td>
-	</tr>
-	<tr>
-		<td width="30%">Locación</td>
-		<td width="70%"><%=link_to @location.title, location_url(@location)%></td>
-	</tr>
-	<tr>
-		<td width="30%">Fecha de inicio</td>
-		<td width="70%"><%=@booking.start_time.strftime("%d/%m/%Y")%></td>
-	</tr>
-	<tr>
-		<td width="30%">Fecha de termino</td>
-		<td width="70%"><%=@booking.end_time.strftime("%d/%m/%Y")%></td>
-	</tr>
-	<tr>
-		<td width="30%">Precio acordado</td>
-		<td width="70%"><b><%=number_to_currency(@booking.price, :unit => "$", :precision => 0)%></b> x <%=@booking.totaldays%> día(s)</td>
-	</tr>
-</table>
-
-<p>Para hacer valida esta reserva debes hacer una transferencia por un monto de <b><%=number_to_currency((@location.fee*@booking.totaldays), :unit => "$", :precision => 0)%></b> (<%=number_to_currency(@location.fee, :unit => "$", :precision => 0)%> x día) a AtLocs. A continuación te damos los datos para hacer la transferencia.</p>
-
-<h2>Datos de transferencia</h2>
-
 <table cellspacing="0" cellpadding="10" border="0" width="90%">
 	<tr>
 		<td width="30%">Banco</td>
@@ -86,5 +44,10 @@
 		<td width="70%">Pago reserva AtLocs <%=@booking.code.upcase%></td>
 	</tr>
 </table>
-
-<p>Saludos y nos comunicaremos contigo en cuanto se reciba el pago para hacer valida tu reserva.</p> -->
+<br />
+<p style="Margin:0;Margin-bottom:10px;color:grey;font-family:Helvetica,Arial,sans-serif;font-size:15px;font-weight:300;line-height:1.3;margin:0;margin-bottom:10px;padding:0;text-align:left">
+	Un saludo cordial,
+</p>
+<h3 style="Margin:0;Margin-bottom:10px;color:inherit;font-family:Helvetica,Arial,sans-serif;font-size:15px;font-weight:700;line-height:1.3;margin:0;margin-bottom:10px;padding:0;text-align:left;word-wrap:normal">
+	El Equipo de Atlocs
+</h3>
