@@ -20,12 +20,10 @@
 						%th{:style => 'width: 110px;'} N° de Reserva
 						%th{:style => 'width: 180px;'} Fecha
 						%th Titulo
-						- if current_user.status=="admin" && @any_accepted
-							%th
-						%th{:style => 'width: 100px;'}
-						%th{:style => 'width: 70px;'}
-						- if !(@any_not_waiting && (can? :accept, @bookings))
-							%th{:style => 'width: 70px;'}
+						%th{:style => 'width: 150px;max-width: 150px;min-width: 150px;'}
+						%th{:style => 'width: 100px;max-width: 100px;min-width: 100px;'}
+						%th{:style => 'width: 70px;max-width: 70px;min-width: 70px;'}
+						%th{:style => 'width: 70px;max-width: 70px;min-width: 70px;'}
 				=render @bookings
 		- else
 			%h2
