@@ -41,10 +41,11 @@
             %button.btn.btn-secondaty.btn-sm{:type => "button"} + Tags
 
         %form.form-inline{:role => "search", :action => '/locations/' }
-          .form-group
+          .input-group
             %input.form-control{:placeholder => "Buscar", :type => "text", :name=>"s"}/
-          %button.btn.btn-primary{:type => "submit"}
-            %i.mdi.mdi-magnify.mdi-lg
+            %span.input-group-btn
+              %button.btn.btn-primary{:type => "submit"}
+                %i.mdi.mdi-magnify.mdi-lg
 %section.main-content.location-list
   .container
     .row

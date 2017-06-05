@@ -116,8 +116,8 @@
 
 		= render 'shared/navbar'
 		.site-content
-			- if flash[:notice]
-				#notice.mt-3.alert.alert-success{:role => "alert"}
+			- if flash[:notice] or flash[:error] or flash[:warning]
+				#notice.alert.alert-success{:role => "alert"}
 					%button.close{"aria-label" => "Close", "data-dismiss" => "alert", :type => "button"}
 						%span{"aria-hidden" => "true"} ×
 					= flash[:notice]

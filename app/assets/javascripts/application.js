@@ -69,6 +69,10 @@ var QueryString = function () {
 
 $('#calendar').fullCalendar({});
 
+$(document).ready(function() {
+  $(".alert" ).delay(3000).fadeOut(2000);
+});
+
 // //OPEN MODAL AFTER CREATING A LOCATION
 // if (QueryString.open=="newuser") {
 //   //open modal to register user
