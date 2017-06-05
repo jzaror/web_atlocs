@@ -1,6 +1,6 @@
 class BookingsController < ApplicationController
   respond_to :html, :xml, :json
-  #load_and_authorize_resource
+  load_and_authorize_resource
   before_action :find_booking, only: [:edit]
   before_action :find_location, except: [:edit]
   skip_before_action :verify_authenticity_token
@@ -156,7 +156,7 @@ class BookingsController < ApplicationController
       UserMailer.booking_edit(@booking).deliver_now
       UserMailer.booking_edit_request(@booking).deliver_now
       @booking.save
-      flash[:notice] = 'Your booking was updated succesfully'
+      flash[:notice] = 'Tu reserva fue actualizada con éxito'
       if request.xhr?
         render json: {status: :success}.to_json
       else

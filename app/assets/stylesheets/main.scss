@@ -15,6 +15,12 @@ html, body {
   right: 10px;
   min-width: 240px;
   position: fixed;
+	.close {
+		font-size: 14px;
+		position: absolute;
+		right: 5px;
+		top: 5px;
+	}
 }
 #notice:empty {
   display: none;

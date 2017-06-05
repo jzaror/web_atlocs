@@ -36,7 +36,6 @@
 					%li.nav-item#loginlink
 						%a.nav-link{:href => "/"}
 							Contacto
-
 					%li.nav-item{:style => "margin: 6px 5px;"}
 						%form{ :method=>"get", :action=>"/locations/new/" }
 							%input{:type=>"hidden", :name=>"newlocation", :value=>"true"}
@@ -60,15 +59,14 @@
 										- if current_user.notifications("location")>0
 											.badge
 												=current_user.notifications("location")
-								- if current_user.owning
-									%li
-										%a{:href => "/users/"+current_user.id.to_s}
-											%span
-												%i.mdi.mdi-map-marker
-											Mis Locaciones
-											- if current_user.notifications("location")>0
-												.badge
-													=current_user.notifications("location")
+								%li
+									%a{:href => "/users/"+current_user.id.to_s}
+										%span
+											%i.mdi.mdi-map-marker
+										Mis Locaciones
+										- if current_user.notifications("location")>0
+											.badge
+												=current_user.notifications("location")
 								%li
 									%a{:href => "/bookings"}
 										%span
