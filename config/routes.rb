@@ -13,7 +13,7 @@ Rails.application.routes.draw do
 
 	# pages
 	get '/about' => 'pages#about'
-	get '/contacto' => 'pages#contact'
+	get '/contacto' => 'pages#contact', as: 'contact'
 	post '/contacto' => 'pages#contact'
 	get '/faq' => 'pages#faq'
 	get '/terminos-y-condiciones' => 'pages#terms-and-conditions', as: 'terms_conditions'
@@ -53,7 +53,7 @@ Rails.application.routes.draw do
 	post 'bookings/price' => 'bookings#price'
 	get 'bookings/:code' => 'bookings#show', as: 'booking'
 	get 'bookings/:code/payment/confirm' => "bookings#confirmpayment"
-	get 'bookings/:code/accept' => 'bookings#accept'
+	get 'bookings/:code/accept' => 'bookings#accept', as: 'booking_accept'
 	get 'bookings/:code/cancel' => 'bookings#cancel', as: 'booking_cancel'
 	get 'bookings/:code/delete' => 'bookings#delete'
 	post 'bookings/:code/comment' => 'bookings#comment'

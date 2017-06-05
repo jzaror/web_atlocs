@@ -20,7 +20,7 @@ class BookingsController < ApplicationController
     unless current_user.status=="admin"
       @bookings=@bookings.where(:user_id=>current_user.id)
       current_user.locations.each do |location|
-        @bookings=@bookings+location.bookings
+        @bookings=@bookings+location.bookings.select {|booking| booking.status != 'archived'}
       end
     end
     respond_to do |format|
@@ -146,6 +146,8 @@ class BookingsController < ApplicationController
 
   def update
     @booking = Booking.find_by(id: params[:id])
+    old_start = l(@booking.start_time, format: '%d/%m/%Y')
+    old_end = l(@booking.end_time, format: '%d/%m/%Y')
     start_time = params[:start_date].to_datetime
     end_time = params[:end_date].to_datetime
     if @booking.update(start_time: start_time, end_time: end_time)
@@ -154,7 +156,7 @@ class BookingsController < ApplicationController
         @booking.update(status: 1)
       end
       UserMailer.booking_edit(@booking).deliver_now
-      UserMailer.booking_edit_request(@booking).deliver_now
+      UserMailer.booking_edit_request(@booking, old_start, old_end).deliver_now
       @booking.save
       flash[:notice] = 'Tu reserva fue actualizada con éxito'
       if request.xhr?
