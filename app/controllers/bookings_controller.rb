@@ -7,6 +7,7 @@ class BookingsController < ApplicationController
 
   def admin
     @bookings = Booking.all
+    REDIS.set("booking_notifications_"+current_user.id.to_s,"0")
   end
 
   def index
@@ -118,6 +119,10 @@ class BookingsController < ApplicationController
       UserMailer.booking_sent(@booking).deliver
       comment={:datetime=>Time.now.to_i,:text=>params[:comment],:user=>{:full_name=>current_user.full_name},:action=>"comment"}
       REDIS.lpush("booking#{@booking.code}",comment.to_json) if params[:comment] && params[:comment].length>0
+      puts 'VOY A NOTIFICAR AL ADMIN'
+      User.where(status: 5).each do |admin|
+        admin.notify('booking')
+      end
       @booking.location.user.notify("booking")
       @booking.user.notify("booking")
 
