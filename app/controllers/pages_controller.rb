@@ -7,7 +7,7 @@ class PagesController < ApplicationController
   		flash[:notice]="Tu mensaje ha sido enviado y te responderemos a la brevedad"
       redirect_to "/gracias"
   	else
-      flash[:notice]="Por favor rellena todos los campos"
+      flash.now[:notice]="Por favor rellena todos los campos"
     end
   end
   def faq
