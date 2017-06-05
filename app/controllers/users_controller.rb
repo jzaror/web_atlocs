@@ -46,9 +46,9 @@ class UsersController < ApplicationController
 	def show
 		if params[:id]
 			@user=User.find(params[:id])
+			REDIS.set("location_notifications_"+@user.id.to_s,"0") if @user == current_user
 		else
 			@user=current_user
-			REDIS.set("location_notifications_"+@user.id.to_s,"0")
 		end
 	end
 
