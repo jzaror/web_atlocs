@@ -19,12 +19,12 @@
 					%small.availability
 						(Por día. Incluye precio de reserva)
 						/ Días: #{@location.days}
-				-if current_user && @location.bookings.where(:user_id=>current_user.id).any? && @location.price_with_fee > 0
+				-if current_user && @location.bookings.where('user_id = :me AND status != :cancelled', me: current_user.id, cancelled: 0).any? && @location.price_with_fee > 0
 					.booking.padding-top
 						%a.btn.btn-primary.btn-block.btn-lg{:href => "/bookings/"+@location.bookings.where(:user_id=>current_user.id).last.code}
 							%i.mdi.mdi-lg.mdi-calendar-clock
 							Ver Reserva
-					%a{"data-toggle"=>"modal", "data-target"=>"#bookingModal", :href => "/bookings/new?id="+@location.id.to_s}
+					%a{ :href => "/bookings/new?id="+@location.id.to_s}
 						Reservar esta locación nuevamente
 				-else
 					.booking.pt-3

@@ -165,8 +165,11 @@ class UserMailer < ActionMailer::Base
 		mail(to: @user.email, subject: 'Cambio de fecha de reserva')
 	end
 
-	def booking_edit_request(booking)
+	def booking_edit_request(booking, old_start, old_end)
 		@user = booking.location.user
+		@booking = booking
+		@old_start = old_start
+		@old_end = old_end
 		mail(to: @user.email, subject: 'Solicitud de cambio de reserva')
 	end
 

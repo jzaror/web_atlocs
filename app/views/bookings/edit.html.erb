@@ -6,8 +6,7 @@
 		<div class="col-md-8">
 			<h3>Editar reserva <%= @location.title %></h3>
 
-			<%= render 'errors' %>
-			<% unless @booking.status == 3 %>
+			<% unless @booking.status == 'paid' %>
 				<form method="post" action="<%= edit_booking_path(@booking)%>">
 					<input type="hidden" name="location_id" id="location-id-input" value="<%=@location.id%>">
 					<div class="form-group">

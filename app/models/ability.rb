@@ -7,7 +7,24 @@ class Ability
     user ||= User.new # guest user (not logged in)
     can :index, Location
     can :create, User
-    can :delete_request, Location, user_id: user.id 
+    can :delete_request, Location, user_id: user.id
+    #can :cancel_modal, Booking, user_id: user.id
+    can :edit, Booking, user_id: user.id
+    can :update, Booking, user_id: user.id
+    can :cancel_modal, Booking do |booking|
+      if booking.user == user || booking.location.user == user
+        true
+      else
+        false
+      end
+    end
+    can :cancel_booking, Booking do |booking|
+      if booking.user == user || booking.location.user == user
+        true
+      else
+        false
+      end
+    end
     can :show, Location do |location|
         if location.status == "approved"
             true

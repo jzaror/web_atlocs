@@ -5,7 +5,6 @@ document.addEventListener("turbolinks:before-cache", function() {
 });
 
 $(document).on('ready page:load', function() {
-    console.log('aquiiii');
     $('#calendar').fullCalendar({
         monthNames: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'],
         monthNamesShort: ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic'],

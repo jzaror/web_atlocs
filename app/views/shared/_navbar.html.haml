@@ -10,6 +10,9 @@
 					-if current_user && current_user.status=='admin'
 						%li.nav-item
 							= link_to 'Admin', '/admin/', :class=>"nav-link"
+							- if current_user.admin_notifications>0
+								.badge
+									=current_user.admin_notifications
 					-unless current_user
 						%li.nav-item
 							%a.nav-link{:href => "/login"}
@@ -154,6 +157,9 @@
 						- if current_user && current_user.status=='admin'
 							%li
 								= link_to 'Admin', '/admin/'
+								- if current_user.notifications("admin")>0
+									.badge
+										=current_user.notifications("admin")
 						-unless current_user
 							%li
 								%a{:href => "/login"}

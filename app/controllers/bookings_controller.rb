@@ -7,6 +7,7 @@ class BookingsController < ApplicationController
 
   def admin
     @bookings = Booking.all
+    REDIS.set("booking_notifications_"+current_user.id.to_s,"0")
   end
 
   def index
@@ -20,7 +21,7 @@ class BookingsController < ApplicationController
     unless current_user.status=="admin"
       @bookings=@bookings.where(:user_id=>current_user.id)
       current_user.locations.each do |location|
-        @bookings=@bookings+location.bookings
+        @bookings=@bookings+location.bookings.select {|booking| booking.status != 'archived'}
       end
     end
     respond_to do |format|
@@ -118,6 +119,10 @@ class BookingsController < ApplicationController
       UserMailer.booking_sent(@booking).deliver
       comment={:datetime=>Time.now.to_i,:text=>params[:comment],:user=>{:full_name=>current_user.full_name},:action=>"comment"}
       REDIS.lpush("booking#{@booking.code}",comment.to_json) if params[:comment] && params[:comment].length>0
+      puts 'VOY A NOTIFICAR AL ADMIN'
+      User.where(status: 5).each do |admin|
+        admin.notify('booking')
+      end
       @booking.location.user.notify("booking")
       @booking.user.notify("booking")
 
@@ -147,15 +152,17 @@ class BookingsController < ApplicationController
 
   def update
     @booking = Booking.find_by(id: params[:id])
+    old_start = l(@booking.start_time, format: '%d/%m/%Y')
+    old_end = l(@booking.end_time, format: '%d/%m/%Y')
     start_time = params[:start_date].to_datetime
     end_time = params[:end_date].to_datetime
     if @booking.update(start_time: start_time, end_time: end_time)
       @booking.updateprice
-      if @booking.status == 2
-        @booking.update(status: 1)
+      if @booking.status == 'accepted'
+        @booking.update(status: 'waiting')
       end
       UserMailer.booking_edit(@booking).deliver_now
-      UserMailer.booking_edit_request(@booking).deliver_now
+      UserMailer.booking_edit_request(@booking, old_start, old_end).deliver_now
       @booking.save
       flash[:notice] = 'Tu reserva fue actualizada con éxito'
       if request.xhr?

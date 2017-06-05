@@ -24,7 +24,7 @@
     <%= f.text_field :prefix, :class=>"form-control" %>
   </div>
   <div class="form-group">
-    
+
     <%= f.label :image %><br>
     <%= f.file_field :image%><br>
     <%=image_tag(@collection.image.url(:thumb)) if @collection.image.present?%><br>

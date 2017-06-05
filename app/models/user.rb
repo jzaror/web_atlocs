@@ -7,7 +7,7 @@ class User < ActiveRecord::Base
   devise :confirmable, :omniauthable
 
   #validate :atleast_one_is_checked
-  #validate_uniqueness_of: email 
+  #validate_uniqueness_of: email
 
   enum status: [ :banned, :shadowbanned, :unverified, :verified, :moderator, :admin ]
 
@@ -37,6 +37,14 @@ class User < ActiveRecord::Base
     else
       false
     end
+  end
+
+  def admin_notifications
+    total = 0
+    ['booking', 'location'].each do |tag|
+      total += REDIS.get(tag+"_notifications_"+self.id.to_s).to_i
+    end
+    total
   end
 
   def notifications(tag)
@@ -110,7 +118,7 @@ class User < ActiveRecord::Base
       user.update_attributes(status: 3) if !user.active_for_authentication?
       return user
     else
-      registered_user = User.where(email: auth.info.email)
+      registered_user = User.where(email: auth.info.email).first
       deleted_user = User.with_deleted.find_by(email: auth.info.email) unless registered_user.present?
       if registered_user.present?
         registered_user.status = 3 if !registered_user.active_for_authentication?
