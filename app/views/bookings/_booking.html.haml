@@ -9,7 +9,7 @@
 			%b{:style => 'font-size:12px;'}
 				Reserva Nº
 				%span{:style => 'display:block; font-size:15px;'}
-					= booking.code
+					= "#{booking.code} y #{booking.location.user == current_user}"
 	/ Location dates
 	%td
 		.bb{:style => 'padding-right: 15px;'}
@@ -60,10 +60,11 @@
 				%i.mdi.mdi-check
 				%p Aprobar
 		- else
-			= link_to edit_booking_path(booking), :class=> "table-btn" do
-				=image_tag "#{asset_path('edit.svg')}", :style => "width: 60px;"
-				-# %i.mdi.mdi-pencil
-				%p Editar
+			- unless current_user == booking.location.user
+				= link_to edit_booking_path(booking), :class=> "table-btn" do
+					=image_tag "#{asset_path('edit.svg')}", :style => "width: 60px;"
+					-# %i.mdi.mdi-pencil
+					%p Editar
 		%td
 			= link_to cancel_booking_path(booking), remote: true, :class=> "table-btn" do
 				=image_tag "#{asset_path('delete.svg')}", :style => "width: 60px;"
