@@ -48,6 +48,7 @@ class UsersController < ApplicationController
 			@user=User.find(params[:id])
 		else
 			@user=current_user
+			REDIS.set("location_notifications_"+@user.id.to_s,"0")
 		end
 	end
 
