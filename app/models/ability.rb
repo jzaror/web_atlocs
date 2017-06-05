@@ -16,6 +16,13 @@ class Ability
         false
       end
     end
+    can :cancel_booking, Booking do |booking|
+      if booking.user == user || booking.location.user == user
+        true
+      else
+        false
+      end
+    end
     can :show, Location do |location|
         if location.status == "approved"
             true
