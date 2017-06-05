@@ -152,8 +152,8 @@ class BookingsController < ApplicationController
     end_time = params[:end_date].to_datetime
     if @booking.update(start_time: start_time, end_time: end_time)
       @booking.updateprice
-      if @booking.status == 2
-        @booking.update(status: 1)
+      if @booking.status == 'accepted'
+        @booking.update(status: 'waiting')
       end
       UserMailer.booking_edit(@booking).deliver_now
       UserMailer.booking_edit_request(@booking, old_start, old_end).deliver_now

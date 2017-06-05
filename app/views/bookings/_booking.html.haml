@@ -64,7 +64,6 @@
 				=image_tag "#{asset_path('edit.svg')}", :style => "width: 60px;"
 				-# %i.mdi.mdi-pencil
 				%p Editar
-	- if !(booking.status=="waiting" && (can? :accept, booking))
 		%td
 			= link_to cancel_booking_path(booking), remote: true, :class=> "table-btn" do
 				=image_tag "#{asset_path('delete.svg')}", :style => "width: 60px;"
