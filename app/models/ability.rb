@@ -9,6 +9,8 @@ class Ability
     can :create, User
     can :delete_request, Location, user_id: user.id
     #can :cancel_modal, Booking, user_id: user.id
+    can :edit, Booking, user_id: user.id
+    can :update, Booking, user_id: user.id
     can :cancel_modal, Booking do |booking|
       if booking.user == user || booking.location.user == user
         true
