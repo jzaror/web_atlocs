@@ -110,6 +110,7 @@ h1, h2, h3, h4, h5, h6 {
 .navbar {
 	.nav-item {
 		margin: 4px 0;
+		position: relative;
 		.nav-link {
 			color: lighten($brand-primary, 40%);
 			font-size: 13px;
@@ -209,6 +210,22 @@ h1, h2, h3, h4, h5, h6 {
 					}
 				}
 			}
+		}
+		.badge {
+			display: inline-block;
+			padding: 4px 3px;
+			font-size: 10px;
+			line-height: 10px;
+	    position: absolute;
+	    top: 0;
+	    border-radius: 50%;
+	    background: white;
+	    color: $brand-primary;
+	    right: 0;
+	    font-weight: bold;
+	    text-align: center;
+	    white-space: nowrap;
+	    vertical-align: baseline;
 		}
 	}
 	.navbar-btn {
