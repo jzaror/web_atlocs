@@ -9,7 +9,7 @@ json.array!(@bookings) do |booking|
   json.title booking.location.title
   json.start booking.start_time
   json.end booking.end_time
-  json.allDay false
+  json.allDay true
   json.color new_color
   json.description booking.location.street_address
   json.url Rails.application.routes.url_helpers.bookings_path(booking.id)
