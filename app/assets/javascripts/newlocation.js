@@ -1,3 +1,7 @@
+$(document).ready(function(){
+  extraOrServiceChanged();
+});
+
 function formatNumber (num) {
     return num.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1.")
 }
@@ -37,3 +41,18 @@ $(function(){
   });
 
 });
+
+function extraOrServiceChanged(){
+  if ($("#location_services_otro").is(":checked")){
+    $('.other-services-comment').show();
+  } else {
+    $('.other-services-comment').val('');
+    $('.other-services-comment').hide();
+  }
+  if ($("#location_extras_otro").is(":checked")){
+    $('.other-extras-comment').show();
+  } else {
+    $('.other-extras-comment').val('');
+    $('.other-extras-comment').hide();    
+  }
+}

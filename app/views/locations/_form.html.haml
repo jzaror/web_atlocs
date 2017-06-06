@@ -12,54 +12,56 @@
 
 		.step#step1
 			.tab-head
-				%h2 Describe tu Locación
-				%p Una buena descripción del lugar le permitirá a otros usuarios llegar con mayor facilidad a tu locación.
+				%h2 Publica tu Locación
 			.tab-body
 				.form-group
-					= f.label "Titulo de tu publicación *", :class=>""
-					= f.text_field :title, :class=>"form-control", :placeholder=>"Agrega un nombre claro descriptivo"
+					= f.label "Título de tu Locación *", :class=>""
+					= f.text_field :title, :class=>"form-control", :placeholder=>"Agrega un nombre claro y descriptivo"
 				.form-group
 					= f.label "Descripción *", :class=>""
-					= f.text_area :description, :class=>"form-control", :placeholder=>"Describe lo mejor posible tu locación, este campo es clave en la visualización en nuestra plataforma"
+					= f.text_area :description, :class=>"form-control", :placeholder=>"Describe detalladamente tu locación. Una buena descripción facilitará que más usuarios puedan encontrarla."
 		.step#step2
 			.tab-head
 				%h2 Características de tu Locación
-				%p Sé lo más específico en nombrar las características que hacen único el lugar que estás ofreciendo. Estas descripciones también le permitirán a otros usuarios llegar con mayor facilidad a tu locación.
+				%p Selecciona las opciones que mejor señalen lo que es y lo que ofrece tu locación.
 			.tab-body
 				.row.form-group
 					.col-md-4= f.label "Tipo de locación *", :class=>""
 					.col-md-8= f.select(:type_id, ['Casa', 'Departamento', 'Fundos', 'Parcelas', 'Estadios', 'Centro de eventos', 'Oficinas', 'Edificios empresariales', 'Consultas medicas', 'Azoteas', 'Bares', 'Restaurantes', 'Bibliotecas', 'Bodegas', 'Galpones', 'Cabañas', 'Cines', 'Teatros', 'Clínicas', 'Club de golf', 'Supermercados', 'Cocinas', 'Viñas', 'Moteles', 'Hoteles', 'Plazas', 'Calles', 'Lagunas', 'Bosques', 'Miradores', 'Loft', 'Centro Deportivo', 'Otro'], {}, { :class => 'form-control' })
 				.row.form-group
-					.col-md-4= f.label "Caracteristicas", :class=>""
+					.col-md-4= f.label "Tags", :class=>""
 					.col-md-8
 						= f.autocomplete_field :tag_names, autocomplete_tag_name_locations_path, 'data-delimiter' => ', ', :class=>"form-control", :placeholder=>"Agrega etiquetas referentes a detalles esteticos, barrios, etc"
 						/ = f.text_field :tag_names, :class=>"form-control", :placeholder=>"Agrega etiquetas referentes a detalles esteticos, barrios, etc"
-						%small Separa las caracteristicas con una coma (ej: adobe, casona, moderno, etc.)
+						%small Incluye palabras o pequeñas frases claves, que describan tu locación. Sepáralas por coma. Ej: casona, naturaleza, vista al lago, campo.
 				.row
 					.col-md-6
 						.form-group
-							= f.label "Espacios Utilizables", :class=>""
-							-["Fachada", "Interior", "Habitaciones", "Cocina", "Baño y Duchas", "Garage", "Logia", "Jardin", "Propiedad Completa", "Extras"].each do |service|
+							= f.label "Espacios filmables", :class=>""
+							%p.small Señala solamente los espacios que la producción podrá filmar o fotografiar para su película, sesión fotográfica, comercial, etc.
+							-["Fachada", "Interior", "Habitaciones", "Cocina", "Baño y Duchas", "Garage", "Logia", "Jardin", "Propiedad Completa", "Instalación escenográfica", "Ajustes de ambientación", "Otro"].each do |service|
 								.checkbox
 									%label
-										= f.check_box :services, { :multiple => true }, service, nil
+										= f.check_box :services, { :multiple => true, onclick: "extraOrServiceChanged()"}, service, nil
 										#{service}
+							= f.text_area :other_services_comment, :class=>"form-control other-services-comment", style: "display:none;"
 					.col-md-6
 						.form-group
-							= f.label "Extras", :class=>""
-							%p.small Selecciona que servicios y/o extras se encuentran disponibles al utilizar tu locación.
-							-["Habitaciones", "Baños", "Cocina", "Estacionamientos", "Conexión a red eléctrica", "Instalaciones escenográficas", "Ajustes de ambientación"].each do |extra|
+							= f.label "Espacios utilizables", :class=>""
+							%p.small En una producción puedes tener a mucha gente trabajando, los cuáles necesitarán utilizar otros espacios de tu propiedad, que no son específicamente aquellos que se están filmando. Señala qué espacios estarán habilitados para la producción. Ej: Si seleccionas Baño, significa que la producción puede utilizar el baño, etc.
+							-["Habitaciones", "Baños", "Cocina", "Estacionamientos", "Conexión a red eléctrica", "Otro"].each do |extra|
 								.checkbox
 									%label
-										= f.check_box :extras, { :multiple => true }, extra, nil
+										= f.check_box :extras, { :multiple => true, onclick: "extraOrServiceChanged()"}, extra, nil
 										#{extra}
+							= f.text_area :other_extras_comment, :class=>"form-control other-extras-comment", style: 'display:none;'
 
 
 				.row.form-group
 					.col-md-3= f.label "Dirección *", :class=>""
 					.col-md-9= f.text_field :address, :class=>"form-control"
 				.map_canvas
-				%p.block-helper.font-italic.mt-3 * Esta información no aparece en el listado y solo se entrega a un usuario cuando se confirma su reserva.
+				%p.block-helper.font-italic.mt-3 * Esta información solamente será visible cuando un usuario haya confirmado y pagado su reserva.
 				= f.hidden_field :lat, :class=>"form-control", "data-geo"=>"lat"
 				= f.hidden_field :lng, :class=>"form-control", "data-geo"=>"lng"
 				= f.hidden_field :city, :class=>"form-control", "data-geo"=>"administrative_area_level_2"
@@ -67,14 +69,14 @@
 
 		.step#step3
 			.tab-head
-				%h2 Las Fotos son la mejor descripción de una Locación
-				%p Sube las fotos de tu locación, evidenciando aspectos únicos del lugar que podrían ser atractivos para clientes y otros usuarios. Las fotos de detalles y de planos generales son siempre bienvenidas.
+				%h2 Fotografías
+				%p Una imagen dice más que mil palabras. Sube las mejores fotografías que tengas de tu locación, mostrando todo el espacio que los productores podrán filmar o fotografiar.  Recuerda incluir fotos generales, así como de detalles, de tu locación.
 			.tab-body
 				.form-group.upload-imgs.bg-faded
 					%div#upload-form.row
 						.col-md-8
-							%h4 Adjuntar archivos
-							%em Puedes seleccionar multiples archivos. JPG, GIF o PNG. 3mb max. Por favor, sube sólo imágenes horizontales, de lo contrario no podremos publicar tu locación.
+							%h4 Adjuntar Archivos
+							%em Sube solamente fotografias HORIZONTALES en formato  .jpg, .gif o .png. De lo contrario no podremos publicar tu locación. La fotografía horizontal es la única manera que los productores pueden imaginarse cómo se verá tu locación en cámara.
 						.col-md-4
 							%div.file-upload-btn.text-right
 								%a.btn.btn-info{:href => "#"}
@@ -88,32 +90,32 @@
 						.progress-bar.progress-bar-info#progress-bar{:role=>"progressbar", "aria-valuenow"=>"20", "aria-valuemin"=>"0", "aria-valuemax"=>"100", "style"=>"width: 1%"}
 		.step#step4
 			.tab-head
-				%h2 Precio y Disponibilidad
-				%p Un precio equilibrado hará que un mayor números de interesados se acerque a tu locación y recuerda siempre mantener actualizada la disponibilidad de esta locación.
+				%h2 Precio
+				%p Recuerda que puedes cobrar por jornada, lo mismo o más, de lo que cobrarías por un arriendo mensual. Sin embargo, recuerda que un precio equilibrado, hará que haya más interesados en tu locación.
 			.tab-body
 				.row.form-group.price
 					.col-md-6
-						= f.label "Precio por día", :class=>""
+						= f.label "Precio por jornada", :class=>""
 						*
 						.input-group
 							.input-group-addon $
 							= f.phone_field :price, :class=>"form-control", :placeholder=>"Monto"
 							= f.hidden_field :fee, :class=>"form-control"
-						%p.help-block Precio recomendado para tu locación: $150.000 (basado en precio de locaciones similares)
+						%p.help-block El mínimo de arriendo para tu locación es de $150.000 pesos chilenos. 
 					.col-md-6
 						.well
-							%small Precio de Reserva
+							%small Comisión Atlocs
 							.final-price
 								%strong $
 								%span#result
 									0
 								%span*
 							%em
-								* AtLocs, Sumara una Comisión del 15% por gestionar Tu Propiedad.
+								* AtLocs, Sumará una Comisión del 15% por gestionar Tu Propiedad.
 								%br
-								%a{:href => "/faq#collapseEight"} Mas info
+								%a{:href => "/faq#collapseEight"} Más info
 					.col-md-12
-						%em (*) Un día de trabajo corresponde a 12 horas de utilización (en promedio), que es el tiempo suficiente para que un equipo trabaje una jornada completa en tu locación.
+						%em (*) Una jornada completa de trabajo corresponde a un máximo de 12 horas seguidas de producción. Ten en cuenta esto al momento de ponerle precio a tu locación.
 
 
 

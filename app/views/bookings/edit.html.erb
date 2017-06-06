@@ -31,6 +31,24 @@
 					</p>
 					<input type="submit" name="" class="btn btn-success" value="Actualizar Reserva" id="booking-submit-button"/>
 				</form>
+			<% else %>
+				<br>
+				<p>
+					No puedes editar esta reserva dado que ya la pagaste. Si necesitas igualmente hacer algún cambio, contáctate directamente con el propietario a través del historial de reserva, o contáctate con nosotros.
+				</p>
+				<br>
+				<div style="text-align:center;">
+					<div class="btn-group" style="width: 40%;">
+	          <a class="btn btn-lg btn-primary btn-block" href="<%= booking_url(@booking.code)%>" style="-webkit-appearance: none;" type="button">
+	            IR A LA RESERVA
+	          </a>
+	        </div>
+					<div class="btn-group" style="width: 40%;">
+	          <a class="btn btn-lg btn-primary btn-block" href="/contacto" style="-webkit-appearance: none;" type="button">
+	            CONTÁCTANOS
+	          </a>
+	        </div>
+        </div>
 			<% end %>
 			<script type="text/javascript">
 				$(function() {
@@ -61,7 +79,7 @@
 						}
 					})
 					.fail(function() {
-						alert("Hubo un error cotizando tu reserva. Por favor intenta mas tarde.")
+						//alert("Hubo un error cotizando tu reserva. Por favor intenta mas tarde.")
 						console.log("error");
 					})
 					.always(function() {

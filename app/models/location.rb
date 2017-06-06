@@ -123,6 +123,15 @@ class Location < ActiveRecord::Base
 			0
 		end
 	end
+
+	def has_other_extras?
+		extras.select{|e| e == "Otro"}.length > 0
+	end
+
+	def has_other_services?
+		services.select{|e| e == "Otro"}.length > 0
+	end
+
 	private
 		def set_draft_status
 			# status codes:

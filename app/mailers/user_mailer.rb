@@ -183,7 +183,7 @@ class UserMailer < ActionMailer::Base
 	def owner_booking_cancel(booking, reason)
 		@booking = booking
 		@reason = reason
-		@user = booking.user
+		@user = booking.location.user
 		mail(to: @user.email, subject: " La Reserva para tu locación #{booking.location.title} ha sido cancelada. ")
 	end
 
