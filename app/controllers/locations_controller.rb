@@ -115,8 +115,8 @@ class LocationsController < ApplicationController
     if @location.update(location_params)
       @location.submit
       if @location.status == "submitted"
-        LocationMailer.new_location(@location).deliver
-        UserMailer.location_submitted(@location).deliver
+        LocationMailer.new_location(@location).deliver if params[:newlocation]
+        UserMailer.location_submitted(@location).deliver if params[:newlocation]
         #UserMailer.location_submitted_admin(@location).deliver
       end
       if params[:images]
@@ -190,6 +190,6 @@ class LocationsController < ApplicationController
     def location_params
       #params[:location][:tag_names] ||= []
       #, { :tag_names=>[] }
-      params.require(:location).permit(:title, :days, :city, :type_id, :price, :fee, :description, :address, :lat, :lng, :county, :collection_id, :front_page, :upload, :tag_names, { :uploads_attributes=>[ :_destroy, :id, :image ] }, { :services=>[] }, { :extras=>[] })
+      params.require(:location).permit(:title, :days, :city, :type_id, :price, :fee, :description, :address, :lat, :lng, :county, :collection_id, :front_page, :upload, :tag_names, :other_extras_comment, :other_services_comment, { :uploads_attributes=>[ :_destroy, :id, :image ] }, { :services=>[] }, { :extras=>[] })
     end
 end

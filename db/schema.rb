@@ -11,6 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+<<<<<<< 6bd090a200a12a4e304a547ac4dd17cc4e879b63
 <<<<<<< 8d0a528701c151a015109b9ad84edb4ae96a3230
 <<<<<<< 8bebd5ffb0f6c3f1703353d75765ee179b9dd9eb
 <<<<<<< dba39cc1b4bba08e4221c9caeb781b2d08e1766c
@@ -28,6 +29,9 @@ ActiveRecord::Schema.define(version: 20170531175955) do
 =======
 ActiveRecord::Schema.define(version: 20170602230416) do
 >>>>>>> verify email accounts done
+=======
+ActiveRecord::Schema.define(version: 20170606231342) do
+>>>>>>> added other comments
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -116,8 +120,8 @@ ActiveRecord::Schema.define(version: 20170602230416) do
     t.string   "address"
     t.float    "lat"
     t.float    "lng"
-    t.datetime "created_at",         null: false
-    t.datetime "updated_at",         null: false
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
     t.integer  "user_id"
     t.string   "image_file_name"
     t.string   "image_content_type"
@@ -127,13 +131,15 @@ ActiveRecord::Schema.define(version: 20170602230416) do
     t.integer  "status"
     t.text     "street_address"
     t.integer  "collection_id"
-    t.string   "extras",                          array: true
-    t.string   "services",                        array: true
+    t.string   "extras",                              array: true
+    t.string   "services",                            array: true
     t.decimal  "fee"
     t.boolean  "front_page"
     t.string   "reject_reason"
     t.integer  "main_attachment_id"
     t.datetime "deleted_at"
+    t.text     "other_extras_comment"
+    t.text     "other_services_comment"
   end
 
   add_index "locations", ["deleted_at"], name: "index_locations_on_deleted_at", using: :btree

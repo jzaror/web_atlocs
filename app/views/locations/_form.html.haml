@@ -42,8 +42,9 @@
 							-["Fachada", "Interior", "Habitaciones", "Cocina", "Baño y Duchas", "Garage", "Logia", "Jardin", "Propiedad Completa", "Instalación escenográfica", "Ajustes de ambientación", "Otro"].each do |service|
 								.checkbox
 									%label
-										= f.check_box :services, { :multiple => true }, service, nil
+										= f.check_box :services, { :multiple => true, onclick: "extraOrServiceChanged()"}, service, nil
 										#{service}
+							= f.text_area :other_services_comment, :class=>"form-control other-services-comment", style: "display:none;"
 					.col-md-6
 						.form-group
 							= f.label "Espacios utilizables", :class=>""
@@ -51,8 +52,9 @@
 							-["Habitaciones", "Baños", "Cocina", "Estacionamientos", "Conexión a red eléctrica", "Otro"].each do |extra|
 								.checkbox
 									%label
-										= f.check_box :extras, { :multiple => true }, extra, nil
+										= f.check_box :extras, { :multiple => true, onclick: "extraOrServiceChanged()"}, extra, nil
 										#{extra}
+							= f.text_area :other_extras_comment, :class=>"form-control other-extras-comment", style: 'display:none;'
 
 
 				.row.form-group
