@@ -62,17 +62,17 @@
 										%td.col-md-7 #{@location.type_id}
 								-if @location.services
 									%tr.row.my-2
-										%th.col-md-5 Espacios Utilizables
-										%td.col-md-7 #{raw(@location.services.join(", ").split(/\s*,\s*/).map{ |service| raw(link_to(service, '/locations?s='+service.html_safe)) }.join(', ') + ".")}
+										%th.col-md-5 Espacios filmables
+										%td.col-md-7 #{raw(@location.services.join(", ").split(/\s*,\s*/).map{ |service| raw(link_to(service, '/locations?s='+service.html_safe)) }.join(', '))} #{(@location.has_other_services? ? ("(" + @location.other_services_comment.to_s + ")") : '')}
 
 								-if @location.extras
 									%tr.row.my-2
-										%th.col-md-5 Extras
-										%td.col-md-7 #{raw(@location.extras.join(", ").split(/\s*,\s*/).map{ |extra| raw(link_to(extra, '/locations?s='+extra.html_safe)) }.join(', ') + ".")}
+										%th.col-md-5 Espacios utilizables
+										%td.col-md-7 #{raw(@location.extras.join(", ").split(/\s*,\s*/).map{ |extra| raw(link_to(extra, '/locations?s='+extra.html_safe)) }.join(', '))} #{(@location.has_other_extras? ? ("(" + @location.other_extras_comment.to_s + ")") : '')}
 								-if @location.tag_names
 									%tr.row.my-2
 										%th.col-md-5 Tags
-										%td.col-md-7 #{raw(@location.tag_names.split(/\s*,\s*/).map{ |tag| raw(link_to(tag, '/locations?s='+tag.html_safe)) }.join(', ') + ".")}
+										%td.col-md-7 #{raw(@location.tag_names.split(/\s*,\s*/).map{ |tag| raw(link_to(tag, '/locations?s='+tag.html_safe)) }.join(', '))}
 			.col-md-5.text-right
 				-if @location.lat && @location.lng
 					.content-box.address
