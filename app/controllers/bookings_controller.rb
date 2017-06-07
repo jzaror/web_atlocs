@@ -79,6 +79,7 @@ class BookingsController < ApplicationController
   def cancel_booking
     @booking= Booking.find_by(id: params[:id])
     @user = User.find_by(id: params[:user_id])
+    @booking.archive
     if @booking.user.id == @user.id
       UserMailer.client_booking_cancel(@booking, params[:reject_reason]).deliver_now
       UserMailer.owner_booking_cancel(@booking, params[:reject_reason]).deliver_now
@@ -88,7 +89,6 @@ class BookingsController < ApplicationController
       UserMailer.owner_booking_cancel_by_owner(@booking, params[:reject_reason]).deliver_now
       UserMailer.admin_booking_cancel_by_owner(@booking, params[:reject_reason]).deliver_now
     end
-    @booking.archive
     REDIS.lpush("booking#{@booking.code}",{:datetime=>Time.now.to_i,:text=>"Reserva cancelada por #{current_user.full_name}",:action=>"cancelled"}.to_json)
 
     redirect_to bookings_path

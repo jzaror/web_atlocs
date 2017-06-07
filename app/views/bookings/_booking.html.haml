@@ -65,9 +65,10 @@
 					=image_tag "#{asset_path('edit.svg')}", :style => "width: 60px;"
 					-# %i.mdi.mdi-pencil
 					%p Editar
-		%td
-			= link_to cancel_booking_path(booking), remote: true, :class=> "table-btn" do
-				=image_tag "#{asset_path('delete.svg')}", :style => "width: 60px;"
-				-# %i.mdi.mdi-delete
-				%p Cancelar
+		- unless booking.status == 'paid'
+			%td
+				= link_to cancel_booking_path(booking), remote: true, :class=> "table-btn" do
+					=image_tag "#{asset_path('delete.svg')}", :style => "width: 60px;"
+					-# %i.mdi.mdi-delete
+					%p Cancelar
 		%td
