@@ -31,7 +31,7 @@ class Booking < ActiveRecord::Base
 		end
 	end
 	def archive
-		if(self.status=="waiting")
+		if self.status=="waiting" || self.status == 'accepted'
 			self.update_attribute(:status,"archived")
 			true
 		else
