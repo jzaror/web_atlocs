@@ -119,7 +119,6 @@ class BookingsController < ApplicationController
       UserMailer.booking_sent(@booking).deliver
       comment={:datetime=>Time.now.to_i,:text=>params[:comment],:user=>{:full_name=>current_user.full_name},:action=>"comment"}
       REDIS.lpush("booking#{@booking.code}",comment.to_json) if params[:comment] && params[:comment].length>0
-      puts 'VOY A NOTIFICAR AL ADMIN'
       User.where(status: 5).each do |admin|
         admin.notify('booking')
       end

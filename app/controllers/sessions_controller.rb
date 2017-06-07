@@ -38,7 +38,7 @@ class SessionsController < ApplicationController
 			end
 		else
 			if user && !user.active_for_authentication?
-				message="Cuenta no confirmada aún"	
+				message="Cuenta no confirmada aún"
 			else
 				message="E-mail o contraseña incorrectos"
 			end
@@ -80,7 +80,6 @@ class SessionsController < ApplicationController
 	end
 
 	def create_user
-		puts params
 		if @user.save
 			session[:user_id] = user.id
 			UserMailer.welcome(user).deliver
