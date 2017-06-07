@@ -108,7 +108,7 @@ class UserMailer < ActionMailer::Base
 		@booking = booking
 		@user = booking.user
 		@owner = @booking.location.user
-		mail(to: @user.email, subject: '¡Tu locación ha sido arrendada con éxito!')
+		mail(to: @owner.email, subject: '¡Tu locación ha sido arrendada con éxito!')
 	end
 
 	def payment_confirmed_admin(booking)
