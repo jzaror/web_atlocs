@@ -4,81 +4,82 @@
 			= flash_messages
 			.col-md-8
 				.booking-status
-					.page-header 
+					.page-header
 						%h1 Historial de la Reserva
-					.comment-box#comments.row
+					.comment-box#comments
 						%form.form{:action=>"javascript:submitcomment('#{(@booking.code||=@booking.generatecode)}')"}
-							.form-group.col-md-10
-								%textarea.form-control{:name=>"body", :id=>"comment-body-input", :placeholder=>"Agrega tu comentario"}
-							.form-group.col-md-2
-								%button.btn.btn-primary.btn-lg.btn-block.pull-right{:type=>:submit}
-									%i.mdi.mdi-send
-					.booking-log#history
+							.d-flex.justify-content-between.align-items-center
+								.form-group.col-md-10
+									%textarea.form-control{:name=>"body", :id=>"comment-body-input", :placeholder=>"Agrega tu comentario"}
+								.form-group.col-md-2
+									%button.btn.btn-primary.btn-lg.btn-block.pull-right{:type=>:submit}
+										%i.mdi.mdi-send
+					.booking-log.p-3#history
 						- @history.each do |event|
 							-if event["action"]=="comment"
 								.media
-									.media-left
+									.d-flex.mr-2
 										.avatar-container
 											.user-avatar.inline
 												%i.mdi.mdi-account
 												-#= image_tag "no-avatar.png"
-									
+
 									.media-body
-										%h4.media-heading
+										%h5.media-heading.mt-0.mb-1
 											=event["user"]["full_name"]
-											%span.timeago 
+											%span.timeago
 												%i.mdi.mdi-clock
 												hace #{distance_of_time_in_words_to_now(Time.at(event["datetime"]))}
 										%p= event["text"]
-						
-										
+
+
 							- elsif event["action"]=="accepted"
 								.media.booking-accepted
-									.media-left
+									.d-flex.mr-2
 										.avatar-container
 											.user-avatar.inline
 												%i.mdi.mdi-calendar-check
 									.media-body
-										%h4.media-heading
+										%h4.media-heading.mt-0.mb-1
 											Reserva Aceptada
-											%span.timeago 
+											%span.timeago
 												%i.mdi.mdi-clock
 												hace #{distance_of_time_in_words_to_now(Time.at(event["datetime"]))}
 										%p=event["text"]
 							- elsif event["action"]=="cancelled"
 								.media.booking-cancelled
-									.media-left
+									.d-flex.mr-2
 										.avatar-container
 											.user-avatar.inline
 												%i.mdi.mdi-calendar-remove
 									.media-body
-										%h4.media-heading
+										%h4.media-heading.mt-0.mb-1
 											Reserva Cancelada
-											%span.timeago 
+											%span.timeago
 												%i.mdi.mdi-clock
 												hace #{distance_of_time_in_words_to_now(Time.at(event["datetime"]))}
 										%p=event["text"]
 							- elsif event["action"]=="payment"
 								.media.booking-payment-ok
-									.media-left
+									.d-flex.mr-2
 										.avatar-container
 											.user-avatar.inline
 												%i.mdi.mdi-cash
 									.media-body
-										%h4.media-heading
+										%h4.media-heading.mt-0.mb-1
 											Pago Realizado
-											%span.timeago 
+											%span.timeago
 												%i.mdi.mdi-clock
 												hace #{distance_of_time_in_words_to_now(Time.at(event["datetime"]))}
 										%p=event["text"]
 						.media
-							.media-left
+							.d-flex.mr-2
 								.avatar-container
 									.user-avatar.inline
 										%i.mdi.mdi-calendar
 							.media-body
-								%h4.media-heading
-									Solicitud de reserva creada  
+								%h4.media-heading.mt-0.mb-1
+									Solicitud de reserva creada
 								%p
 									%a{:href => "#"}
 										#{@booking.user.full_name}
@@ -86,11 +87,11 @@
 											%span.timeago
 												%i.mdi.mdi-clock
 												hace #{distance_of_time_in_words_to_now(@booking.created_at)}
-							
-					
-		
 
-					
+
+
+
+
 			.col-md-4
 				- if @booking.status!="archived"
 					.booking-actions.padding.text-right
@@ -114,20 +115,20 @@
 					%h2.location-title #{@booking.location.title}
 					.location-img
 						= image_tag @booking.location.thumbnail(500,230)
-					%ul.booking-details			
+					%ul.booking-details
 						%li
 							%i.mdi.mdi-lg.mdi-calendar-today
-							Desde el: 
+							Desde el:
 							%b=@booking.start_time.strftime("%d/%m/%Y")
-							
+
 						%li
 							%i.mdi.mdi-lg.mdi-calendar
-							Hasta el: 
+							Hasta el:
 							%b=@booking.end_time.strftime("%d/%m/%Y")
-						
+
 						%li
 							%i.mdi.mdi-lg.mdi-cash
-							Precio locación: 
+							Precio locación:
 							%b=number_to_currency(@booking.price, :unit => "$", :precision => 0)
 							x #{@booking.totaldays} día(s)
 						%li
@@ -135,4 +136,3 @@
 							Precio de reserva:
 							%b=number_to_currency(@booking.location.fee*@booking.totaldays, :unit => "$", :precision => 0)
 							x #{@booking.totaldays} día(s)
-					

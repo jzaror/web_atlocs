@@ -1,15 +1,4 @@
 .booking {
-	.location-info {
-		.booking-details {
-			padding:2rem 1rem;
-			margin:0;
-			list-style:none;
-			li { margin:.5rem 0; }
-		}
-		.location-img img {
-			width:100%;
-		}
-	}
 }
 
 .comment-box {
@@ -24,7 +13,7 @@
 		margin-top:0;
 	}
 	.booking-log {
-		padding:2rem 0;
+		padding:2rem;
 		.timeago {
 			opacity:.6;
 			font-size:13px;
@@ -32,14 +21,23 @@
 		}
 	}
 	.media {
-		margin-top:.3rem;
-		padding:.9rem;
-		.media-left {}
+		// margin-top:.3rem;
+		padding:1.5rem 1rem;
+		border-top: 1px solid rgba(black, 0.08);
+		&:first-of-type {
+			border-top: none;
+		}
+		.user-avatar {
+			.mdi {
+				opacity: 0.6;
+			}
+		}
 		.media-body {
 			.media-heading {
-				font-size:17px;
+				font-size:15px;
 			}
 			p {
+				font-size: 0.9rem;
 				margin-bottom:0;
 			}
 		}
@@ -55,3 +53,30 @@
 	}
 }
 
+.location-info {
+	padding: .5rem 1.5rem;
+	background: lighten($brand-primary, 44%);
+	.location-title {
+		font-size: 1.2rem;
+		margin: 1rem 0;
+	}
+	.location-img {
+		margin: 0;
+		img {
+			width:100%;
+		}
+	}
+	.booking-details {
+		padding: 1rem;
+		font-size: 0.8rem;
+		color: rgba(black, 0.6);
+		margin:0;
+		list-style:none;
+		li {
+			margin:.5rem 0;
+			.mdi {
+				font-size: 24px;
+			}
+		}
+	}
+}

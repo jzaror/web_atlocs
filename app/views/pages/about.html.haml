@@ -1,0 +1,28 @@
+%section.main-content
+  .page-header.about-header
+    .container
+      %h1.about-header_title Somos Atlocs
+      %h3.about-header_subtitle Un servicio de administración de locaciones chilenas.
+      %p.about-header_desc Una herramienta web que conecta a quienes quieren arrendar una propiedad para ser usada en un proyecto cinematográfico, sesión de fotos o evento corporativo, con los directores y productores y profesionales de las comunicaciones que necesitan esas propiedades para llevar a cabo sus proyectos.
+  .container
+    .row
+      .col-md-10.offset-md-1.d-flex.justify-content-center.align-items-start.flex-column.flex-md-row
+        .about-box
+          .about-box_photo
+            = image_tag ('about/cristian-diaz')
+          .about-box_info
+            %h4.about-box_name Cristian Díaz Reyes
+            %p.about-box_position Founder – Director General
+            %a.about-box_link{:href => "mailto:cdiaz@atlocs.com"}
+              %i.mdi.mdi-email-outline
+              Contacto
+        .about-box
+          .about-box_photo
+            = image_tag ('about/nazeli-nazar')
+          .about-box_info
+            %h4.about-box_name Nazeli Nazar Miranda
+            %p.about-box_position Founder – Partner
+            %a.about-box_link{:href => "mailto:nnazar@atlocs.com"}
+              %i.mdi.mdi-email-outline
+              Contacto
+  
