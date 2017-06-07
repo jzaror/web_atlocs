@@ -21,7 +21,6 @@ end
 	collection.name=Faker::Lorem.sentence
 	collection.save
 end
-puts '#####################################################'
 32.times do
 	password=Faker::Internet.password
 	User.create(
@@ -33,7 +32,6 @@ puts '#####################################################'
 		email: Faker::Internet.email
 	)
 end
-puts 'PASOOOOOOOOOOOOOOOOOOOOOOO'
 10.times do
 	location=Location.new
 	location.lat=Faker::Address.latitude
