@@ -41,17 +41,16 @@
 	/ Actions
 	%td.text-right{:style=>"width:15%"}
 		- if booking.status=="paid" && current_user.status!="admin"
-			= link_to "/bookings/"+(booking.code||=booking.generatecode), :class=> "btn btn-primary" do
+			= link_to "/bookings/"+(booking.code||=booking.generatecode), :class=> "btn btn-info" do
 				Ver Reserva
 		- else
 			.btn-group
-				= link_to "/bookings/"+(booking.code||=booking.generatecode), :class=> "btn btn-primary" do
+				= link_to "/bookings/"+(booking.code||=booking.generatecode), :class=> "btn btn-info" do
 					Ver Reserva
-				%button.btn.btn-primary.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :type => "button"}
-					%span.caret
+				%button.btn.btn-info.dropdown-toggle.dropdown-toggle-split{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :type => "button"}
 					%span.sr-only Toggle Dropdown
-				%ul.dropdown-menu
 
+				%ul.dropdown-menu.dropdown-menu-right
 					- if current_user.status=="admin" && booking.status=="accepted"
 						%li.dropdown-item
 							= link_to "/bookings/#{booking.code}/payment/confirm" do

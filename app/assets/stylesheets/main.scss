@@ -642,3 +642,11 @@ button, input, .form-control, a {
 		margin-bottom: 1rem;
 	}
 }
+
+
+.btn-group {
+	.dropdown-toggle-split {
+		border-left: 1px solid rgba(black, 0.2);
+		margin-left: 0 !important;
+	}
+}

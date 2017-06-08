@@ -8,17 +8,17 @@
           %input{:type=>"hidden",:value=>form_authenticity_token,:name=>"authenticity_token"}
 
           .form-group
-            %label e-mail
+            %label Tu E-mail
             %input.form-control{:name => "email", :type => "email",:value=>params[:email]}
           .form-group
-            %label número de celular
+            %label Número de celular
             %input.form-control{:name => "cellphone", :type => "text", :value=>params[:cellphone]}
           .form-group
-            %label asunto
+            %label Asunto
             %input.form-control{:name => "subject", :type => "text", :value=>params[:subject]}
-          
+
           .form-group
-            %label mensaje
+            %label Mensaje
             %textarea.form-control{:name => "body"}
               =params[:body]
           .form-action
