@@ -252,7 +252,8 @@ Devise.setup do |config|
   # up on your models and hooks.
   config.omniauth :facebook, "1366176806802114", "a6eb98fc2c680677b3bbfa7a8f79924e",
                 #callback_url: 'http://localhost:3000/users/auth/facebook/callback',
-                callback_url: "http://atlocs.nnodes.com/users/auth/facebook/callback",
+                #callback_url: "http://atlocs.nnodes.com/users/auth/facebook/callback",
+                callback_url: "http://atlocs.com/users/auth/facebook/callback",
                 scope: 'email,public_profile',
                 info_fields: 'email,first_name,last_name'
   # config.omniauth :github, 'APP_ID', 'APP_SECRET', scope: 'user,public_repo'
