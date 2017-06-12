@@ -11,10 +11,10 @@ html, body {
 }
 .alert {
 	z-index: 99999999999;
-  top: 70px;
-  right: 10px;
-  min-width: 240px;
-  position: fixed;
+	top: 70px;
+	right: 10px;
+	min-width: 240px;
+	position: fixed;
 	.close {
 		font-size: 14px;
 		position: absolute;
@@ -86,14 +86,6 @@ body {
 .site-content {
 	flex: 1 1 auto;
 }
-// body {
-// 	display: flex;
-// 	min-height: 100vh;
-// 	flex-direction: column;
-// 	.main-content {
-// 		flex: 1;
-// 	}
-// }
 
 h1, h2, h3, h4, h5, h6 {
 	font-weight:700;
@@ -799,6 +791,7 @@ button, input, .form-control, a {
 		border-left: 1px solid rgba(black, 0.2);
 		margin-left: 0 !important;
 	}
+}
 
 .card-register {
 	border-radius: 20px;
@@ -835,7 +828,7 @@ button, input, .form-control, a {
 	hr {
 		border-top: 1px solid #CCCCCC;
 		text-align: center;
-    margin: 30px -1.5rem;
+    	margin: 30px -1.5rem;
 		&:after {
 			content: 'o';
 			display: inline-block;
@@ -871,6 +864,7 @@ button, input, .form-control, a {
 		position: relative;
 	}
 }
+
 .facebook-inicio {
 	span {
 		color: #2C467A;
@@ -894,6 +888,7 @@ button, input, .form-control, a {
 	width: 67%;
 	position: relative;
 }
+
 .bookings {
 	margin-top: 40px;
 	th {
