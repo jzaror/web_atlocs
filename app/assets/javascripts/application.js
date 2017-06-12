@@ -70,7 +70,7 @@ var QueryString = function () {
 $('#calendar').fullCalendar({});
 
 $(document).ready(function() {
-  $(".alert" ).delay(3000).fadeOut(2000);
+  $(".alert-success" ).delay(3000).fadeOut(2000);
 });
 
 // //OPEN MODAL AFTER CREATING A LOCATION
