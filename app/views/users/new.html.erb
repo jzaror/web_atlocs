@@ -1,78 +1,73 @@
-<div class="container py-4">
-  <div class="row">
-    <div class="col-md-6 offset-md-3 mt-3">
-      <div class="card card-register">
-        <div class="card-header">
-          <h1 class="text-center">Regístrate</h1>
-          <div class="row">
-            <div class="col-md-9">
-              <p>Crea tu cuenta AtLocs para
-                <br />
-                PUBLICAR y RESERVAR locaciones
-              </p>
-            </div>
-            <div class="col-md-3">
-              <i class="mdi mdi-pencil"></i>
-            </div>
-          </div>
-
+<div class="container-fluid py-4">
+  <div class="row d-flex justify-content-center">
+    <div class="col-md-6 mt-3">
+      <div class="card card-outline-primary card-session">
+        <div class="card-header bg-primary text-white">
+          <h5 class="mt-2">Crea tu Cuenta</h5>
+          <p class="small">Regístrate en AtLocs para <strong>Publicar y Reservar</strong> Locaciones</p>
         </div>
-        <div class="card-block p-4">
-          <%= simple_form_for(@user, wrapper: false, label: false) do |f| %>
-            <%= f.error_notification %>
-            <div class="form-group">
-              <label class="sr-only">Nombre</label>
-              <%= f.input :first_name, input_html: { class: 'form-control' }, wrapper: false, label: false, placeholder: 'Nombre' %>
-            </div>
-            <div class="form-group">
-              <label class="sr-only">Apellido</label>
-              <%= f.input :last_name, input_html: { class: 'form-control' }, wrapper: false, label: false, placeholder: 'Apellido' %>
-            </div>
-            <div class="form-group">
-              <label class="sr-only">Email</label>
-              <%= f.input :email, input_html: { class: 'form-control' }, wrapper: false, label: false, placeholder: 'E-mail' %>
-            </div>
-            <div class="form-group">
-              <label class="sr-only">Número celular</label>
-              <%= f.input :phone, input_html: { class: 'form-control' }, wrapper: false, label: false, placeholder: 'Número de celular' %>
-            </div>
-            <div class="form-group">
-              <label class="sr-only">Contraseña</label>
-              <%= f.input :password, input_html: { class: 'form-control' }, wrapper: false, label: false, placeholder: 'Contraseña' %>
-            </div>
-            <div class="form-group">
-              <label class="sr-only">Confirmar contraseña</label>
-              <%= f.input :password_confirmation, input_html: { class: 'form-control' }, wrapper: false, label: false, placeholder: 'Confirmar contraseña' %>
-            </div>
-            <div class="form-group">
-              <label class='checkbox'>¿Eres propietario de un inmueble?</label>
-                  <%= f.input :owning, input_html: { class: 'form-control', style: 'width:auto;' }, wrapper: false, label: false, type: 'checkbox'  %>
-            </div>
-            <div class="form-group">
-              <label class='checkbox'>¿Estás buscando locaciones para tu proyecto?</label>
-                <%= f.input :tenant, input_html: { class: 'form-control', style: 'width:auto;' }, wrapper: false, label: false, type: 'checkbox' %>
-            </div>
-
-            <div class="form-actions">
-              <%= f.submit "Registrar", class: "btn btn-primary btn-block" %>
-            </div>
-            <hr />
-            <%= link_to user_facebook_omniauth_authorize_path, class: 'btn facebook' do %>
-              <span><i class="mdi mdi-facebook"></i></span>
-              Registrar con Facebook
-            <% end %>
-            <p class="text-center">
-              No postearemos en tu página de Facebook
-            </p>
-
-            <div class="row d-flex justify-content-center">
-              <div class="col-md-4 text-center p-2">
-                <div class="my-2"><a href="/login">Ya tengo una cuenta</a></div>
-                <div class="my-2"><a href="/help/password">Olvidé mi password</a></div>
+        <div class="card-block">
+          <div class="card-form">
+            <%= simple_form_for(@user, wrapper: false, label: false) do |f| %>
+              <%= f.error_notification %>
+              <div class="form-group">
+                <label class="sr-only">Nombre</label>
+                <%= f.input :first_name, input_html: { class: 'form-control' }, wrapper: false, label: false, placeholder: 'Nombre' %>
               </div>
-            </div>
-          <% end %>
-        </div>
+              <div class="form-group">
+                <label class="sr-only">Apellido</label>
+                <%= f.input :last_name, input_html: { class: 'form-control' }, wrapper: false, label: false, placeholder: 'Apellido' %>
+              </div>
+              <div class="form-group">
+                <label class="sr-only">Email</label>
+                <%= f.input :email, input_html: { class: 'form-control' }, wrapper: false, label: false, placeholder: 'E-mail' %>
+              </div>
+              <div class="form-group">
+                <label class="sr-only">Número celular</label>
+                <%= f.input :phone, input_html: { class: 'form-control' }, wrapper: false, label: false, placeholder: 'Número de celular' %>
+              </div>
+              <div class="form-group">
+                <label class="sr-only">Contraseña</label>
+                <%= f.input :password, input_html: { class: 'form-control' }, wrapper: false, label: false, placeholder: 'Contraseña' %>
+              </div>
+              <div class="form-group">
+                <label class="sr-only">Confirmar contraseña</label>
+                <%= f.input :password_confirmation, input_html: { class: 'form-control' }, wrapper: false, label: false, placeholder: 'Confirmar contraseña' %>
+              </div>
+              <div class="form-check">
+                <label class="form-check-label">
+                  <%= f.input :owning, input_html: { class: 'form-check-input' }, wrapper: false, label: false, type: 'checkbox'  %>
+                  ¿Eres propietario de un inmueble?
+                </label>
+              </div>
+              
+              <div class="form-check">
+                <label class='form-check-label'>
+                  <%= f.input :tenant, input_html: { class: 'form-check-input' }, wrapper: false, label: false, type: 'checkbox' %>
+                  ¿Estás buscando locaciones para tu proyecto?
+                </label>
+              </div>
+
+              <div class="form-actions">
+                <%= f.submit "Crear Cuenta", class: "btn btn-primary btn-block" %>
+              </div>
+              <hr />
+              <%= link_to user_facebook_omniauth_authorize_path, class: 'btn btn-block facebook-inicio' do %>
+                <span><i class="mdi mdi-facebook-box mdi-lg mr-2"></i></span>
+                Registrar con Facebook
+              <% end %>
+              <p class="text-center small text-muted mt-2">
+                No postearemos en tu página de Facebook
+              </p>
+            <% end %>
+          </div>
       </div>
     </div>
+    <div class="row d-flex justify-content-center">
+        <div class="p-2">
+          <div class="my-2"><a href="/login">Ya tengo una cuenta</a></div>
+          <div class="my-2"><a href="/help/password">Olvidé mi password</a></div>
+        </div>
+      </div>
   </div>
+</div>

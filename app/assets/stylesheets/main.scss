@@ -113,7 +113,6 @@ h1, h2, h3, h4, h5, h6 {
 			margin-top: 6px;
 			position: relative;
 			padding: 0 10px;
-			font-family: 'Chivo', sans-serif;
 			.help {
 				border-radius: 50%;
 				background: #333399;
@@ -130,22 +129,21 @@ h1, h2, h3, h4, h5, h6 {
 			}
 		}
 		.dropdown-menu {
-			top: 184%;
+			top: 48px;
 			padding: 0;
 			.arrow {
 				position: absolute;
 				right: 0;
-		    top: -25px;
+		    	top: -25px;
 				font-size: 30px;
-				color: #000066;
+				color: $brand-primary;
 			}
 			li {
 				a {
 					color: lighten($brand-primary, 40%);
-					padding: 5px;
+					padding: 8px;
 					display: block;
 					font-size: 13px;
-					font-family: 'Chivo', sans-serif;
 					// box-shadow: 0px 0px 5px 0px rgba(124,123,123, .75);
 					span {
 						padding: 5px;
@@ -179,9 +177,9 @@ h1, h2, h3, h4, h5, h6 {
 				.nav-link {
 					border-right: 1px solid rgba(148, 146, 169, 0.49);
 					position: relative;
-					display: block;
-    			height: 23px;
-			    width: 82px;
+						display: block;
+					height: 23px;
+					width: 82px;
 					.arrow {
 						position: absolute;
 						right: 0;
@@ -211,27 +209,25 @@ h1, h2, h3, h4, h5, h6 {
 			padding: 4px 3px;
 			font-size: 10px;
 			line-height: 10px;
-	    position: absolute;
-	    top: 0;
-	    border-radius: 50%;
-	    background: white;
-	    color: $brand-primary;
-	    right: 0;
-	    font-weight: bold;
-	    text-align: center;
-	    white-space: nowrap;
-	    vertical-align: baseline;
+			position: absolute;
+			top: 0;
+			border-radius: 50%;
+			background: white;
+			color: $brand-primary;
+			right: 0;
+			font-weight: bold;
+			text-align: center;
+			white-space: nowrap;
+			vertical-align: baseline;
 		}
 	}
 	.navbar-btn {
 		font-size: 13px;
-    padding: 3px 5px;
-    line-height: 13px;
-    border: none;
-    height: 25px;
-		font-family: 'Chivo', sans-serif;
+		padding: 2px 8px;
+		line-height: 13px;
+		border: none;
 		i {
-			font-size: 25px !important;
+			font-size: 24px !important;
 		}
 	}
 
@@ -446,7 +442,7 @@ section.welcome {
 		@include main-title($color:white, $line-c:white);
 	}
 	&.inverse {
-		@include main-title($size:1.75rem, $inverse:true);
+		@include main-title($size:1.6rem, $inverse:true);
 	}
 }
 
@@ -500,6 +496,7 @@ input:-webkit-autofill {
 a,
 button,
 .btn {
+	cursor: pointer;
 	@include transition(all 222ms ease);
 }
 button, input, .form-control, a {
@@ -513,16 +510,32 @@ button, input, .form-control, a {
 .btn {
 	font-family: 'Open Sans', 'Helvetica Neue', sans-serif;
 	line-height: 1;
+	display: inline-flex;
+	align-items: center;
+	justify-content: flex-start;
+	padding: 8px 12px;
+	i.mdi {
+		font-size: 16px;
+		line-height: 16px;
+	}
+	&.btn-block {
+		justify-content: center;
+	}
 	&.btn-lg {
-		text-transform:uppercase;
-		letter-spacing: 1.5px;
+		text-transform: uppercase;
+		letter-spacing: 1px;
 		padding-top: 1.1rem;
 		padding-bottom: 1.1rem;
-		i.mdi-lg {
-			font-size:32px !important;
-			margin:0 .5rem;
-		}
 	}
+}
+
+.mdi-lg {
+	font-size: 24px !important;
+	line-height: 24px !important;
+}
+.mdi-xl {
+	font-size: 36px !important;
+	line-height: 36px !important;
 }
 
 .btn-fixed {
@@ -553,11 +566,6 @@ button, input, .form-control, a {
 		}
 	}
 }
-.mdi-lg {
-	font-size:20px !important;
-	line-height:20px !important;
-	vertical-align:middle;
-}
 
 .taglist {
 	.btn {
@@ -584,6 +592,7 @@ button, input, .form-control, a {
 		@extend %center-all;
 		position:absolute;
 		@include transition(all 333ms ease);
+		min-width: 70%;
 	}
 	.badge {
 		position: absolute;
@@ -706,29 +715,37 @@ button, input, .form-control, a {
 // ABOUT PAGE
 .about-header {
 	text-align: center;
-	background: lighten($brand-primary, 20%);
+	background: image-url('welcome-bg-1.jpg') no-repeat center;
+	background-size: cover;
 	color: white;
 	margin-bottom: 2rem;
 	.container {
-		padding: 5rem 6vw;
+		font-size: 1rem;
+		display: inline-block;
+		padding: 3vw 6vw;
+		margin-top: 5vw;
+		margin-bottom: 5vw;
+		background: rgba(black, 0.5);
 	}
 	&_title {
-		font-size: 3rem;
-		margin-bottom: .5em;
+		font-size: 2.2em !important;
+		margin-bottom: .5em !important;
+		color: lighten($brand-primary, 40%);
 	}
 	&_subtitle {
-		font-size: 1.6rem;
+		color: lighten($brand-primary, 45%);
+		font-size: 1.6em;
 		&:after {
 			display: block;
 			width: 4rem;
 			height: 2px;
 			margin: 1.6rem auto;
-			background: rgba(black, 0.2);
+			background: rgba(lighten($brand-primary, 35%), 0.6);
 			content: "";
 		}
 	}
 	&_desc {
-		font-size: 1.2rem;
+		font-size: 1.1em;
 	}
 }
 .about-box {
@@ -867,29 +884,46 @@ button, input, .form-control, a {
 		position: relative;
 	}
 }
+.card-session {
+	padding-bottom: 16px;
+	.card-header {
+		i.mdi {
+			margin-right: 8px;
+			font-size: 36px;
+			line-height: 36px;
+		}
+	}
+	.card-block {
+		padding: 3vw;
+		display: flex;
+		justify-content: center;
+		align-items: flex-start;
+		.card-form {
+			width: 100%;
+			max-width: 400px;
+			.form-group {
+				margin-bottom: 8px;
+				label {
+					font-size: 12px;
+					margin-bottom: 4px;
+				}
+			}
+		}
+	}
+}
 
 .facebook-inicio {
-	span {
-		color: #2C467A;
-		position: absolute;
-		width: 51px;
-		left: 0;
-		top: 0;
-		bottom: 0px;
-		padding: 6px;
-		border-right: 1px solid #2C467A;
-		font-size: 30px;
-	}
-	border-radius: 0;
-	padding: 15px 15px 15px 77px;
-	background: #3B5999;
-	font-size: 17px;
+	$fb-color: #3B5999;
+	background: $fb-color;
 	font-weight: 600;
 	color: white;
-	margin: 0 auto;
-	display: block;
-	width: 67%;
-	position: relative;
+	display: flex;
+	justify-content: flex-start;
+	align-items: center;
+	&:hover {
+		background: lighten($fb-color, 10%);
+		color: rgba(white, 0.7);
+	}
 }
 
 .bookings {
@@ -966,5 +1000,16 @@ button, input, .form-control, a {
 			color: white;
 			text-decoration: none;
 		}
+	}
+}
+
+
+form {
+	span.error, .error_notification {
+		background: lighten($brand-danger, 35%);
+		font-size: 13px;
+		color: rgba(black, 0.6);
+		padding: 0 4px;
+		margin: 2px;
 	}
 }

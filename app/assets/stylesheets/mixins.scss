@@ -53,21 +53,25 @@
 %main-title-base {
   	h1, .title {
 		text-transform: uppercase;
-		position: relative;
+		// position: relative;
+		max-width: 80%;
+		margin: 1rem auto;
 		small, .small {
 			display:block;
 			clear: both;
-			font-size:.66em;
-			line-height:1.25em;
+			font-size:.3em;
+			line-height:1.1;
 			color:$gray;
 			text-transform:none;
+			margin: 0.4em 0;
 		}
 		&:after, &:before {
 			content:"";
 			position: absolute;
 			top:40%;
-			width:15%;
+			width:10%;
 			height:1px;
+			opacity: 0.25;
 		}
 		&:after {
 			right:0;
