@@ -35,6 +35,7 @@ class BookingsController < ApplicationController
     @booking = Booking.new(location_id: params[:id])
     @location = Location.find(params[:id])
   end
+
   def price
     price=nil
     success=true
@@ -60,6 +61,7 @@ class BookingsController < ApplicationController
     end
     render :json=>{:success=>success,:price=>price,:message=>message}
   end
+
   def accept
     @booking=Booking.find_by_code(params[:code])
     @booking.accept
@@ -68,6 +70,7 @@ class BookingsController < ApplicationController
     REDIS.lpush("booking#{@booking.code}",{:datetime=>Time.now.to_i,:text=>"Reserva aceptada por "+@booking.location.user.full_name,:action=>"accepted"}.to_json)
     redirect_to "/bookings", :notice=>"Reserva aceptada"
   end
+
   def cancel
     @booking=Booking.find_by_code(params[:code])
     @booking.destroy
@@ -90,7 +93,6 @@ class BookingsController < ApplicationController
       UserMailer.admin_booking_cancel_by_owner(@booking, params[:reject_reason]).deliver_now
     end
     REDIS.lpush("booking#{@booking.code}",{:datetime=>Time.now.to_i,:text=>"Reserva cancelada por #{current_user.full_name}",:action=>"cancelled"}.to_json)
-
     redirect_to bookings_path
   end
 
@@ -101,6 +103,17 @@ class BookingsController < ApplicationController
     UserMailer.booking_cancelled(@booking).deliver
     redirect_to "/bookings", :notice=>"Reserva eliminada"
   end
+
+  def destroy
+    if @booking.destroy
+      respond_to do |format|
+        format.html do
+          redirect_to "/admin/bookings", :notice=>"Reserva eliminada"
+        end
+      end
+    end
+  end
+
   def create
     @success=false
     # check dates are valid
@@ -142,8 +155,6 @@ class BookingsController < ApplicationController
       end
     end
   end
-
-
 
   def edit
     @booking = Booking.find_by(id: params[:id])

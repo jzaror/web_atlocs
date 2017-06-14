@@ -45,9 +45,9 @@
 										= link_to 'Editar', edit_location_path(location)
 									%p
 										- if current_user.status == "admin"
-											= link_to 'Borrar', "/locations/#{location.id}/destroy?from_user=#{@user.id}"
+											= link_to 'Borrar', "/locations/#{location.id}/destroy?from_user=#{@user.id}", :method => :delete
 										- else
-										= link_to 'Solicitar Eliminación', delete_location_modal_path(location), :remote => true
+											= link_to 'Solicitar Eliminación', delete_location_modal_path(location), :remote => true
 			-if current_user && @user==current_user
 				.col-md-4
 					%h4 Mis Reservas

@@ -56,11 +56,13 @@ Rails.application.routes.draw do
 	get 'bookings/:code/accept' => 'bookings#accept', as: 'booking_accept'
 	get 'bookings/:code/cancel' => 'bookings#cancel', as: 'booking_cancel'
 	get 'bookings/:code/delete' => 'bookings#delete'
+	delete "bookings/:id" => "bookings#destroy"
 	post 'bookings/:code/comment' => 'bookings#comment'
 	post 'bookings/create'=> 'bookings#create'
 	get "bookings" => "bookings#index"
   get 'booking/:id/cancel_modal' => "bookings#cancel_modal", as: 'cancel_booking'
   get 'booking/:id/cancel' => 'bookings#cancel_booking', as: 'booking_cancelled'
+
 	# locations
 	get 'locations/:id/approve' => 'locations#approve', as: 'approve_location'
 	get 'locations/:id/archive' => 'locations#archive'
