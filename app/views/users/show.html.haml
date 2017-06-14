@@ -3,10 +3,9 @@
 		= flash_messages
 		.row.padding
 			.col-md-8
-				%h1
-					-if current_user && @user==current_user
-						Hola
-					%strong #{@user.full_name}
+				-if current_user && @user==current_user
+					%span Iniciaste Sesión como
+					%h3 #{@user.full_name}
 				-if current_user && current_user.status=='admin' || current_user && @user==current_user && (can? :manage, User, user_id: current_user.id)
 					%ul.user-info
 						%li
@@ -18,7 +17,7 @@
 					%a.btn.btn-xs.btn-info{:href => "/users/edit"}
 						%i.mdi.mdi-pencil
 						Editar perfil
-					= link_to 'Solicitar anulación de cuenta', delete_modal_path, :class=>"btn btn-danger", :remote => true
+					= link_to 'Solicitar anulación de cuenta', delete_modal_path, :class=>"btn btn-outline-danger", :remote => true
 
 				%hr
 				%h2
