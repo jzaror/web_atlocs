@@ -26,7 +26,7 @@
 						Mis
 					%strong Locaciones
 				.row.user-location-list
-					- locations = current_user.status == "admin" ? @user.locations : @user.locations.where(:status=>[0,3])
+					- locations = current_user.status == "admin" ? @user.locations : @user.locations.where(:status=>[0,2,3])
 					- locations.each do |location|
 						.col-sm-6.col-md-4
 							.thumbnail.thumbnail-reset.location-preview
