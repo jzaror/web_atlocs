@@ -18,8 +18,7 @@ class Booking < ActiveRecord::Base
 		return statusnames[self.read_attribute('status')]
 	end
 	def updateprice
-		days=(self.end_time.to_date-self.start_time.to_date).to_i
-		price=self.location.price*days
+		price=self.location.price*totaldays
 		self.price=price
 	end
 	def accept
