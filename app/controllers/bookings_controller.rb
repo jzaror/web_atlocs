@@ -43,13 +43,13 @@ class BookingsController < ApplicationController
     end_date=nil
     begin
       start_date=Date.parse(params[:start_date])
-    rescue ArgumentError
+    rescue => e
       success=false
       message="Fecha de inicio es invalida"
     end
     begin
       end_date=Date.parse(params[:end_date])
-    rescue ArgumentError
+    rescue => e
       success=false
       message="Fecha de termino es invalida"
     end
