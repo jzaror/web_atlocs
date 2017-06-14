@@ -12,7 +12,7 @@ es:
   locations:
     status:
       approved: Aprobada
-      archived: Archivada
+      archived: No publicada
       draft: Esperando Aprobación
       submitted: Enviada
   date:
