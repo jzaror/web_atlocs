@@ -14,13 +14,16 @@ class Booking < ActiveRecord::Base
 	def statusnames
 		["Cancelada","Pendiente","Esperando Pago","Confirmada"]
 	end
+
 	def statusname
 		return statusnames[self.read_attribute('status')]
 	end
+
 	def updateprice
 		price=self.location.price*totaldays
 		self.price=price
 	end
+
 	def accept
 		if(self.status=="waiting")
 			self.update_attribute(:status,"accepted")
@@ -29,6 +32,7 @@ class Booking < ActiveRecord::Base
 			false
 		end
 	end
+
 	def archive
 		if self.status=="waiting" || self.status == 'accepted'
 			self.update_attribute(:status,"archived")
@@ -37,14 +41,30 @@ class Booking < ActiveRecord::Base
 			false
 		end
 	end
+
 	def totaldays
-		days=(self.end_time.to_date-self.start_time.to_date).to_i
-		if days>0
-			return days
+		if self.end_time.present? && self.start_time.present?
+			days=(self.end_time.to_date-self.start_time.to_date).to_i
+			if days>0
+				return days
+			else
+				return 1
+			end
 		else
-			return 1
+			return 0
 		end
 	end
+
+	def price_by_days
+		fee = self.location.fee
+		if fee.present? && totaldays != 0
+			price = fee * totaldays
+		else
+			price = 0
+		end
+		price
+	end
+
 	def confirm_payment
 		if(self.status=="accepted")
 			self.update_attribute(:status,3)
@@ -53,4 +73,5 @@ class Booking < ActiveRecord::Base
 			false
 		end
 	end
+
 end

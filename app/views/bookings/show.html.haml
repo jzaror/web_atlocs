@@ -82,7 +82,7 @@
 									Solicitud de reserva creada
 								%p
 									%a{:href => "#"}
-										#{@booking.user.full_name}
+										#{@booking.user.try(:full_name)}
 										- if @booking.created_at
 											%span.timeago
 												%i.mdi.mdi-clock
@@ -129,5 +129,5 @@
 						%li
 							%i.mdi.mdi-lg.mdi-clock
 							Precio de reserva:
-							%b=number_to_currency(@booking.location.fee*@booking.totaldays, :unit => "$", :precision => 0)
+							%b=number_to_currency(@booking.price_by_days, :unit => "$", :precision => 0)
 							x #{@booking.totaldays} día(s)

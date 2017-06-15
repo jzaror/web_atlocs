@@ -22,7 +22,7 @@
                 %td= booking.location.user.full_name
                 %td= booking.user.full_name if booking.user.present?
                 %td= booking.statusname
-                %td= link_to 'Ver', '/locations?booking='+booking.id.to_s
+                %td= link_to 'Ver', '/bookings/'+booking.code.to_s
                 %td= link_to 'Editar', edit_booking_path(booking)
                 %td= link_to 'Destruir', booking, method: :delete, data: { confirm: 'Are you sure?' }
         %br/

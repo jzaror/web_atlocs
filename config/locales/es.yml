@@ -1,6 +1,11 @@
 es:
   activerecord:
     errors:
+      models:
+        user:
+          attributes:
+            email:
+              already_confirmed: "Tu usuario ya está confirmado en la plataforma"
       messages:
         record_invalid: "La validación falló: %{errors}"
         restrict_dependent_destroy:

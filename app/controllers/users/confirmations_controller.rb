@@ -6,7 +6,7 @@ class Users::ConfirmationsController < Devise::ConfirmationsController
 
   # POST /resource/confirmation
   def create
-    puts @user.email
+    #puts @user.email
     super
   end
 
