@@ -40,18 +40,10 @@ class LocationsController < ApplicationController
       end
       user=current_user
       respond_to :html
-    #else
-    #  if current_user != nil
-    #    redirect_to root_path, flash: {notice: "Esta locación aún no ha sido aprobada"}
-    #  else
-    #    redirect_to "/login", flash: {notice: "Para entrar a esta sección debes iniciar sesión"}
-    #  end
-    #end
   end
 
   def frontpage
     @location = Location.find(params[:id])
-
     if @location.update_attributes(:front_page => params[:front_page])
       # ... update successful
       render :text => "YES"
@@ -63,11 +55,8 @@ class LocationsController < ApplicationController
 
   # GET /locations/new
   def new
-      @location = Location.new
-      @location.user_id=current_user.id
-      #TO DO (Sebastian) Cambiar forma de recibir attachments para poder quitar esto
-      @location.save
-      redirect_to edit_location_path(@location,newlocation: true)
+    @location = Location.new
+    @location.user_id=current_user.id
   end
 
   # GET /locations/1/edit
@@ -88,19 +77,16 @@ class LocationsController < ApplicationController
 
   def create
     @location = current_user.locations.new(location_params)
-
-    @location.user_id=current_user.id
     respond_to do |format|
-      if @location.update(location_params) || @location.save
+      if @location.save
         if params[:images]
-          #===== The magic is here ;)
           params[:images].each do |image|
             @location.uploads.create(image: image)
           end
         end
         UserMailer.location_submitted(@location).deliver
         UserMailer.location_submitted_admin(@location).deliver
-        @location.update_attribute("status",2)
+        @location.update_attribute("status", 2)
         format.html { redirect_to(location_path(@location, :open=>@modal), :notice => 'La locación fue creada con exito.') }
         format.js
       else
@@ -190,6 +176,27 @@ class LocationsController < ApplicationController
     def location_params
       #params[:location][:tag_names] ||= []
       #, { :tag_names=>[] }
-      params.require(:location).permit(:title, :days, :city, :type_id, :price, :fee, :description, :address, :lat, :lng, :county, :collection_id, :front_page, :upload, :tag_names, :other_extras_comment, :other_services_comment, { :uploads_attributes=>[ :_destroy, :id, :image ] }, { :services=>[] }, { :extras=>[] })
+      params.require(:location).permit(:title,
+                                      :days,
+                                      :city,
+                                      :type_id,
+                                      :price,
+                                      :fee,
+                                      :description,
+                                      :address,
+                                      :lat,
+                                      :lng,
+                                      :county,
+                                      :collection_id,
+                                      :front_page,
+                                      :upload,
+                                      :tag_names,
+                                      :other_extras_comment,
+                                      :other_services_comment,
+                                      :uploads,
+                                      { :uploads_attributes=>[ :_destroy, :id, :image ] },
+                                      { :services=>[] },
+                                      { :extras=>[] }
+                                      )
     end
 end
