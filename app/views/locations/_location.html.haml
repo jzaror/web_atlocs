@@ -5,7 +5,7 @@
 				%span= number_to_currency(location.price_with_fee, :unit => "$", :precision => 0)
 				%span.currency CLP
 			= link_to location_path(location) do
-				%img{:src=>location.thumbnail(350,230), :onError=>"this.onerror=null;this.src='/missing.png';"}
+				%img{:src=>location.main_attachment_url(:thumb), :onError=>"this.onerror=null;this.src='/missing.png';"}
 
 		.caption
 			%h3.title

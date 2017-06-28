@@ -86,7 +86,6 @@ class Location < ActiveRecord::Base
 	end
 
 	def thumbnail(w,h)
-		attachment = self.main_attachment
 		if attachment != nil
 			attachment.thumbnail(w,h)
 		else
@@ -104,12 +103,22 @@ class Location < ActiveRecord::Base
 	end
 
 	def main_attachment
-		if self.main_attachment_id && Attachment.find_by_id(self.main_attachment_id) != nil
-			Attachment.find_by_id(self.main_attachment_id)
-		elsif self.attachments.count>0
-			self.attachments[0]
+		if self.main_attachment_id && Upload.find_by_id(self.main_attachment_id) != nil
+			Upload.find_by_id(self.main_attachment_id)
+		elsif self.uploads.count > 0
+			self.uploads.last
 		else
 			nil
+		end
+	end
+
+	def main_attachment_url(style= nil)
+		return "/location-missing.jpg" unless main_attachment
+		return main_attachment.image.url unless style
+		begin
+			return main_attachment.image.url(style.to_sym)
+		rescue
+			return "/location-missing.jpg"
 		end
 	end
 

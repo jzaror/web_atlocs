@@ -10,7 +10,17 @@ Rails.application.configure do
 
   # Do not eager load code on boot.
   config.eager_load = false
-  Paperclip.options[:command_path] = "/usr/bin/convert/"
+
+  config.paperclip_defaults = {
+    :storage => :fog,
+    :fog_public => true,
+    :fog_directory => 'atlocs',
+    :fog_credentials => {
+      :provider => 'Google',
+      :google_storage_access_key_id => 'GOOGW3BTIL5M6RHWZD33',
+      :google_storage_secret_access_key => 'Ei2mpa+Y5sVYvEhcgsvLfMzWBwCeSxN95fQfGflY'
+    }
+  }
 
   # Show full error reports and disable caching.
   config.consider_all_requests_local       = true
