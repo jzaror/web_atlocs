@@ -159,6 +159,13 @@ class Location < ActiveRecord::Base
 		self.bookings.where("status>2").where("start_time <= ? AND end_time >=?", end_time, start_time).blank?
 	end
 
+	def convert_attachments_to_uploads
+		self.attachments.each do |att|
+			upload = self.uploads.create
+			upload.picture_from_url(att.url)
+		end
+	end
+
 	private
 		def set_draft_status
 			# status codes:

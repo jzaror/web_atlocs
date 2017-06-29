@@ -2,8 +2,6 @@ class Upload < ActiveRecord::Base
 	belongs_to :location, :polymorphic => true
 	has_attached_file :image, styles: {
 		thumb: '350x230#',
-		square: '200x200#',
-		medium: '300x300>',
 		large: '1280x400#',
 	}
 	validates_attachment_content_type :image, :content_type => /\Aimage\/.*\Z/
@@ -15,5 +13,13 @@ class Upload < ActiveRecord::Base
 			"/location-missing.jpg"
 		end
 	end
+
+	def image_remote_url(url_value)
+    self.image = URI.parse(url_value)
+    # Assuming url_value is http://example.com/photos/face.png
+    # avatar_file_name == "face.png"
+    # avatar_content_type == "image/png"
+    @avatar_remote_url = url_value
+  end
 
 end
