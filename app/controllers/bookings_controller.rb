@@ -122,8 +122,12 @@ class BookingsController < ApplicationController
       @location=Location.find(params[:location_id])
       # checks start date < end date
       if(@start_time<@end_time)
-        @booking=current_user.book(@location,@start_time,@end_time)
-        @success=true if @booking
+        if @location.has_date_range_available?(@end_time,@start_time)
+          @booking=current_user.book(@location,@start_time,@end_time)
+          @success=true if @booking
+        else
+          @message = "Lo sentimos. La locación ya está reservada para ese rango de fechas"
+        end
       else
         @message="La fecha de inicio debe ser antes de la fecha de término"
       end
@@ -142,7 +146,7 @@ class BookingsController < ApplicationController
       flash[:notice] = "Tu solicitud de reserva fue enviada. Por favor espera durante las próximas horas hasta que sea revisada por el administrador de la locación."
       redirect_to bookings_path
     else
-      redirect_to "/", flash: {error: "Hubo un error confirmando el pago."}
+      redirect_to "/", flash: {notice: @message}
     end
   end
 

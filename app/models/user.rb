@@ -67,26 +67,20 @@ class User < ActiveRecord::Base
 
   def book(location,start_time,end_time)
     if(location.status=="approved" && start_time<end_time)
-      booking=location.bookings.where("status>2").where("start_time<?",end_time).where("end_time<?",start_time).first
-      if(booking)
-        nil
+      booking=Booking.new
+      booking.start_time=start_time
+      booking.end_time=end_time
+      booking.location_id=location.id
+      booking.user_id=self.id
+      booking.status="waiting"
+      if booking.save
+        REDIS.lpush("booking#{booking.code}",{:datetime=>Time.now.to_i,:text=>"Reserva creada",:action=>"created"}.to_json)
+        booking.updateprice
+        booking.save
+
+        booking
       else
-        booking=Booking.new
-        booking.start_time=start_time
-        booking.end_time=end_time
-        booking.location_id=location.id
-        booking.user_id=self.id
-
-        booking.status="waiting"
-        if booking.save
-          REDIS.lpush("booking#{booking.code}",{:datetime=>Time.now.to_i,:text=>"Reserva creada",:action=>"created"}.to_json)
-          booking.updateprice
-          booking.save
-
-          booking
-        else
-          nil
-        end
+        nil
       end
     else
       nil

@@ -132,6 +132,11 @@ class Location < ActiveRecord::Base
 		services.select{|e| e == "Otro"}.length > 0
 	end
 
+	def has_date_range_available?(start_time, end_time)
+		# Locaciones que aún esten siendo utilizadas cuando comienza la reserva
+		self.bookings.where("status>2").where("start_time <= ? AND end_time >=?", end_time, start_time).blank?
+	end
+
 	private
 		def set_draft_status
 			# status codes:
