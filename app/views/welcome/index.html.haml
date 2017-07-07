@@ -57,6 +57,9 @@
     .row
       -@locations.each do |location|
         =render 'locations/location', :location=>location, :description=>false
+    .row.mt-3
+      .col-md-6.offset-md-3
+        %a.btn.btn-primary.btn-lg.btn-block{:href => "/locations"} Ver todas las locaciones
 
 %section.main-content
   .container
