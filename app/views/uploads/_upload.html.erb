@@ -1,0 +1,13 @@
+<script type="text/javascript">
+$(document).ready(function() {
+	appendfile({
+		name:"<%=upload.image_file_name%>",
+		deleteUrl:"<%=upload.id%>",
+		url:"<%=upload.image.url%>",
+		thumb:"<%=upload.image.url(:thumb)%>",
+		is_main: "<%= upload.is_main_attachment.to_s %>",
+		id: "<%=upload.id%>",
+		location_id: "<%= upload.location_id %>"}
+	);
+});
+</script>

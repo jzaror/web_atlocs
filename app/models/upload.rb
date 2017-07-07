@@ -22,4 +22,10 @@ class Upload < ActiveRecord::Base
     @avatar_remote_url = url_value
   end
 
+  def is_main_attachment
+  	location = Location.find_by_id(location_id)
+  	return false if location.nil?
+  	location.main_attachment == self
+	end
+
 end
