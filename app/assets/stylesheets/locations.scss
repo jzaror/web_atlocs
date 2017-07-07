@@ -14,7 +14,7 @@
 
 .location-preview {
 	//min-height:230px;
-
+	@include transition(all 300ms ease);
 	.image {
 		// overflow:hidden;
 		position: relative;
@@ -23,7 +23,6 @@
 		height:0;
 		padding-bottom: 67%;
 		overflow: hidden;
-
 		a {
 			display:block;
 			width:100%;
@@ -42,45 +41,58 @@
 			z-index:0;
 			@include transition(all 333ms ease);
 		}
-		.price {
+		.badge-price {
+			display: flex;
+			align-items: center;
+			justify-content: center;
 			position: absolute;
 			left:0;
 			bottom:0;
-			border-radius:1px;
-			padding:1rem;
-			font-size:1.6rem;
-			z-index:1;
+			border-radius: 1px;
+			padding: 0.5rem 0.75rem;
+			font-size: 1.125em;
+			z-index: 1;
+			background-color: rgba(darken($brand-primary, 15%), 0.8);
+			color: white;
+			font-weight: 600;
 			@include transform(translateY(-50%));
 			@include transition(all 300ms ease);
-			strong {
-				font-size:.85em;
-				line-height:1em;
+			.currency {
+				font-size: .625em;
+				line-height: 1;
+				margin-left: .25rem;
+				text-transform: uppercase;
 			}
 		}
 		&:hover {
 			img {
 				opacity:.5;
 			}
-			.price {
-				padding:1.4rem;
-				background-color:saturate($brand-primary, 15%);
+			.badge-price {
+				background-color: saturate($brand-primary, 15%);
 				@include transform(translateY(-66%));
 			}
 		}
 	}
 	.caption {
-		padding: 1.4rem 1rem;
+		padding: 1.25rem 1rem;
+		margin-bottom: .75rem;
 		.title {
 			margin: 0;
-			font-size: 1.575rem;
+			font-size: 1.125em;
 			font-weight: 700;
-			@include trunkate(1.3em, 2);
+			@include trunkate(1.3em, 3);
 		}
 		.desc {
-			@include trunkate(1.75rem, 3);
-			font-size:1.4rem;
-			margin:1rem 0 0;
+			@include trunkate(1em, 3);
+			font-size: 1em;
+			line-height: 1.5;
+			margin: .5rem 0 0;
 		}
+	}
+	// LOCATION PREVIEW HOVER
+	&:hover {
+		background-color: rgba(lighten($brand-primary, 24%), 0.16);
 	}
 }
 
@@ -255,29 +267,37 @@
 				@include background-image(linear-gradient(rgba(0,0,0,0.05) 33%, rgba(0,0,0,0.5) 90%));
 			}
 			[class*="container"] {
-				position: relative;
-				height:100%;
+				position: absolute;
+				bottom: -1px;
+				// height:100%;
+				display: flex;
+				align-items: stretch;
+				justify-content: space-between;
+				@include media("<=tablet") {
+					flex-direction: column;
+					position: relative;
+					padding: 0;
+				}
 				.location-title {
-					height:190px;
-					position: absolute;
-					bottom:0;
-					left:3vw;
-					width:60%;
+					flex: auto;
+					margin: 1em 1.5em;
+					display: flex;
+					align-items: center;
 					@include media("<=tablet") {
-						position: static;
 						width:100%;
-						padding:30vw 16px 16px;
+						padding:30vh 1em 1em;
 						height:auto;
 					}
 					h1 {
-						@extend %center-vertical;
+						// @extend %center-vertical;
 						color:white;
-						font-size:2rem;
+						font-size: 3vw;
 						text-transform:uppercase;
 						font-weight:600;
 						margin:0;
 						@include media("<=tablet") {
 							top:auto;
+							font-size: 1.25em;
 							@include transform(translateY(0));
 						}
 						small {
@@ -291,19 +311,15 @@
 					}
 				}
 				.location-booking-info {
-					height:190px;
-					position: absolute;
-					bottom:0;
-					right:3vw;
-					width:39%;
+					flex: none;
+					width: 24em;
 					background-color:white;
 					padding:2vw 3vw;
-					border-radius:2px 2px 0 0;
-					// color:white;
 					text-align: center;
 					@include media("<=tablet") {
 						position: static;
-						width:100%;
+						width: auto;
+						flex: auto;
 						height:auto;
 						padding:1rem 2rem;
 					}
@@ -312,10 +328,23 @@
 						font-weight:700;
 					}
 					.availability {
-            display: block;
+            			display: block;
 					}
 					.booking {
-
+						@include media("<=tablet") {
+							padding: 0 2vw;
+							border-bottom: 1px dashed lighten($brand-primary, 24%);
+							.btn {
+								width: auto;
+								padding: .75rem 1rem;
+							}
+						}
+					}
+					.booking-contact {
+						margin: 1vw 0;
+						@include media("<=tablet") {
+							margin: 2vw 0;
+						}
 					}
 				}
 			}
@@ -396,23 +425,44 @@
     padding:2rem;
     @include flexbox($flow:wrap);
     .gallery-slot {
-      width: 20%;
+      width: 25%;
       padding: .9rem;
       @include media("<=tablet-max") {
-        width: 25%;
-      }
-      @include media("<=tablet") {
         width: 33%;
       }
-      @include media("<=600px") {
+      @include media("<=tablet") {
         width: 50%;
+      }
+      @include media("<=600px") {
+        width: 100%;
       }
       // @include media("<=phone-max") {
       // }
       .gallery-link {
+		  display: block;
+		width:100%;
+		height: 0;
+		padding-bottom: 67%;
+		position: relative;
+		// display: flex;
+		// align-items: center;
+		// justify-content: center;
+		overflow: hidden;
         .gallery-img {
-          width:100%;
-          height:auto;
+			display: block;
+			top: 50%;
+			left: 50%;
+			position: absolute;
+			width: 100%;
+			height: 100%;
+			object-fit: cover;
+			@include transform(translate(-50%, -50%));
+			@include transition(all 300ms ease);
+			&:hover {
+				width: 125%;
+				height: 125%;
+				opacity: 0.56;
+			}
         }
       }
     }

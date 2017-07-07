@@ -37,9 +37,11 @@
 								%i.mdi.mdi-lg.mdi-calendar-clock
 								Reservar Locación
 
-						%a.btn.btn-secondary.btn-block{:href => "/contacto?subject=Consulta por Locación "+@location.id.to_s, :role => "button", :style => "z-index: 99999999;position: relative;"}
-							%i.mdi.mdi-lg.mdi-information-outline
-							Contáctanos
+						.booking-contact
+							¿Tienes una consulta específica respecto a esta locación? 
+							%a.btn.btn-link.btn-sm.p-0{:href => "/contacto?subject=Consulta por Locación "+@location.id.to_s, :role => "button", :style => "z-index: 99999999;position: relative;"}
+								%i.mdi.mdi-lg.mdi-email-outline
+								Contáctanos
 
 	.container-fluid
 		.row.location-content

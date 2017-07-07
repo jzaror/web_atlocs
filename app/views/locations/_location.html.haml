@@ -1,9 +1,9 @@
 .col-sm-6.col-md-4
 	.thumbnail.thumbnail-reset.location-preview
 		.image
-			%span.badge.price
-				%strong CLP
-				= number_to_currency(location.price_with_fee, :unit => "$", :precision => 0)
+			.badge-price
+				%span= number_to_currency(location.price_with_fee, :unit => "$", :precision => 0)
+				%span.currency CLP
 			= link_to location_path(location) do
 				%img{:src=>location.thumbnail(350,230), :onError=>"this.onerror=null;this.src='/missing.png';"}
 
