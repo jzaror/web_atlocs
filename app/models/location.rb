@@ -161,8 +161,11 @@ class Location < ActiveRecord::Base
 
 	def convert_attachments_to_uploads
 		self.attachments.each do |att|
-			upload = self.uploads.create
-			upload.picture_from_url(att.url)
+			begin
+				self.uploads.create(image: open(att.url))
+			rescue => e
+				puts "#{att.url} failed"
+			end
 		end
 	end
 
