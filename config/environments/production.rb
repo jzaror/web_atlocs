@@ -13,6 +13,7 @@ Rails.application.configure do
     :storage => :fog,
     :fog_public => true,
     :fog_directory => 'atlocs',
+    :fog_host => 'https://atlocs.storage.googleapis.com',
     :fog_credentials => {
       :provider => 'Google',
       :google_storage_access_key_id => 'GOOGW3BTIL5M6RHWZD33',
