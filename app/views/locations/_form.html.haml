@@ -78,7 +78,7 @@
 						.col-md-4
 							%div.file-upload-btn.text-right
 								Selecciona archivos
-								= file_field_tag "images[]", type: :file, multiple: true
+								= file_field_tag "images[]", type: :file, multiple: true, id: "fileupload"
 						.col-md-12.padding-top
 							%table.table#file-list
 								= render @location.uploads

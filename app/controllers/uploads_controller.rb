@@ -25,7 +25,7 @@ class UploadsController < ApplicationController
   end
 
   def destroy
-    @upload = Upload.find(params[:id])
+    @upload = Upload.find_by_id(params[:id])
     if @upload.destroy
       render json: { message: "File deleted from server" }
     else

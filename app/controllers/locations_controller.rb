@@ -57,6 +57,9 @@ class LocationsController < ApplicationController
   def new
     @location = Location.new
     @location.user_id=current_user.id
+    #to improve
+    @location.save
+    redirect_to edit_location_path(@location.id)
   end
 
   # GET /locations/1/edit
@@ -98,12 +101,12 @@ class LocationsController < ApplicationController
 
   # PATCH/PUT /locations/1
   def update
+    binding.pry
     if @location.update(location_params)
       @location.submit
       if @location.status == "submitted"
         LocationMailer.new_location(@location).deliver if params[:newlocation]
         UserMailer.location_submitted(@location).deliver if params[:newlocation]
-        #UserMailer.location_submitted_admin(@location).deliver
       end
       if params[:images]
         #===== The magic is here ;)

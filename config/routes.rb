@@ -76,6 +76,7 @@ Rails.application.routes.draw do
 	match "upload/:location" => "attachments#create", via: [:post,:patch]
 	get "attachments/:id/destroy" => "attachments#destroy"
   get 'users/:id/delete_modal' => 'users#request_delete', as: 'delete_modal'
+  get "uploads/:id/destroy" => "uploads#destroy"
 
 
 	#ADMIN

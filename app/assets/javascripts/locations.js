@@ -45,6 +45,26 @@ $(document).ready(function() {
 		});
 	}
 
+	// $('#pictureInput').on('change', function(event) {
+	//     var files = event.target.files;
+	//     var image = files[0]
+	//     var reader = new FileReader();
+	//     reader.onload = function(file) {
+	//       var img = new Image();
+	//       console.log(file);
+	//       img.src = file.target.result;
+	//       $('#file-list').append(
+	//       	"<tr>\
+	//       	<td>\
+	//       	<img src='"+img.src+"' style='width:80px;height:auto'>\
+	//       	</td>\
+	//       	</tr>"
+ //      		);
+	//     }
+	//     reader.readAsDataURL(image);
+	//     console.log(files);
+	//   });
+
 	$('#fileupload').fileupload({
         dataType: 'json',
         progressall: function (e, data) {
@@ -52,10 +72,10 @@ $(document).ready(function() {
 	        console.log(e)
 	        console.log(data)
 	        $("#progress-bar").css("width",progress+"%")
-
 	    },
         done: function (e, data) {
             console.log(data.result)
+            debugger
             appendfile(data.result.files)
         	$("#file-progress").addClass("invisible")
         },
