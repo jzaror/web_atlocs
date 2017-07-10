@@ -45,6 +45,26 @@ $(document).ready(function() {
 		});
 	}
 
+	// $('#pictureInput').on('change', function(event) {
+	//     var files = event.target.files;
+	//     var image = files[0]
+	//     var reader = new FileReader();
+	//     reader.onload = function(file) {
+	//       var img = new Image();
+	//       console.log(file);
+	//       img.src = file.target.result;
+	//       $('#file-list').append(
+	//       	"<tr>\
+	//       	<td>\
+	//       	<img src='"+img.src+"' style='width:80px;height:auto'>\
+	//       	</td>\
+	//       	</tr>"
+ //      		);
+	//     }
+	//     reader.readAsDataURL(image);
+	//     console.log(files);
+	//   });
+
 	$('#fileupload').fileupload({
         dataType: 'json',
         progressall: function (e, data) {
@@ -52,11 +72,10 @@ $(document).ready(function() {
 	        console.log(e)
 	        console.log(data)
 	        $("#progress-bar").css("width",progress+"%")
-
 	    },
         done: function (e, data) {
             console.log(data.result)
-            appendfile(data.result.files)
+            appendfile(data.result)
         	$("#file-progress").addClass("invisible")
         },
         start: function(e) {
@@ -69,10 +88,37 @@ $(document).ready(function() {
 
 function appendfile(file) {
 	if ( file.is_main == "true" ){
-		$("#file-list").append("<tr id='file"+file.deleteUrl+"' class='file'><td><img src='"+file.url+"' style='width:80px;height:auto'><td><a href='"+file.url+"'>"+file.name+"</a></td> <td class='text-right'> <span class='badge badge-primary'> Imagen Destacada </span> </td>  <td class='text-right'><a href='javascript:deletefile(\""+file.deleteUrl+"\")' id='delete-file-button-"+file.deleteUrl+"' class='btn btn-danger btn-sm'><i class='mdi mdi-close'></i> eliminar</a></td></tr>")
+		$("#file-list").append(
+			"<tr id='file"+file.deleteUrl+"' class='file'>\
+				<td>\
+					<img src='"+file.url+"' style='width:80px;height:auto'>\
+					<td>\
+					<a href='"+file.url+"'>"+file.name+"</a>\
+				 	</td>\
+					<td class='text-right'>\
+						<span class='badge badge-primary'> Imagen Destacada </span>\
+					</td>\
+					<td class='text-right'>\
+					<a href='javascript:deletefile(\""+file.deleteUrl+"\")' id='delete-file-button-"+file.deleteUrl+"' class='btn btn-danger btn-sm'>\
+					<i class='mdi mdi-close'></i>Eliminar</a>\
+				</td>\
+			</tr>")
 	}else
 	{
-		$("#file-list").append("<tr id='file"+file.deleteUrl+"' class='file'><td><img src='"+file.url+"' style='width:80px;height:auto'><td><a href='"+file.url+"'>"+file.name+"</a></td> <td class='text-right'> <a href='javascript:featureImage(\""+file.id+"\",\""+file.location_id+"\")' class='btn btn-sm btn-secondary'> Destacar </a> </td>    <td class='text-right'><a href='javascript:deletefile(\""+file.deleteUrl+"\")' id='delete-file-button-"+file.deleteUrl+"' class='btn btn-danger btn-sm'><i class='mdi mdi-close'></i> eliminar</a></td></tr>")
+		$("#file-list").append(
+			"<tr id='file"+file.deleteUrl+"' class='file'>\
+				<td><img src='"+file.url+"' style='width:80px;height:auto'>\
+				<td>\
+					<a href='"+file.url+"'>"+file.name+"</a>\
+				</td>\
+				<td class='text-right'>\
+					<a href='javascript:featureImage(\""+file.id+"\",\""+file.location_id+"\")' class='btn btn-sm btn-secondary'> Destacar </a>\
+				</td>\
+				<td class='text-right'>\
+					<a href='javascript:deletefile(\""+file.deleteUrl+"\")' id='delete-file-button-"+file.deleteUrl+"' class='btn btn-danger btn-sm'>\
+					<i class='mdi mdi-close'></i> Eliminar</a>\
+				</td>\
+			</tr>")
 	}
 };
 
@@ -95,7 +141,7 @@ function featureImage(attachment_id,location_id){
 function deletefile(id) {
 	$("#delete-file-button-"+id).attr("disabled","disabled");
 	$.ajax({
-		url: '/attachments/'+id+'/destroy',
+		url: '/uploads/'+id+'/destroy',
 		type: 'GET'
 	})
 	.done(function() {
@@ -103,7 +149,7 @@ function deletefile(id) {
 	})
 	.fail(function() {
 		console.log("error");
-				$("#file"+id).remove();
+		$("#file"+id).remove();
 
 	})
 	.always(function() {

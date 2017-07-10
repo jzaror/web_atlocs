@@ -5,7 +5,7 @@
 	Volver
 
 %section.main-content.location
-	.location-header{ :style=>"background-image:url(#{@location.thumbnail(1440,570)}) !important" }
+	.location-header{ :style=>"background-image:url(#{@location.main_attachment_url}) !important" }
 		.container-fluid
 			.location-title
 				%h1
@@ -122,25 +122,11 @@
 						%h3.gallery-title
 							Galería
 							%span de imágenes
-
 						%ul.gallery-list
-							-@location.attachments.each do |attachment|
+							-@location.uploads.each do |upload|
 								%li.gallery-slot
-									%a.gallery-link{:href => attachment.thumbnail(940,600), "data-gallery" => ""}
-										=image_tag(attachment.thumbnail(500,320), :class=>"gallery-img")
-								-# %li.gallery-slot
-								-# 	%a.gallery-link{:href => attachment.thumbnail(940,600), "data-gallery" => ""}
-								-# 		=image_tag(attachment.thumbnail(500,320), :class=>"gallery-img")
-								-# %li.gallery-slot
-								-# 	%a.gallery-link{:href => attachment.thumbnail(940,600), "data-gallery" => ""}
-								-# 		=image_tag(attachment.thumbnail(500,320), :class=>"gallery-img")
-								-# %li.gallery-slot
-								-# 	%a.gallery-link{:href => attachment.thumbnail(940,600), "data-gallery" => ""}
-								-# 		=image_tag(attachment.thumbnail(500,320), :class=>"gallery-img")
-								-# %li.gallery-slot
-								-# 	%a.gallery-link{:href => attachment.thumbnail(940,600), "data-gallery" => ""}
-								-# 		=image_tag(attachment.thumbnail(500,320), :class=>"gallery-img")
-
+									%a.gallery-link{:href => upload.image.url, "data-gallery" => ""}
+										=image_tag(upload.image.url(:thumb), :class=>"gallery-img")	
 
 							-#%li
 								%a{:href => "/missing.png", "data-gallery" => ""}

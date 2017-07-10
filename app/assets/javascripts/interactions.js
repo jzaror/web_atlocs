@@ -44,7 +44,7 @@ $(document).ready(function() {
 
   });
 
-  // Checkbox Legales y Privacidad 
+  // Checkbox Legales y Privacidad
   var legalCheck = $('#legal-checkbox');
   function legalCheckHandler(){
     if($(this).is(":checked")) {
@@ -57,7 +57,6 @@ $(document).ready(function() {
   if (QueryString.newlocation) {
     legalCheck.on("change", legalCheckHandler);
   }
-  
 
   // Unslider
   $('.welcome-slider').unslider({

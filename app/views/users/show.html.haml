@@ -33,7 +33,7 @@
 									%span.badge.price
 										%strong CLP
 										= number_to_currency(location.totalprice, :unit => "$", :precision => 0)
-									=link_to image_tag(location.thumbnail(350,230), :class=>"collection-img"), location_path(location)
+									=link_to image_tag(location.main_attachment_url(:thumb), :class=>"collection-img"), location_path(location)
 								.caption
 									%span.badge.badge-danger
 										= t("locations.status.#{location.status}")

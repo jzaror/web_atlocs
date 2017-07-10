@@ -11,6 +11,18 @@ Rails.application.configure do
   # Do not eager load code on boot.
   config.eager_load = false
 
+  config.paperclip_defaults = {
+    :storage => :fog,
+    :fog_public => true,
+    :fog_directory => 'atlocs',
+    :fog_host => 'https://atlocs.storage.googleapis.com',
+    :fog_credentials => {
+      :provider => 'Google',
+      :google_storage_access_key_id => 'GOOGW3BTIL5M6RHWZD33',
+      :google_storage_secret_access_key => 'Ei2mpa+Y5sVYvEhcgsvLfMzWBwCeSxN95fQfGflY'
+    }
+  }
+
   # Show full error reports and disable caching.
   config.consider_all_requests_local       = true
   config.action_controller.perform_caching = false
