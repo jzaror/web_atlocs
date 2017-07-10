@@ -75,8 +75,7 @@ $(document).ready(function() {
 	    },
         done: function (e, data) {
             console.log(data.result)
-            debugger
-            appendfile(data.result.files)
+            appendfile(data.result)
         	$("#file-progress").addClass("invisible")
         },
         start: function(e) {

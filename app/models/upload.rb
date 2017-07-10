@@ -22,6 +22,18 @@ class Upload < ActiveRecord::Base
     @avatar_remote_url = url_value
   end
 
+  def append_file_json
+	{
+  	name:image_file_name,
+		deleteUrl:id,
+		url:image.url,
+		thumb:image.url(:thumb),
+		is_main: is_main_attachment.to_s,
+		id: id,
+		location_id: location_id
+	}
+  end
+
   def is_main_attachment
   	location = Location.find_by_id(location_id)
   	return false if location.nil?

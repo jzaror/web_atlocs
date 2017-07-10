@@ -101,7 +101,6 @@ class LocationsController < ApplicationController
 
   # PATCH/PUT /locations/1
   def update
-    binding.pry
     if @location.update(location_params)
       @location.submit
       if @location.status == "submitted"
@@ -114,10 +113,10 @@ class LocationsController < ApplicationController
           @location.uploads.create(image: image)
         end
       end
-      if params[:newlocation]
-        redirect_to "/nueva_locacion"
-      else
-        redirect_to @location
+      redirect_to "/nueva_locacion" if params[:newlocation]
+      respond_to do |format|
+        format.json { render json: @location.uploads.last.append_file_json, status: :ok }
+        format.html { redirect_to @location }
       end
     else
       render :edit
