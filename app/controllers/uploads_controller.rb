@@ -21,12 +21,12 @@ class UploadsController < ApplicationController
       #  you need to send an error header, otherwise Dropzone
       #  will not interpret the response as an error:
       render json: { error: @upload.errors.full_messages.join(',')}, :status => 400
-    end     
+    end
   end
 
   def destroy
     @upload = Upload.find(params[:id])
-    if @upload.destroy    
+    if @upload.destroy
       render json: { message: "File deleted from server" }
     else
       render json: { message: @upload.errors.full_messages.join(',') }
