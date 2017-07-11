@@ -86,8 +86,9 @@ class Location < ActiveRecord::Base
 	end
 
 	def thumbnail(w,h)
-		if attachment != nil
-			attachment.thumbnail(w,h)
+		upload = self.main_attachment
+		if upload != nil
+			upload.image.url(:thumb)
 		else
 			"/location-missing.jpg"
 		end
