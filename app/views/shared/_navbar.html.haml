@@ -20,7 +20,6 @@
 						%li.nav-item
 							%a.nav-link{:href => "/signup"}
 								Regístrate
-
 					-if current_user
 						%li.nav-item
 							= link_to("Barrios & Colecciones", collections_path, :class=>"nav-link")
@@ -35,8 +34,6 @@
 							%button.btn.btn-secondary.text-primary.navbar-btn{ :type=>"submit"}
 								%i.mdi.mdi-lg.mdi-cloud-upload
 								Publica tu Locación
-
-
 					-if current_user
 						%li.nav-item.dropdown.user
 							%a.nav-link{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :href => "#", :role => "button"}
@@ -74,9 +71,6 @@
 										%span
 											%i.mdi.mdi-close
 										Salir
-
-
-
 					%li.nav-item.dropdown
 						%a#navbarDropdownMenuLink.nav-link{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :href => "#"}
 							%i.nav-icon.mdi.mdi-help-circle
@@ -92,51 +86,21 @@
 								%a{:href => "/about"}
 									Nosotros
 
-
-
-
-				-# -if current_user
-				-# 	%ul.nav.navbar-nav.current-user
-				-# 		%li.dropdown
-				-# 			%a.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :href => "#", :role => "button"}
-				-# 				.user-avatar.inline
-				-# 					%i.mdi.mdi-account.mdi-lg
-				-# 					- if(current_user.notifications("location")+current_user.notifications("booking"))>0
-				-# 						.badge
-				-# 							= current_user.notifications("location")+current_user.notifications("booking")
-				-# 				%span.caret
-				-# 			%ul.dropdown-menu.dropdown-menu-right.text-sm-right
-				-# 				%li.dropdown-header
-				-# 					Hola
-				-# 					%strong #{current_user.first_name}
-				-# 				%li
-				-# 					%a{:href => "/users/"+current_user.id.to_s}
-				-# 						%i.mdi.mdi-lg.mdi-account
-				-# 						Mi Perfil
-				-# 						- if current_user.notifications("location")>0
-				-# 							.badge
-				-# 								=current_user.notifications("location")
-				-# 				%li
-				-# 					%a{:href => "/bookings"}
-				-# 						%i.mdi.mdi-lg.mdi-calendar-multiple
-				-# 						Mis Reservas
-				-# 						- if current_user.notifications("booking")>0
-				-# 							.badge
-				-# 								=current_user.notifications("booking")
-				-#
-				-# 				%li.divider
-				-# 				%li
-				-# 					%a{:href => "/logout"}
-				-# 						%i.mdi.mdi-lg.mdi-close
-				-# 						Salir
-
-
+					%li.nav-item.dropdown
+						%a#navbarDropdownMenuLink.nav-link{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :href => "http://example.com"}
+							.help
+								Idioma
+						%ul.dropdown-menu.dropdown-menu-right.bg-primary{"aria-labelledby" => "navbarDropdownMenuLink"}
+							%i.mdi.mdi-menu-up.arrow
+							%li
+								%a{:href => "/set_locale"}
+									Español
+							%li
+								%a{:href => "/set_locale"}
+									Inglés
 				-# %form.form-inline.my-2.my-lg-0
 					%input.form-control.mr-sm-2{:placeholder => "Search", :type => "text"}/
 					%button.btn.btn-outline-success.my-2.my-sm-0{:type => "submit"} Search
-
-
-
 -# .container.navbar-wrapper
 	%nav.navbar.navbar-inverse.navbar-fixed-top
 		.container-fluid
