@@ -88,6 +88,11 @@ class UsersController < ApplicationController
 		redirect_to "/admin/users/"
 	end
 
+	def set_locale
+		current_user.update_attributes(locale: params[:locale])
+		redirect_to root_path
+	end
+
 	private
 	# Use callbacks to share common setup or constraints between actions.
 	def set_user

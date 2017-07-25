@@ -225,3 +225,43 @@ es:
       long: "%d de %B de %Y %H:%M"
       short: "%d de %b %H:%M"
     pm: pm
+  general:
+    collections_and: 'Barrios y Colecciones'
+    locations: 'Locaciones'
+    contact: 'Contacto'
+    profile: 'Perfil'
+    my_locations: 'Mis locaciones'
+    my_bookings: 'Mis reservas'
+    terms: Términos y condiciones
+    about_us: Nosotros
+  actions:
+    publish: Publica tu locación
+    exit: Salir
+    log_in: Ingresa
+    sign_up: Regístrate
+    see_all_locations: Ver todas las locaciones
+    see_all_collections: Ver todas las colecciones
+  pages:
+    home:
+      slide1a: Descubre el mundo de AtLocs!
+      slide1b: Encuentra la locación perfecta para tus filmaciones, fotografías y eventos.
+      slide2a: Arrienda tu locación
+      slide2b: Inscribe tu locación  y comienza a ser parte de AtLocs.
+      slide3a: Planifica la filmación
+      slide3b: AtLocs te ayuda a encontrar la locación perfecta. Reserva y asesórate por nuestro equipo de expertos.
+      navbar_tags: ¿Que estás buscando?
+      locations1: Encuentra tu locación ideal
+      locations2: para cualquier tipo de producción
+      collections1: Explora por categoría
+      collections2: Revisa nuestras Colecciones
+      how_it_works1: Como Funciona AtLocs
+      how_it_works2: Ofrecemos un espacio para poner en contacto a Productoras Audiovisuales con dueños de loacaciones
+      certificate1: Locaciones Certificadas
+      certificate2: Todas las locaciones publicadas en nuestra plataforma son revisadas por nuestro equipo para asegurar a las productoras un contenido confiable y de calidad a la hora de elegir su próxima locación.
+      contract1: Seguimiento y Asesoría AtLocs
+      contract2: Asesoramos y guiamos a cada usuario en la presentación y descripción de su locación. También acompañamos a ambos en el proceso de reserva y gestión de cada locación.
+      deal1: Productoras & Locaciones
+      deal2: Trabajamos con grandes productoras nacionales e internacionales para asegurar a nustros usuarios la seriedad y compromiso en caso de concretar una reserva de su locación.
+  locales:
+    spanish: Español
+    english: Inglés

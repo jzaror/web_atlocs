@@ -16,24 +16,38 @@
 					-unless current_user
 						%li.nav-item
 							%a.nav-link{:href => "/login"}
+<<<<<<< 6fff1af3efb145ec1b5e847402c3c70a9aa9cb5d
 								Ingresa
 						%li.nav-item
+=======
+								= I18n.t('actions.log_in')
+						%li.nav-item#loginlink
+>>>>>>> added translations to home page
 							%a.nav-link{:href => "/signup"}
-								Regístrate
+								= I18n.t('actions.sign_up')
 					-if current_user
 						%li.nav-item
-							= link_to("Barrios & Colecciones", collections_path, :class=>"nav-link")
+							= link_to(I18n.t('general.collections_and'), collections_path, :class=>"nav-link")
 						%li.nav-item
+<<<<<<< 6fff1af3efb145ec1b5e847402c3c70a9aa9cb5d
 							= link_to("Locaciones", locations_path, :class=>"nav-link")
 					%li.nav-item
 						%a.nav-link{:href => "/contacto"}
 							Contacto
 					%li.nav-item
 						%form{ :method=>"get", :action=>"/locations/new/?newlocation=true" }
+=======
+							= link_to(I18n.t('general.locations'), locations_path, :class=>"nav-link")
+					%li.nav-item#loginlink
+						%a.nav-link{:href => "/contacto"}
+							= I18n.t('general.contact')
+					%li.nav-item{:style => "margin: 6px 5px;"}
+						%form{ :method=>"get", :action=>"/locations/new/" }
+>>>>>>> added translations to home page
 							%input{:type=>"hidden", :name=>"newlocation", :value=>"true"}
 							%button.btn.btn-secondary.text-primary.navbar-btn{ :type=>"submit"}
 								%i.mdi.mdi-lg.mdi-cloud-upload
-								Publica tu Locación
+								= I18n.t('actions.publish')
 					-if current_user
 						%li.nav-item.dropdown.user
 							%a.nav-link{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :href => "#", :role => "button"}
@@ -46,7 +60,7 @@
 									%a{:href => "/users/"+current_user.id.to_s}
 										%span
 											%i.mdi.mdi-account
-										Mi Perfil
+										= t('general.profile')
 										- if current_user.notifications("location")>0
 											.badge
 												=current_user.notifications("location")
@@ -54,7 +68,7 @@
 									%a{:href => "/users/"+current_user.id.to_s}
 										%span
 											%i.mdi.mdi-map-marker
-										Mis Locaciones
+										= t('general.my_locations')
 										- if current_user.notifications("location")>0
 											.badge
 												=current_user.notifications("location")
@@ -62,7 +76,7 @@
 									%a{:href => "/bookings"}
 										%span
 											%i.mdi.mdi-calendar-multiple
-										Mis Reservas
+										= t('general.my_bookings')
 										- if current_user.notifications("booking")>0
 											.badge
 												=current_user.notifications("booking")
@@ -70,7 +84,7 @@
 									%a{:href => "/logout"}
 										%span
 											%i.mdi.mdi-close
-										Salir
+										= t('actions.exit')
 					%li.nav-item.dropdown
 						%a#navbarDropdownMenuLink.nav-link{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :href => "#"}
 							%i.nav-icon.mdi.mdi-help-circle
@@ -81,23 +95,22 @@
 									FAQ
 							%li
 								%a{:href => "/terminos-y-condiciones"}
-									Términos y Condiciones
+									=t('general.terms')
 							%li
 								%a{:href => "/about"}
-									Nosotros
-
+									=t('general.about_us')
 					%li.nav-item.dropdown
 						%a#navbarDropdownMenuLink.nav-link{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :href => "http://example.com"}
 							.help
-								Idioma
+								= I18n.locale.to_s.upcase
 						%ul.dropdown-menu.dropdown-menu-right.bg-primary{"aria-labelledby" => "navbarDropdownMenuLink"}
 							%i.mdi.mdi-menu-up.arrow
 							%li
-								%a{:href => "/set_locale"}
-									Español
+								%a{:href => "/set_locale?locale=es"}
+									=t('locales.spanish')
 							%li
-								%a{:href => "/set_locale"}
-									Inglés
+								%a{:href => "/set_locale?locale=en"}
+									=t('locales.english')
 				-# %form.form-inline.my-2.my-lg-0
 					%input.form-control.mr-sm-2{:placeholder => "Search", :type => "text"}/
 					%button.btn.btn-outline-success.my-2.my-sm-0{:type => "submit"} Search

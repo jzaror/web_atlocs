@@ -24,3 +24,49 @@ en:
   shared:
     navbar:
       toggle_navigation: Toggle Navigation
+  general:
+    collections_and: 'Collections & Neighbourhoods'
+    locations: 'Locations'
+    contact: 'Contact'
+    profile: 'Profile'
+    my_locations: 'My Locations'
+    my_bookings: 'My bookings'
+    terms: Terms and Conditions
+    about_us: About us
+  actions:
+    publish: Publish your location
+    exit: Exit
+    log_in: Log In
+    sign_up: Sign up
+    see_all_locations: See all locations
+    see_all_collections: See all collections
+  pages:
+    home:
+      slide1a: Discover the world of Atlocs!
+      slide1b: Find the perfect location for your filming, photoshoots or events.
+      slide2a: Rent your location
+      slide2b: Sign your location and become a part of Atlocs.
+      slide3a: Plan your filming
+      slide3b: AtLocs will help you find the perfect place. Reserve now and consult with our team of experts.
+      navbar_tags: What are you looking for?
+      locations1: Find your ideal location
+      locations2: for any type of production
+      collections1: Explore by categories
+      collections2: Check our collections
+      how_it_works1: how Atlocs works
+      how_it_works2: We offer a platform that brings owners and media producers together.
+      certificate1: Certified Locations
+      certificate2: All published locations are checked by our team, to ensure trustworthy content when the time comes to pick your next location.
+      contract1: Atlocs Monitoring and counseling
+      contract2: We counsel and guide each user in the presentation and description of their locations. We also walk both through the process of booking and managing each location.
+      deal1: Producers and Locations
+      deal2: We are working with big local and multinational producers to assure to our users the seriousness and commitment in the event of making a reservation of their location.
+  locations:
+    status:
+      approved: Approved
+      archived: Archived
+      draft: Waiting Approval
+      submitted: Submitted
+  locales:
+    spanish: Spanish
+    english: English
