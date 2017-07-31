@@ -1,7 +1,4 @@
 - content_for :body_class, "special-layout location-single"
--# = link_to "#", :class => "btn btn-info btn-fixed btn-fixed-left", :onClick => "window.history.go(-1);" do
--# 	%i.mdi.mdi-arrow-left
--# 	Volver
 
 %section.main-content.location
 	.location-header{ :style=>"background-image:url(#{@location.main_attachment_url}) !important" }
@@ -16,33 +13,37 @@
 						= number_to_currency(@location.price_with_fee, :unit => "$", :precision => 0, :format => "%u%n")
 						%small CLP
 					%small.availability
-						(Por día. Incluye precio de reserva)
+						=t('location.price_by_day')
 						/ Días: #{@location.days}
 				-if current_user && @location.bookings.where('user_id = :me AND status != :cancelled', me: current_user.id, cancelled: 0).any? && @location.price_with_fee > 0
 					.booking.padding-top
 						%a.btn.btn-primary.btn-block.btn-lg{:href => "/bookings/"+@location.bookings.where(:user_id=>current_user.id).last.code}
 							%i.mdi.mdi-lg.mdi-calendar-clock
-							Ver Reserva
+							=t('actions.see_booking')
 					%a{ :href => "/bookings/new?id="+@location.id.to_s}
-						Reservar esta locación nuevamente
+						=t('actions.book_again')
 				-else
 					.booking.pt-3
 						- if (can? :update, @location)
 							%a.btn.btn-primary.btn-block.btn-lg{:href => "/locations/"+@location.id.to_s+"/edit"}
 								%i.mdi.mdi-lg.mdi-pencil
-								Editar Locación
+								=t('actions.edit', model: t('general.location'))
 						- elsif @location.status=="approved"
 							%a.btn.btn-primary.btn-block.btn-lg{:href => "/bookings/new?id="+@location.id.to_s}
 								%i.mdi.mdi-lg.mdi-calendar-clock
-								Reservar Locación
-
+								=t('actions.book', model: t('general.location'))
 						.booking-contact
-							¿Tienes una consulta específica respecto a esta locación? 
+							=t('general.questions')
 							%a.btn.btn-link.btn-sm.p-0{:href => "/contacto?subject=Consulta por Locación "+@location.id.to_s, :role => "button", :style => "z-index: 99999999;position: relative;"}
 								%i.mdi.mdi-lg.mdi-email-outline
+<<<<<<< 350f1ce4295d6eae756b89957aceeeb66c6d51f3
 								Contáctanos
 
 	.container
+=======
+								=t('general.contact_us')
+	.container-fluid
+>>>>>>> translated locaiton show action
 		.row.location-content
 			.col-md-7
 				- if flash[:notice]
@@ -56,10 +57,10 @@
 						= flash[:error]
 						%strong
 							= @location.reject_reason if @location.reject_reason
-						="Puedes"
-						= link_to 'Corregir locación',edit_location_path(@location.id)
-						= "o"
-						= link_to 'Contactarnos',"/locations/#{@location.id}/show_contact_modal", remote: true
+						= t('extras.you_can')
+						= link_to t('actions.edit', model: t('general.location')), edit_location_path(@location.id)
+						= t('extras.or')
+						= link_to t('general.contact_us'),"/locations/#{@location.id}/show_contact_modal", remote: true
 				- if flash[:warning]
 					.mt-3.alert.alert-warning{:role => "alert"}
 						%button.close{"aria-label" => "Close", "data-dismiss" => "alert", :type => "button"}
@@ -67,28 +68,25 @@
 						= flash[:warning]
 				.content-box.description
 					%h3
-						Descripción
-						%span de la locación
+						= t('general.description')
 					%p= @location.description
 				.content-box.details
 					%h3
-						Detalles
-						%span y características
+						= t('general.details')
 					.table-responsive
 						%table.table.table-hover
 							%tbody
 								-if @location.type_id
 									%tr.row.my-2
-										%th.col-md-5 Tipo de Locación
+										%th.col-md-5=t('location.type')
 										%td.col-md-7 #{@location.type_id}
 								-if @location.services
 									%tr.row.my-2
-										%th.col-md-5 Espacios filmables
+										%th.col-md-5=t('location.services')
 										%td.col-md-7 #{raw(@location.services.join(", ").split(/\s*,\s*/).map{ |service| raw(link_to(service, '/locations?s='+service.html_safe)) }.join(', '))} #{(@location.has_other_services? ? ("(" + @location.other_services_comment.to_s + ")") : '')}
-
 								-if @location.extras
 									%tr.row.my-2
-										%th.col-md-5 Espacios utilizables
+										%th.col-md-5=t('location.extras')
 										%td.col-md-7 #{raw(@location.extras.join(", ").split(/\s*,\s*/).map{ |extra| raw(link_to(extra, '/locations?s='+extra.html_safe)) }.join(', '))} #{(@location.has_other_extras? ? ("(" + @location.other_extras_comment.to_s + ")") : '')}
 								-if @location.tag_names
 									%tr.row.my-2
@@ -98,8 +96,7 @@
 				-if @location.lat && @location.lng
 					.content-box.address
 						%h3.address-title
-							Ubicación
-							%span aproximada
+							=t('location.latitude')
 						.map#map
 							:javascript
 								var map;
@@ -113,41 +110,41 @@
 									});
 								});
 					%small Ubicación aproximada, reserva para obtener más información.
+<<<<<<< 350f1ce4295d6eae756b89957aceeeb66c6d51f3
 
 
 			-if @location.uploads.count>0
+=======
+			-if @location.attachments.count>0
+>>>>>>> translated locaiton show action
 				.col-md-12
 					.content-box.gallery
 						%h3.gallery-title
-							Galería
-							%span de imágenes
+							=t('general.image_gallery')
 						%ul.gallery-list
 							-@location.uploads.each do |upload|
 								%li.gallery-slot
 									%a.gallery-link{:href => upload.image.url, "data-gallery" => ""}
 										=image_tag(upload.image.url(:thumb), :class=>"gallery-img")	
-
 							-#%li
 								%a{:href => "/missing.png", "data-gallery" => ""}
 									=image_tag "missing.png"
-
-
 			-if current_user && (current_user.status=="admin" || current_user.status=="moderator")
 				.col-md-12.padding
 					- if @location.status != "approved"
-						= link_to 'Aprobar', "/locations/#{@location.id}/approve", :class=>"btn btn-success"
+						= link_to t('general.approve'), "/locations/#{@location.id}/approve", :class=>"btn btn-success"
 					- if @location.status != "archived"
-						= link_to 'Archivar', "/locations/#{@location.id}/show_archive_modal", :class=>"btn btn-danger", :remote => true
+						= link_to t('general.archive'), "/locations/#{@location.id}/show_archive_modal", :class=>"btn btn-danger", :remote => true
 				.col-md-12.padding
 					%ul.list-inline
 						%li.list-inline-item
 							= link_to locations_path do
 								%i.mdi.mdi-arrow-left
-								Volver
+								=('actions.go_back')
 						%li.list-inline-item
 							= link_to edit_location_path(@location) do
 								%i.mdi.mdi-pencil
-								Editar Locación
+								= link_to t('actions.edit', model: t('general.location'))
 						-if @location.attachments.count>0
 							%li.list-inline-item
 								%i.mdi.mdi-home

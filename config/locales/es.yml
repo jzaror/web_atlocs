@@ -228,19 +228,46 @@ es:
   general:
     collections_and: 'Barrios y Colecciones'
     locations: 'Locaciones'
+    location: Locación
+    booking: Reserva
     contact: 'Contacto'
     profile: 'Perfil'
     my_locations: 'Mis locaciones'
     my_bookings: 'Mis reservas'
     terms: Términos y condiciones
     about_us: Nosotros
+    days: Días
+    questions: ¿Tienes una consulta específica respecto a esta locación?
+    contact_us: Contáctanos
+    description: Descripción
+    details: Detalles y características
+    image_gallery: Galería de Imágenes
+  location:
+    price_by_day: (Por día. Incluye precio de reserva)
+    type: Tipo de Locación
+    services: Espacios filmables
+    extras: Espacios utilizables
+    latitude: Ubicación aproximada
   actions:
+    approve: Aprobar
+    archive: Archivar
     publish: Publica tu locación
     exit: Salir
     log_in: Ingresa
     sign_up: Regístrate
     see_all_locations: Ver todas las locaciones
     see_all_collections: Ver todas las colecciones
+    see_location: Ver locación
+    see_booking: Ver reserva
+    book_again: Reservar esta locación nuevamente
+    edit: Editar %{model}
+    view: Ver %{model}
+    create: Crear %{model}
+    book: Reservar %{model}
+    go_back: Volver
+  extas:
+    you_can: Puedes
+    or: o
   pages:
     home:
       slide1a: Descubre el mundo de AtLocs!

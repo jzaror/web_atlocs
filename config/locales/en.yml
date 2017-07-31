@@ -27,12 +27,20 @@ en:
   general:
     collections_and: 'Collections & Neighbourhoods'
     locations: 'Locations'
+    location: Location
+    booking: Booking
     contact: 'Contact'
     profile: 'Profile'
     my_locations: 'My Locations'
     my_bookings: 'My bookings'
     terms: Terms and Conditions
     about_us: About us
+    days: Days
+    questions: Do you have any question about this location?
+    contact_us: Contact us
+    description: Description
+    details: Details and Features
+    image_gallery: Image gallery
   actions:
     publish: Publish your location
     exit: Exit
@@ -40,6 +48,23 @@ en:
     sign_up: Sign up
     see_all_locations: See all locations
     see_all_collections: See all collections
+    see_location: See location
+    see_booking: See booking
+    book_again: Book this location again.
+    edit: Edit %{model}
+    view: View %{model}
+    create: Create %{model}
+    book: Book %{model}
+    go_back: Go back
+  extas:
+    you_can: You can either
+    or: or
+  location:
+    price_by_day: (Per day. Includes bookings price)
+    type: Location type
+    services: Filming spaces
+    extras: Usable spaces
+    latitude: Approximate address
   pages:
     home:
       slide1a: Discover the world of Atlocs!
