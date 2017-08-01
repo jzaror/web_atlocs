@@ -242,12 +242,14 @@ es:
     description: Descripción
     details: Detalles y características
     image_gallery: Galería de Imágenes
-  location:
-    price_by_day: (Por día. Incluye precio de reserva)
-    type: Tipo de Locación
-    services: Espacios filmables
-    extras: Espacios utilizables
-    latitude: Ubicación aproximada
+    collection: Colección
+  contact_form:
+    subtitle: Envíanos tu inquietud y te responderemos a la brevedad.
+    email: Tu E-mail
+    phone: Número de celular
+    subject: Asunto
+    message: Mensaje
+    submit: Enviar
   actions:
     approve: Aprobar
     archive: Archivar
@@ -265,9 +267,15 @@ es:
     create: Crear %{model}
     book: Reservar %{model}
     go_back: Volver
+    feature_in_home: Destacar en home
+    add_to_collection: Agregar a colección
+    explore: Explora
   extas:
     you_can: Puedes
     or: o
+    searching: Buscando
+    exploring: Explorando
+    search_results: Resultados de búsqueda para
   pages:
     home:
       slide1a: Descubre el mundo de AtLocs!
@@ -289,6 +297,20 @@ es:
       contract2: Asesoramos y guiamos a cada usuario en la presentación y descripción de su locación. También acompañamos a ambos en el proceso de reserva y gestión de cada locación.
       deal1: Productoras & Locaciones
       deal2: Trabajamos con grandes productoras nacionales e internacionales para asegurar a nustros usuarios la seriedad y compromiso en caso de concretar una reserva de su locación.
+  location:
+    price_by_day: (Por día. Incluye precio de reserva)
+    type: Tipo de Locación
+    services: Espacios filmables
+    extras: Espacios utilizables
+    latitude: Ubicación aproximada
+    form:
+      form_title: Publica tu locación
+      title: Título de tu Locación
+      title_placeholder: "Agrega un nombre claro y descriptivo"
+      description: Descripción
+      description_placeholder: "Describe detalladamente tu locación. Una buena descripción facilitará que más usuarios puedan encontrarla."
+      step2a: Características de tu Locación
+      step2b: Selecciona las opciones que mejor señalen lo que es y lo que ofrece tu locación.
   locales:
     spanish: Español
     english: Inglés

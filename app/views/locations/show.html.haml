@@ -140,7 +140,7 @@
 						%li.list-inline-item
 							= link_to locations_path do
 								%i.mdi.mdi-arrow-left
-								=('actions.go_back')
+								=t('actions.go_back')
 						%li.list-inline-item
 							= link_to edit_location_path(@location) do
 								%i.mdi.mdi-pencil
@@ -149,13 +149,13 @@
 							%li.list-inline-item
 								%i.mdi.mdi-home
 								= check_box_tag "locations[front_page]", @location.id, !!(@location.front_page)
-								Destacar en home
+								=t('actions.feature_in_home')
 						%li.list-inline-item
 							=form_for(@location, :html => {:class=>"form-inline"}) do |f|
 								.form-group
-									=f.label "Coleccion"
+									=f.label t('general.collection')
 									=f.collection_select(:collection_id, Collection.all, :id, :name, {}, {:class=> "form-control"})
-								=f.submit "Agregar a colección", :class=> "btn btn-primary"
+								=f.submit t('actions.add_to_collection'), :class=> "btn btn-primary"
 					-if @location.attachments.count>0
 						:javascript
 							$("#locations_front_page").bind('change', function(){

@@ -14,5 +14,5 @@
       %p #{collection.description}
       %p
         = link_to '/locations?collection='+collection.id.to_s, :class => "btn btn-primary" do
-          Ver Colección
+          =t('actions.view', model: t('general.collection'))
           %i.mdi.mdi-arrow-right

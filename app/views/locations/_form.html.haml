@@ -11,18 +11,18 @@
 			#location_alert
 		.step#step1
 			.tab-head
-				%h2 Publica tu Locación
+				%h2=t('location.form.form_title')
 			.tab-body
 				.form-group
-					= f.label "Título de tu Locación *", :class=>""
-					= f.text_field :title, :class=>"form-control", :placeholder=>"Agrega un nombre claro y descriptivo"
+					= f.label t('location.form.title'), :class=>""
+					= f.text_field :title, :class=>"form-control", :placeholder=>t('location.form.title_placeholder')
 				.form-group
-					= f.label "Descripción *", :class=>""
-					= f.text_area :description, :class=>"form-control", :placeholder=>"Describe detalladamente tu locación. Una buena descripción facilitará que más usuarios puedan encontrarla."
+					= f.label t('location.form.description'), :class=>""
+					= f.text_area :description, :class=>"form-control", :placeholder=>t('location.form.description_placeholder')
 		.step#step2
 			.tab-head
-				%h2 Características de tu Locación
-				%p Selecciona las opciones que mejor señalen lo que es y lo que ofrece tu locación.
+				%h2=t('location.form.step2a')
+				%p=t('location.form.step2b')
 			.tab-body
 				.row.form-group
 					.col-md-4= f.label "Tipo de locación *", :class=>""

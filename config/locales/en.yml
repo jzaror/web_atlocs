@@ -41,6 +41,7 @@ en:
     description: Description
     details: Details and Features
     image_gallery: Image gallery
+    collection: Collection
   actions:
     publish: Publish your location
     exit: Exit
@@ -56,9 +57,15 @@ en:
     create: Create %{model}
     book: Book %{model}
     go_back: Go back
+    feature_in_home: Feature this image in homepage
+    add_to_collection: Add to collection
+    explore: Explore
   extas:
     you_can: You can either
     or: or
+    searching: Searching
+    exploring: Exploring
+    search_results: Search results for
   location:
     price_by_day: (Per day. Includes bookings price)
     type: Location type
@@ -92,6 +99,21 @@ en:
       archived: Archived
       draft: Waiting Approval
       submitted: Submitted
+    form:
+      form_title: Publica tu locación
+      title: Título de tu Locación
+      title_placeholder: "Agrega un nombre claro y descriptivo"
+      description: Descripción
+      description_placeholder: "Describe detalladamente tu locación. Una buena descripción facilitará que más usuarios puedan encontrarla."
+      step2a: Características de tu Locación
+      step2b: Selecciona las opciones que mejor señalen lo que es y lo que ofrece tu locación.
+  contact_form:
+    subtitle: Send us your questions and we'll answer shortly
+    email: Your E-mail
+    phone: Phone number
+    subject: Subject
+    message: Message
+    submit: Submit
   locales:
     spanish: Spanish
     english: English
