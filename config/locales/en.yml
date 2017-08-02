@@ -93,7 +93,7 @@ en:
       contract2: We counsel and guide each user in the presentation and description of their locations. We also walk both through the process of booking and managing each location.
       deal1: Producers and Locations
       deal2: We are working with big local and multinational producers to assure to our users the seriousness and commitment in the event of making a reservation of their location.
-  locations:
+  location:
     status:
       approved: Approved
       archived: Archived
@@ -107,6 +107,32 @@ en:
       description_placeholder: "Describe detalladamente tu locación. Una buena descripción facilitará que más usuarios puedan encontrarla."
       step2a: Características de tu Locación
       step2b: Selecciona las opciones que mejor señalen lo que es y lo que ofrece tu locación.
+      type: "Tipo de locación"
+      tag1: "Agrega etiquetas referentes a detalles esteticos, barrios, etc"
+      tag2: "Incluye palabras o pequeñas frases claves, que describan tu locación. Sepáralas por coma. Ej: casona, naturaleza, vista al lago, campo."
+      services1: "Espacios filmables"
+      services2: Señala solamente los espacios que la producción podrá filmar o fotografiar para su película, sesión fotográfica, comercial, etc.
+      extras1: "Espacios utilizables"
+      extras2: "En una producción puedes tener a mucha gente trabajando, los cuáles necesitarán utilizar otros espacios de tu propiedad, que no son específicamente aquellos que se están filmando. Señala qué espacios estarán habilitados para la producción. Ej: Si seleccionas Baño, significa que la producción puede utilizar el baño, etc."
+      address: "Dirección"
+      address2: "* Esta información solamente será visible cuando un usuario haya confirmado y pagado su reserva."
+      step3title: Fotografías
+      step3subtitle: Una imagen dice más que mil palabras. Sube las mejores fotografías que tengas de tu locación, mostrando todo el espacio que los productores podrán filmar o fotografiar.  Recuerda incluir fotos generales, así como de detalles, de tu locación.
+      attachments: Adjuntar Archivos
+      attachments2: Sube solamente fotografias HORIZONTALES en formato  .jpg, .gif o .png. De lo contrario no podremos publicar tu locación. La fotografía horizontal es la única manera que los productores pueden imaginarse cómo se verá tu locación en cámara.
+      select_files: Selecciona archivos
+      step4_h2: Precio
+      step4_p: Recuerda que puedes cobrar por jornada, lo mismo o más, de lo que cobrarías por un arriendo mensual. Sin embargo, recuerda que un precio equilibrado, hará que haya más interesados en tu locación.
+      day_price: "Precio por jornada"
+      day_price2: El mínimo de arriendo para tu locación es de $150.000 pesos chilenos.
+      atlocs_commission: Comisión Atlocs
+      atlocs_disclaimer: "* AtLocs, Sumará una Comisión del 15% por gestionar Tu Propiedad."
+      atlocs_disclaimer2: (*) Una jornada completa de trabajo corresponde a un máximo de 12 horas seguidas de producción. Ten en cuenta esto al momento de ponerle precio a tu locación.
+      publish: Publicar Locación
+      update: Guardar Locación
+      i_agree1: Estoy de acuerdo con los
+      i_agree2: de Atlocs
+      more_info: Más info
   contact_form:
     subtitle: Send us your questions and we'll answer shortly
     email: Your E-mail
