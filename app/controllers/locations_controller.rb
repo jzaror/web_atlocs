@@ -59,7 +59,7 @@ class LocationsController < ApplicationController
     @location.user_id=current_user.id
     #to improve
     @location.save
-    redirect_to edit_location_path(@location.id)
+    redirect_to edit_location_path(@location.id, newlocation: true)
   end
 
   # GET /locations/1/edit
@@ -104,8 +104,8 @@ class LocationsController < ApplicationController
     if @location.update(location_params)
       @location.submit
       if @location.status == "submitted"
-        LocationMailer.new_location(@location).deliver if params[:newlocation]
-        UserMailer.location_submitted(@location).deliver if params[:newlocation]
+        LocationMailer.new_location(@location).deliver
+        UserMailer.location_submitted(@location).deliver
       end
       if params[:images]
         #===== The magic is here ;)
@@ -113,7 +113,6 @@ class LocationsController < ApplicationController
           @location.uploads.create(image: image)
         end
       end
-      redirect_to "/nueva_locacion" if params[:newlocation]
       respond_to do |format|
         format.json { render json: @location.uploads.last.append_file_json, status: :ok }
         format.html { redirect_to @location }

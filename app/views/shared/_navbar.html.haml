@@ -30,7 +30,7 @@
 						%a.nav-link{:href => "/contacto"}
 							Contacto
 					%li.nav-item{:style => "margin: 6px 5px;"}
-						%form{ :method=>"get", :action=>"/locations/new/" }
+						%form{ :method=>"get", :action=>"/locations/new/?newlocation=true" }
 							%input{:type=>"hidden", :name=>"newlocation", :value=>"true"}
 							%button.btn.btn-secondary.text-primary.navbar-btn{ :type=>"submit"}
 								%i.mdi.mdi-lg.mdi-cloud-upload

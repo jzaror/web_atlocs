@@ -170,6 +170,10 @@ class Location < ActiveRecord::Base
 		end
 	end
 
+	def is_new_record?
+		status == "draft"
+	end
+
 	private
 		def set_draft_status
 			# status codes:

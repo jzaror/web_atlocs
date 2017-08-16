@@ -115,7 +115,7 @@
 	.col-md-8.offset-md-2
 		%hr
 		.px-5.py-3
-			-if @location.new_record?
+			-if @location.is_new_record?
 				%button.btn.btn-info.btn-block.btn-lg#form-submit{ :type=>"submit", :disabled => "disabled"}
 					%i.mdi.mdi-lg.mdi-cloud-upload
 					Publicar Locación
