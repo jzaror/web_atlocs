@@ -355,6 +355,8 @@ es:
     message: Mensaje
     submit: Enviar 
   
+  faq:
+    
   locales:
     spanish: Español
     english: Inglés

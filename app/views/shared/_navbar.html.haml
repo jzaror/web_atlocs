@@ -106,10 +106,10 @@
 						%ul.dropdown-menu.dropdown-menu-right.bg-primary{"aria-labelledby" => "navbarDropdownMenuLink"}
 							%i.mdi.mdi-menu-up.arrow
 							%li
-								%a{:href => "/set_locale?locale=es"}
+								= link_to set_locale_path(locale: "es"), remote: true do
 									=t('locales.spanish')
 							%li
-								%a{:href => "/set_locale?locale=en"}
+								= link_to set_locale_path(locale: "en"), remote: true do
 									=t('locales.english')
 				-# %form.form-inline.my-2.my-lg-0
 					%input.form-control.mr-sm-2{:placeholder => "Search", :type => "text"}/

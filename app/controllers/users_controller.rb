@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-	load_and_authorize_resource
+	load_and_authorize_resource :except => [:set_locale]
 	skip_before_action :verify_authenticity_token
 
 	def admin
@@ -86,11 +86,6 @@ class UsersController < ApplicationController
 		@user.destroy
 		flash[:notice]="Usuario eliminado"
 		redirect_to "/admin/users/"
-	end
-
-	def set_locale
-		current_user.update_attributes(locale: params[:locale])
-		redirect_to root_path
 	end
 
 	private
