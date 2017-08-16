@@ -1,9 +1,9 @@
 %section.main-content
   .page-header.about-header
     .container
-      %h1.about-header_title Somos Atlocs
-      %h3.about-header_subtitle Un servicio de administración de locaciones chilenas.
-      %p.about-header_desc Una herramienta web que conecta a quienes quieren arrendar una propiedad para ser usada en un proyecto cinematográfico, sesión de fotos o evento corporativo, con los directores y productores y profesionales de las comunicaciones que necesitan esas propiedades para llevar a cabo sus proyectos.
+      %h1.about-header_title=t('about.title')
+      %h3.about-header_subtitle=t('about.subtitle')
+      %p.about-header_desc=t('about.desc')
   .container
     .row
       .col-md-10.offset-md-1.d-flex.justify-content-center.align-items-start.flex-column.flex-md-row
@@ -11,17 +11,17 @@
           .about-box_photo
             = image_tag ('about/cristian-diaz.jpg')
           .about-box_info
-            %h4.about-box_name Cristian Díaz Reyes
-            %p.about-box_position Founder – Director General
+            %h4.about-box_name=t('about.name1a')
+            %p.about-box_position=t('about.name1b')
             %a.about-box_link{:href => "mailto:cdiaz@chilelocaciones.cl"}
               %i.mdi.mdi-email-outline
-              Contacto
+              =t('general.contact')
         .about-box
           .about-box_photo
             = image_tag ('about/nazeli-nazar.jpg')
           .about-box_info
-            %h4.about-box_name Nazeli Nazar Miranda
-            %p.about-box_position Founder – Partner
+            %h4.about-box_name=t('about.name2a')
+            %p.about-box_position=t('about.name2b')
             %a.about-box_link{:href => "mailto:nnazar@chilelocaciones.cl"}
               %i.mdi.mdi-email-outline
-              Contacto
+              =t('general.contact')
