@@ -12,7 +12,7 @@ Rails.application.routes.draw do
 	end
 
 	root 'welcome#index'
-	scope "(:locale)", locale: /es|en/ do
+
 		# pages
 		get '/about' => 'pages#about'
 		get '/contacto' => 'pages#contact', as: 'contact'
@@ -89,7 +89,7 @@ Rails.application.routes.draw do
 		resources :bookings
 		resources :collections
 		resources :locations
-	end
+
 
 	resources :confs, only: [:index] do
     collection do

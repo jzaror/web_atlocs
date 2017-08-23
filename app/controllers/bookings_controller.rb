@@ -21,7 +21,7 @@ class BookingsController < ApplicationController
     unless current_user.status=="admin"
       @bookings=@bookings.where(:user_id=>current_user.id)
       current_user.locations.each do |location|
-        @bookings=@bookings+location.bookings.select {|booking| booking.status != 'archived'}
+        @bookings=@bookings+location.bookings.select{|booking| booking.status != 'archived'}
       end
     end
     respond_to do |format|

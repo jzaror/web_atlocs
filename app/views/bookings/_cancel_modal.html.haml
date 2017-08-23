@@ -2,14 +2,14 @@
   .modal-dialog{:role => "document"}
     .modal-content
       .modal-header
-        %h5#exampleModalLabel.modal-title Cancelar reserva
+        %h5#exampleModalLabel.modal-title= t('bookings.cancel')
         %button.close{"aria-label" => "Close", "data-dismiss" => "modal", :type => "button"}
           %span{"aria-hidden" => "true"} ×
       .modal-body
         = form_tag(booking_cancelled_path(@booking), method: "get") do
           .form-group
-            = label_tag(:reject_reason, "Motivo de Rechazo:")
+            = label_tag(:reject_reason, "#{t('bookings.cancel_reason')}")
             = hidden_field_tag 'user_id', @booking.user == current_user ? current_user.id : @booking.location.user.id
             = text_area_tag 'reject_reason', nil, class: 'form-control'
           .modal-footer
-            = submit_tag 'Cancelar reserva', :class=>"btn btn-danger"
+            = submit_tag t('bookings.cancel'), :class=>"btn btn-danger"

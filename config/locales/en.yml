@@ -459,6 +459,26 @@ en:
     name2a: Nazeli Nazar Miranda
     name2b: Founder – Partner
 
+  bookings:
+    booking_nmbr: Reserva Nº
+    from: Desde
+    until: Hasta
+    confirm: Confirmar Pago
+    paid: Pagado
+    go_to: Ir a reserva
+    approve: Aprobar
+    edit: Editar
+    cancel: Cancelar
+    cancel_reason: Motivo de rechazo
+    price: Precio de reserva
+    submit_booking: Solicitar Reserva
+    new: Solicitar Reserva para
+    date_select: Selecciona una fecha de inicio y término para tu solicitud de reserva.
+    success: Tu Solicitud ha sido enviada. Te enviaremos un mail cuando el dueño acepte tu reserva con los datos para hacer el deposito.
+    my_bookings: Ver mis reservas
+    date: Fecha
+    title: Título
+
   locales:
     spanish: Spanish
     english: English
