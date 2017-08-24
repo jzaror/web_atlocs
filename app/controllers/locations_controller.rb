@@ -104,7 +104,7 @@ class LocationsController < ApplicationController
     if @location.update(location_params)
       @location.submit
       if @location.status == "submitted"
-        LocationMailer.new_location(@location).deliver
+        UserMailer.location_submitted_admin(@location).deliver
         UserMailer.location_submitted(@location).deliver
       end
       if params[:images]

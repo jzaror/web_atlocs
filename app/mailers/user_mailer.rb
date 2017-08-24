@@ -25,7 +25,8 @@ class UserMailer < ApplicationMailer
 
 	def location_submitted_admin(location)
 		@location = location
-		mail(to: Conf.value('admin_email'), subject: 'Han publicado una nueva locación')
+		admin_email = "cdiaz@chilelocaciones.cl" || Conf.value('admin_email')
+		mail(to: admin_email, subject: '[ADMIN ATLOCS] Han publicado una nueva locación')
 	end
 
 	def location_approved(location)
@@ -51,7 +52,7 @@ class UserMailer < ApplicationMailer
 		@location = location
 		@user = location.user
 		@reason = reason
-		mail(to: Conf.value('admin_email'),subject: "Eliminación de Locación ")
+		mail(to: @user.email,subject: "Eliminación de Locación ")
 	end
 
 	def booking_requested_admin(booking)
