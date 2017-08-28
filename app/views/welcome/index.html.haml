@@ -64,6 +64,12 @@
 %section.main-content
   .container
     .row
+      .col-md-12
+        .videoPlayer
+          %iframe.videoPlayer__iframe{:allowfullscreen => "", :frameborder => "0", :width => "700", :height => "400", :mozallowfullscreen => "", :src => "https://player.vimeo.com/video/211832551", :webkitallowfullscreen => ""}
+%section.main-content
+  .container
+    .row
       .col-md-8.offset-md-2
         .main-title.align-center.big
           %h1
