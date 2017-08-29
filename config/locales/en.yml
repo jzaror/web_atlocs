@@ -479,6 +479,23 @@ en:
     date: Fecha
     title: Título
 
+  emails:
+    hello: Hola
+    footer1: Un saludo cordial,
+    footer2: El Equipo de Atlocs
+    booking_accepted:
+      p1: ¡Tu reserva ha sido aprobada! Estás a un paso de arrendar una locación a través de AtLocs.
+      p2: "Solamente falta que realices el pago correspondiente y la locación ya estará a tu disponibilidad para las fechas acordadas. Por favor haz una transferencia a la siguiente cuenta:"
+      bank: Banco
+      account_no: Numero de cuenta
+      account_type: Tipo de cuenta
+      account: Cuenta Corriente
+      name: Nombre del titular
+      rut: RUT del titular
+      ammount: Monto
+      reason: Motivo
+      reason_text: Pago reserva AtLocs
+
   locales:
     spanish: Spanish
     english: English
