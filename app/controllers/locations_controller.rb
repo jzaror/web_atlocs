@@ -103,15 +103,14 @@ class LocationsController < ApplicationController
   def update
     if @location.update(location_params)
       @location.submit
-      if @location.status == "submitted"
-        UserMailer.location_submitted_admin(@location).deliver
-        UserMailer.location_submitted(@location).deliver
-      end
       if params[:images]
         #===== The magic is here ;)
         params[:images].each do |image|
           @location.uploads.create(image: image)
         end
+      elsif params[:new_record]
+        UserMailer.location_submitted_admin(@location).deliver
+        UserMailer.location_submitted(@location).deliver
       end
       respond_to do |format|
         format.json { render json: @location.uploads.last.append_file_json, status: :ok }

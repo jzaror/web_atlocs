@@ -16,8 +16,8 @@ Rails.application.configure do
     :fog_host => 'https://atlocs.storage.googleapis.com',
     :fog_credentials => {
       :provider => 'Google',
-      :google_storage_access_key_id => 'GOOGW3BTIL5M6RHWZD33',
-      :google_storage_secret_access_key => 'Ei2mpa+Y5sVYvEhcgsvLfMzWBwCeSxN95fQfGflY'
+      :google_storage_access_key_id => 'GOOGZT7LNXMJZYPMFSMY',
+      :google_storage_secret_access_key => 'eSeOhsCQyg+WUcUK+cLtGX44bt3lQLkZqUjhwpj9'
     }
   }
 
