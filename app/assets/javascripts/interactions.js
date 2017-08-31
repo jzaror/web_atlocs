@@ -27,13 +27,13 @@ $(document).ready(function() {
     function fixedNavScroll() {
       var scroll;
       var bodySpecial = $('body.special-layout');
-      var btnFixed = $('.btn-fixed');
+      // var btnFixed = $('.btn-fixed');
       scroll = $(window).scrollTop();
       if ( scroll >= 350 ) {
         bodySpecial.addClass('force-fixed-header');
-        btnFixed.addClass('show');
+        // btnFixed.addClass('show');
       } else if ( scroll <= 150 ) {
-        btnFixed.removeClass('show');
+        // btnFixed.removeClass('show');
       } else {
         bodySpecial.removeClass('force-fixed-header');
       }

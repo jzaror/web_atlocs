@@ -539,27 +539,27 @@ button, input, .form-control, a {
 	line-height: 36px !important;
 }
 
-.btn-fixed {
-	position:fixed;
-	top:80px;
-	z-index:999;
-	@include transition(all 222ms ease);
-	&.btn-fixed-left {
-		left:0;
-		border-top-left-radius:0;
-		border-bottom-left-radius:0;
-		@include transform(translateX(-100%));
-	}
-	&.btn-fixed-right {
-		right:0;
-		border-top-right-radius:0;
-		border-bottom-right-radius:0;
-		@include transform(translateX(100%));
-	}
-	&.show {
-		@include transform(translateX(0));
-	}
-}
+// .btn-fixed {
+// 	position:fixed;
+// 	top:80px;
+// 	z-index:999;
+// 	@include transition(all 222ms ease);
+// 	&.btn-fixed-left {
+// 		left:0;
+// 		border-top-left-radius:0;
+// 		border-bottom-left-radius:0;
+// 		@include transform(translateX(-100%));
+// 	}
+// 	&.btn-fixed-right {
+// 		right:0;
+// 		border-top-right-radius:0;
+// 		border-bottom-right-radius:0;
+// 		@include transform(translateX(100%));
+// 	}
+// 	&.show {
+// 		@include transform(translateX(0));
+// 	}
+// }
 .location-list {
 	.row {
 		[class*="col"]:nth-child(3n+1){
