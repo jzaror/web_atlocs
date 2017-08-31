@@ -7,8 +7,15 @@
 		%meta{:content => "mego.cl", :name => "author"}/
 		= render 'shared/meta'
 		%link{:href => asset_path('apple-touch-icon-precomposed.png'), :rel => "apple-touch-icon-precomposed", :sizes => "144x144"}/
-		/ Icons
-		=favicon_link_tag 'favicon.ico'
+		/ FAVICONS
+		%link{:href => "/apple-touch-icon.png", :rel => "apple-touch-icon", :sizes => "180x180"}/
+		%link{:href => "/favicon-32x32.png", :rel => "icon", :sizes => "32x32", :type => "image/png"}/
+		%link{:href => "/favicon-16x16.png", :rel => "icon", :sizes => "16x16", :type => "image/png"}/
+		%link{:href => "/manifest.json", :rel => "manifest"}/
+		%link{:color => "#5b46cd", :href => "/safari-pinned-tab.svg", :rel => "mask-icon"}/
+		%meta{:content => "#5b46cd", :name => "theme-color"}/
+		-# =favicon_link_tag 'favicon.ico'
+		/ MDI
 		=stylesheet_link_tag "//cdn.materialdesignicons.com/1.8.36/css/materialdesignicons.min.css"
 		/ Fonts
 		=stylesheet_link_tag "https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,600,700"
