@@ -17,7 +17,7 @@
 						%li.nav-item
 							%a.nav-link{:href => "/login"}
 								Ingresa
-						%li.nav-item#loginlink
+						%li.nav-item
 							%a.nav-link{:href => "/signup"}
 								Regístrate
 
@@ -26,10 +26,10 @@
 							= link_to("Barrios & Colecciones", collections_path, :class=>"nav-link")
 						%li.nav-item
 							= link_to("Locaciones", locations_path, :class=>"nav-link")
-					%li.nav-item#loginlink
+					%li.nav-item
 						%a.nav-link{:href => "/contacto"}
 							Contacto
-					%li.nav-item{:style => "margin: 6px 5px;"}
+					%li.nav-item
 						%form{ :method=>"get", :action=>"/locations/new/?newlocation=true" }
 							%input{:type=>"hidden", :name=>"newlocation", :value=>"true"}
 							%button.btn.btn-secondary.text-primary.navbar-btn{ :type=>"submit"}
@@ -78,9 +78,8 @@
 
 
 					%li.nav-item.dropdown
-						%a#navbarDropdownMenuLink.nav-link{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :href => "http://example.com"}
-							.help
-								?
+						%a#navbarDropdownMenuLink.nav-link{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :href => "#"}
+							%i.nav-icon.mdi.mdi-help-circle
 						%ul.dropdown-menu.dropdown-menu-right.bg-primary{"aria-labelledby" => "navbarDropdownMenuLink"}
 							%i.mdi.mdi-menu-up.arrow
 							%li
@@ -92,6 +91,7 @@
 							%li
 								%a{:href => "/about"}
 									Nosotros
+
 
 
 

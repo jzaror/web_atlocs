@@ -6,7 +6,7 @@
 
 %section.main-content.location
 	.location-header{ :style=>"background-image:url(#{@location.main_attachment_url}) !important" }
-		.container-fluid
+		.container
 			.location-title
 				%h1
 					= @location.title
@@ -43,7 +43,7 @@
 								%i.mdi.mdi-lg.mdi-email-outline
 								Contáctanos
 
-	.container-fluid
+	.container
 		.row.location-content
 			.col-md-7
 				- if flash[:notice]
