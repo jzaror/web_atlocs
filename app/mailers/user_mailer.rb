@@ -60,7 +60,7 @@ class UserMailer < ApplicationMailer
 		@location = booking.location
 		@location_user = booking.location.user
 		@booking=booking
-		mail(to: Conf.value('admin_email'), subject: '¡Han solicitado una reserva!')
+		mail(to: Conf.value('admin_email'), subject: '[ADMIN ATLOCS]¡Han solicitado una reserva!')
 	end
 
 	def booking_requested(booking)
