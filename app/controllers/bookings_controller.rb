@@ -66,7 +66,7 @@ class BookingsController < ApplicationController
     @booking=Booking.find_by_code(params[:code])
     @booking.accept
     UserMailer.booking_accepted(@booking).deliver
-    UserMailer.admin_booking_accepted(@booking).deliver
+    AdminMailer.admin_booking_accepted(@booking).deliver
     REDIS.lpush("booking#{@booking.code}",{:datetime=>Time.now.to_i,:text=>"Reserva aceptada por "+@booking.location.user.full_name,:action=>"accepted"}.to_json)
     redirect_to "/bookings", :notice=>"Reserva aceptada"
   end
@@ -132,9 +132,9 @@ class BookingsController < ApplicationController
         @message="La fecha de inicio debe ser antes de la fecha de término"
       end
     if @success==true
-      UserMailer.booking_requested(@booking).deliver
-      UserMailer.booking_sent(@booking).deliver
-      UserMailer.admin_booking_created(@booking).deliver
+      UserMailer.booking_requested(@booking).deliver_now
+      UserMailer.booking_sent(@booking).deliver_now
+      AdminMailer.admin_booking_created(@booking).deliver_now
       comment={:datetime=>Time.now.to_i,:text=>params[:comment],:user=>{:full_name=>current_user.full_name},:action=>"comment"}
       REDIS.lpush("booking#{@booking.code}",comment.to_json) if params[:comment] && params[:comment].length>0
       User.where(status: 5).each do |admin|
