@@ -76,7 +76,7 @@ class UsersController < ApplicationController
 
 	def request_annulation
 		@user = User.find(params[:id])
-		UserMailer.request_destroy_admin(@user, params[:reject_reason]).deliver
+		AdminMailer.request_destroy_admin(@user, params[:reject_reason]).deliver
 		UserMailer.request_destroy(@user).deliver
 		flash[:notice] = "Solicitud enviada"
 		redirect_to @user

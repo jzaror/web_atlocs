@@ -88,7 +88,7 @@ class LocationsController < ApplicationController
           end
         end
         UserMailer.location_submitted(@location).deliver
-        UserMailer.location_submitted_admin(@location).deliver
+        AdminMailer.location_submitted_admin(@location).deliver
         @location.update_attribute("status", 2)
         format.html { redirect_to(location_path(@location, :open=>@modal), :notice => 'La locación fue creada con exito.') }
         format.js
@@ -109,8 +109,8 @@ class LocationsController < ApplicationController
           @location.uploads.create(image: image)
         end
       elsif params[:new_record]
-        UserMailer.location_submitted_admin(@location).deliver
-        UserMailer.location_submitted(@location).deliver
+        AdminMailer.location_submitted_admin(@location).deliver_now
+        UserMailer.location_submitted(@location).deliver_now
       end
       respond_to do |format|
         format.json { render json: @location.uploads.last.append_file_json, status: :ok }
@@ -161,7 +161,7 @@ class LocationsController < ApplicationController
   end
 
   def delete_request
-    UserMailer.request_location_removal_admin(@location, params[:reject_reason]).deliver_now
+    AdminMailer.request_location_removal_admin(@location, params[:reject_reason]).deliver_now
     UserMailer.request_location_removal_owner(@location, params[:reject_reason]).deliver_now
     redirect_to "/users/#{@location.user.id}", flash: {notice: "Se ha notificado al administrador para eliminar la locación #{@location.title}"}
   end

@@ -23,12 +23,6 @@ class UserMailer < ApplicationMailer
 		mail(to: @user.email, subject: 'Tu locación ha sido recibida')
 	end
 
-	def location_submitted_admin(location)
-		@location = location
-		admin_email = "cdiaz@chilelocaciones.cl" || Conf.value('admin_email')
-		mail(to: admin_email, subject: '[ADMIN ATLOCS] Han publicado una nueva locación')
-	end
-
 	def location_approved(location)
 		@user = location.user
 		@location = location
@@ -41,26 +35,11 @@ class UserMailer < ApplicationMailer
 		mail(to: @user.email, subject: 'Tu locación necesita algunos cambios para nuestra aprobación')
 	end
 
-	def request_location_removal_admin(location, reason)
-		@location = location
-		@user = location.user
-		@reason = reason
-		mail(to: Conf.value('admin_email'),subject: "Eliminación de Locación ")
-	end
-
 	def request_location_removal_owner(location, reason)
 		@location = location
 		@user = location.user
 		@reason = reason
 		mail(to: @user.email,subject: "Eliminación de Locación ")
-	end
-
-	def booking_requested_admin(booking)
-		@user = booking.user
-		@location = booking.location
-		@location_user = booking.location.user
-		@booking=booking
-		mail(to: Conf.value('admin_email'), subject: '[ADMIN ATLOCS]¡Han solicitado una reserva!')
 	end
 
 	def booking_requested(booking)
@@ -125,12 +104,6 @@ class UserMailer < ApplicationMailer
 		mail(to: @owner.email, subject: '¡Tu locación ha sido arrendada con éxito!')
 	end
 
-	def payment_confirmed_admin(booking)
-		@booking = booking
-		@location = booking.location
-		mail(to: Conf.value('admin_email'), subject: 'Se ha completado una Reserva. ')
-	end
-
 	def contact_form(email,body,subject)
 		@body=body
 		mail(to: Conf.value('admin_email'),subject: subject, from:email)
@@ -151,14 +124,6 @@ class UserMailer < ApplicationMailer
 		@user = user
 		mail(to: @user.email, subject: 'Eliminación de Cuenta.')
 	end
-
-	def request_destroy_admin(user, reason)
-    @user = user
-		@bookings = @user.bookings
-		@locations = @user.locations
-		@reason = reason
-		mail(to: Conf.value('admin_email'), subject: 'Eliminación de Cuenta.')
-  end
 
 	def owner_location_review(booking)
 		@user = booking.location.user
@@ -201,13 +166,6 @@ class UserMailer < ApplicationMailer
 		mail(to: @user.email, subject: " La Reserva para tu locación #{booking.location.title} ha sido cancelada. ")
 	end
 
-	def admin_booking_cancel(booking, reason)
-		@user = booking.user
-		@booking = booking
-		@reason = reason
-		mail(to: Conf.value('admin_email'), subject: "La Reserva para la locación #{booking.location.title} ha sido cancelada. ")
-	end
-
 	def client_booking_cancel_by_owner(booking, reason)
 		@user = booking.user
 		@booking = booking
@@ -220,12 +178,5 @@ class UserMailer < ApplicationMailer
 		@reason = reason
 		@user = booking.location.user
 		mail(to: @user.email, subject: "Has cancelado la reserva para tu locación #{@booking.location.title}.")
-	end
-
-	def admin_booking_cancel_by_owner(booking, reason)
-		@user = booking.location.user
-		@booking = booking
-		@reason = reason
-		mail(to: Conf.value('admin_email'), subject: "La Reserva para la locación #{@booking.location.title} ha sido cancelada. ")
 	end
 end

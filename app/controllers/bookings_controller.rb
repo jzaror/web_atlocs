@@ -86,11 +86,11 @@ class BookingsController < ApplicationController
     if @booking.user.id == @user.id
       UserMailer.client_booking_cancel(@booking, params[:reject_reason]).deliver_now
       UserMailer.owner_booking_cancel(@booking, params[:reject_reason]).deliver_now
-      UserMailer.admin_booking_cancel(@booking, params[:reject_reason]).deliver_now
+      AdminMailer.admin_booking_cancel(@booking, params[:reject_reason]).deliver_now
     else
       UserMailer.client_booking_cancel_by_owner(@booking, params[:reject_reason]).deliver_now
       UserMailer.owner_booking_cancel_by_owner(@booking, params[:reject_reason]).deliver_now
-      UserMailer.admin_booking_cancel_by_owner(@booking, params[:reject_reason]).deliver_now
+      AdminMailer.admin_booking_cancel_by_owner(@booking, params[:reject_reason]).deliver_now
     end
     REDIS.lpush("booking#{@booking.code}",{:datetime=>Time.now.to_i,:text=>"Reserva cancelada por #{current_user.full_name}",:action=>"cancelled"}.to_json)
     redirect_to bookings_path
@@ -212,7 +212,7 @@ class BookingsController < ApplicationController
     if @booking.confirm_payment
       UserMailer.payment_confirmed(@booking).deliver
       UserMailer.payment_confirmed_owner(@booking).deliver
-      UserMailer.payment_confirmed_admin(@booking).deliver
+      AdminMailer.payment_confirmed_admin(@booking).deliver
       REDIS.lpush("booking#{@booking.code}",{:datetime=>Time.now.to_i,:text=>"Pago confirmado",:action=>"payment"}.to_json)
       @booking.user.notify("booking")
       @booking.location.user.notify("booking")

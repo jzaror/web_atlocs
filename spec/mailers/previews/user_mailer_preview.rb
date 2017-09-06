@@ -23,7 +23,7 @@ class UserMailerPreview < ActionMailer::Preview
 
 	def request_location_removal_admin
 		location = Location.first
-		UserMailer.request_location_removal_admin(location, location.user)
+		AdminMailer.request_location_removal_admin(location, location.user)
 	end
 
 	def booking_requested
@@ -31,7 +31,7 @@ class UserMailerPreview < ActionMailer::Preview
 	end
 
 	def booking_requested_admin
-		UserMailer.booking_requested_admin(Booking.first)
+		AdminMailer.booking_requested_admin(Booking.first)
 	end
 
 	def booking_sent
@@ -70,7 +70,7 @@ class UserMailerPreview < ActionMailer::Preview
 
 	def request_destroy_admin
 		@user = User.first
-		UserMailer.request_destroy_admin(@user)
+		AdminMailer.request_destroy_admin(@user)
 	end
 
 end
