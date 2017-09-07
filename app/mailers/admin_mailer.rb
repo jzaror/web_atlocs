@@ -1,5 +1,5 @@
 class AdminMailer < ApplicationMailer
-	default from: "AtLocs <atlocs.com@gmail.com>"
+	default from: "atlocs.com@gmail.com"
 	layout 'mailer'
 
 	def location_submitted_admin(location)
