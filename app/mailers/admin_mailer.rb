@@ -1,10 +1,9 @@
 class AdminMailer < ApplicationMailer
-	default from: "atlocs.com@gmail.com"
 	layout 'mailer'
 
 	def location_submitted_admin(location)
 		@location = location
-		admin_email = "cdiaz@chilelocaciones.cl" || Conf.value('admin_email')
+		admin_email = Conf.value('admin_email')
 		mail(to: admin_email, subject: '[ADMIN ATLOCS] Han publicado una nueva locación')
 	end
 

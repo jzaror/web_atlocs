@@ -109,8 +109,8 @@ class LocationsController < ApplicationController
           @location.uploads.create(image: image)
         end
       elsif params[:new_record]
-        AdminMailer.location_submitted_admin(@location).deliver_now
-        UserMailer.location_submitted(@location).deliver_now
+        AdminMailer.location_submitted_admin(@location).deliver
+        UserMailer.location_submitted(@location).deliver
       end
       respond_to do |format|
         format.json { render json: @location.uploads.last.append_file_json, status: :ok }
