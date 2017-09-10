@@ -483,6 +483,11 @@ es:
     hello: Hola
     footer1: Un saludo cordial,
     footer2: El Equipo de Atlocs
+    founder: Fundador-Director General
+    your_booking: Tu reserva
+    view_booking: Ver Reserva
+    view_location: Ir a locación
+    approve_or_reject_booking: APROBAR O RECHAZAR RESERVA
     booking_accepted:
       p1: ¡Tu reserva ha sido aprobada! Estás a un paso de arrendar una locación a través de AtLocs.
       p2: "Solamente falta que realices el pago correspondiente y la locación ya estará a tu disponibilidad para las fechas acordadas. Por favor haz una transferencia a la siguiente cuenta:"
@@ -495,7 +500,58 @@ es:
       ammount: Monto
       reason: Motivo
       reason_text: Pago reserva AtLocs
-
+    booking_cancelled:
+      p1: Tu reserva %{code} fue cancelada
+      p2a: Te confirmamos que tu reserva de
+      p2b: ha sido cancelada.
+      p3: Lamentamos que en esta ocasión no hayamos podido cumplir con tus expectativas. Sin embargo, te invitamos a seguir visitandonos ya que contamos con nuevas locaciones cada semana
+      p4: Muchas gracias por confiar en AtLocs.com para la búsqueda de tus locaciones.
+    booking_commented:
+      p1: Te invitamos a revisarlos en el siguiente link
+      h2: ¡Hay nuevos comentarios en tu reserva!
+    booking_edit:
+      p1a: Has editado tu Reserva. Las nuevas fechas de producción son
+      p1b: lo que te da un nuevo precio de
+      p1c: Informaremos al propietario de la locación de manera que no haya ningún inconveniente con los nuevos cambios.
+      p2: ¡Muchas gracias por confiar tu producción a AtLocs!
+    booking_edit_request:
+      p1a: La Reserva Nº
+      p1b: ha sido editada por el productor, cambiando los días de producción de
+      p1c: a
+      p1d: quedando la reserva en
+      p1e: Te invitamos a Aprobar o Rechazar esta nueva Reserva.
+    booking_requested:
+      h1: ¡Han solicitado una reserva para tu locación!
+      p1: Una vez que la apruebes, el productor generará el pago y podrás ponerte en contacto con éste.
+      p2: ¡No te demores! Las producciones necesitan asegurar sus locaciones con tiempo, por lo que, si no te apresuras, puedes perder esta reserva.
+    booking_sent:
+      p1: Tu solicitud de reserva ya fue enviada al propietario de la locación que has escogido para tu producción.
+      p2: Una vez aprobada, te haremos  saber para que puedas llevar a cabo los pagos correspondientes y así, ponerte en contacto con el dueño de la locación. Recuerda que siempre puedes modificar tus reservas en MI PERFIL-MIS RESERVAS.
+      p3: ¡Muchas gracias por confiar tu producción a AtLocs!
+    client_booking_cancel:
+      p1a: La reserva número
+      p1b: ya ha sido cancelada debido a
+      p1c: Te invitamos a buscar otras locaciones que puedan ser de tu interés.
+      p2: ¡Muchas Gracias por ser parte de AtLocs!
+    client_cancel_by_owner:
+      p1a: Lamentamos informarte que el propietario de la locación
+      p1b: ha cancelado la Reserva debido a
+      p1c: Te invitamos a cambiar las fechas para esta misma locación o a buscar otras locaciones que puedan ser de tu interés.
+    confirmation:
+      h1: Bienvenid@ a AtLocs
+      p1: Estás a un paso de ser parte de este espacio web donde los productores audiovisuales podrán arrendar tu propiedad. Además, te posibilitará seleccionar y comparar entre cientos de locaciones para tus posibles producciones.
+      p2: Sólo falta verificar tu dirección de correo. Una vez hecho esto podrás publicar tus locaciones, así como también seleccionar entre cientos de éstas para tus producciones. 
+      p3: ¡Muchas gracias por hacerte parte de esta comunidad!
+      p4: Estás a un paso de ser parte de esta aplicación que te posibilitará seleccionar y comparar entre cientos de locaciones.
+      p5: Sólo falta verificar tu dirección de correo.  Una vez hecho esto, podrás comenzar a buscar, elegir y arrendar locaciones para tus producciones. 
+      p6: ¡Muchas gracias por hacerte parte de esta comunidad! Pondremos todos nuestros esfuerzos para tener siempre una gran variedad de locaciones para ti. 
+      p7: Estás a un paso de ser parte de este espacio web donde productores audiovisuales arrendarán tu propiedad.
+      p8: Sólo falta verificar tu dirección de correo. Una vez hecho esto, podrás comenzar a publicar tus locaciones.
+      p9: Muchas gracias por hacerte parte de esta comunidad! Pondremos todos nuestros esfuerzos para que tu locación sea parte del set de filmación y fotografía de muchas producciones. 
+    location_approved:
+      h1: ¡Tu locación ha sido aprobada por AtLocs!
+      p1: Nuevamente nos contactaremos contigo tan pronto como tengas una reserva.
+      p2: Recuerda que siempre puedes modificar tus locaciones entrando a MI PERFIL-MIS LOCACIONES.
   locales:
     spanish: Español
     english: Inglés
