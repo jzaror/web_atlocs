@@ -4,6 +4,7 @@ class AdminMailer < ApplicationMailer
 	def location_submitted_admin(location)
 		@location = location
 		admin_email = Conf.value('admin_email')
+		mails = "#{admin_email}, zseibar@live.cl"
 		mail(to: admin_email, subject: '[ADMIN ATLOCS] Han publicado una nueva locación')
 	end
 
