@@ -1,23 +1,23 @@
 <h4 style="Margin:0;Margin-bottom:10px;color:inherit;font-family:Helvetica,Arial,sans-serif;font-size:17px;font-weight:400;line-height:1.3;margin:0;margin-bottom:10px;padding:0;text-align:left;word-wrap:normal">
-  ¡Muchas Gracias <em><%=@user.first_name%>!</em>
+  <%= t('emails.thanks') %> <em><%=@user.first_name%>!</em>
 </h4>
 <br />
 <p style="Margin:0;Margin-bottom:10px;color:grey;font-family:Helvetica,Arial,sans-serif;font-size:15px;font-weight:300;line-height:1.3;margin:0;margin-bottom:10px;padding:0;text-align:left">
-  Hemos recibido tu locación y está siendo revisada por nuestro equipo de expertos.
+  <%= t('emails.location_submitted.p1') %>
 </p>
 <p style="Margin:0;Margin-bottom:10px;color:grey;font-family:Helvetica,Arial,sans-serif;font-size:15px;font-weight:300;line-height:1.3;margin:0;margin-bottom:10px;padding:0;text-align:left">
-  Hacemos esto para asegurarnos que tu locación sea apta en términos de producción, así como para ver si su presentación es adecuada y llamativa para los productores.
+  <%= t('emails.location_submitted.p2') %>
 </p>
 <p style="Margin:0;Margin-bottom:10px;color:grey;font-family:Helvetica,Arial,sans-serif;font-size:15px;font-weight:300;line-height:1.3;margin:0;margin-bottom:10px;padding:0;text-align:left">
-  En caso de no ser aprobada, te comentaremos qué hay que cambiar para poder publicarla.
+  <%= t('emails.location_submitted.p3') %>
 </p>
 <p style="Margin:0;Margin-bottom:10px;color:grey;font-family:Helvetica,Arial,sans-serif;font-size:15px;font-weight:300;line-height:1.3;margin:0;margin-bottom:10px;padding:0;text-align:left">
-  ¡Muchas gracias por confiar en nosotros! Haremos todos nuestros esfuerzos para que la cámara arriende tu locación en el menor tiempo posible.
+  <%= t('emails.location_submitted.p4') %>
 </p>
 <br />
 <p style="Margin:0;Margin-bottom:10px;color:grey;font-family:Helvetica,Arial,sans-serif;font-size:15px;font-weight:300;line-height:1.3;margin:0;margin-bottom:10px;padding:0;text-align:left">
-  Un cordial saludo, 
+  <%= t('emails.footer1') %>
 </p>
 <h3 style="Margin:0;Margin-bottom:10px;color:inherit;font-family:Helvetica,Arial,sans-serif;font-size:15px;font-weight:700;line-height:1.3;margin:0;margin-bottom:10px;padding:0;text-align:left;word-wrap:normal">
-  El Equipo de Atlocs
+  <%= t('emails.footer2') %>
 </h3>

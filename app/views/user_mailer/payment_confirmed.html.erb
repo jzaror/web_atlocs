@@ -1,24 +1,23 @@
 
 <h4 style="Margin:0;Margin-bottom:10px;color:inherit;font-family:Helvetica,Arial,sans-serif;font-size:17px;font-weight:400;line-height:1.3;margin:0;margin-bottom:10px;padding:0;text-align:left;word-wrap:normal">
-  Hola <em><%=@user.first_name%>!</em>
+  <%= t('emails.hello') %> <em><%=@user.first_name%>!</em>
 </h4>
 <br />
 <h1 class="text-center" style="Margin:0;Margin-bottom:10px;color:#4d4d4d;font-family:Chivo,sans-serif;font-size:21px;font-weight:700;line-height:1.3;margin:0;margin-bottom:10px;padding:0;text-align:center;text-transform:uppercase;word-wrap:normal">
-  ¡Has completado tu reserva en AtLocs!
+  <%= t('emails.payment_confirmed.p1') %>
 </h1>
 <p style="Margin:0;Margin-bottom:10px;color:grey;font-family:Helvetica,Arial,sans-serif;font-size:15px;font-weight:300;line-height:1.3;margin:0;margin-bottom:10px;padding:0;text-align:left">
-  Adjuntamos tu comprobante de pago, así como los detalles de tu reserva.
-	Desde ya, puedes comunicarte con el dueño de la Propiedad en MI PERFIL-MIS RESERVAS.
+  <%= t('emails.payment_confirmed.p2') %>
 </p>
 <ul>
-  <li>Código de reserva Nº <%= @booking.code %></li>
-  <li>Locación: <%= @booking.location.title %></li>
-  <li>Fecha de inicio: <%= @booking.start_time.strftime("%d/%m/%Y") %></li>
-  <li>Fecha de término: <%= @booking.end_time.strftime("%d/%m/%Y") %></li>
-  <li>Precio acordado: <%= number_to_currency(@booking.price, :unit => "$", :precision => 0)%></li>
+  <li><%= t('emails.payment_confirmed.li1') %> <%= @booking.code %></li>
+  <li><%= t('emails.payment_confirmed.li2') %> <%= @booking.location.title %></li>
+  <li><%= t('emails.payment_confirmed.li3') %> <%= @booking.start_time.strftime("%d/%m/%Y") %></li>
+  <li><%= t('emails.payment_confirmed.li4') %> <%= @booking.end_time.strftime("%d/%m/%Y") %></li>
+  <li><%= t('emails.payment_confirmed.li5') %> <%= number_to_currency(@booking.price, :unit => "$", :precision => 0)%></li>
 </ul>
 <p style="Margin:0;Margin-bottom:10px;color:grey;font-family:Helvetica,Arial,sans-serif;font-size:15px;font-weight:300;line-height:1.3;margin:0;margin-bottom:10px;padding:0;text-align:left">
-  ¡Muchas Gracias por confiar en AtLocs!
+  <%= t('emails.footer1b') %>
 </p>
 <br />
 <center data-parsed="" style="min-width:532px;width:100%">
@@ -30,7 +29,7 @@
             <tbody>
               <tr style="padding:0;text-align:left;vertical-align:top">
                 <td style="-moz-box-shadow:inset 0 0 10px #fefefe;-moz-hyphens:auto;-webkit-box-shadow:inset 0 0 10px #fefefe;-webkit-hyphens:auto;Margin:0;background:#5B46CD;border:none;border-collapse:collapse!important;border-radius:12px;box-shadow:inset 0 0 10px #fefefe;color:#fefefe;font-family:Helvetica,Arial,sans-serif;font-size:15px;font-weight:300;hyphens:auto;line-height:1.3;margin:0;padding:0;text-align:left;vertical-align:top;word-wrap:break-word">
-                  <%= link_to "Ir a mis reservas", bookings_url,
+                  <%= link_to t('bookings.my_bookings'), bookings_url,
                       style: "Margin:0;border:0 solid #5B46CD;border-radius:3px;color:#fefefe;display:inline-block;font-family:Helvetica,Arial,sans-serif;font-size:16px;font-weight:700;line-height:1.3;margin:0;padding:10px 16px;text-align:left;text-decoration:none;text-transform:uppercase" %>                </td>
               </tr>
             </tbody>
