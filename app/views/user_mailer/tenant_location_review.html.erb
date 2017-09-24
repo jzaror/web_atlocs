@@ -1,13 +1,13 @@
 <h4 style="Margin:0;Margin-bottom:10px;color:inherit;font-family:Helvetica,Arial,sans-serif;font-size:17px;font-weight:400;line-height:1.3;margin:0;margin-bottom:10px;padding:0;text-align:left;word-wrap:normal">
-  Hola <em><%=@user.first_name%>!</em>
+  <%= t('emails.hello') %> <em><%=@user.first_name%>!</em>
 </h4>
 <br />
 
 <h1 class="text-center" style="Margin:0;Margin-bottom:10px;color:#4d4d4d;font-family:Chivo,sans-serif;font-size:21px;font-weight:700;line-height:1.3;margin:0;margin-bottom:10px;padding:0;text-align:center;text-transform:uppercase;word-wrap:normal">
-  ¡Cuéntanos tu experiencia!
+  <%= t('emails.tenent_location_review.p1') %>
 </h1>
 <p style="Margin:0;Margin-bottom:10px;color:grey;font-family:Helvetica,Arial,sans-serif;font-size:15px;font-weight:300;line-height:1.3;margin:0;margin-bottom:10px;padding:0;text-align:left">
-  Ayer finalizaste tu arriendo en <%= @booking.location.title %>, por favor responde la siguiente encuesta evaluando la locación.
+  <%= t('emails.tenent_location_review.p2a') %> <%= @booking.location.title %>, <%= t('emails.tenent_location_review.p2b') %>
 </p>
 <br />
 <center data-parsed="" style="min-width:532px;width:100%">
@@ -19,7 +19,7 @@
             <tbody>
               <tr style="padding:0;text-align:left;vertical-align:top">
                 <td style="-moz-box-shadow:inset 0 0 10px #fefefe;-moz-hyphens:auto;-webkit-box-shadow:inset 0 0 10px #fefefe;-webkit-hyphens:auto;Margin:0;background:#5B46CD;border:none;border-collapse:collapse!important;border-radius:12px;box-shadow:inset 0 0 10px #fefefe;color:#fefefe;font-family:Helvetica,Arial,sans-serif;font-size:15px;font-weight:300;hyphens:auto;line-height:1.3;margin:0;padding:0;text-align:left;vertical-align:top;word-wrap:break-word">
-                  <%= link_to "Evalúa la locación", Conf.value('client_review'),
+                  <%= link_to t('emails.review_location'), Conf.value('client_review'),
                       style: "Margin:0;border:0 solid #5B46CD;border-radius:3px;color:#fefefe;display:inline-block;font-family:Helvetica,Arial,sans-serif;font-size:16px;font-weight:700;line-height:1.3;margin:0;padding:10px 16px;text-align:left;text-decoration:none;text-transform:uppercase" %>                </td>
               </tr>
             </tbody>
@@ -30,8 +30,8 @@
   </table>
 </center>
 <p style="Margin:0;Margin-bottom:10px;color:grey;font-family:Helvetica,Arial,sans-serif;font-size:15px;font-weight:300;line-height:1.3;margin:0;margin-bottom:10px;padding:0;text-align:left">
-	Un saludo cordial,
+	<%= t('emails.footer1') %>
 </p>
 <h3 style="Margin:0;Margin-bottom:10px;color:inherit;font-family:Helvetica,Arial,sans-serif;font-size:15px;font-weight:700;line-height:1.3;margin:0;margin-bottom:10px;padding:0;text-align:left;word-wrap:normal">
-	El Equipo de Atlocs
+	<%= t('emails.footer2') %>
 </h3>

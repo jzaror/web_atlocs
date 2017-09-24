@@ -489,7 +489,12 @@ es:
     view_booking: Ver Reserva
     view_location: Ir a locación
     approve_or_reject_booking: APROBAR O RECHAZAR RESERVA
+    dont_remove_account: YA NO QUIERO ELIMINAR MI CUENTA
+    dont_remove_location: YA NO QUIERO ELIMINAR MI LOCACION
     thanks: ¡Muchas Gracias
+    change_password: Cambiar Contraseña
+    review_location: "Evalúa la locación"
+    go_to: Ir a AtLocs
     booking_accepted:
       p1: ¡Tu reserva ha sido aprobada! Estás a un paso de arrendar una locación a través de AtLocs.
       p2: "Solamente falta que realices el pago correspondiente y la locación ya estará a tu disponibilidad para las fechas acordadas. Por favor haz una transferencia a la siguiente cuenta:"
@@ -607,6 +612,27 @@ es:
       li3: "Fecha de inicio:"
       li4: "Fecha de término:"
       li5: "Precio acordado:"
+    request_destroy:
+      p1: Lamentamos mucho que quieras dejar de ser parte de AtLocs.
+      p2: Hemos recibido tus razones para tomar esta decisión. Uno de nuestros expertos se contactará contigo a la brevedad, o aceptará tu eliminación automáticamente.
+      p3: Esperamos que cambies de opinión y sigas siendo parte de esta comunidad de locaciones.
+    request_location_removal_owner:
+      p1a: Lamentamos mucho que quieras eliminar tu locación
+      p1b: Hemos recibido tus razones para tomar esta decisión. Uno de nuestros expertos se contactará contigo a la brevedad.
+      p2: Esperamos que cambies de opinión y mantengas tu locación dentro de la comunidad de AtLocs.
+    request_password_token:
+      p1: ¿Has olvidado tu contraseña?
+      p2: No te preocupes. A todos nos pasa.
+      p3: Haz click en el siguiente botón y podrás recuperarla rápidamente.
+    tenant_location_review:
+      p1: ¡Cuéntanos tu experiencia!
+      p2a: Ayer finalizaste tu arriendo en
+      p2b: por favor responde la siguiente encuesta evaluando la locación.
+    welcome:
+      p1: ¡Bienvenid@ a AtLocs!
+      p2: ¡Muchas gracias por hacerte parte de esta comunidad donde podrás comparar y seleccionar entre cientos de locaciones!
+      p3: Pondremos todos nuestros esfuerzos para tener siempre una gran variedad de locaciones para ti y tus producciones.
+      p4: Te invitamos a buscar la mejor locación para tu producción.
   locales:
     spanish: Español
     english: Inglés

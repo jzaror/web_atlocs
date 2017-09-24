@@ -1,22 +1,22 @@
 <h4 style="Margin:0;Margin-bottom:10px;color:inherit;font-family:Helvetica,Arial,sans-serif;font-size:17px;font-weight:400;line-height:1.3;margin:0;margin-bottom:10px;padding:0;text-align:left;word-wrap:normal">
-  Hola <em><%=@user.first_name%>!</em>
+  <%= t('emails.hello') %> <em><%=@user.first_name%>!</em>
 </h4>
 <br />
 <p style="Margin:0;Margin-bottom:10px;color:grey;font-family:Helvetica,Arial,sans-serif;font-size:15px;font-weight:300;line-height:1.3;margin:0;margin-bottom:10px;padding:0;text-align:left">
-  Lamentamos mucho que quieras dejar de ser parte de AtLocs.
+  <%= t('emails.request_destroy.p1') %>
 </p>
 <p style="Margin:0;Margin-bottom:10px;color:grey;font-family:Helvetica,Arial,sans-serif;font-size:15px;font-weight:300;line-height:1.3;margin:0;margin-bottom:10px;padding:0;text-align:left">
-  Hemos recibido tus razones para tomar esta decisión. Uno de nuestros expertos se contactará contigo a la brevedad, o aceptará tu eliminación automáticamente.
+  <%= t('emails.request_destroy.p2') %>
 </p>
 <p style="Margin:0;Margin-bottom:10px;color:grey;font-family:Helvetica,Arial,sans-serif;font-size:15px;font-weight:300;line-height:1.3;margin:0;margin-bottom:10px;padding:0;text-align:left">
-  Esperamos que cambies de opinión y sigas siendo parte de esta comunidad de locaciones.
+  <%= t('emails.request_destroy.p3') %>
 </p>
 <br />
 <p style="Margin:0;Margin-bottom:10px;color:grey;font-family:Helvetica,Arial,sans-serif;font-size:15px;font-weight:300;line-height:1.3;margin:0;margin-bottom:10px;padding:0;text-align:left">
-	Muchos saludos,
+	<%= t('emails.footer1') %>
 </p>
 <h3 style="Margin:0;Margin-bottom:10px;color:inherit;font-family:Helvetica,Arial,sans-serif;font-size:15px;font-weight:700;line-height:1.3;margin:0;margin-bottom:10px;padding:0;text-align:left;word-wrap:normal">
-	El Equipo de Atlocs
+	<%= t('emails.footer2') %>
 </h3>
 <br />
 <center data-parsed="" style="min-width:532px;width:100%">
@@ -29,7 +29,7 @@
               <tr style="padding:0;text-align:left;vertical-align:top">
                 <td style="-moz-box-shadow:inset 0 0 10px #fefefe;-moz-hyphens:auto;-webkit-box-shadow:inset 0 0 10px #fefefe;-webkit-hyphens:auto;Margin:0;background:#5B46CD;border:none;border-collapse:collapse!important;border-radius:30px;box-shadow:inset 0 0 10px #fefefe;color:#fefefe;font-family:Helvetica,Arial,sans-serif;font-size:15px;font-weight:300;hyphens:auto;line-height:1.3;margin:0;padding:0;text-align:left;vertical-align:top;word-wrap:break-word">
                   <a href="<%= user_url(@user) %>" style="Margin:0;border:0 solid #5B46CD;border-radius:3px;color:#fefefe;display:inline-block;font-family:Helvetica,Arial,sans-serif;font-size:16px;font-weight:700;line-height:1.3;margin:0;padding:10px 16px;text-align:left;text-decoration:none;text-transform:uppercase">
-                    YA NO QUIERO ELIMINAR MI CUENTA
+                    <%= t('emails.dont_remove_account') %>
                   </a>
                 </td>
               </tr>
