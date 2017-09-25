@@ -66,3 +66,4 @@ gem 'awesome_print', '1.7.0'
 
 gem 'money'
 gem 'google_currency'
+gem 'monetize'
