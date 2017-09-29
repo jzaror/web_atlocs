@@ -36,14 +36,8 @@
 							=t('general.questions')
 							%a.btn.btn-link.btn-sm.p-0{:href => "/contacto?subject=Consulta por Locación "+@location.id.to_s, :role => "button", :style => "z-index: 99999999;position: relative;"}
 								%i.mdi.mdi-lg.mdi-email-outline
-<<<<<<< 350f1ce4295d6eae756b89957aceeeb66c6d51f3
-								Contáctanos
-
-	.container
-=======
 								=t('general.contact_us')
-	.container-fluid
->>>>>>> translated locaiton show action
+	.container
 		.row.location-content
 			.col-md-7
 				- if flash[:notice]
@@ -110,13 +104,7 @@
 									});
 								});
 					%small Ubicación aproximada, reserva para obtener más información.
-<<<<<<< 350f1ce4295d6eae756b89957aceeeb66c6d51f3
-
-
 			-if @location.uploads.count>0
-=======
-			-if @location.attachments.count>0
->>>>>>> translated locaiton show action
 				.col-md-12
 					.content-box.gallery
 						%h3.gallery-title
