@@ -16,34 +16,21 @@
 					-unless current_user
 						%li.nav-item
 							%a.nav-link{:href => "/login"}
-<<<<<<< 6fff1af3efb145ec1b5e847402c3c70a9aa9cb5d
-								Ingresa
-						%li.nav-item
-=======
 								= I18n.t('actions.log_in')
 						%li.nav-item#loginlink
->>>>>>> added translations to home page
+
 							%a.nav-link{:href => "/signup"}
 								= I18n.t('actions.sign_up')
 					-if current_user
 						%li.nav-item
 							= link_to(I18n.t('general.collections_and'), collections_path, :class=>"nav-link")
 						%li.nav-item
-<<<<<<< 6fff1af3efb145ec1b5e847402c3c70a9aa9cb5d
-							= link_to("Locaciones", locations_path, :class=>"nav-link")
-					%li.nav-item
-						%a.nav-link{:href => "/contacto"}
-							Contacto
-					%li.nav-item
-						%form{ :method=>"get", :action=>"/locations/new/?newlocation=true" }
-=======
 							= link_to(I18n.t('general.locations'), locations_path, :class=>"nav-link")
 					%li.nav-item#loginlink
 						%a.nav-link{:href => "/contacto"}
 							= I18n.t('general.contact')
 					%li.nav-item{:style => "margin: 6px 5px;"}
 						%form{ :method=>"get", :action=>"/locations/new/" }
->>>>>>> added translations to home page
 							%input{:type=>"hidden", :name=>"newlocation", :value=>"true"}
 							%button.btn.btn-secondary.text-primary.navbar-btn{ :type=>"submit"}
 								%i.mdi.mdi-lg.mdi-cloud-upload
