@@ -11,15 +11,11 @@ es:
         restrict_dependent_destroy:
           has_one: No se puede eliminar el registro porque existe un %{record} dependiente
           has_many: No se puede eliminar el registro porque existen %{record} dependientes
+
   flash_messages:
     defaults:
       success: "Acción Exitosa"
-  locations:
-    status:
-      approved: Aprobada
-      archived: No publicada
-      draft: Esperando Aprobación
-      submitted: Enviada
+
   date:
     abbr_day_names:
     - dom
@@ -30,7 +26,6 @@ es:
     - vie
     - sáb
     abbr_month_names:
-    -
     - ene
     - feb
     - mar
@@ -73,6 +68,7 @@ es:
     - :day
     - :month
     - :year
+
   datetime:
     distance_in_words:
       about_x_hours:
@@ -116,6 +112,7 @@ es:
       month: Mes
       second: Segundos
       year: Año
+  
   errors:
     format: "%{attribute} %{message}"
     messages:
@@ -154,6 +151,7 @@ es:
       header:
         one: No se pudo guardar este/a %{model} porque se encontró 1 error
         other: No se pudo guardar este/a %{model} porque se encontraron %{count} errores
+
   helpers:
     select:
       prompt: Por favor seleccione
@@ -161,6 +159,7 @@ es:
       create: Crear %{model}
       submit: Guardar %{model}
       update: Actualizar %{model}
+
   number:
     currency:
       format:
@@ -213,11 +212,13 @@ es:
     precision:
       format:
         delimiter: ''
+  
   support:
     array:
       last_word_connector: " y "
       two_words_connector: " y "
       words_connector: ", "
+  
   time:
     am: am
     formats:
@@ -225,3 +226,412 @@ es:
       long: "%d de %B de %Y %H:%M"
       short: "%d de %b %H:%M"
     pm: pm
+  
+  shared:
+    navbar:
+      toggle_navigation: Toggle Navigation
+
+  general:
+    collections_and: 'Barrios y Colecciones'
+    locations: 'Locaciones'
+    location: Locación
+    booking: Reserva
+    contact: 'Contacto'
+    profile: 'Perfil'
+    my_locations: 'Mis locaciones'
+    my_bookings: 'Mis reservas'
+    terms: Términos y condiciones
+    about_us: Nosotros
+    days: Días
+    questions: ¿Tienes una consulta específica respecto a esta locación?
+    contact_us: Contáctanos
+    description: Descripción
+    details: Detalles y características
+    image_gallery: Galería de Imágenes
+    collection: Colección
+    thanks: Gracias
+
+  location:
+    price_by_day: (Por día. Incluye precio de reserva)
+    type: Tipo de Locación
+    services: Espacios filmables
+    extras: Espacios utilizables
+    latitude: Ubicación aproximada
+    status:
+      approved: Aprobada
+      archived: No publicada
+      draft: Esperando Aprobación
+      submitted: Enviada
+    form:
+      form_title: Publica tu locación
+      title: Título de tu Locación
+      title_placeholder: "Agrega un nombre claro y descriptivo"
+      description: Descripción
+      description_placeholder: "Describe detalladamente tu locación. Una buena descripción facilitará que más usuarios puedan encontrarla."
+      step2a: Características de tu Locación
+      step2b: Selecciona las opciones que mejor señalen lo que es y lo que ofrece tu locación.
+      type: "Tipo de locación"
+      tag1: "Agrega etiquetas referentes a detalles esteticos, barrios, etc"
+      tag2: "Incluye palabras o pequeñas frases claves, que describan tu locación. Sepáralas por coma. Ej: casona, naturaleza, vista al lago, campo."
+      services1: "Espacios filmables"
+      services2: Señala solamente los espacios que la producción podrá filmar o fotografiar para su película, sesión fotográfica, comercial, etc.
+      extras1: "Espacios utilizables"
+      extras2: "En una producción puedes tener a mucha gente trabajando, los cuáles necesitarán utilizar otros espacios de tu propiedad, que no son específicamente aquellos que se están filmando. Señala qué espacios estarán habilitados para la producción. Ej: Si seleccionas Baño, significa que la producción puede utilizar el baño, etc."
+      address: "Dirección"
+      address2: "* Esta información solamente será visible cuando un usuario haya confirmado y pagado su reserva."
+      step3title: Fotografías
+      step3subtitle: Una imagen dice más que mil palabras. Sube las mejores fotografías que tengas de tu locación, mostrando todo el espacio que los productores podrán filmar o fotografiar.  Recuerda incluir fotos generales, así como de detalles, de tu locación.
+      attachments: Adjuntar Archivos
+      attachments2: Sube solamente fotografias HORIZONTALES en formato  .jpg, .gif o .png. De lo contrario no podremos publicar tu locación. La fotografía horizontal es la única manera que los productores pueden imaginarse cómo se verá tu locación en cámara.
+      select_files: Selecciona archivos
+      step4_h2: Precio
+      step4_p: Recuerda que puedes cobrar por jornada, lo mismo o más, de lo que cobrarías por un arriendo mensual. Sin embargo, recuerda que un precio equilibrado, hará que haya más interesados en tu locación.
+      day_price: "Precio por jornada"
+      day_price2: El mínimo de arriendo para tu locación es de $150.000 pesos chilenos.
+      atlocs_commission: Comisión Atlocs
+      atlocs_disclaimer: "* AtLocs, Sumará una Comisión del 15% por gestionar Tu Propiedad."
+      atlocs_disclaimer2: (*) Una jornada completa de trabajo corresponde a un máximo de 12 horas seguidas de producción. Ten en cuenta esto al momento de ponerle precio a tu locación.
+      publish: Publicar Locación
+      update: Guardar Locación
+      i_agree1: Estoy de acuerdo con los
+      i_agree2: de Atlocs
+      more_info: Más info
+
+  actions:
+    approve: Aprobar
+    archive: Archivar
+    publish: Publica tu locación
+    exit: Salir
+    log_in: Ingresa
+    sign_up: Regístrate
+    see_all_locations: Ver todas las locaciones
+    see_all_collections: Ver todas las colecciones
+    see_location: Ver locación
+    see_booking: Ver reserva
+    book_again: Reservar esta locación nuevamente
+    edit: Editar %{model}
+    view: Ver %{model}
+    create: Crear %{model}
+    book: Reservar %{model}
+    go_back: Volver
+    feature_in_home: Destacar en home
+    add_to_collection: Agregar a colección
+    explore: Explora
+
+  extas:
+    you_can: Puedes
+    or: o
+    searching: Buscando
+    exploring: Explorando
+    search_results: Resultados de búsqueda para
+
+  pages:
+    home:
+      slide1a: ¡Descubre el mundo de AtLocs!
+      slide1b: Encuentra la locación perfecta para tus filmaciones, fotografías y eventos.
+      slide2a: Arrienda tu locación
+      slide2b: Inscribe tu locación  y comienza a ser parte de AtLocs.
+      slide3a: Planifica la filmación
+      slide3b: AtLocs te ayuda a encontrar la locación perfecta. Reserva y asesórate por nuestro equipo de expertos.
+      navbar_tags: ¿Que estás buscando?
+      locations1: Encuentra tu locación ideal
+      locations2: para cualquier tipo de producción
+      collections1: Explora por categoría
+      collections2: Revisa nuestras Colecciones
+      how_it_works1: Como Funciona AtLocs
+      how_it_works2: Ofrecemos un espacio para poner en contacto a Productoras Audiovisuales con dueños de loacaciones
+      certificate1: Locaciones Certificadas
+      certificate2: Todas las locaciones publicadas en nuestra plataforma son revisadas por nuestro equipo para asegurar a las productoras un contenido confiable y de calidad a la hora de elegir su próxima locación.
+      contract1: Seguimiento y Asesoría AtLocs
+      contract2: Asesoramos y guiamos a cada usuario en la presentación y descripción de su locación. También acompañamos a ambos en el proceso de reserva y gestión de cada locación.
+      deal1: Productoras & Locaciones
+      deal2: Trabajamos con grandes productoras nacionales e internacionales para asegurar a nuestros usuarios la seriedad y compromiso en caso de concretar una reserva de su locación.
+  
+  contact_form:
+    subtitle: Envíanos tu inquietud y te responderemos a la brevedad.
+    email: Tu E-mail
+    phone: Número de celular
+    subject: Asunto
+    message: Mensaje
+    submit: Enviar 
+  
+  faq:
+    title: Preguntas Frecuentes
+    general: Generales
+    question1a: ¿Qué es AtLocs.com?
+    question1b: AtLocs es la primera plataforma chilena en representar a varios lugares que permite que tu casa, propiedad o tu amado espacio  sean usados en proyectos audiovisuales y cinematográficos, tales como; comerciales, películas, sesiones de fotografía, teleseries, seriales u otros equivalentes.
+    question2a: ¿Cómo puedo acceder a los servicios de AtLocs.com?
+    question2b: "1.- Si quieres registrar tu propiedad:"
+    question2c: "Ingresa a nuestra plataforma y registra tu propiedad con un simple formulario. Debes registrarte con tu nombre y dirección electrónica. Una vez que hayas cumplido con eso, te pediremos información básica de tu propiedad y podrás subir fotografías para que éstas, en caso que cumplan con los estándares de calidad de AtLocs.com queden disponibles para ser visualizada por nuestros clientes."
+    question2d: "2.- Si necesitas encontrar una locación:"
+    question2e: Ingresa a nuestra plataforma y regístrate en nuestra página, usando tu nombre y cuenta corporativa (debe ser comprobable) y podrás tener acceso a nuestro registro de propiedades. Así podrás buscar, reservar y arrendar aquellas que más se ajusten a tus necesidades.
+    question3a: ¿Quiénes pueden registrar propiedades?
+    question3b: Todos los dueños o arrendatarios debida y expresamente autorizados por los dueños, cuyas propiedades estén disponibles para ser usadas en proyectos cinematográficos y audiovisuales. (En este punto AtLocs estará en contacto contigo para ayudarte a la tramitación de documentos para así poner en arriendo tu espacio.)
+    question4a: ¿Cómo se publica una locación?
+    question4b: En nuestro sitio encontrarás la pestaña "Publica tu locación", al ingresar debes registrarte mediante  un formulario muy simple en el cual entregarás datos de la propiedad que deseas publicar.  Una vez que hayas completado el formulario recibirás un email de AtLocs donde te indicaremos que tu locación ya fue recibida por nuestro equipo. Sin embargo, dicho email no es garantía de que AtLocs proceda a la publicación, ya que previamente deben ser validados los datos e información de la propiedad, luego de lo cual procederemos a la publicación, lo que también te informaremos vía email por lo menos de 48 horas.
+    question5a: ¿Cuántas locaciones puedo publicar?
+    question5b: Puedes subir todas las que quiera, mientras seas el dueño de la propiedad o arrendatario con autorización expresa del dueño.
+    question6a: ¿Cuál es el costo del servicio de AtLocs?
+    question6b: El valor de los servicios prestados por AtLocs, asciende a un  15% del valor que tú establezcas para el arriendo de tu propiedad.
+    question7a: ¿Quiénes pueden arrendar las propiedades?
+    question7b: Nuestros clientes son productores, directores y profesionales del área cinematográfica y audiovisual, tanto de Chile como del extranjero y cualquier empresa que necesite de nuestros servicios.
+    question8a: ¿Puedo subir yo mis propias fotos? 
+    question8b: Puedes subir tus propias fotos, siempre y cuando estas cumplan con los estándares mínimos que tiene AtLocs, los cuales el usuario se obliga a acatar por el solo hecho de enviar las fotos que se proponen subir. ¿Hay alguna limitación con respecto a la publicación de mis fotos? No para nada.
+    question8c: Las fotos permiten mostrar de que la mejor manera tu propiedad y el espacio disponible. En este sentido, no hay límite en la cantidad de fotos que puedas enviar o proponer para subir al sitio. Queremos que nuestros clientes tengan la mejor impresión de tu propiedad.
+    question8d: La única limitación que tiene las fotos que envías o proponer a AtLocs para su publicación, es el cumplimiento de los términos y condiciones del sitio, en especial las disposiciones relativas a los derechos de imagen y de autor de las fotos.  Pasando por los puntos anteriores AtLocs estará en contacto contigo a la brevedad para publicar tu locación.
+    question9a: ¿AtLocs puede tomar las fotos de mi propiedad?
+    question9b: AtLocs ofrece un servicio especializado de fotografía a quienes lo requieran expresamente. En media hora tomamos las mejores fotos de tu propiedad en donde nos pondremos en contacto a la brevedad con usted para coordinar todo de la mejor manera.
+    question10a: ¿Cómo lo hago si estoy interesado en arrendar mi propiedad, pero no tengo tiempo para coordinarlo con los eventuales arrendatarios?
+    question10b: Una vez que inscribes tu propiedad, nos indicas cuál es tu disponibilidad. De acuerdo a eso, nosotros te indicaremos los pasos a seguir y, en caso que lo requieras, te ayudaremos a que tu propiedad sea arrendada y manejada de la mejor manera posible.
+    question11a: ¿Cuáles son las ventajas de utilizar AtLocs versus arrendar directamente mi propiedad?
+    question11b: Con AtLocs llega directamente a quienes están buscando propiedades para proyectos cinematográficos y audiovisuales, es decir llegas a tu público objetivo sin tener que utilizar mayores recursos en publicidad. Nuestros clientes que desean arrendar una propiedad deben estar previamente registrados en nuestra plataforma lo que te ofrece un mayor control respecto de quienes reservan o arriendan de tu propiedad.
+    question12a: ¿Qué hago si ya reservaron mi propiedad y no puedo estar el día de la grabación? 
+    question12b: Si no puedes estar el día que la agencia, productora, canal de televisión o arrendatario haya arrendado tu propiedad para realizar la grabación, AtLocs te ofrece el servicio de representación para la entrega y restitución de tu propiedad, lo cual no implica que AtLocs asuma responsabilidad alguna por eventuales perjuicios.
+    question13a: ¿Cómo tramitar los pagos AtLocs?
+    question13b: Al momento que un cliente desee efectuar una reserva de alguna de las propiedades publicadas, deberá pagar a AtLocs un porcentaje del 15% sobre el total.
+    question13c: Para realizar una reserva es obligatorio realizar el pago, bajo el sistema y condiciones  establecidos por AtLocs.
+    question13d: La solicitud de reserva queda confirmada cuando nuestro cliente la acepta la solicitud de arriendo.
+    question13e: Una vez confirmado el arriendo de la locación, AtLocs te cobrará el 15% total de valor de la reserva, sin perjuicio del saldo de precio restante.
+    question14a: ¿Cuánto tiempo permanecerá mi locación en la plataforma de AtLocs?
+    question14b: Tu locación permanecerá en línea por un periodo de un año, salvo que quieras darla de baja antes, para lo cual deberás enviar tu requerimiento expreso vía email.
+    question15a: ¿Qué pasa si me arrepiento de publicar una locación y quiero borrar mis datos de AtLocs?
+    question15b: Simplemente debes escribirnos un email a nuestro sitio de información, solicitando tu salida de la plataforma. Sin embargo, dicho arrepentimiento solo procederá respecto de tus locaciones que no hayan sido reservadas por alguno de nuestros clientes.
+    question16a: ¿Qué pasa si no puedo ponerme en contacto con él o la responsable de la producción?
+    question16b: AtLocs cuenta con varias maneras para que puedan comunicarse nuestros clientes, ya sea, por chat, email, mensaje de texto y teléfono. Sin embargo, AtLocs actúa como facilitador de toda coordinación y gestión entre las partes, no siendo responsable por la actuación de éstos.
+    question16c: De todos modos, una vez que se realiza una reserva, sin que se cancele o modifique de conformidad a los términos y condiciones de AtLocs,  el pago se efectúa igualmente aunque no se haya trabajado o utilizado la propiedad el día o las horas pactadas.
+    question17a: ¿Qué uso se le dará a la información que doy sobre mi propiedad?
+    question17b: El uso que AtLocs dará a la información, datos o fotografías que comuniques o pongas a disposición de nuestro sitio, es exclusivamente para publicitar el arriendo de tu locación en producciones audiovisuales, cinematográficas o para otros eventos equivalentes.
+    question17c: Si alguno de los clientes requiere su propiedad para otro servicio, nuestra agencia se podrá en contacto con el propietario o arrendatario de la locación.
+    bookings: Sobre reserva de locaciones en  AtLocs
+    question18a: ¿Puedo modificar o cancelar una reserva confirmada?
+    question18b: Puedes cancelar la reserva, obteniendo el reembolso del 100% del pago que hubieres efectuado, siempre y cuando hayas notificado tu cancelación en un plazo no menor a  las 48 horas previas a la fecha de inicio de la reserva de la locación. Si la cancelación la realizas dentro de las 48 horas previas a la fecha de inicio de la reserva, sólo se te devuelve un 60% de lo cancelado. 
+    question18c: Cualquier solicitud de cancelación en un plazo menor a las 48 horas previas a la fecha de inicio de la locación no será aceptada y, por lo tanto, no procederá devolución alguna.
+    question19a: ¿Qué pasa si no puedo ponerme en contacto con el dueño de la locación?
+    question19b: AtLocs cuenta con un mecanismo especial para tal efecto, mediante un chat en donde tendrás contacto directo con los dueños de la locación. De esta forma, podrás complementar la información que se ha publicado y realizar las preguntas que estimes pertinentes para un mayor control de la locación.
+  
+  thanks:
+    message: Tu mensaje ha sido recibido y te responderemos a la brevedad.
+
+  terms_and_conditions:
+    title: Términos y Condiciones
+    subtitle: Aplicables al momento de subir las fotos y videos
+    subp1: Los usuarios que, a cualquier título, promocionen u oferten su locación, por el solo hecho de subir o colocar fotografías o videos en su portafolio manifiestan ser autores exclusivos de las mismas y estar en pleno ejercicio de los derechos de reproducción, distribución, comunicación pública, transformación, y puesta a disposición interactiva, para explotarlas en todo el mundo y por tiempo indefinido.
+    subp2: Los usuarios por el solo hecho de enviar o subir fotografías o videos al sitio, autorizan de manera voluntaria y por tiempo ilimitado AtLocs,  para su exhibición digital en el sitio u otros soportes o plataformas que sean parte de AtLocs.com
+    question1a: ¿Es necesario aceptar los términos y condiciones de uso del sitio?
+    question1b: Quienes utilicen y contraten algunos de los servicios ofrecidos por Atlocs.com, lo hacen, necesariamente, con el compromiso de que han leído, comprendido y aceptado los términos y condiciones de uso del sitio.
+    question2a: ¿Puedo promocionar mi locación por otros medios distintos de AtLocs?
+    question2b: Los usuarios que utilicen los servicios de AtLocs, por el solo hecho de promocionar sus locaciones, conocen y aceptan que les está terminantemente prohibido realizar cualquier otro tipo de promoción comercial de su locación, a menos que cuente con la autorización expresa y por escrito de Atlocs.com.
+    question3a: ¿Qué pasa si un tercero accede a los datos de mi cuenta en AtLocs?
+    question3b: Los usuarios son los únicos y exclusivos responsables de las actividades que tengan lugar en relación con su cuenta y de mantener la confidencialidad de sus datos y la contraseña de su cuenta.
+    question3c: Los usuarios aceptan y reconocen que AtLocs podrá finalizar su cuenta en cualquier momento, sin necesidad de justificarlo y sin que ello le genere responsabilidad de ningún tipo.
+    question4a: ¿Pueden acceder y utilizar los servicios de AtLocs los menores de edad?
+    question4b: Solo pueden acceder o utilizar el sitio, los mayores de 18 años o más, que tengan poder y autoridad suficiente para asumir y aceptar los términos y condiciones de AtLocs.
+    question5a: ¿Por el hecho de publicar o utilizar el sitio, obtengo algún derecho adquirido respecto de la información o datos que contiene AtLocs?
+    question5b: No. Los usuarios y titulares de las locaciones aceptan que el sitio y la información en él contenida, puede modificarse, actualizarse, interrumpirse, suspenderse o eliminarse en cualquier momento sin previo aviso y sin asumir por parte de AtLocs ninguna responsabilidad.
+    question6a: ¿Existe alguna garantía respecto de la veracidad de la información que nuestros clientes proporcionan?
+    question6b: La información de las locaciones que se incluyen en el sitio, ha sido proporcionada por los titulares de éstas, pudiendo existir errores u omisiones de los cuales Atlocs.com no se puede responsabilizar, ya que los datos de los lugares publicados son de completa y absoluta responsabilidad de quien pública. Sin perjuicio de ello, con el fin de poder darle el servicio lo más completo y seguro posible hemos implementado un sistema de solicitud de información y chat mediante el cual el titular de la locación y quien esté interesado en arredrarla pueden intercambiar información respecto de la propiedad.
+    question6c: Atlocs.com no otorga garantías ni promesas sobre la calidad, precisión o fiabilidad de la locación, su seguridad, contenido o finalidad, por consiguiente, no es responsable de las pérdidas o daños que puedan surgirle a quien contrata una locación ni al propietario o titular de ésta.
+    question7a: ¿Qué ocurre si quien arrienda una locación o el titular de ésta sufren algún daño o perjuicio durante la grabación o uso de la locación?
+    question7b: 100% aseguradas, ya que las producciones o quien reserve tu locación se requerirá la documentación del seguro proporcionado o certificados de aseguradora en donde ellos como productoras o la empresa que requiera este servicio se haga responsable de cualquier daño que se produzca en el Inmueble, siempre que éste sea consecuencia directa de la actividad desarrollada por la empresa requerida. Los certificados serán recogidos por AtLocs y  entregados a los propietarios de la vivienda reservada.
+    question7c: Quien publicita o contrata una locación por medio de Atlocs.com, acepta todos los riesgos, inconsistencias o peligros a los que pudiera enfrentarse o debieran soportar en la locación, entendiendo que ello escapa del ámbito de control de Atlocs.com, renunciando, desde ya y por el solo hecho de utilizar el los servicios de Atlocs.com, a toda demanda, reclamación o denuncia de cualquier índole en contra de Atlocs.com. Los usuarios y titulares de una locación aceptan compensar, defender y eximir de responsabilidad a Atlocs.com de cualquier reclamación o demanda realizada por terceros que surja de o en relación con la infracción que cometan a los términos y condiciones del sitio o al incumplimiento de las disipaciones de propiedad intelectual o derechos de imagen.
+    policies_title: Políticas de privacidad y tratamiento de datos que incluya el manejo del Chat por parte de AtLocs.
+    p1: Los usuarios, los titulares de las locaciones y quienes las contraten por medio de AtLocs, declaran que todos los datos de carácter personal que envían o informa a AtLocs son verídicos y que tiene sobre ellos plena disponibilidad.
+    p2: Asimismo, autorizan expresamente a AtLocs, conforme al artículo 4 de la ley 19.628 de protección de la vida privada, a registrar sus datos personales en los sistemas y procesos necesarios para prestar los servicios ofrecidos.
+    p3: La autorización incluye el tratar y registrar los antecedentes personales de nuestros clientes, los datos de su cuenta bancaria y/o su tarjeta de crédito con el fin de gestionar las reservas de locaciones y los pagos de comisiones correspondientes.
+    p4: Dentro de sus servicios, AtLocs proporcionará a sus clientes un chat mediante el cual el titular de la locación y quien esté interesado en contratarla pueden intercambiar información y datos de la propiedad el cual se encontrara bajo el tratamiento y registro de AtLocs que podrá acceder a dicha comunicación. 
+    p5: Nuestros clientes podrán siempre complementar o rectificar sus datos personales en caso de ser estos inexactos o incompletos, pudiendo incluso cancelarlos, siempre y cuando ello no se oponga a los términos y condiciones del sitio que han aceptado.
+    p6: Todo usuario podrá oponerse al tratamiento sus datos personales para fines específicos, siempre y cuando ello sea manifestado de manera expresa y clara, indicando nombre completo, cédula nacional de identidad la cual deberá acompañar en versión digitalizada, dirección del correo electrónico o dirección física y algún número telefónico de contacto.
+    p7: En un plazo máximo de 1 día hábil contado a partir de la fecha de recepción de su solicitud de oposición, le daremos contestación sobre la procedencia de la misma, por medio de correo electrónico.
+    p8: En lo que respecta al uso de imágenes en las fotografías, para el caso de que se use la imagen de otras personas en la composición de las fotografías de la locación, se entenderá que el titular de la locación, cuenta con el consentimiento de la persona que aparece en la imagen para su reproducción y publicación.
+    p9: En ningún caso está permitido a los usuarios suministrar datos o información personal de terceras personas distintas del titular de la locación o usuarios.
+    p10: Incluir sanciones por no respetar la comisión y realizar operaciones por fuera de AtLocs.
+    p11: Los titulares de una locación que se publicita y promociona en AtLocs, declaran y se comprometen a que, por mero hecho de utilizar el sitio, asumen el compromiso formal de pagar a AtLocs el 15% del monto del arriendo de la locación, a título de comisión.
+    p12: Por el mero hecho de publicitar o promocionar su locación los titulares de éstas conocen y aceptan que, en caso de no verificarse el pago de la comisión correspondiente, AtLocs queda en libertad de acción para ejercer las acciones de cobranza que estime conveniente, de acuerdo a lo establecido en la ley y que puede quitar o corregir cualquier contenido o imagen en cualquier momento si lo consideran necesario.
+    p13: Al suscribir los términos y condiciones del sitio, en beneficio de los demás clientes de AtLocs y como justa remuneración al servicio prestado, los titulares de las locaciones autorizan expresamente a AtLocs a realizar las gestiones judiciales y extrajudiciales que fueran procedentes con el fin de obtener el pago íntegro del dinero que le corresponde, incluido el informar al boletín comercial de la Cámara de Comercio de Santiago o alguna institución equivalente, acerca del cumplimiento o incumplimiento de la obligación de pago contenida en el presente compromiso, entregando nombre, Rut y monto adeudado. 
+
+  about:
+    title:  Somos Atlocs
+    subtitle: Un servicio de administración de locaciones chilenas.
+    desc: Una herramienta web que conecta a quienes quieren arrendar una propiedad para ser usada en un proyecto cinematográfico, sesión de fotos o evento corporativo, con los directores y productores y profesionales de las comunicaciones que necesitan esas propiedades para llevar a cabo sus proyectos.
+    name1a: Cristian Díaz Reyes
+    name1b: Founder – Director General
+    name2a: Nazeli Nazar Miranda
+    name2b: Founder – Partner
+
+  bookings:
+    booking_nmbr: Reserva Nº
+    from: Desde
+    until: Hasta
+    confirm: Confirmar Pago
+    paid: Pagado
+    go_to: Ir a reserva
+    approve: Aprobar
+    edit: Editar
+    cancel: Cancelar
+    cancel_reason: Motivo de rechazo
+    price: Precio de reserva
+    submit_booking: Solicitar Reserva
+    new: Solicitar Reserva para
+    date_select: Selecciona una fecha de inicio y término para tu solicitud de reserva.
+    success: Tu Solicitud ha sido enviada. Te enviaremos un mail cuando el dueño acepte tu reserva con los datos para hacer el deposito.
+    my_bookings: Ver mis reservas
+    date: Fecha
+    title: Título
+
+  emails:
+    hello: Hola
+    footer1: Un saludo cordial,
+    footer1b: ¡Muchas Gracias por ser parte de AtLocs!
+    footer2: El Equipo de Atlocs
+    founder: Fundador-Director General
+    your_booking: Tu reserva
+    view_booking: Ver Reserva
+    view_location: Ir a locación
+    approve_or_reject_booking: APROBAR O RECHAZAR RESERVA
+    dont_remove_account: YA NO QUIERO ELIMINAR MI CUENTA
+    dont_remove_location: YA NO QUIERO ELIMINAR MI LOCACION
+    thanks: ¡Muchas Gracias
+    change_password: Cambiar Contraseña
+    review_location: "Evalúa la locación"
+    go_to: Ir a AtLocs
+    booking_accepted:
+      p1: ¡Tu reserva ha sido aprobada! Estás a un paso de arrendar una locación a través de AtLocs.
+      p2: "Solamente falta que realices el pago correspondiente y la locación ya estará a tu disponibilidad para las fechas acordadas. Por favor haz una transferencia a la siguiente cuenta:"
+      bank: Banco
+      account_no: Numero de cuenta
+      account_type: Tipo de cuenta
+      account: Cuenta Corriente
+      name: Nombre del titular
+      rut: RUT del titular
+      ammount: Monto
+      reason: Motivo
+      reason_text: Pago reserva AtLocs
+    booking_cancelled:
+      p1: Tu reserva %{code} fue cancelada
+      p2a: Te confirmamos que tu reserva de
+      p2b: ha sido cancelada.
+      p3: Lamentamos que en esta ocasión no hayamos podido cumplir con tus expectativas. Sin embargo, te invitamos a seguir visitandonos ya que contamos con nuevas locaciones cada semana
+      p4: Muchas gracias por confiar en AtLocs.com para la búsqueda de tus locaciones.
+    booking_commented:
+      p1: Te invitamos a revisarlos en el siguiente link
+      h2: ¡Hay nuevos comentarios en tu reserva!
+    booking_edit:
+      p1a: Has editado tu Reserva. Las nuevas fechas de producción son
+      p1b: lo que te da un nuevo precio de
+      p1c: Informaremos al propietario de la locación de manera que no haya ningún inconveniente con los nuevos cambios.
+      p2: ¡Muchas gracias por confiar tu producción a AtLocs!
+    booking_edit_request:
+      p1a: La Reserva Nº
+      p1b: ha sido editada por el productor, cambiando los días de producción de
+      p1c: a
+      p1d: quedando la reserva en
+      p1e: Te invitamos a Aprobar o Rechazar esta nueva Reserva.
+    booking_requested:
+      h1: ¡Han solicitado una reserva para tu locación!
+      p1: Una vez que la apruebes, el productor generará el pago y podrás ponerte en contacto con éste.
+      p2: ¡No te demores! Las producciones necesitan asegurar sus locaciones con tiempo, por lo que, si no te apresuras, puedes perder esta reserva.
+    booking_sent:
+      p1: Tu solicitud de reserva ya fue enviada al propietario de la locación que has escogido para tu producción.
+      p2: Una vez aprobada, te haremos  saber para que puedas llevar a cabo los pagos correspondientes y así, ponerte en contacto con el dueño de la locación. Recuerda que siempre puedes modificar tus reservas en MI PERFIL-MIS RESERVAS.
+      p3: ¡Muchas gracias por confiar tu producción a AtLocs!
+    client_booking_cancel:
+      p1a: La reserva número
+      p1b: ya ha sido cancelada debido a
+      p1c: Te invitamos a buscar otras locaciones que puedan ser de tu interés.
+      p2: ¡Muchas Gracias por ser parte de AtLocs!
+    client_cancel_by_owner:
+      p1a: Lamentamos informarte que el propietario de la locación
+      p1b: ha cancelado la Reserva debido a
+      p1c: Te invitamos a cambiar las fechas para esta misma locación o a buscar otras locaciones que puedan ser de tu interés.
+    confirmation:
+      h1: Bienvenid@ a AtLocs
+      p1: Estás a un paso de ser parte de este espacio web donde los productores audiovisuales podrán arrendar tu propiedad. Además, te posibilitará seleccionar y comparar entre cientos de locaciones para tus posibles producciones.
+      p2: Sólo falta verificar tu dirección de correo. Una vez hecho esto podrás publicar tus locaciones, así como también seleccionar entre cientos de éstas para tus producciones. 
+      p3: ¡Muchas gracias por hacerte parte de esta comunidad!
+      p4: Estás a un paso de ser parte de esta aplicación que te posibilitará seleccionar y comparar entre cientos de locaciones.
+      p5: Sólo falta verificar tu dirección de correo.  Una vez hecho esto, podrás comenzar a buscar, elegir y arrendar locaciones para tus producciones. 
+      p6: ¡Muchas gracias por hacerte parte de esta comunidad! Pondremos todos nuestros esfuerzos para tener siempre una gran variedad de locaciones para ti. 
+      p7: Estás a un paso de ser parte de este espacio web donde productores audiovisuales arrendarán tu propiedad.
+      p8: Sólo falta verificar tu dirección de correo. Una vez hecho esto, podrás comenzar a publicar tus locaciones.
+      p9: Muchas gracias por hacerte parte de esta comunidad! Pondremos todos nuestros esfuerzos para que tu locación sea parte del set de filmación y fotografía de muchas producciones. 
+    location_approved:
+      h1: ¡Tu locación ha sido aprobada por AtLocs!
+      p1: Nuevamente nos contactaremos contigo tan pronto como tengas una reserva.
+      p2: Recuerda que siempre puedes modificar tus locaciones entrando a MI PERFIL-MIS LOCACIONES.
+    location_problem:
+      p1: Lamentamos informarte que tu locación tiene algunos inconvenientes para ser publicada en este momento en AtLocs.
+      p2: Pero ¡No te desanimes! simplemente hay que hacer algunos cambios
+      p3: Te agradeceremos que modifiques tu locación y así, podamos aprobarla lo antes posible.
+      p4: ¡Muchas gracias por ser parte de AtLocs!
+    location_submitted:
+      p1: Hemos recibido tu locación y está siendo revisada por nuestro equipo de expertos.
+      p2: Hacemos esto para asegurarnos que tu locación sea apta en términos de producción, así como para ver si su presentación es adecuada y llamativa para los productores.
+      p3: En caso de no ser aprobada, te comentaremos qué hay que cambiar para poder publicarla.
+      p4: ¡Muchas gracias por confiar en nosotros! Haremos todos nuestros esfuerzos para que la cámara arriende tu locación en el menor tiempo posible.
+    owner_booking_cancelled:
+      p1a: Lamentamos informarte de que la reserva número
+      p1b: de tu locación
+      p1c: ha sido cancelada debido a
+      p2: Te contaremos prontamente cuando tengas otra Reserva.
+      p3: ¡Muchas Gracias por ser parte de AtLocs!
+    owner_booking_cancelled_by_owner:
+      p1a: Has cancelado la reserva nº
+      p1b: de tu locación
+      p1c: debido a
+      p1d: Nos hemos puesto en contacto con el productor, en caso que quisiera cambiar las fechas de esta reserva.
+    owner_location_review:
+      send_review: Evalúa al cliente
+      p1a: Ayer finalizó el arriendo d
+      p1b: en la locación
+      p1c: por favor responde la siguiente encuesta evaluando al cliente.
+    password_changed:
+      p1: Solo queríamos confirmar que has cambiado tu contraseña.
+      p2a: Si no ha realizado este cambio, contáctenos inmediatamente
+      p2b: Aquí
+      p3: Esto nos ayuda a evitar que personas no autorizadas accedan a la red de AtLocs y a la información de tu cuenta
+      p4: Aquí te dejamos algunos consejos para proteger tu contraseña
+      li1: Nunca la compartas con otras personas
+      li2: Crea contraseñas extrañas, difíciles de adivinar, y nunca utilices información personal, como tu fecha de nacimiento o tu dirección.
+      li3: Asegúrate de incluir letras mayúsculas y minúsculas, números y símbolos.
+      li4: Utiliza contraseñas diferentes para cada cuenta en Internet.
+    payment_confirmed:
+      p1: ¡Has completado tu reserva en AtLocs!
+      p2: Adjuntamos tu comprobante de pago, así como los detalles de tu reserva.  Desde ya, puedes comunicarte con el dueño de la Propiedad en MI PERFIL-MIS RESERVAS.
+      li1: Código de reserva Nº
+      li2: "Locación:"
+      li3: "Fecha de inicio:"
+      li4: "Fecha de término:"
+      li5: "Precio acordado:"
+    payment_confirmed_owner:
+      p1a: Se ha completado el pago de la Reserva hecha por
+      p1b: para tu locación
+      p2: Te adjuntamos los detalles de la Reserva y del pago, los cuáles se depositarán en tu cuenta una vez que haya transcurrido la producción.
+      li1: Código de reserva Nº
+      li2: "Locación:"
+      li3: "Fecha de inicio:"
+      li4: "Fecha de término:"
+      li5: "Precio acordado:"
+    request_destroy:
+      p1: Lamentamos mucho que quieras dejar de ser parte de AtLocs.
+      p2: Hemos recibido tus razones para tomar esta decisión. Uno de nuestros expertos se contactará contigo a la brevedad, o aceptará tu eliminación automáticamente.
+      p3: Esperamos que cambies de opinión y sigas siendo parte de esta comunidad de locaciones.
+    request_location_removal_owner:
+      p1a: Lamentamos mucho que quieras eliminar tu locación
+      p1b: Hemos recibido tus razones para tomar esta decisión. Uno de nuestros expertos se contactará contigo a la brevedad.
+      p2: Esperamos que cambies de opinión y mantengas tu locación dentro de la comunidad de AtLocs.
+    request_password_token:
+      p1: ¿Has olvidado tu contraseña?
+      p2: No te preocupes. A todos nos pasa.
+      p3: Haz click en el siguiente botón y podrás recuperarla rápidamente.
+    tenant_location_review:
+      p1: ¡Cuéntanos tu experiencia!
+      p2a: Ayer finalizaste tu arriendo en
+      p2b: por favor responde la siguiente encuesta evaluando la locación.
+    welcome:
+      p1: ¡Bienvenid@ a AtLocs!
+      p2: ¡Muchas gracias por hacerte parte de esta comunidad donde podrás comparar y seleccionar entre cientos de locaciones!
+      p3: Pondremos todos nuestros esfuerzos para tener siempre una gran variedad de locaciones para ti y tus producciones.
+      p4: Te invitamos a buscar la mejor locación para tu producción.
+  locales:
+    spanish: Español
+    english: Inglés

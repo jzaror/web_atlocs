@@ -1,18 +1,18 @@
 <h4 style="Margin:0;Margin-bottom:10px;color:inherit;font-family:Helvetica,Arial,sans-serif;font-size:17px;font-weight:400;line-height:1.3;margin:0;margin-bottom:10px;padding:0;text-align:left;word-wrap:normal">
-  Hola <em><%=@user.first_name%>!</em>
+  <%= t('emails.hello') %> <em><%=@user.first_name%>!</em>
 </h4>
 <br />
 <h2 style="Margin:0;Margin-bottom:10px;color:inherit;font-family:Helvetica,Arial,sans-serif;font-size:17px;font-weight:700;line-height:1.3;margin:0;margin-bottom:10px;padding:0;text-align:left;word-wrap:normal">
-  ¡Bienvenid@ a AtLocs!
+  <%= t('emails.welcome.p1') %>
 </h2>
 <p style="Margin:0;Margin-bottom:10px;color:grey;font-family:Helvetica,Arial,sans-serif;font-size:15px;font-weight:300;line-height:1.3;margin:0;margin-bottom:10px;padding:0;text-align:left">
-  ¡Muchas gracias por hacerte parte de esta comunidad donde podrás comparar y seleccionar entre cientos de locaciones!
+  <%= t('emails.welcome.p2') %>
 </p>
 <p style="Margin:0;Margin-bottom:10px;color:grey;font-family:Helvetica,Arial,sans-serif;font-size:15px;font-weight:300;line-height:1.3;margin:0;margin-bottom:10px;padding:0;text-align:left">
-  Pondremos todos nuestros esfuerzos para tener siempre una gran variedad de locaciones para ti y tus producciones.
+  <%= t('emails.welcome.p3') %>
 </p>
 <p style="Margin:0;Margin-bottom:10px;color:grey;font-family:Helvetica,Arial,sans-serif;font-size:15px;font-weight:300;line-height:1.3;margin:0;margin-bottom:10px;padding:0;text-align:left">
-  Te invitamos a buscar la mejor locación para tu producción.
+  <%= t('emails.welcome.p4') %>
 </p>
 <br />
 <center data-parsed="" style="min-width:532px;width:100%">
@@ -24,7 +24,7 @@
             <tbody>
               <tr style="padding:0;text-align:left;vertical-align:top">
                 <td style="-moz-box-shadow:inset 0 0 10px #fefefe;-moz-hyphens:auto;-webkit-box-shadow:inset 0 0 10px #fefefe;-webkit-hyphens:auto;Margin:0;background:#5B46CD;border:none;border-collapse:collapse!important;border-radius:30px;box-shadow:inset 0 0 10px #fefefe;color:#fefefe;font-family:Helvetica,Arial,sans-serif;font-size:15px;font-weight:300;hyphens:auto;line-height:1.3;margin:0;padding:0;text-align:left;vertical-align:top;word-wrap:break-word">
-                  <%= link_to 'Ir a Atlocs', root_url,
+                  <%= link_to t('emails.go_to'), root_url,
                       style: "Margin:0;border:0 solid #5B46CD;border-radius:3px;color:#fefefe;display:inline-block;font-family:Helvetica,Arial,sans-serif;font-size:17px;font-weight:700;line-height:1.3;margin:0;padding:15px 20px;text-align:left;text-decoration:none;text-transform:uppercase" %>
                 </td>
               </tr>
@@ -40,7 +40,7 @@
 	Cristián Díaz Reyes
 </h3>
 <p style="Margin:0;Margin-bottom:10px;color:grey;font-family:Helvetica,Arial,sans-serif;font-size:15px;font-weight:300;line-height:1.3;margin:0;margin-bottom:10px;padding:0;text-align:left">
-	Socio-Fundador.
+	<%= t('emails.founder') %>
 </p>
 <h6 style="Margin:0;Margin-bottom:10px;color:inherit;font-family:Helvetica,Arial,sans-serif;font-size:13px;font-weight:700;line-height:1.3;margin:0;margin-bottom:10px;padding:0;text-align:left;word-wrap:normal">
 	+569 9 673 9358

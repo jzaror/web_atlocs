@@ -1,23 +1,23 @@
 
 <h4 style="Margin:0;Margin-bottom:10px;color:inherit;font-family:Helvetica,Arial,sans-serif;font-size:17px;font-weight:400;line-height:1.3;margin:0;margin-bottom:10px;padding:0;text-align:left;word-wrap:normal">
-  Hola <em><%=@owner.first_name%>!</em>
+  <%= t('emails.hello') %> <em><%=@owner.first_name%>!</em>
 </h4>
 <br />
 <p style="Margin:0;Margin-bottom:10px;color:grey;font-family:Helvetica,Arial,sans-serif;font-size:15px;font-weight:300;line-height:1.3;margin:0;margin-bottom:10px;padding:0;text-align:left">
-  Se ha completado el pago de la Reserva hecha por <%= "#{@user.first_name} #{@user.last_name}" %> para tu locación <%= "#{@booking.location.title}" %>.
+  <%= t('emails.payment_confirmed.p1a') %> <%= "#{@user.first_name} #{@user.last_name}" %> <%= t('emails.payment_confirmed.p1b') %> <%= "#{@booking.location.title}" %>.
 </p>
 <p style="Margin:0;Margin-bottom:10px;color:grey;font-family:Helvetica,Arial,sans-serif;font-size:15px;font-weight:300;line-height:1.3;margin:0;margin-bottom:10px;padding:0;text-align:left">
-  Te adjuntamos los detalles de la Reserva y del pago, los cuáles se depositarán en tu cuenta una vez que haya transcurrido la producción.
+  <%= t('emails.payment_confirmed.p2') %>
 </p>
 <ul>
-  <li>Código de reserva Nº <%= @booking.code %></li>
-  <li>Locación: <%= @booking.location.title %></li>
-  <li>Fecha de inicio: <%= @booking.start_time.strftime("%d/%m/%Y") %></li>
-  <li>Fecha de término: <%= @booking.end_time.strftime("%d/%m/%Y") %></li>
-  <li>Precio acordado: <%= number_to_currency(@booking.price, :unit => "$", :precision => 0)%></li>
+  <li><%= t('emails.payment_confirmed.li1') %> <%= @booking.code %></li>
+  <li><%= t('emails.payment_confirmed.li2') %> <%= @booking.location.title %></li>
+  <li><%= t('emails.payment_confirmed.li3') %> <%= @booking.start_time.strftime("%d/%m/%Y") %></li>
+  <li><%= t('emails.payment_confirmed.li4') %> <%= @booking.end_time.strftime("%d/%m/%Y") %></li>
+  <li><%= t('emails.payment_confirmed.li5') %> <%= number_to_currency(@booking.price, :unit => "$", :precision => 0)%></li>
 </ul>
 <p style="Margin:0;Margin-bottom:10px;color:grey;font-family:Helvetica,Arial,sans-serif;font-size:15px;font-weight:300;line-height:1.3;margin:0;margin-bottom:10px;padding:0;text-align:left">
- ¡Muchas Gracias por ser parte de AtLocs!
+ <%= t('emails.payment_confirmed.footer1b') %>
 </p>
 <br />
 <center data-parsed="" style="min-width:532px;width:100%">
@@ -29,7 +29,7 @@
             <tbody>
               <tr style="padding:0;text-align:left;vertical-align:top">
                 <td style="-moz-box-shadow:inset 0 0 10px #fefefe;-moz-hyphens:auto;-webkit-box-shadow:inset 0 0 10px #fefefe;-webkit-hyphens:auto;Margin:0;background:#5B46CD;border:none;border-collapse:collapse!important;border-radius:12px;box-shadow:inset 0 0 10px #fefefe;color:#fefefe;font-family:Helvetica,Arial,sans-serif;font-size:15px;font-weight:300;hyphens:auto;line-height:1.3;margin:0;padding:0;text-align:left;vertical-align:top;word-wrap:break-word">
-                  <%= link_to "Ir a reserva", booking_url(@booking.code),
+                  <%= link_to t('emails.view_booking'), booking_url(@booking.code),
                       style: "Margin:0;border:0 solid #5B46CD;border-radius:3px;color:#fefefe;display:inline-block;font-family:Helvetica,Arial,sans-serif;font-size:16px;font-weight:700;line-height:1.3;margin:0;padding:10px 16px;text-align:left;text-decoration:none;text-transform:uppercase" %>                </td>
               </tr>
             </tbody>

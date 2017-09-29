@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-	load_and_authorize_resource
+	load_and_authorize_resource :except => [:set_locale]
 	skip_before_action :verify_authenticity_token
 
 	def admin

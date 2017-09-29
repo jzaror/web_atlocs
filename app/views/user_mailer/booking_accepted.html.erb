@@ -1,34 +1,34 @@
 <h4 style="Margin:0;Margin-bottom:10px;color:inherit;font-family:Helvetica,Arial,sans-serif;font-size:17px;font-weight:400;line-height:1.3;margin:0;margin-bottom:10px;padding:0;text-align:left;word-wrap:normal">
-  Hola <em><%=@user.first_name%>!</em>
+  <%= t('emails.hello') %> <em><%=@user.first_name%>!</em>
 </h4>
 <br />
 <p style="Margin:0;Margin-bottom:10px;color:grey;font-family:Helvetica,Arial,sans-serif;font-size:15px;font-weight:300;line-height:1.3;margin:0;margin-bottom:10px;padding:0;text-align:left">
-	¡Tu reserva ha sido aprobada! Estás a un paso de arrendar una locación a través de AtLocs.
+	<%= t('emails.booking_accepted.p1') %>
 </p>
 <br />
 <p style="Margin:0;Margin-bottom:10px;color:grey;font-family:Helvetica,Arial,sans-serif;font-size:15px;font-weight:300;line-height:1.3;margin:0;margin-bottom:10px;padding:0;text-align:left">
-	Solamente falta que realices el pago correspondiente y la locación ya estará a tu disponibilidad para las fechas acordadas. Por favor haz una transferencia a la siguiente cuenta: 
+	<%= t('emails.booking_accepted.p2') %>
 </p>
 <br />
 <table cellspacing="0" cellpadding="10" border="0" width="90%">
 	<tr>
-		<td width="30%">Banco</td>
+		<td width="30%"><%= t('emails.booking_accepted.bank') %></td>
 		<td width="70%">Banco Santander</td>
 	</tr>
 	<tr>
-		<td width="30%">Numero de cuenta</td>
+		<td width="30%"><%= t('emails.booking_accepted.account_no') %></td>
 		<td width="70%">04321898</td>
 	</tr>
 	<tr>
-		<td width="30%">Tipo de cuenta</td>
-		<td width="70%">Cuenta Corriente</td>
+		<td width="30%"><%= t('emails.booking_accepted.account_type') %></td>
+		<td width="70%"><%= t('emails.booking_accepted.account') %></td>
 	</tr>
 	<tr>
-		<td width="30%">Nombre del titular</td>
+		<td width="30%"><%= t('emails.booking_accepted.name') %></td>
 		<td width="70%">Cristian Díaz Reyes</td>
 	</tr>
 	<tr>
-		<td width="30%">RUT titular</td>
+		<td width="30%"><%= t('emails.booking_accepted.rut') %></td>
 		<td width="70%">12722861-2</td>
 	</tr>
 	<tr>
@@ -36,18 +36,18 @@
 		<td width="70%">cdiazreyes@gmail.com</td>
 	</tr>
 	<tr>
-		<td width="30%">Monto</td>
+		<td width="30%"><%= t('emails.booking_accepted.ammount') %></td>
 		<td width="70%"><%=number_to_currency((@location.fee*@booking.totaldays), :unit => "$", :precision => 0)%></td>
 	</tr>
 	<tr>
-		<td width="30%">Motivo</td>
-		<td width="70%">Pago reserva AtLocs <%=@booking.code.upcase%></td>
+		<td width="30%"><%= t('emails.booking_accepted.reason') %></td>
+		<td width="70%"><%= t('emails.booking_accepted.reason_text') %> <%=@booking.code.upcase%></td>
 	</tr>
 </table>
 <br />
 <p style="Margin:0;Margin-bottom:10px;color:grey;font-family:Helvetica,Arial,sans-serif;font-size:15px;font-weight:300;line-height:1.3;margin:0;margin-bottom:10px;padding:0;text-align:left">
-	Un saludo cordial,
+	<%= t('emails.footer1') %>
 </p>
 <h3 style="Margin:0;Margin-bottom:10px;color:inherit;font-family:Helvetica,Arial,sans-serif;font-size:15px;font-weight:700;line-height:1.3;margin:0;margin-bottom:10px;padding:0;text-align:left;word-wrap:normal">
-	El Equipo de Atlocs
+	<%= t('emails.footer2') %>
 </h3>

@@ -1,4 +1,7 @@
 class Location < ActiveRecord::Base
+	require 'money'
+	require 'money/bank/google_currency'
+	Money.default_bank = Money::Bank::GoogleCurrency.new
 	belongs_to :user
 	belongs_to :collection
 
@@ -140,11 +143,12 @@ class Location < ActiveRecord::Base
 	end
 
 	def price_with_fee
-		if self.price
-			self.price+(self.price*0.15)
-		else
-			0
-		end
+		currency_type = I18n.locale == :es ? :CLP : :USD
+		return 0 unless self.price
+		price_result = self.price+(self.price*0.15)
+		money = price_result.to_money(:CLP)
+		converted_money = money.exchange_to(currency_type.to_sym)
+		return converted_money
 	end
 
 	def has_other_extras?

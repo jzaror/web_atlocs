@@ -11,33 +11,32 @@
 			#location_alert
 		.step#step1
 			.tab-head
-				%h2 Publica tu Locación
+				%h2=t('location.form.form_title')
 			.tab-body
 				.form-group
-					= f.label "Título de tu Locación *", :class=>""
-					= f.text_field :title, :class=>"form-control", :placeholder=>"Agrega un nombre claro y descriptivo"
+					= f.label t('location.form.title'), :class=>""
+					= f.text_field :title, :class=>"form-control", :placeholder=>t('location.form.title_placeholder')
 				.form-group
-					= f.label "Descripción *", :class=>""
-					= f.text_area :description, :class=>"form-control", :placeholder=>"Describe detalladamente tu locación. Una buena descripción facilitará que más usuarios puedan encontrarla."
+					= f.label t('location.form.description'), :class=>""
+					= f.text_area :description, :class=>"form-control", :placeholder=>t('location.form.description_placeholder')
 		.step#step2
 			.tab-head
-				%h2 Características de tu Locación
-				%p Selecciona las opciones que mejor señalen lo que es y lo que ofrece tu locación.
+				%h2=t('location.form.step2a')
+				%p=t('location.form.step2b')
 			.tab-body
 				.row.form-group
-					.col-md-4= f.label "Tipo de locación *", :class=>""
+					.col-md-4= f.label t('location.form.type'), :class=>""
 					.col-md-8= f.select(:type_id, ['Casa', 'Departamento', 'Fundos', 'Parcelas', 'Estadios', 'Centro de eventos', 'Oficinas', 'Edificios empresariales', 'Consultas medicas', 'Azoteas', 'Bares', 'Restaurantes', 'Bibliotecas', 'Bodegas', 'Galpones', 'Cabañas', 'Cines', 'Teatros', 'Clínicas', 'Club de golf', 'Supermercados', 'Cocinas', 'Viñas', 'Moteles', 'Hoteles', 'Plazas', 'Calles', 'Lagunas', 'Bosques', 'Miradores', 'Loft', 'Centro Deportivo', 'Otro'], {}, { :class => 'form-control' })
 				.row.form-group
 					.col-md-4= f.label "Tags", :class=>""
 					.col-md-8
-						= f.autocomplete_field :tag_names, autocomplete_tag_name_locations_path, 'data-delimiter' => ', ', :class=>"form-control", :placeholder=>"Agrega etiquetas referentes a detalles esteticos, barrios, etc"
-						/ = f.text_field :tag_names, :class=>"form-control", :placeholder=>"Agrega etiquetas referentes a detalles esteticos, barrios, etc"
-						%small Incluye palabras o pequeñas frases claves, que describan tu locación. Sepáralas por coma. Ej: casona, naturaleza, vista al lago, campo.
+						= f.autocomplete_field :tag_names, autocomplete_tag_name_locations_path, 'data-delimiter' => ', ', :class=>"form-control", :placeholder=>t('location.form.tag1')
+						%small=t('location.form.tag2')
 				.row
 					.col-md-6
 						.form-group
-							= f.label "Espacios filmables", :class=>""
-							%p.small Señala solamente los espacios que la producción podrá filmar o fotografiar para su película, sesión fotográfica, comercial, etc.
+							= f.label t('location.form.services1'), :class=>""
+							%p.small=t('location.form.services2')
 							-["Fachada", "Interior", "Habitaciones", "Cocina", "Baño y Duchas", "Garage", "Logia", "Jardin", "Propiedad Completa", "Instalación escenográfica", "Ajustes de ambientación", "Otro"].each do |service|
 								.checkbox
 									%label
@@ -46,38 +45,36 @@
 							= f.text_area :other_services_comment, :class=>"form-control other-services-comment", style: "display:none;"
 					.col-md-6
 						.form-group
-							= f.label "Espacios utilizables", :class=>""
-							%p.small En una producción puedes tener a mucha gente trabajando, los cuáles necesitarán utilizar otros espacios de tu propiedad, que no son específicamente aquellos que se están filmando. Señala qué espacios estarán habilitados para la producción. Ej: Si seleccionas Baño, significa que la producción puede utilizar el baño, etc.
+							= f.label t('location.form.extras1'), :class=>""
+							%p.small=t('location.form.extras2')
 							-["Habitaciones", "Baños", "Cocina", "Estacionamientos", "Conexión a red eléctrica", "Otro"].each do |extra|
 								.checkbox
 									%label
 										= f.check_box :extras, { :multiple => true, onclick: "extraOrServiceChanged()"}, extra, nil
 										#{extra}
 							= f.text_area :other_extras_comment, :class=>"form-control other-extras-comment", style: 'display:none;'
-
-
 				.row.form-group
-					.col-md-3= f.label "Dirección *", :class=>""
+					.col-md-3= f.label t('location.form.address'), :class=>""
 					.col-md-9= f.text_field :address, :class=>"form-control"
 				.map_canvas
-				%p.block-helper.font-italic.mt-3 * Esta información solamente será visible cuando un usuario haya confirmado y pagado su reserva.
+				%p.block-helper.font-italic.mt-3=t('location.form.address2')
 				= f.hidden_field :lat, :class=>"form-control", "data-geo"=>"lat"
 				= f.hidden_field :lng, :class=>"form-control", "data-geo"=>"lng"
 				= f.hidden_field :city, :class=>"form-control", "data-geo"=>"administrative_area_level_2"
 				= f.hidden_field :county, :class=>"form-control", "data-geo"=>"locality"
 		.step#step3
 			.tab-head
-				%h2 Fotografías
-				%p Una imagen dice más que mil palabras. Sube las mejores fotografías que tengas de tu locación, mostrando todo el espacio que los productores podrán filmar o fotografiar.  Recuerda incluir fotos generales, así como de detalles, de tu locación.
+				%h2=t('location.form.step3title')
+				%p=t('location.form.step3subtitle')
 			.tab-body
 				.form-group.upload-imgs.bg-faded
 					%div#upload-form.row
 						.col-md-8
-							%h4 Adjuntar Archivos
-							%em Sube solamente fotografias HORIZONTALES en formato  .jpg, .gif o .png. De lo contrario no podremos publicar tu locación. La fotografía horizontal es la única manera que los productores pueden imaginarse cómo se verá tu locación en cámara.
+							%h4=t('location.form.attachments')
+							%em=t('location.form.attachments2')
 						.col-md-4
 							%div.file-upload-btn.text-right
-								Selecciona archivos
+								=t('location.form.select_files')
 								= file_field_tag "images[]", type: :file, multiple: true, id: "fileupload"
 						.col-md-12.padding-top
 							%table.table#file-list
@@ -86,32 +83,32 @@
 						.progress-bar.progress-bar-info#progress-bar{:role=>"progressbar", "aria-valuenow"=>"20", "aria-valuemin"=>"0", "aria-valuemax"=>"100", "style"=>"width: 1%"}
 		.step#step4
 			.tab-head
-				%h2 Precio
-				%p Recuerda que puedes cobrar por jornada, lo mismo o más, de lo que cobrarías por un arriendo mensual. Sin embargo, recuerda que un precio equilibrado, hará que haya más interesados en tu locación.
+				%h2=t('location.form.step4_h2')
+				%p=t('location.form.step4_p')
 			.tab-body
 				.row.form-group.price
 					.col-md-6
-						= f.label "Precio por jornada", :class=>""
+						= f.label t('location.form.day_price'), :class=>""
 						*
 						.input-group
 							.input-group-addon $
 							= f.phone_field :price, :class=>"form-control", :placeholder=>"Monto"
 							= f.hidden_field :fee, :class=>"form-control"
-						%p.help-block El mínimo de arriendo para tu locación es de $150.000 pesos chilenos. 
+						%p.help-block=t('location.form.day_price2')
 					.col-md-6
 						.well
-							%small Comisión Atlocs
+							%small=t('location.form.atlocs_commission')
 							.final-price
 								%strong $
 								%span#result
 									0
 								%span*
 							%em
-								* AtLocs, Sumará una Comisión del 15% por gestionar Tu Propiedad.
+								=t('location.form.atlocs_disclaimer')
 								%br
-								%a{:href => "/faq#collapseEight"} Más info
+								%a{:href => "/faq#collapseEight"}=t('location.form.more_info')
 					.col-md-12
-						%em (*) Una jornada completa de trabajo corresponde a un máximo de 12 horas seguidas de producción. Ten en cuenta esto al momento de ponerle precio a tu locación.
+						%em=t('location.form.atlocs_disclaimer2')
 	.col-md-8.offset-md-2
 		%hr
 		.px-5.py-3
@@ -119,17 +116,20 @@
 				= hidden_field_tag "new_record", true
 				%button.btn.btn-info.btn-block.btn-lg#form-submit{ :type=>"submit", :disabled => "disabled"}
 					%i.mdi.mdi-lg.mdi-cloud-upload
-					Publicar Locación
+					=t('location.form.publish')
 				.terms-and-conditions.mt-3.text-sm-center
 					.form-group
 						.checkbox
 							%label
 								%input#legal-checkbox{:type => "checkbox"}
-								Estoy de acuerdo con los <a href="/terminos-y-condiciones" target="_blank">Términos y Condiciones y política de privacidad</a> de Atlocs.
+								=t('location.form.i_agree1')
+								%a{:href=> "/terminos-y-condiciones", :target=>"_blank"}
+									=t('general.terms')
+								=t('location.form.i_agree2')
 			-else
 				%button.btn.btn-info.btn-block.btn-lg#form-submit{ :type=>"submit" }
 					%i.mdi.mdi-lg.mdi-content-save
-					Guardar Locación
+					=t('location.form.update')
 
 :css
 	.ui-autocomplete {

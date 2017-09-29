@@ -63,3 +63,7 @@ gem "bootstrap_flash_messages", "~> 1.0.2"
 gem "pry", '0.10.4'
 gem 'acts_as_paranoid', '~> 0.5.0'
 gem 'awesome_print', '1.7.0'
+
+gem 'money'
+gem 'google_currency'
+gem 'monetize'

@@ -8,7 +8,7 @@
 					%li
 						%a{:href => "/"} Home
 					%li
-						Resultados de búsqueda para
+						=t('extras.search_results')
 						%strong "#{params[:s]}"
 					.pull-right
 						%form.form-inline{:role => "search", :action => '/locations/' }
@@ -17,26 +17,21 @@
 								%span.input-group-btn
 									%button.btn.btn-primary{:type => "submit"}
 										%i.mdi.mdi-magnify.mdi-lg
-
-			-# = link_to "#", :class => "btn btn-info btn-fixed btn-fixed-left", :onClick => "window.history.go(-1);" do
-			-# 	%i.mdi.mdi-arrow-left
-			-# 	Volver
-
 			.col-md-8.offset-md-2
 				.page-header.main-title.align-center.big
 					%h1
 						-if params[:s]
-							Buscando
+							=t('extras.searching')
 							%small "#{params[:s]}"
 						-elsif params[:collection]
-							Explorando
+							=t('extras.exploring')
 							%small "#{Collection.find(params[:collection]).name}"
 							-#.info
 								.bagde
 									= Location.where(:collection_id => params[:collection]).count locaciones en colección
 						-else params[:collection]
-							Explora
-							%small Locaciones
+							=t('actions.explore')
+							%small=t('general.locations')
 
 	.container
 		.row

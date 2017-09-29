@@ -2,14 +2,14 @@
 	.col-md-8.offset-md-2
 		.booking-request-form.pt-4
 			%h2.my-4
-				Solicitar Reserva para
+				=t('bookings.new')
 				%strong= @location.title
-			%p Selecciona una fecha de inicio y término para tu solicitud de reserva.
+			%p=t('bookings.date_select')
 			= render 'form'
 		- if flash[:notice]
 			#success-msg.alert.alert-success
-				Tu Solicitud ha sido enviada. Te enviaremos un mail cuando el dueño acepte tu reserva con los datos para hacer el deposito.
-				%a{:href => "/bookings"} Ver mis reservas
+				=t('bookings.success')
+				%a{:href => "/bookings"}=t('bookings.my_bookings')
 		- if flash[:error]
 			#error-msg.alert.alert-warning
 				= flash[:error]
