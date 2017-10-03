@@ -635,3 +635,21 @@ en:
     my_bookings: see my reservations
     date: Date
     title: Title
+
+  user:
+    form:
+      title1: Sign up
+      title2a: Register on AtLocs to
+      title2b: Publish and Book
+      title2c: Locations
+      first_name: First Name
+      last_name: Last name
+      phone: Phone Number
+      password: Password
+      confirm_password: Confirm Password
+      is_owning: Are you a real estate owner?
+      is_tenant: Are you looking for locations for your project?
+      facebook1: Register with Facebook
+      facebook2: We won't post anything on your Facebook wall
+      login: I already have an account
+      forgot_password: I forgot my password

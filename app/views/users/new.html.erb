@@ -3,48 +3,47 @@
     <div class="col-md-6 mt-3">
       <div class="card card-outline-primary card-session">
         <div class="card-header bg-primary text-white">
-          <h5 class="mt-2">Crea tu Cuenta</h5>
-          <p class="small">Regístrate en AtLocs para <strong>Publicar y Reservar</strong> Locaciones</p>
+          <h5 class="mt-2"><%= t('user.form.title1') %></h5>
+          <p class="small"><%= t('user.form.title2a') %> <strong><%= t('user.form.title2b') %></strong> <%= t('user.form.title2c') %></p>
         </div>
         <div class="card-block">
           <div class="card-form">
             <%= simple_form_for(@user, wrapper: false, label: false) do |f| %>
               <%= f.error_notification %>
               <div class="form-group">
-                <label class="sr-only">Nombre</label>
-                <%= f.input :first_name, input_html: { class: 'form-control' }, wrapper: false, label: false, placeholder: 'Nombre' %>
+                <label class="sr-only"><%= t('user.form.name') %></label>
+                <%= f.input :first_name, input_html: { class: 'form-control' }, wrapper: false, label: false, placeholder: t('user.form.name') %>
               </div>
               <div class="form-group">
-                <label class="sr-only">Apellido</label>
-                <%= f.input :last_name, input_html: { class: 'form-control' }, wrapper: false, label: false, placeholder: 'Apellido' %>
+                <label class="sr-only"><%= t('user.form.last_name') %></label>
+                <%= f.input :last_name, input_html: { class: 'form-control' }, wrapper: false, label: false, placeholder: t('user.form.last_name') %>
               </div>
               <div class="form-group">
                 <label class="sr-only">Email</label>
                 <%= f.input :email, input_html: { class: 'form-control' }, wrapper: false, label: false, placeholder: 'E-mail' %>
               </div>
               <div class="form-group">
-                <label class="sr-only">Número celular</label>
-                <%= f.input :phone, input_html: { class: 'form-control' }, wrapper: false, label: false, placeholder: 'Número de celular' %>
+                <label class="sr-only"><%= t('user.form.phone') %></label>
+                <%= f.input :phone, input_html: { class: 'form-control' }, wrapper: false, label: false, placeholder: t('user.form.phone') %>
               </div>
               <div class="form-group">
-                <label class="sr-only">Contraseña</label>
-                <%= f.input :password, input_html: { class: 'form-control' }, wrapper: false, label: false, placeholder: 'Contraseña' %>
+                <label class="sr-only"><%= t('user.form.password') %></label>
+                <%= f.input :password, input_html: { class: 'form-control' }, wrapper: false, label: false, placeholder: t('user.form.password') %>
               </div>
               <div class="form-group">
-                <label class="sr-only">Confirmar contraseña</label>
-                <%= f.input :password_confirmation, input_html: { class: 'form-control' }, wrapper: false, label: false, placeholder: 'Confirmar contraseña' %>
+                <label class="sr-only"><%= t('user.form.confirm_password') %></label>
+                <%= f.input :password_confirmation, input_html: { class: 'form-control' }, wrapper: false, label: false, placeholder: t('user.form.confirm_password') %>
               </div>
               <div class="form-check">
                 <label class="form-check-label">
                   <%= f.input :owning, input_html: { class: 'form-check-input' }, wrapper: false, label: false, type: 'checkbox'  %>
-                  ¿Eres propietario de un inmueble?
+                  <%= t('user.form.is_owning') %>
                 </label>
               </div>
-              
               <div class="form-check">
                 <label class='form-check-label'>
                   <%= f.input :tenant, input_html: { class: 'form-check-input' }, wrapper: false, label: false, type: 'checkbox' %>
-                  ¿Estás buscando locaciones para tu proyecto?
+                  <%= t('user.form.is_tenant') %>
                 </label>
               </div>
 
@@ -54,10 +53,10 @@
               <hr />
               <%= link_to user_facebook_omniauth_authorize_path, class: 'btn btn-block facebook-inicio' do %>
                 <span><i class="mdi mdi-facebook-box mdi-lg mr-2"></i></span>
-                Registrar con Facebook
+                <%= t('user.form.facebook1') %>
               <% end %>
               <p class="text-center small text-muted mt-2">
-                No postearemos en tu página de Facebook
+                <%= t('user.form.facebook2') %>
               </p>
             <% end %>
           </div>
@@ -65,8 +64,8 @@
     </div>
     <div class="row d-flex justify-content-center">
         <div class="p-2">
-          <div class="my-2"><a href="/login">Ya tengo una cuenta</a></div>
-          <div class="my-2"><a href="/help/password">Olvidé mi password</a></div>
+          <div class="my-2"><a href="/login"><%= t('user.form.login') %></a></div>
+          <div class="my-2"><a href="/help/password"><%= t('user.form.forgot_password') %></a></div>
         </div>
       </div>
   </div>

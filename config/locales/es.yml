@@ -633,6 +633,25 @@ es:
       p2: ¡Muchas gracias por hacerte parte de esta comunidad donde podrás comparar y seleccionar entre cientos de locaciones!
       p3: Pondremos todos nuestros esfuerzos para tener siempre una gran variedad de locaciones para ti y tus producciones.
       p4: Te invitamos a buscar la mejor locación para tu producción.
+  user:
+    form:
+      title1: Crea tu Cuenta
+      title2a: Regístrate en AtLocs para
+      title2b: Publicar y Reservar
+      title2c: Locaciones
+      name: Nombre
+      last_name: Apellidos
+      phone: Numero de celular
+      password: Contraseña
+      confirm_password: Confirmar contraseña
+      is_owning: ¿Eres propietario de un inmueble?
+      is_tenant: ¿Estás buscando locaciones para tu proyecto?
+      facebook1: Registrar con Facebook
+      facebook2: No postearemos en tu página de Facebook
+      login: Ya tengo una cuenta
+      forgot_password: Olvidé mi contraseña
+
+
   locales:
     spanish: Español
     english: Inglés
