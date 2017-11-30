@@ -4,7 +4,7 @@ Rails.application.configure do
     :port           => '2525',
     :authentication => :plain,
     :user_name      => 'postmaster@atlocs.com',
-    :password       => '91c1e607ff10e9786253d780db7b9a0c',
+    :password       => 'cfc3974a850476a8dce4095369b56cfd',
     :domain         => 'atlocs.com',
     :enable_starttls_auto => true
   }
