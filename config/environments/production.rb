@@ -3,7 +3,7 @@ Rails.application.configure do
     :address        => 'smtp.mailgun.org',
     :port           => '2525',
     :authentication => :plain,
-    :user_name      => 'postmaster@atlocs.com',
+    :user_name      => 'postmaster@mg.atlocs.com',
     :password       => 'cfc3974a850476a8dce4095369b56cfd',
     :domain         => 'atlocs.com',
     :enable_starttls_auto => true
