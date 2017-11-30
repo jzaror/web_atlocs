@@ -3,8 +3,8 @@ Rails.application.configure do
     :address        => 'smtp.mailgun.org',
     :port           => '2525',
     :authentication => :plain,
-    :user_name      => 'postmaster@atlocs.cl',
-    :password       => '768689bc7039420e5f9291d37ac2eb45',
+    :user_name      => 'postmaster@atlocs.com',
+    :password       => 'd0c9b7e7582bfa223ad3870847273c7b',
     :domain         => 'atlocs.com',
     :enable_starttls_auto => true
   }
