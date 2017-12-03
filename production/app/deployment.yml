@@ -11,7 +11,7 @@ spec:
     spec:
       containers:
       - name: rails
-        image: gcr.io/master-tuner-150318/atlocs_web:prod-45
+        image: gcr.io/master-tuner-150318/atlocs_web:prod-95
         ports:
           - name: http
             containerPort: 5000
